@@ -1,15 +1,51 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "../src/styles/main.scss";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const involve = localFont({
+  src: [
+    {
+      path: "../public/font/Involve/Involve-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/font/Involve/Involve-Oblique.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "../public/font/Involve/Involve-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/font/Involve/Involve-MediumOblique.ttf",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "../public/font/Involve/Involve-SemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/font/Involve/Involve-SemiBoldOblique.ttf",
+      weight: "600",
+      style: "italic",
+    },
+    {
+      path: "../public/font/Involve/Involve-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/font/Involve/Involve-BoldOblique.ttf",
+      weight: "700",
+      style: "italic",
+    },
+  ],
+  variable: "--font-involve",
 });
 
 export const metadata: Metadata = {
@@ -23,10 +59,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-      </body>
+    <html lang="en" className={involve.variable}>
+      <body>{children}</body>
     </html>
   );
 }

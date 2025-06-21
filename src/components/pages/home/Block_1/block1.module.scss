@@ -1,0 +1,296 @@
+@use "../../../../styles/abstracts" as a;
+
+.homeBlock1 {
+  position: relative;
+}
+
+.home {
+  padding-top: 140px;
+  height: 179px;
+
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @include a.tablet {
+    height: 170px;
+  }
+
+  @include a.laptop {
+    padding-top: 195px;
+    height: 205px;
+    gap: 14px;
+  }
+
+  @include a.desktop {
+    padding-top: 218px;
+    height: 231px;
+    gap: 15px;
+  }
+
+  @include a.desktop-xl {
+    padding-top: 245px;
+    height: 260px;
+    gap: 16px;
+  }
+}
+
+.background {
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain;
+
+  @include a.only-mobile {
+    background-image: url("/bg_360.svg");
+    width: 720px;
+    height: 386.34px;
+  }
+
+  @include a.only-tablet {
+    background-image: url("/bg_768.svg");
+    width: 704.5px;
+    height: 445.5px;
+  }
+
+  @include a.only-laptop {
+    background-image: url("/bg_1024.svg");
+    width: 944px;
+    height: 550px;
+  }
+
+  @include a.only-desktop {
+    background-image: url("/bg_1920.svg");
+    width: 1007px;
+    height: 628px;
+  }
+
+  @include a.desktop-xl {
+    background-image: url("/bg_1920.svg");
+    width: 1080px;
+    height: 719px;
+  }
+}
+
+.collectionBlock {
+  width: fit-content;
+  align-self: center;
+  justify-content: center;
+  align-items: center;
+  padding: 4.5px 8px;
+
+  background: a.$white-3;
+  border: 1px solid a.$black-btn-border;
+  border-radius: 4px;
+
+  display: flex;
+  gap: 8px;
+
+  @include a.laptop {
+    padding: 7.5px 8px;
+
+    border-radius: 6px;
+  }
+
+  @include a.desktop {
+    padding: 7.5px 10px;
+    gap: 10px;
+    border-radius: 7px;
+  }
+
+  @include a.desktop-xl {
+    padding: 7.5px 12px;
+
+    gap: 12px;
+
+    border-radius: 8px;
+  }
+
+  &__bookIcon {
+    width: 12px;
+    height: 12px;
+
+    @include a.laptop {
+      width: 14px;
+      height: 14px;
+    }
+
+    @include a.desktop {
+      width: 15px;
+      height: 15px;
+    }
+
+    @include a.desktop-xl {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__text {
+    font-size: 12px;
+    line-height: 16px;
+
+    color: a.$black-4;
+
+    @include a.laptop {
+      font-size: 14px;
+      line-height: 19px;
+    }
+
+    @include a.desktop {
+      font-size: 15px;
+      line-height: 20px;
+    }
+
+    @include a.desktop-xl {
+      font-size: 16px;
+      line-height: 21px;
+    }
+
+    span {
+      color: a.$orange-1;
+    }
+  }
+
+  &__divider {
+    width: 0px;
+    height: 12px;
+
+    border: 0.5px solid a.$black-9;
+
+    border-radius: 100px;
+
+    @include a.laptop {
+      height: 20px;
+    }
+
+    @include a.desktop {
+      height: 22px;
+    }
+
+    @include a.desktop-xl {
+      height: 24px;
+    }
+  }
+}
+
+.textBlock {
+  &__title {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+
+    text-align: center;
+
+    color: a.$black-1;
+
+    @include a.tablet {
+      font-size: 32px;
+      line-height: 43px;
+    }
+
+    @include a.laptop {
+      font-size: 40px;
+      line-height: 53px;
+    }
+
+    @include a.desktop {
+      font-size: 51px;
+      line-height: 68px;
+    }
+
+    @include a.desktop-xl {
+      font-size: 64px;
+      line-height: 85px;
+    }
+  }
+
+  &__description {
+    max-width: 570px;
+
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+
+    color: a.$black-5;
+
+    text-align: center;
+
+    @include a.tablet {
+      max-width: 510px;
+    }
+
+    @include a.laptop {
+      font-size: 14px;
+      max-width: 670px;
+
+      line-height: 19px;
+    }
+
+    @include a.desktop {
+      font-size: 16px;
+      max-width: 765px;
+      line-height: 21px;
+    }
+
+    @include a.desktop-xl {
+      font-size: 18px;
+      max-width: 875px;
+      line-height: 24px;
+    }
+
+    &__br {
+      display: none;
+
+      @include a.desktop-xl {
+        display: block;
+      }
+    }
+  }
+}
+
+.frameworksBlock {
+  display: flex;
+  gap: 19px;
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+
+    &__text {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+
+      color: a.$black-6;
+
+      @include a.laptop {
+        font-size: 14px;
+        line-height: 19px;
+      }
+
+      span {
+        color: a.$black-2;
+      }
+    }
+
+    &__frameworksIcon {
+      width: 14px;
+      height: 14px;
+
+      @include a.laptop {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}

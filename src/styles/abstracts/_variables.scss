@@ -1,9 +1,27 @@
-// Example variables
-$primary-color: #333;
-
-// Breakpoints for mobile-first approach
 $mobile-w: 360px;
 $tablet-w: 768px;
 $laptop-w: 1024px;
 $desktop-w: 1440px;
 $desktop-xl-w: 1920px;
+
+// Font Weights
+$fw-medium: 500;
+$fw-semibold: 600;
+
+// Colors
+
+// White
+$white-3: rgba(255, 255, 255, 0.7);
+
+// Black
+$black-1: rgba(36, 36, 36, 1);
+$black-2: rgba(36, 36, 36, 0.8); // #242424cc is rgba(36, 36, 36, 0.8)
+$black-4: rgba(36, 36, 36, 0.6);
+$black-5: rgba(36, 36, 36, 0.5);
+$black-6: rgba(36, 36, 36, 0.4);
+$black-9: rgba(36, 36, 36, 0.15);
+
+$black-btn-border: rgba(36, 36, 36, 0.15);
+
+// Orange
+$orange-1: rgba(240, 80, 35, 1);

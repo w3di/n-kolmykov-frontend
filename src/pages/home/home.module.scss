@@ -1,0 +1,13 @@
+@use "../../styles/abstracts" as a;
+
+.home {
+  padding: 0 16px;
+
+  @include a.tablet {
+    padding: 0 32px;
+  }
+
+  @include a.laptop {
+    padding: 0 40px;
+  }
+}
