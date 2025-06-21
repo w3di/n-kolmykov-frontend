@@ -1,0 +1,55 @@
+@use "variables" as v;
+
+@mixin mobile {
+  @media (min-width: v.$mobile-w) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: v.$tablet-w) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: v.$laptop-w) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: v.$desktop-w) {
+    @content;
+  }
+}
+
+@mixin desktop-xl {
+  @media (min-width: v.$desktop-xl-w) {
+    @content;
+  }
+}
+
+@mixin only-mobile {
+  @media (max-width: calc(v.$tablet-w - 1px)) {
+    @content;
+  }
+}
+
+@mixin only-tablet {
+  @media (min-width: v.$tablet-w) and (max-width: calc(v.$laptop-w - 1px)) {
+    @content;
+  }
+}
+
+@mixin only-laptop {
+  @media (min-width: v.$laptop-w) and (max-width: calc(v.$desktop-w - 1px)) {
+    @content;
+  }
+}
+
+@mixin only-desktop {
+  @media (min-width: v.$desktop-w) and (max-width: calc(v.$desktop-xl-w - 1px)) {
+    @content;
+  }
+}

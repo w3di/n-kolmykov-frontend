@@ -1,0 +1,22 @@
+// src/styles/main.scss
+
+// 1. Abstracts: Sass tools and helpers (variables, functions, mixins).
+@use "abstracts";
+
+// 2. Vendors: CSS from external libraries (Bootstrap, etc.).
+@use "vendors";
+
+// 3. Base: Boilerplate code (reset, typography, base styles).
+@use "base";
+
+// 4. Layout: Major parts of the site (header, footer, grid).
+@use "layout";
+
+// 5. Components: Reusable smaller components (buttons, cards).
+@use "components";
+
+// 6. Pages: Page-specific styles.
+@use "pages";
+
+// 7. Themes: Styling for different themes.
+@use "themes";
