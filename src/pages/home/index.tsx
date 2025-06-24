@@ -1,11 +1,14 @@
-import Image from "next/image";
 import styles from "./home.module.scss";
-import HomeBlock1 from "@/src/components/pages/home/Block_1";
+import HeroSection from "@/src/components/pages/home/HeroSection";
+import StatsSection from "@/src/components/pages/home/StatsSection";
+import QuizSection from "@/src/components/pages/home/QuizSection";
 
 export default function HomePage() {
   return (
     <main className={styles.home}>
-      <HomeBlock1 />
+      <HeroSection />
+      <StatsSection />
+      <QuizSection />
     </main>
   );
 }

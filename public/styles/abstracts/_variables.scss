@@ -11,17 +11,24 @@ $fw-semibold: 600;
 // Colors
 
 // White
+$white-1: rgba(255, 255, 255, 1);
 $white-3: rgba(255, 255, 255, 0.7);
+
+// Gray
+$gray-1: rgba(226, 226, 226, 1);
+
+$gray-light: rgba(247, 247, 247, 1);
+$gray-light-transparent: rgba(247, 247, 247, 0);
+$gray-light-transparent-001: rgba(247, 247, 247, 0.0001);
+$gray-light-transparent-01: rgba(247, 247, 247, 0.01);
 
 // Black
 $black-1: rgba(36, 36, 36, 1);
-$black-2: rgba(36, 36, 36, 0.8); // #242424cc is rgba(36, 36, 36, 0.8)
+$black-2: rgba(36, 36, 36, 0.8);
 $black-4: rgba(36, 36, 36, 0.6);
 $black-5: rgba(36, 36, 36, 0.5);
 $black-6: rgba(36, 36, 36, 0.4);
 $black-9: rgba(36, 36, 36, 0.15);
-
-$black-btn-border: rgba(36, 36, 36, 0.15);
 
 // Orange
 $orange-1: rgba(240, 80, 35, 1);

@@ -1,10 +1,10 @@
 import Image from "next/image";
-import styles from "./block1.module.scss";
+import styles from "./heroSection.module.scss";
 
-export default function HomeBlock1() {
+export default function HeroSection() {
   return (
-    <section className={styles.homeBlock1}>
-      <div className={styles.home}>
+    <section className={styles.heroSection}>
+      <div className={styles.contentWrapper}>
         <div className={styles.collectionBlock}>
           <Image
             src="/book.svg"

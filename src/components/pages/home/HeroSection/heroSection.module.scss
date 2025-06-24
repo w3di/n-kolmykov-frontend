@@ -1,38 +1,37 @@
-@use "../../../../styles/abstracts" as a;
+@use "../../../../../public/styles/abstracts" as a;
 
-.homeBlock1 {
+.heroSection {
   position: relative;
 }
 
-.home {
-  padding-top: 140px;
-  height: 179px;
+.contentWrapper {
+  padding-top: 74.5px;
+  height: 386.34px;
 
-  justify-content: center;
   align-items: center;
   display: flex;
   flex-direction: column;
   gap: 12px;
 
   @include a.tablet {
-    height: 170px;
+    height: 445px;
   }
 
   @include a.laptop {
-    padding-top: 195px;
-    height: 205px;
+    padding-top: 94.4px;
+    height: 550px;
     gap: 14px;
   }
 
   @include a.desktop {
-    padding-top: 218px;
-    height: 231px;
+    padding-top: 116px;
+    height: 634px;
     gap: 15px;
   }
 
   @include a.desktop-xl {
-    padding-top: 245px;
-    height: 260px;
+    height: 719px;
+    padding-top: 138px;
     gap: 16px;
   }
 }
@@ -68,8 +67,8 @@
 
   @include a.only-desktop {
     background-image: url("/bg_1920.svg");
-    width: 1007px;
-    height: 628px;
+    width: 1012px;
+    height: 634px;
   }
 
   @include a.desktop-xl {
@@ -87,7 +86,7 @@
   padding: 4.5px 8px;
 
   background: a.$white-3;
-  border: 1px solid a.$black-btn-border;
+  border: 1px solid a.$black-9;
   border-radius: 4px;
 
   display: flex;

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "../src/styles/main.scss";
+import "../public/styles/main.scss";
 
 const involve = localFont({
   src: [
