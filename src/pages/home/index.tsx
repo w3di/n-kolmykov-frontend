@@ -2,6 +2,7 @@ import styles from "./home.module.scss";
 import HeroSection from "@/src/components/pages/home/HeroSection";
 import StatsSection from "@/src/components/pages/home/StatsSection";
 import QuizSection from "@/src/components/pages/home/QuizSection";
+import PullSection from "@/src/components/pages/home/PullSection";
 
 export default function HomePage() {
   return (
@@ -9,6 +10,7 @@ export default function HomePage() {
       <HeroSection />
       <StatsSection />
       <QuizSection />
+      <PullSection />
     </main>
   );
 }
