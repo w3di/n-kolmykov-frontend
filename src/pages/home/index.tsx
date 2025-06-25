@@ -3,6 +3,7 @@ import HeroSection from "@/src/components/pages/home/HeroSection";
 import StatsSection from "@/src/components/pages/home/StatsSection";
 import QuizSection from "@/src/components/pages/home/QuizSection";
 import PullSection from "@/src/components/pages/home/PullSection";
+import CodeExamplesSection from "@/src/components/pages/home/CodeExamplesSection";
 
 export default function HomePage() {
   return (
@@ -11,6 +12,7 @@ export default function HomePage() {
       <StatsSection />
       <QuizSection />
       <PullSection />
+      <CodeExamplesSection />
     </main>
   );
 }

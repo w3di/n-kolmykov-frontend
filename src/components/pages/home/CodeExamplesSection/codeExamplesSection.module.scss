@@ -1,0 +1,128 @@
+@use "../../../../../public/styles/abstracts" as a;
+
+.codeExamplesSection {
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: a.$gray-1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px;
+
+  @include a.tablet {
+    padding: 24px 0;
+  }
+
+  @include a.laptop {
+    padding: 32px 0;
+  }
+}
+
+.text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+
+  color: a.$black-3;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @include a.tablet {
+    font-size: 18px;
+    line-height: 24px;
+
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+  @include a.laptop {
+    font-size: 20px;
+    line-height: 27px;
+  }
+
+  @include a.desktop {
+    font-size: 22px;
+    line-height: 29px;
+  }
+
+  @include a.desktop-xl {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
+    @include a.tablet {
+      display: contents;
+    }
+  }
+
+  &__block {
+    box-sizing: border-box;
+
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 6px;
+    gap: 6px;
+
+    background: a.$white-3;
+    border: 1px solid a.$black-9;
+    border-radius: 6px;
+
+    @include a.laptop {
+      padding: 10.5px 8px;
+    }
+
+    @include a.desktop {
+      padding: 10.5px 10px;
+    }
+
+    @include a.desktop-xl {
+      padding: 10.5px 12px;
+    }
+
+    span {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+
+      color: a.$black-2;
+
+      @include a.laptop {
+        font-size: 14px;
+        line-height: 19px;
+      }
+    }
+  }
+
+  &__icon {
+    width: 14px;
+    height: 14px;
+
+    @include a.laptop {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__spacing {
+    @include a.tablet {
+      margin-right: calc(5px - 16px); // 5px отступ минус gap 16px
+    }
+  }
+}
