@@ -4,6 +4,7 @@ import StatsSection from "@/src/components/pages/home/StatsSection";
 import QuizSection from "@/src/components/pages/home/QuizSection";
 import PullSection from "@/src/components/pages/home/PullSection";
 import CodeExamplesSection from "@/src/components/pages/home/CodeExamplesSection";
+import Footer from "@/src/components/layout/footer";
 
 export default function HomePage() {
   return (
@@ -13,6 +14,7 @@ export default function HomePage() {
       <QuizSection />
       <PullSection />
       <CodeExamplesSection />
+      <Footer />
     </main>
   );
 }

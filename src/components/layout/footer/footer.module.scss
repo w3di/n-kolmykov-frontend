@@ -1,0 +1,96 @@
+@use "../../../../public/styles/abstracts" as a;
+
+.footer {
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: a.$gray-1;
+
+  padding: 12px;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 24px;
+  align-items: center;
+
+  @include a.tablet {
+    padding: 24px;
+
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: 1fr;
+  }
+
+  @include a.laptop {
+    padding: 32px;
+  }
+
+  @include a.desktop-xl {
+    padding: 56px 32px;
+  }
+}
+
+.navigationList {
+  grid-column: 1;
+  grid-row: 1;
+
+  display: flex;
+  gap: 16px;
+
+  @include a.tablet {
+    grid-column: 2;
+    grid-row: 1;
+    gap: 36px;
+    justify-self: center;
+  }
+
+  @include a.laptop {
+    gap: 54px;
+  }
+
+  @include a.desktop-xl {
+    gap: 72px;
+  }
+
+  &__itemLink {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 16px;
+
+    color: a.$black-3;
+
+    @include a.laptop {
+      font-size: 14px;
+      line-height: 19px;
+    }
+
+    @include a.desktop-xl {
+      font-size: 16px;
+      line-height: 21px;
+    }
+  }
+}
+
+.logo {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+
+  @include a.tablet {
+    grid-column: 3;
+  }
+}
+
+.socials {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  justify-self: flex-start;
+
+  display: flex;
+  gap: 4px;
+
+  @include a.tablet {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+  }
+}
