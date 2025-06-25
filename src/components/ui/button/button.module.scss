@@ -28,6 +28,11 @@
     border-radius: 8px;
   }
 
+  @include a.desktop {
+    padding: 10.5px 20px;
+    gap: 7px;
+  }
+
   @include a.desktop-xl {
     padding: 11.5px 24px;
     gap: 8px;
@@ -49,6 +54,11 @@
       font-size: 16px;
       line-height: 21px;
     }
+
+    @include a.desktop {
+      font-size: 17px;
+      line-height: 22px;
+    }
   }
 
   &_icon {
@@ -63,6 +73,11 @@
     @include a.laptop {
       width: 16px;
       height: 16px;
+    }
+
+    @include a.desktop {
+      width: 17px;
+      height: 17px;
     }
 
     @include a.desktop-xl {

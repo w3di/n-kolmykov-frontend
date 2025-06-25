@@ -59,6 +59,11 @@
 
   color: a.$black-5;
 
+  @include a.desktop {
+    font-size: 15px;
+    line-height: 20px;
+  }
+
   @include a.desktop-xl {
     font-size: 16px;
     line-height: 21px;
@@ -76,6 +81,12 @@
     font-size: 32px;
     line-height: 43px;
   }
+
+  @include a.desktop {
+    font-size: 38px;
+    line-height: 51px;
+  }
+
   @include a.desktop-xl {
     font-size: 44px;
     line-height: 59px;
@@ -89,6 +100,11 @@
   @include a.tablet {
     width: 18px;
     height: 18px;
+  }
+
+  @include a.desktop {
+    width: 21px;
+    height: 21px;
   }
 
   @include a.desktop-xl {
