@@ -1,0 +1,23 @@
+@use "../../../../public/styles/abstracts" as a;
+
+.separator {
+  width: 328px;
+  height: 16px;
+
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: a.$gray-1;
+
+  @include a.tablet {
+    width: 704px;
+    height: 24px;
+  }
+
+  @include a.laptop {
+    width: 944px;
+  }
+
+  @include a.desktop-xl {
+    width: 1080;
+  }
+}
