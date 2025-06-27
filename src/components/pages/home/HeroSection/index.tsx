@@ -1,18 +1,13 @@
 import Image from "next/image";
 import styles from "./heroSection.module.scss";
+import Icon from "@/src/components/ui/Icon";
 
 export default function HeroSection() {
   return (
     <section className={styles.heroSection}>
       <div className={styles.contentWrapper}>
         <div className={styles.collectionBlock}>
-          <Image
-            src="/book.svg"
-            alt="book_icon"
-            width={12}
-            height={12}
-            className={styles.collectionBlock__bookIcon}
-          />
+          <Icon name="book" className={styles.collectionBlock__bookIcon} />
           <hr className={styles.collectionBlock__divider} />
           <p className={styles.collectionBlock__text}>
             Коллекция из <span>250+</span> тем
@@ -29,11 +24,8 @@ export default function HeroSection() {
         </p>
         <ul className={styles.frameworksBlock}>
           <li className={styles.frameworksBlock__item}>
-            <Image
-              src="/react.svg"
-              alt="react_logo"
-              width={14}
-              height={14}
+            <Icon
+              name="react"
               className={styles.frameworksBlock__item__frameworksIcon}
             />
             <p className={styles.frameworksBlock__item__text}>
@@ -41,11 +33,8 @@ export default function HeroSection() {
             </p>
           </li>
           <li className={styles.frameworksBlock__item}>
-            <Image
-              src="/expo.svg"
-              alt="expo_logo"
-              width={14}
-              height={14}
+            <Icon
+              name="expo"
               className={styles.frameworksBlock__item__frameworksIcon}
             />
             <p className={styles.frameworksBlock__item__text}>

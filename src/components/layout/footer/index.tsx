@@ -1,5 +1,22 @@
+import Icon from "../../ui/Icon";
+import SocialList from "../../widgets/socialsList";
 import styles from "./footer.module.scss";
 import Image from "next/image";
+
+const socials = [
+  {
+    href: "/",
+    icon: "telegram" as const,
+  },
+  {
+    href: "/",
+    icon: "discord" as const,
+  },
+  {
+    href: "/",
+    icon: "github" as const,
+  },
+];
 
 export default function Footer() {
   return (
@@ -24,19 +41,7 @@ export default function Footer() {
         className={styles.logo}
       />
 
-      <div className={styles.socials}>
-        {[0, 1, 2].map((item) => (
-          <a href="/" key={item}>
-            <Image
-              src="/expo.svg"
-              alt="Social link"
-              width={24}
-              height={24}
-              className={styles.socialIcon}
-            />
-          </a>
-        ))}
-      </div>
+      <SocialList />
     </footer>
   );
 }

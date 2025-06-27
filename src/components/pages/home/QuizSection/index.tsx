@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./quizSection.module.scss";
 import Button from "@/src/components/ui/button";
+import Icon from "@/src/components/ui/Icon";
 
 export default function QuizSection() {
   return (
@@ -13,13 +14,8 @@ export default function QuizSection() {
         className={styles.codeShowImage}
       />
       <div className={styles.blurBlock}>
-        <Image
-          src="/expo.svg"
-          alt="arrow_right"
-          width={36}
-          height={36}
-          className={styles.blurBlock_icon}
-        />
+        <Icon name="lightning" className={styles.blurBlock_icon} />
+
         <p className={styles.blurBlock_text}>
           Проверьте свои знания,{" "}
           <span>

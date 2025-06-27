@@ -1,21 +1,33 @@
-import Image from "next/image";
+import Icon from "@/src/components/ui/Icon";
 import styles from "./statsSection.module.scss";
+
+const stats = [
+  {
+    icon: "listBullets" as const,
+    text: "вопросов",
+    count: "100+",
+  },
+  {
+    icon: "network" as const,
+    text: "тем",
+    count: "20+",
+  },
+  {
+    icon: "clockCountdown" as const,
+    text: "часов изучения",
+    count: "500+",
+  },
+];
 
 export default function StatsSection() {
   return (
     <ul className={styles.statsSection}>
-      {[0, 1, 2].map((item) => (
-        <li key={item}>
-          <Image
-            src="/book.svg"
-            alt="book_icon"
-            width={14}
-            height={14}
-            className={styles.icon}
-          />
+      {stats.map((item) => (
+        <li key={item.text}>
+          <Icon name={item.icon} className={styles.icon} />
           <div className={styles.wrapper}>
-            <p className={styles.text}>вопросов</p>
-            <p className={styles.countText}>100+</p>
+            <p className={styles.text}>{item.text}</p>
+            <p className={styles.countText}>{item.count}</p>
           </div>
         </li>
       ))}

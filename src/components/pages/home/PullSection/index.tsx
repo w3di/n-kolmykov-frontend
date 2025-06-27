@@ -1,19 +1,14 @@
 import Image from "next/image";
 import styles from "./pullSection.module.scss";
 import clsx from "clsx";
+import Icon from "@/src/components/ui/Icon";
 
 export default function QuizSection() {
   return (
     <ul className={styles.pullSection}>
       <li className={styles.pullSection__item}>
         <div className={styles.titleBlock}>
-          <Image
-            src="/react.svg"
-            alt=""
-            width={14}
-            height={14}
-            className={styles.titleBlock__icon}
-          />
+          <Icon name="book" className={styles.titleBlock__icon} />
           <p className={styles.titleBlock__title}>Новые темы</p>
         </div>
         <p className={styles.description}>
@@ -45,13 +40,7 @@ export default function QuizSection() {
       </li>
       <li className={styles.pullSection__item}>
         <div className={styles.titleBlock}>
-          <Image
-            src="/react.svg"
-            alt=""
-            width={14}
-            height={14}
-            className={styles.titleBlock__icon}
-          />
+          <Icon name="sparkle" className={styles.titleBlock__icon} />
           <p className={styles.titleBlock__title}>Улучшения</p>
         </div>
         <p

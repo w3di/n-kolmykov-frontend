@@ -48,31 +48,31 @@
   background-size: contain;
 
   @include a.only-mobile {
-    background-image: url("/bg_360.svg");
+    background-image: url("/svg/bg_360.svg");
     width: 720px;
     height: 386.34px;
   }
 
   @include a.only-tablet {
-    background-image: url("/bg_768.svg");
+    background-image: url("/svg/bg_768.svg");
     width: 704px;
     height: 445.5px;
   }
 
   @include a.only-laptop {
-    background-image: url("/bg_1024.svg");
+    background-image: url("/svg/bg_1024.svg");
     width: 944px;
     height: 550px;
   }
 
   @include a.only-desktop {
-    background-image: url("/bg_1920.svg");
+    background-image: url("/svg/bg_1920.svg");
     width: 1012px;
     height: 634px;
   }
 
   @include a.desktop-xl {
-    background-image: url("/bg_1920.svg");
+    background-image: url("/svg/bg_1920.svg");
     width: 1080px;
     height: 719px;
   }

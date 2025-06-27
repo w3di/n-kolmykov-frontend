@@ -35,40 +35,23 @@
   }
 }
 
-.logoContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.logo {
+  width: 80px;
+  height: 20px;
 
-  gap: 5px;
-
-  @include a.laptop {
-    gap: 7px;
+  @include a.tablet {
+    width: 111px;
+    height: 28px;
   }
 
-  &__logo {
-    width: 15px;
+  @include a.laptop {
+    width: 96px;
     height: 24px;
   }
 
-  &__nKolmykov {
-    width: 80px;
-    height: 20px;
-
-    @include a.tablet {
-      width: 111px;
-      height: 28px;
-    }
-
-    @include a.laptop {
-      width: 96px;
-      height: 24px;
-    }
-
-    @include a.desktop-xl {
-      width: 111px;
-      height: 28px;
-    }
+  @include a.desktop-xl {
+    width: 111px;
+    height: 28px;
   }
 }
 
@@ -117,14 +100,5 @@
     @include a.desktop-xl {
       height: 32px;
     }
-  }
-}
-
-.socials {
-  display: none;
-
-  @include a.tablet {
-    display: flex;
-    gap: 4px;
   }
 }
