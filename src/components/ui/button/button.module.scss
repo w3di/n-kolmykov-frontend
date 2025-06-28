@@ -5,44 +5,34 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 4px 8px;
   gap: 4px;
-  isolation: isolate;
-
   width: max-content;
-
+  padding: 4px 8px;
   background: a.$black-1;
   border-radius: 4px;
+  isolation: isolate;
 
   @include a.tablet {
-    padding: 6.5px 12px;
     gap: 8px;
-
+    padding: 6.5px 12px;
     border-radius: 6px;
   }
 
   @include a.laptop {
-    padding: 9.5px 16px;
     gap: 6px;
-
+    padding: 9.5px 16px;
     border-radius: 8px;
   }
 
-  @include a.desktop {
-    padding: 10.5px 20px;
-    gap: 7px;
-  }
-
   @include a.desktop-xl {
-    padding: 11.5px 24px;
     gap: 8px;
+    padding: 11.5px 24px;
   }
 
   &_text {
     font-weight: a.$fw-medium;
     font-size: 12px;
     line-height: 16px;
-
     color: a.$white-1;
 
     @include a.tablet {
@@ -53,11 +43,6 @@
     @include a.laptop {
       font-size: 16px;
       line-height: 21px;
-    }
-
-    @include a.desktop {
-      font-size: 17px;
-      line-height: 22px;
     }
   }
 
@@ -73,11 +58,6 @@
     @include a.laptop {
       width: 16px;
       height: 16px;
-    }
-
-    @include a.desktop {
-      width: 17px;
-      height: 17px;
     }
 
     @include a.desktop-xl {

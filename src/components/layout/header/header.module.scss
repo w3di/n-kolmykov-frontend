@@ -1,32 +1,26 @@
 @use "../../../../public/styles/abstracts" as a;
 
 .header {
-  margin: 16px 16px 0 16px;
-  background-color: a.$white-1;
-
-  border: 1px solid a.$black-9;
-
-  border-radius: 8px;
-
-  padding: 16px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 16px 16px 0;
+  padding: 16px;
+  background-color: a.$white-1;
+  border: 1px solid a.$black-9;
+  border-radius: 8px;
 
   @include a.tablet {
+    width: 704px;
+    margin: 16px auto 0;
     padding: 20px 24px;
     border-radius: 12px;
-
-    width: 704px;
-
-    margin: 16px auto 0 auto;
   }
 
   @include a.laptop {
-    border-radius: 10px;
     width: 944px;
-    margin: 24px auto 0 auto;
+    margin: 24px auto 0;
+    border-radius: 10px;
   }
 
   @include a.desktop-xl {
@@ -61,16 +55,16 @@
 
   &__itemLink,
   a {
+    margin: 8px 12px !important;
     font-weight: 500;
-    color: a.$black-3;
     font-size: 14px;
     line-height: 18px;
-    margin: 8px 12px !important;
+    color: a.$black-3;
 
     @include a.tablet {
+      margin: 9px 14px !important;
       font-size: 15px;
       line-height: 20px;
-      margin: 9px 14px !important;
     }
 
     @include a.laptop {

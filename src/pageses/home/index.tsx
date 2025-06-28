@@ -19,8 +19,8 @@ export default function HomePage() {
         <Separator />
         <PullSection />
         <CodeExamplesSection />
-        <Footer />
       </main>
+      <Footer />
     </>
   );
 }

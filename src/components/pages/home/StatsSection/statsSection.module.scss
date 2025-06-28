@@ -3,8 +3,7 @@
 .statsSection {
   display: grid;
   grid-template-columns: 1fr;
-
-  border-width: 0px 1px 1px 1px;
+  border-width: 0 1px 1px;
   border-style: solid;
   border-color: a.$gray-1;
 
@@ -14,19 +13,16 @@
 
   li {
     display: flex;
-
+    justify-content: flex-start;
+    align-items: flex-start;
     gap: 16px;
     padding: 12px;
-    align-items: flex-start;
-    justify-content: flex-start;
 
     @include a.tablet {
-      align-items: center;
-      justify-content: center;
-
-      padding: 16px;
-
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
     }
 
     @include a.laptop {
@@ -52,17 +48,11 @@
 }
 
 .text {
-  font-style: normal;
   font-weight: a.$fw-medium;
   font-size: 14px;
   line-height: 19px;
-
   color: a.$black-5;
-
-  @include a.desktop {
-    font-size: 15px;
-    line-height: 20px;
-  }
+  font-style: normal;
 
   @include a.desktop-xl {
     font-size: 16px;
@@ -74,17 +64,11 @@
   font-weight: a.$fw-medium;
   font-size: 28px;
   line-height: 37px;
-
   color: a.$black-1;
 
   @include a.laptop {
     font-size: 32px;
     line-height: 43px;
-  }
-
-  @include a.desktop {
-    font-size: 38px;
-    line-height: 51px;
   }
 
   @include a.desktop-xl {
@@ -100,11 +84,6 @@
   @include a.tablet {
     width: 18px;
     height: 18px;
-  }
-
-  @include a.desktop {
-    width: 21px;
-    height: 21px;
   }
 
   @include a.desktop-xl {

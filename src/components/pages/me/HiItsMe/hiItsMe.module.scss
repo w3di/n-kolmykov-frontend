@@ -1,0 +1,159 @@
+@use "../../../../../public/styles/abstracts" as a;
+
+.hiItsMe {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 0;
+  border: 1px solid a.$gray-1;
+
+  @include a.tablet {
+    padding: 24px 0;
+  }
+
+  @include a.desktop-xl {
+    padding: 48px 0;
+  }
+}
+
+.meImage {
+  width: 64px;
+  height: 64px;
+  border-radius: 100%;
+  overflow: hidden;
+
+  @include a.tablet {
+    width: 120px;
+    height: 120px;
+  }
+
+  @include a.laptop {
+    width: 160px;
+    height: 160px;
+  }
+
+  @include a.desktop-xl {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.arianaCursor {
+  position: absolute;
+  top: 47.4px;
+  right: 26%;
+  width: 76.3px;
+  height: 44px;
+
+  @include a.tablet {
+    top: 67.4px;
+    right: 154.5px;
+    width: 111px;
+    height: 64px;
+  }
+
+  @include a.laptop {
+    top: 79px;
+    right: 170px;
+    width: 140px;
+    height: 80.8px;
+  }
+
+  @include a.desktop-xl {
+    top: 129px;
+    right: 176px;
+  }
+}
+
+.nikolayCursor {
+  position: absolute;
+  top: 49px;
+  left: 22.6%;
+  width: 80.7px;
+  height: 44px;
+
+  @include a.tablet {
+    top: 159px;
+    left: 81.3px;
+    width: 117.6px;
+    height: 64px;
+  }
+
+  @include a.laptop {
+    top: 179px;
+    left: 93px;
+    width: 154px;
+    height: 84px;
+  }
+
+  @include a.desktop-xl {
+    top: 279px;
+    left: 123px;
+  }
+}
+
+.meInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+
+  @include a.tablet {
+    gap: 8px;
+  }
+
+  @include a.laptop {
+    gap: 12px;
+  }
+
+  @include a.desktop-xl {
+    gap: 16px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 32px;
+    color: a.$black-1;
+
+    @include a.tablet {
+      font-size: 28px;
+      line-height: 37px;
+    }
+
+    @include a.laptop {
+      font-size: 40px;
+      line-height: 53px;
+    }
+
+    @include a.desktop-xl {
+      font-size: 47px;
+      line-height: 63px;
+    }
+  }
+
+  &__description {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    color: a.$black-5;
+
+    @include a.tablet {
+      font-size: 14px;
+      line-height: 19px;
+    }
+
+    @include a.laptop {
+      font-size: 16px;
+      line-height: 21px;
+    }
+
+    @include a.desktop-xl {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+}

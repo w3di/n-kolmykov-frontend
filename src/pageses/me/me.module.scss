@@ -1,0 +1,24 @@
+@use "../../../public/styles/abstracts" as a;
+
+.me {
+  margin-top: 48px;
+
+  @include a.only-mobile {
+    padding: 0 16px;
+  }
+
+  @include a.tablet {
+    width: 704px;
+    margin: 56px auto;
+  }
+
+  @include a.laptop {
+    width: 944px;
+    margin: 64px auto;
+  }
+
+  @include a.desktop-xl {
+    width: 1080px;
+    margin: 88px auto;
+  }
+}

@@ -1,0 +1,135 @@
+@use "../../../../../public/styles/abstracts" as a;
+
+.contactMe {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid a.$gray-1;
+  border-top: none;
+
+  @include a.desktop-xl {
+    padding: 32px;
+  }
+}
+
+.textBlock {
+  display: grid;
+  gap: 8px;
+  margin-top: 24px;
+  text-align: center;
+
+  @include a.desktop-xl {
+    gap: 16px;
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 21px;
+    color: a.$black-1;
+
+    @include a.tablet {
+      font-size: 20px;
+      line-height: 27px;
+    }
+
+    @include a.laptop {
+      font-size: 24px;
+      line-height: 32px;
+    }
+
+    @include a.desktop-xl {
+      font-size: 32px;
+      line-height: 43px;
+    }
+  }
+
+  &__description {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: a.$black-5;
+
+    @include a.tablet {
+      font-size: 14px;
+      line-height: 19px;
+    }
+
+    @include a.desktop-xl {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 24px;
+
+  @include a.tablet {
+    flex-direction: row;
+  }
+
+  @include a.laptop {
+    margin-top: 32px;
+  }
+
+  @include a.desktop-xl {
+    gap: 12px;
+    margin-top: 64px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 12px;
+    background-color: a.$white-1;
+    border-radius: 8px;
+
+    @include a.desktop-xl {
+      padding: 46px 16px 24px;
+    }
+
+    &__icon {
+      width: 40px;
+      height: 40px;
+
+      @include a.desktop-xl {
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    &__name {
+      margin-top: 16px;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 24px;
+      color: a.$black-1;
+
+      @include a.desktop-xl {
+        margin-top: 18px;
+        font-size: 24px;
+        line-height: 32px;
+      }
+    }
+
+    &__description {
+      margin-top: 10px;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      text-align: center;
+      color: a.$black-5;
+
+      @include a.desktop-xl {
+        font-size: 14px;
+        line-height: 19px;
+      }
+    }
+  }
+}

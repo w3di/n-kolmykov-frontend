@@ -1,18 +1,18 @@
 import Image from "next/image";
 import styles from "./heroSection.module.scss";
 import Icon from "@/src/components/ui/Icon";
+import { CollectionBlock } from "@/src/components/ui";
 
 export default function HeroSection() {
   return (
     <section className={styles.heroSection}>
       <div className={styles.contentWrapper}>
-        <div className={styles.collectionBlock}>
-          <Icon name="book" className={styles.collectionBlock__bookIcon} />
-          <hr className={styles.collectionBlock__divider} />
-          <p className={styles.collectionBlock__text}>
-            Коллекция из <span>250+</span> тем
-          </p>
-        </div>
+        <CollectionBlock
+          count="250+"
+          label="Коллекция из"
+          icon="book"
+          afterLabel="тем"
+        />
         <h1 className={styles.textBlock__title}>Привет, разработчик!</h1>
         <p className={styles.textBlock__description}>
           Добро пожаловать на мой open-source проект по подшготовке к

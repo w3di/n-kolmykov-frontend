@@ -1,0 +1,115 @@
+@use "../../../../../public/styles/abstracts" as a;
+
+.aboutMe {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid a.$gray-1;
+  border-top: none;
+
+  @include a.tablet {
+    flex-direction: row;
+  }
+}
+
+.BlockInfo {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+
+  @include a.tablet {
+    gap: 32px;
+  }
+
+  @include a.laptop {
+    padding: 24px;
+  }
+
+  @include a.desktop-xl {
+    padding: 32px;
+  }
+
+  &__description {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+    color: a.$black-3;
+
+    @include a.laptop {
+      font-size: 16px;
+    }
+
+    @include a.desktop-xl {
+      font-size: 18px;
+    }
+  }
+}
+
+.BlockList {
+  @include a.only-mobile {
+    border-top: 1px solid a.$gray-1;
+  }
+
+  @include a.tablet {
+    min-width: 308px;
+    max-width: 308px;
+    border-left: 1px solid a.$gray-1;
+  }
+
+  &__item {
+    display: grid;
+    justify-content: space-between;
+    gap: 6px;
+    padding: 16px;
+
+    &:not(:first-child) {
+      border-top: 1px dashed a.$gray-1;
+    }
+
+    @include a.desktop-xl {
+      padding: 24px;
+    }
+
+    &__textWrapper {
+      display: grid;
+      gap: 6px;
+    }
+
+    &__icon {
+      width: 18px;
+      height: 18px;
+
+      @include a.desktop-xl {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &__title {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 19px;
+      color: a.$black-1;
+
+      @include a.laptop {
+        font-size: 16px;
+        line-height: 21px;
+      }
+
+      @include a.desktop-xl {
+        font-size: 20px;
+        line-height: 27px;
+      }
+    }
+
+    &__description {
+      font-size: 12px;
+      line-height: 16px;
+      color: a.$black-5;
+
+      @include a.desktop-xl {
+        font-size: 14px;
+        line-height: 19px;
+      }
+    }
+  }
+}

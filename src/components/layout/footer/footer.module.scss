@@ -1,23 +1,20 @@
 @use "../../../../public/styles/abstracts" as a;
 
 .footer {
-  border-width: 0px 1px 1px 1px;
-  border-style: solid;
-  border-color: a.$gray-1;
-
-  padding: 12px;
-
   display: grid;
+  align-items: center;
   grid-template-columns: 1fr auto;
   grid-template-rows: auto auto;
   gap: 24px;
-  align-items: center;
+  padding: 12px;
+  border-width: 0 1px 1px;
+  border-style: solid;
+  border-color: a.$gray-1;
 
   @include a.tablet {
-    padding: 24px;
-
     grid-template-columns: auto 1fr auto;
     grid-template-rows: 1fr;
+    padding: 24px;
   }
 
   @include a.laptop {
@@ -30,16 +27,15 @@
 }
 
 .navigationList {
+  display: flex;
+  gap: 16px;
   grid-column: 1;
   grid-row: 1;
 
-  display: flex;
-  gap: 16px;
-
   @include a.tablet {
+    gap: 36px;
     grid-column: 2;
     grid-row: 1;
-    gap: 36px;
     justify-self: center;
   }
 
@@ -55,7 +51,6 @@
     font-weight: 600;
     font-size: 12px;
     line-height: 16px;
-
     color: a.$black-3;
 
     @include a.laptop {
@@ -81,12 +76,11 @@
 }
 
 .socials {
+  display: flex;
+  gap: 4px;
   grid-column: 1 / -1;
   grid-row: 2;
   justify-self: flex-start;
-
-  display: flex;
-  gap: 4px;
 
   @include a.tablet {
     grid-column: 1;

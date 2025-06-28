@@ -1,15 +1,13 @@
 @use "../../../../../public/styles/abstracts" as a;
 
 .codeExamplesSection {
-  border-width: 0px 1px 1px 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  border-width: 0 1px 1px;
   border-style: solid;
   border-color: a.$gray-1;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 12px;
 
   @include a.tablet {
     padding: 24px 0;
@@ -21,36 +19,27 @@
 }
 
 .text {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 21px;
-
-  color: a.$black-3;
-
-  text-align: center;
-
   display: flex;
   flex-direction: column;
   gap: 12px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+  color: a.$black-3;
 
   @include a.tablet {
-    font-size: 18px;
-    line-height: 24px;
-
-    flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 16px;
+    font-size: 18px;
+    line-height: 24px;
+    flex-flow: row wrap;
   }
+
   @include a.laptop {
     font-size: 20px;
     line-height: 27px;
-  }
-
-  @include a.desktop {
-    font-size: 22px;
-    line-height: 29px;
   }
 
   @include a.desktop-xl {
@@ -70,26 +59,19 @@
   }
 
   &__block {
-    box-sizing: border-box;
-
     display: inline-flex;
     flex-direction: row;
-    align-items: center;
     justify-content: center;
-
-    padding: 12px 6px;
+    align-items: center;
     gap: 6px;
-
+    padding: 12px 6px;
     background: a.$white-3;
     border: 1px solid a.$black-9;
     border-radius: 6px;
+    box-sizing: border-box;
 
     @include a.laptop {
       padding: 10.5px 8px;
-    }
-
-    @include a.desktop {
-      padding: 10.5px 10px;
     }
 
     @include a.desktop-xl {
@@ -100,7 +82,6 @@
       font-weight: 500;
       font-size: 12px;
       line-height: 16px;
-
       color: a.$black-2;
 
       @include a.laptop {
