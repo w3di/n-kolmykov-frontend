@@ -1,0 +1,83 @@
+@use "../../../../public/styles/abstracts" as a;
+
+.tag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  gap: 8px;
+
+  width: fit-content;
+
+  padding: 4.5px 8px;
+
+  background: a.$white-3;
+
+  border: 1px solid a.$black-9;
+  border-radius: 4px;
+
+  @include a.laptop {
+    padding: 7.5px 8px;
+
+    border-radius: 6px;
+  }
+
+  @include a.desktop-xl {
+    gap: 12px;
+
+    padding: 7.5px 12px;
+
+    border-radius: 8px;
+  }
+
+  &__bookIcon {
+    width: 12px;
+    height: 12px;
+
+    @include a.laptop {
+      width: 14px;
+      height: 14px;
+    }
+
+    @include a.desktop-xl {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__text {
+    font-size: 12px;
+    line-height: 16px;
+    color: a.$black-4;
+
+    @include a.laptop {
+      font-size: 14px;
+      line-height: 19px;
+    }
+
+    @include a.desktop-xl {
+      font-size: 16px;
+      line-height: 21px;
+    }
+
+    span {
+      color: a.$orange-1;
+    }
+  }
+
+  &__divider {
+    width: 0;
+    height: 12px;
+
+    border: 0.5px solid a.$black-9;
+    border-radius: 100px;
+
+    @include a.laptop {
+      height: 20px;
+    }
+
+    @include a.desktop-xl {
+      height: 24px;
+    }
+  }
+}

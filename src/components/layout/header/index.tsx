@@ -1,7 +1,6 @@
-import Icon, { iconNames } from "../../ui/Icon";
-import SocialList from "../../widgets/socialsList";
+import { Icon } from "../../ui";
+import SocialList from "../../widgets/socials-list";
 import styles from "./header.module.scss";
-import Image from "next/image";
 
 const socials = [
   {

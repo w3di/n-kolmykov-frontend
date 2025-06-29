@@ -1,0 +1,33 @@
+@use "../../../public/styles/abstracts" as a;
+
+.home {
+  overflow-x: hidden;
+
+  max-width: 100vw;
+
+  margin-top: 20px;
+  padding: 0 16px;
+
+  @include a.only-mobile {
+    overflow-x: hidden;
+  }
+
+  @include a.tablet {
+    max-width: 704px;
+
+    margin: 21px auto 0;
+    padding: 0;
+  }
+
+  @include a.laptop {
+    max-width: 944px;
+
+    margin: 44px auto 0;
+  }
+
+  @include a.desktop-xl {
+    max-width: 1080px;
+
+    margin: 58px auto 0;
+  }
+}

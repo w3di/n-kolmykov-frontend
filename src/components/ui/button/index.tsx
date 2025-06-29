@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./button.module.scss";
-import Icon from "../Icon";
+import Icon from "../icon";
 
 export default function Button() {
   return (

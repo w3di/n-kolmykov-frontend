@@ -1,5 +1,4 @@
-import Icon from "../../ui/Icon";
-import SocialList from "../../widgets/socialsList";
+import SocialList from "../../widgets/socials-list";
 import styles from "./footer.module.scss";
 import Image from "next/image";
 

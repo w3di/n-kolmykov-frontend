@@ -2,13 +2,75 @@ const fs = require("fs");
 const path = require("path");
 
 const ICONS_DIR = path.join(__dirname, "/public/svg/icons");
-const OUTPUT_FILE = path.join(__dirname, "/src/components/ui/Icon/index.tsx");
+const OUTPUT_FILE = path.join(__dirname, "/src/components/ui/icon/index.tsx");
+
 const OUTPUT_DIR = path.dirname(OUTPUT_FILE);
 
 function toCamelCase(str) {
   return str
     .replace(/[-_](.)/g, (_, char) => char.toUpperCase())
     .replace(/^(.)/, (char) => char.toLowerCase());
+}
+
+// Функция для преобразования в kebab-case
+function toKebabCase(str) {
+  return str
+    .replace(/([a-z])([A-Z])/g, "$1-$2") // camelCase -> kebab-case
+    .replace(/[\s_]+/g, "-") // пробелы и underscores -> дефисы
+    .replace(/[^a-zA-Z0-9-]/g, "") // удаляем специальные символы
+    .toLowerCase()
+    .replace(/-+/g, "-") // множественные дефисы -> один дефис
+    .replace(/^-|-$/g, ""); // убираем дефисы в начале и конце
+}
+
+// Функция для переименования файлов в kebab-case
+function renameIconsToKebabCase() {
+  try {
+    const files = fs
+      .readdirSync(ICONS_DIR)
+      .filter((file) => file.endsWith(".svg"));
+
+    if (files.length === 0) {
+      console.log("❌ SVG файлы не найдены в папке:", ICONS_DIR);
+      return;
+    }
+
+    console.log("🔄 Переименование файлов в kebab-case...");
+
+    let renamedCount = 0;
+
+    files.forEach((file) => {
+      const fileName = path.basename(file, ".svg");
+      const kebabName = toKebabCase(fileName);
+
+      if (fileName !== kebabName) {
+        const oldPath = path.join(ICONS_DIR, file);
+        const newPath = path.join(ICONS_DIR, `${kebabName}.svg`);
+
+        // Проверяем, что файл с новым именем не существует
+        if (fs.existsSync(newPath)) {
+          console.log(
+            `⚠️  Файл ${kebabName}.svg уже существует, пропускаем ${file}`
+          );
+          return;
+        }
+
+        fs.renameSync(oldPath, newPath);
+        console.log(`  ✅ ${file} → ${kebabName}.svg`);
+        renamedCount++;
+      }
+    });
+
+    if (renamedCount === 0) {
+      console.log("✅ Все файлы уже в kebab-case формате");
+    } else {
+      console.log(`✅ Переименовано ${renamedCount} файлов`);
+    }
+    console.log("");
+  } catch (error) {
+    console.error("❌ Ошибка при переименовании файлов:", error.message);
+    throw error;
+  }
 }
 
 function extractSvgContent(svgContent) {
@@ -41,6 +103,9 @@ function extractHeight(svgContent) {
 // Основная функция генерации
 function generateIconComponent() {
   try {
+    // Сначала переименовываем файлы в kebab-case
+    renameIconsToKebabCase();
+
     // Создаем директорию для компонента, если она не существует
     if (!fs.existsSync(OUTPUT_DIR)) {
       fs.mkdirSync(OUTPUT_DIR, { recursive: true });
