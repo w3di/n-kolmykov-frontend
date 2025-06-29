@@ -6,26 +6,36 @@
   justify-content: center;
   align-items: center;
   gap: 4px;
+
   width: max-content;
+
   padding: 4px 8px;
+
   background: a.$black-1;
+
   border-radius: 4px;
+
   isolation: isolate;
 
   @include a.tablet {
     gap: 8px;
+
     padding: 6.5px 12px;
+
     border-radius: 6px;
   }
 
   @include a.laptop {
     gap: 6px;
+
     padding: 9.5px 16px;
+
     border-radius: 8px;
   }
 
   @include a.desktop-xl {
     gap: 8px;
+
     padding: 11.5px 24px;
   }
 

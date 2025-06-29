@@ -9,7 +9,9 @@
   flex-direction: column;
   align-items: center;
   gap: 12px;
+
   height: 386.34px;
+
   padding-top: 74.5px;
 
   @include a.tablet {
@@ -18,13 +20,17 @@
 
   @include a.laptop {
     gap: 14px;
+
     height: 550px;
+
     padding-top: 94.4px;
   }
 
   @include a.desktop-xl {
     gap: 16px;
+
     height: 719px;
+
     padding-top: 138px;
   }
 }
@@ -34,39 +40,47 @@
   top: 0;
   left: 50%;
   z-index: -1;
+
   background-size: contain;
   background-position: top center;
-  transform: translateX(-50%);
-  pointer-events: none;
   background-repeat: no-repeat;
+
+  pointer-events: none;
+
+  transform: translateX(-50%);
 
   @include a.only-mobile {
     width: 720px;
     height: 386.34px;
+
     background-image: url("/svg/bg_360.svg");
   }
 
   @include a.only-tablet {
     width: 704px;
     height: 445.5px;
+
     background-image: url("/svg/bg_768.svg");
   }
 
   @include a.only-laptop {
     width: 944px;
     height: 550px;
+
     background-image: url("/svg/bg_1024.svg");
   }
 
   @include a.only-desktop {
     width: 1012px;
     height: 634px;
+
     background-image: url("/svg/bg_1920.svg");
   }
 
   @include a.desktop-xl {
     width: 1080px;
     height: 719px;
+
     background-image: url("/svg/bg_1920.svg");
   }
 }
@@ -97,6 +111,7 @@
 
   &__description {
     max-width: 570px;
+
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
@@ -109,12 +124,14 @@
 
     @include a.laptop {
       max-width: 670px;
+
       font-size: 14px;
       line-height: 19px;
     }
 
     @include a.desktop-xl {
       max-width: 875px;
+
       font-size: 18px;
       line-height: 24px;
     }

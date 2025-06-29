@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:styles": "stylelint \"**/*.{css,scss}\"",
-    "lint:styles:fix": "stylelint \"**/*.{css,scss}\" --fix",
+    "stylelint": "stylelint \"**/*.{css,scss}\" --fix",
     "icons": "node generate-icons.js"
   },
   "dependencies": {

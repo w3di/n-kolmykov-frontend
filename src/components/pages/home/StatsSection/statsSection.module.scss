@@ -3,9 +3,10 @@
 .statsSection {
   display: grid;
   grid-template-columns: 1fr;
-  border-width: 0 1px 1px;
-  border-style: solid;
+
   border-color: a.$gray-1;
+  border-style: solid;
+  border-width: 0 1px 1px;
 
   @include a.tablet {
     grid-template-columns: repeat(3, 1fr);
@@ -16,12 +17,14 @@
     justify-content: flex-start;
     align-items: flex-start;
     gap: 16px;
+
     padding: 12px;
 
     @include a.tablet {
       flex-direction: column;
       justify-content: center;
       align-items: center;
+
       padding: 16px;
     }
 
@@ -50,9 +53,9 @@
 .text {
   font-weight: a.$fw-medium;
   font-size: 14px;
+  font-style: normal;
   line-height: 19px;
   color: a.$black-5;
-  font-style: normal;
 
   @include a.desktop-xl {
     font-size: 16px;

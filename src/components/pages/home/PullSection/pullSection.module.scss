@@ -3,10 +3,11 @@
 .pullSection {
   display: grid;
   grid-template-columns: 1fr;
-  border-width: 0 1px 1px;
-  border-style: solid;
-  border-color: a.$gray-1;
   grid-auto-rows: 1fr;
+
+  border-color: a.$gray-1;
+  border-style: solid;
+  border-width: 0 1px 1px;
 
   @include a.tablet {
     grid-template-columns: 1fr 1fr;
@@ -14,8 +15,10 @@
 
   &__item {
     position: relative;
+
     display: flex;
     flex-direction: column;
+
     padding: 12px 12px 43px;
 
     &:not(:first-child) {
@@ -52,6 +55,7 @@
 
   @include a.only-mobile {
     align-items: start;
+
     width: 100%;
   }
 
@@ -84,6 +88,7 @@
 
 .description {
   margin-top: 12px;
+
   font-weight: 600;
   font-size: 16px;
   line-height: 21px;
@@ -95,11 +100,13 @@
 
   @include a.tablet {
     margin-top: 14px;
+
     line-height: 25px;
   }
 
   @include a.laptop {
     margin-top: 18px;
+
     font-size: 20px;
     line-height: 27px;
   }
@@ -117,8 +124,10 @@
   }
 
   position: relative;
+
   width: 300px;
   height: 241px;
+
   margin-top: 32px;
 
   @include a.tablet {
@@ -146,12 +155,15 @@
     position: absolute;
     top: 63px;
     left: 50%;
+
     width: 91.6px;
     height: 120px;
+
     transform: translateX(-50%);
 
     @include a.tablet {
       top: 61px;
+
       width: 116px;
       height: 152px;
     }
@@ -175,7 +187,9 @@
   position: absolute;
   bottom: 0;
   left: 50%;
+
   display: none;
+
   transform: translateX(-50%);
 
   &__360 {

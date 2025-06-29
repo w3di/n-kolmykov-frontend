@@ -2,15 +2,18 @@
 
 .quizSection {
   position: relative;
+
   padding-top: 105px;
+
   background: linear-gradient(
     180deg,
     a.$gray-light-transparent 0%,
     a.$gray-light 76.77%
   );
-  border-width: 0 1px 1px;
-  border-style: solid;
+
   border-color: a.$gray-1;
+  border-style: solid;
+  border-width: 0 1px 1px;
 
   @include a.tablet {
     padding-top: 102px;
@@ -30,23 +33,28 @@
   top: 12px;
   left: 12px;
   z-index: -1;
-  width: calc(100% - 24px);
-  height: 206px;
+
   object-fit: cover;
   object-position: top;
+
+  width: calc(100% - 24px);
+  height: 206px;
 
   @include a.tablet {
     top: 24px;
     left: 24px;
-    width: 656px;
-    height: 385px;
+
     object-fit: cover;
     object-position: top;
+
+    width: 656px;
+    height: 385px;
   }
 
   @include a.laptop {
     top: 32px;
     left: 32px;
+
     width: 880px;
     height: 535px;
   }
@@ -54,6 +62,7 @@
   @include a.desktop-xl {
     top: 32px;
     left: 32px;
+
     width: 1016px;
     height: 635px;
   }
@@ -64,12 +73,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   padding: 22px 0 15px;
+
   background: linear-gradient(
     180deg,
     a.$gray-light-transparent-001 0%,
     a.$gray-light-transparent-01 100%
   );
+
   backdrop-filter: blur(1.5px);
 
   @include a.tablet {
@@ -106,6 +118,7 @@
 
   &_text {
     margin: 8px 0 12px;
+
     font-weight: a.$fw-semibold;
     font-size: 16px;
     line-height: 21px;
@@ -114,18 +127,21 @@
 
     @include a.tablet {
       margin: 12px 0 16px;
+
       font-size: 20px;
       line-height: 27px;
     }
 
     @include a.laptop {
       margin: 16px 0;
+
       font-size: 24px;
       line-height: 32px;
     }
 
     @include a.desktop-xl {
       margin: 16px 0 24px;
+
       font-size: 28px;
       line-height: 37px;
     }

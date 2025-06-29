@@ -2,11 +2,14 @@
 
 .hiItsMe {
   position: relative;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 24px;
+
   padding: 16px 0;
+
   border: 1px solid a.$gray-1;
 
   @include a.tablet {
@@ -19,10 +22,12 @@
 }
 
 .meImage {
+  overflow: hidden;
+
   width: 64px;
   height: 64px;
+
   border-radius: 100%;
-  overflow: hidden;
 
   @include a.tablet {
     width: 120px;
@@ -44,12 +49,14 @@
   position: absolute;
   top: 47.4px;
   right: 26%;
+
   width: 76.3px;
   height: 44px;
 
   @include a.tablet {
     top: 67.4px;
     right: 154.5px;
+
     width: 111px;
     height: 64px;
   }
@@ -57,6 +64,7 @@
   @include a.laptop {
     top: 79px;
     right: 170px;
+
     width: 140px;
     height: 80.8px;
   }
@@ -71,12 +79,14 @@
   position: absolute;
   top: 49px;
   left: 22.6%;
+
   width: 80.7px;
   height: 44px;
 
   @include a.tablet {
     top: 159px;
     left: 81.3px;
+
     width: 117.6px;
     height: 64px;
   }
@@ -84,6 +94,7 @@
   @include a.laptop {
     top: 179px;
     left: 93px;
+
     width: 154px;
     height: 84px;
   }
