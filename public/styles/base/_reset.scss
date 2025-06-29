@@ -1,8 +1,10 @@
 /* Reset and base styles  */
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
+
   border: none;
+
   -webkit-tap-highlight-color: rgba(
     0,
     0,
@@ -22,9 +24,11 @@
 a,
 a:link,
 a:visited {
-  text-decoration: none;
   margin: 0;
   padding: 0;
+
+  text-decoration: none;
+
   //color: unset;
 }
 
@@ -50,8 +54,9 @@ h4,
 h5,
 h6,
 p {
-  font-size: inherit;
   font-weight: inherit;
+  font-size: inherit;
+
   //margin-block-start: 0;
   //margin-block-end: 0;
 }
@@ -67,10 +72,11 @@ input,
 textarea,
 button,
 select {
+  background-color: transparent;
+
   font-family: inherit;
   font-size: inherit;
   color: inherit;
-  background-color: transparent;
 }
 
 input::-ms-clear {
@@ -80,9 +86,11 @@ input::-ms-clear {
 button,
 input[type="submit"] {
   display: inline-block;
-  box-shadow: none;
-  background-color: transparent;
+
   background: none;
+  background-color: transparent;
+
+  box-shadow: none;
 }
 
 input:focus,
@@ -94,6 +102,7 @@ button:active {
 
 button::-moz-focus-inner {
   padding: 0;
+
   border: 0;
 }
 
