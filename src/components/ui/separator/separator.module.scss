@@ -1,7 +1,7 @@
 @use "../../../../public/styles/abstracts" as a;
 
 .separator {
-  width: 328px;
+  width: calc(100vw - 32px);
   height: 16px;
 
   border-color: a.$gray-1;

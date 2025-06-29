@@ -1,0 +1,149 @@
+@use "../../../../../public/styles/abstracts" as a;
+
+.myStack {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+
+  border: 1px solid a.$gray-1;
+  border-top: none;
+
+  @include a.only-mobile {
+    > li:nth-child(n + 1) {
+      grid-column: span 3;
+    }
+
+    > li:last-child {
+      grid-column: span 6;
+    }
+  }
+
+  @include a.tablet {
+    > li:nth-child(n + 1) {
+      grid-column: span 2;
+    }
+  }
+}
+
+.title {
+  position: relative;
+
+  grid-column: span 6;
+
+  padding: 50px 0 49px;
+
+  border-bottom: 1px solid a.$gray-1;
+
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+  color: a.$black-1;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 33.25%;
+    z-index: -1;
+
+    display: block;
+
+    width: 1px;
+    height: 100%;
+
+    background-color: a.$gray-1;
+
+    content: "";
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 33.35%;
+    z-index: -1;
+
+    display: block;
+
+    width: 1px;
+    height: 100%;
+
+    background-color: a.$gray-1;
+
+    content: "";
+  }
+
+  @include a.tablet {
+    padding: 47px 0 46px;
+
+    font-size: 20px;
+    line-height: 27px;
+  }
+  @include a.laptop {
+    padding: 61px 0 60px;
+
+    font-size: 24px;
+    line-height: 32px;
+  }
+  @include a.desktop-xl {
+    padding: 185px 0 54px;
+
+    font-size: 40px;
+    line-height: 53px;
+  }
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 120px;
+  min-height: 120px;
+
+  background: a.$white-1;
+
+  border-right: 1px solid a.$gray-1;
+  border-bottom: 1px solid a.$gray-1;
+
+  &:nth-last-child(-n + 3) {
+    background-color: transparent;
+  }
+
+  @include a.only-mobile {
+    &:nth-child(2n + 1) {
+      border-right: none;
+    }
+
+    &:last-child {
+      border-right: none;
+      border-bottom: none;
+    }
+  }
+
+  @include a.tablet {
+    &:nth-child(3n + 1) {
+      border-right: none;
+    }
+    &:nth-last-child(-n + 3) {
+      border-bottom: none;
+    }
+  }
+
+  @include a.laptop {
+    height: 153px;
+    min-height: 153px;
+  }
+  &__icon {
+    width: 36px;
+    height: 36px;
+
+    @include a.tablet {
+      width: 48px;
+      height: 48px;
+    }
+
+    @include a.desktop-xl {
+      width: 64px;
+      height: 64px;
+    }
+  }
+}

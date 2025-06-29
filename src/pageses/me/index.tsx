@@ -5,6 +5,8 @@ import HiItsMe from "@/src/components/pages/me/HiItsMe";
 import { Separator } from "@/src/components/ui";
 import AboutMe from "@/src/components/pages/me/AboutMe";
 import ContactMe from "@/src/components/pages/me/ContactMe";
+import MySkills from "@/src/components/pages/me/MySkills";
+import MyStack from "@/src/components/pages/me/MyStack";
 
 export default function MePage() {
   return (
@@ -14,6 +16,10 @@ export default function MePage() {
         <HiItsMe />
         <Separator />
         <AboutMe />
+        <Separator />
+        <MySkills />
+        <Separator />
+        <MyStack />
         <Separator />
         <ContactMe />
       </main>

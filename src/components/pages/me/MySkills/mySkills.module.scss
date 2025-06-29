@@ -1,0 +1,166 @@
+@use "../../../../../public/styles/abstracts" as a;
+
+.mySkills {
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid a.$gray-1;
+  border-top: none;
+
+  @include a.tablet {
+    flex-direction: row;
+  }
+}
+
+.title {
+  padding: 16px;
+
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21px;
+  color: a.$black-1;
+
+  @include a.tablet {
+    min-width: 230px;
+
+    font-size: 20px;
+    line-height: 27px;
+  }
+
+  @include a.laptop {
+    min-width: 308px;
+
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  @include a.desktop-xl {
+    min-width: 332px;
+    max-width: 332px;
+
+    padding: 32px;
+
+    font-size: 32px;
+    line-height: 43px;
+  }
+}
+
+.squaresList {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
+  gap: 16px;
+
+  padding: 24px;
+
+  @include a.only-mobile {
+    border-top: 1px dashed a.$gray-1;
+  }
+
+  @include a.tablet {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr 1fr;
+    gap: 24px 16px;
+
+    border-left: 1px dashed a.$gray-1;
+  }
+
+  @include a.laptop {
+    gap: 24px 32px;
+  }
+
+  @include a.desktop-xl {
+    gap: 32px;
+  }
+
+  li {
+    border: 1px solid #e2e2e2;
+  }
+
+  &__item {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    place-items: center;
+
+    &__iconWrapper {
+      z-index: 1;
+
+      display: grid;
+      place-items: center;
+
+      width: 64px;
+      height: 64px;
+
+      margin: 25px 0;
+
+      border: 2px dashed;
+      border-radius: 32px;
+
+      &_white {
+        border-color: #e2e2e2;
+      }
+      &_blue {
+        border-color: #d9f1f9;
+      }
+      &_green {
+        border-color: #d7f9eb;
+      }
+      &_orange {
+        border-color: #ffe8e0;
+      }
+    }
+
+    &__background {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 100%;
+
+      &_white {
+        background-color: transparent;
+      }
+      &_blue {
+        background-color: #f0fbff;
+      }
+      &_green {
+        background-color: #f0fff9;
+      }
+      &_orange {
+        background-color: #fff7f5;
+      }
+    }
+  }
+
+  &__textItem {
+    display: flex;
+    align-items: center;
+
+    height: 54px;
+
+    padding: 0 12px;
+
+    background-color: #ffffff;
+
+    border-top: 1px solid #e2e2e2;
+
+    &__text {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: #171717;
+
+      @include a.laptop {
+        font-size: 14px;
+        line-height: 19px;
+      }
+
+      @include a.desktop-xl {
+      }
+    }
+  }
+}

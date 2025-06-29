@@ -1,7 +1,5 @@
 import Image from "next/image";
 import styles from "./hiItsMe.module.scss";
-import Button from "@/src/components/ui/button";
-import Icon from "@/src/components/ui/Icon";
 
 export default function HiItsMe() {
   return (
