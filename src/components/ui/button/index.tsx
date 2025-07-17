@@ -1,6 +1,5 @@
-import Image from "next/image";
+import Icon from "@/src/components/ui/icon";
 import styles from "./button.module.scss";
-import Icon from "../icon";
 
 export default function Button() {
   return (

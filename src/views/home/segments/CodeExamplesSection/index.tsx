@@ -1,6 +1,5 @@
 import Icon from "@/src/components/ui/icon";
 import styles from "./codeExamplesSection.module.scss";
-import Image from "next/image";
 
 export default function CodeExamplesSection() {
   return (

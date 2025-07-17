@@ -1,5 +1,5 @@
-import Icon from "../../ui/icon";
 import styles from "./socials-list.module.scss";
+import Icon from "@/src/components/ui/icon";
 
 const socials = [
   {
