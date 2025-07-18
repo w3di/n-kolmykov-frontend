@@ -1,0 +1,77 @@
+@use "abstracts" as a;
+
+.list {
+  display: grid;
+  gap: 6px;
+
+  margin-top: 6px;
+
+  @include a.desktop-xl {
+    gap: 8px;
+  }
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  min-width: 0;
+
+  padding: 4px;
+
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+
+  &:hover:not(&_active) {
+    background-color: a.$black-8;
+
+    border: 1px solid a.$black-9;
+  }
+
+  @include a.desktop-xl {
+    padding: 6px;
+  }
+
+  &__emptyCircleIcon {
+    width: 12px;
+    height: 12px;
+
+    border: 1px dashed a.$black-9;
+    border-radius: 50%;
+  }
+
+  &__text {
+    flex: 1;
+
+    overflow: hidden;
+
+    min-width: 0;
+
+    font-weight: a.$fw-medium;
+    font-size: 12px;
+    line-height: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: a.$black-5;
+
+    @include a.desktop-xl {
+      font-size: 14px;
+      line-height: 19px;
+    }
+  }
+
+  &_active {
+    background: a.$white-2;
+
+    border: 1px solid a.$black-7;
+
+    &__text {
+      color: a.$black-2;
+    }
+  }
+}

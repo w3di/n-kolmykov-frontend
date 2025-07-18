@@ -35,6 +35,27 @@
 
     padding: 24px;
   }
+
+  &--short {
+    width: auto;
+
+    margin: 0;
+
+    background-color: a.$gray-light;
+
+    border: none;
+    border-radius: 0;
+
+    @include a.tablet {
+      padding: 20px 32px;
+    }
+
+    @include a.laptop {
+      padding: 24px 0;
+
+      border-bottom: 1px solid a.$black-9;
+    }
+  }
 }
 
 .logo {
@@ -55,6 +76,12 @@
     width: 111px;
     height: 28px;
   }
+
+  &--short {
+    @include a.laptop {
+      display: none;
+    }
+  }
 }
 
 .navigationList {
@@ -65,7 +92,7 @@
   a {
     margin: 8px 12px !important;
 
-    font-weight: 500;
+    font-weight: a.$fw-medium;
     font-size: 14px;
     line-height: 18px;
     color: a.$black-3;
@@ -89,6 +116,11 @@
     }
   }
 
+  &__itemLink--short,
+  a {
+    margin: 0 !important;
+  }
+
   &__separator {
     width: 1px;
     height: 24px;
@@ -105,6 +137,10 @@
 
     @include a.desktop-xl {
       height: 32px;
+    }
+
+    &--short {
+      margin: 0 15px;
     }
   }
 }
