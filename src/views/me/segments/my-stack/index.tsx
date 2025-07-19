@@ -1,5 +1,5 @@
 import Icon from "@/src/components/ui/icon";
-import styles from "./myStack.module.scss";
+import styles from "./my-stack.module.scss";
 
 export default function MyStack() {
   return (

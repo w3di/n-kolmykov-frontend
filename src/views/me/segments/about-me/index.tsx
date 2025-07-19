@@ -1,4 +1,4 @@
-import styles from "./aboutMe.module.scss";
+import styles from "./about-me.module.scss";
 import Icon from "@/src/components/ui/icon";
 import { CollectionBlock } from "@/src/components/ui";
 

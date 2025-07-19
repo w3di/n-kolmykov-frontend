@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "./hiItsMe.module.scss";
+import styles from "./hi-its-me.module.scss";
 
 export default function HiItsMe() {
   return (

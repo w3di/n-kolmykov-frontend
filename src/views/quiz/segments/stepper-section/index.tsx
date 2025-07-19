@@ -1,5 +1,5 @@
 import { Icon } from "@/src/components/ui";
-import styles from "./stepperSection.module.scss";
+import styles from "./stepper-section.module.scss";
 import clsx from "clsx";
 
 export default function StepperSection({

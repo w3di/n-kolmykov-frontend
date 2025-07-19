@@ -4,7 +4,7 @@ import { Header } from "@/src/components/layout";
 import styles from "./quiz.module.scss";
 import { StepperSection, InformationSection, ContentSection } from "./segments";
 import { useState } from "react";
-import Sidebar from "./segments/Sidebar";
+import Sidebar from "./segments/sidebar";
 
 const mockQuestionTypes = [
   {

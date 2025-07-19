@@ -1,4 +1,4 @@
-import styles from "./informationSection.module.scss";
+import styles from "./information-section.module.scss";
 
 export default function InformationSection({
   currentStep,

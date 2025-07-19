@@ -1,4 +1,4 @@
-import styles from "./contentSection.module.scss";
+import styles from "./content-section.module.scss";
 
 export default function ContentSection() {
   return (

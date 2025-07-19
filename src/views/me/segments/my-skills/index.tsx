@@ -1,5 +1,5 @@
 import { Squares } from "@/src/components/ui";
-import styles from "./mySkills.module.scss";
+import styles from "./my-skills.module.scss";
 import Icon from "@/src/components/ui/icon";
 import clsx from "clsx";
 

@@ -1,5 +1,5 @@
 import { CollectionBlock } from "@/src/components/ui";
-import styles from "./contactMe.module.scss";
+import styles from "./contact-me.module.scss";
 import Icon from "@/src/components/ui/icon";
 
 export default function ContactMe() {
