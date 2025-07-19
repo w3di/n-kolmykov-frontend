@@ -1,12 +1,33 @@
-import Icon from "@/src/components/ui/icon";
+import clsx from "clsx";
 import styles from "./button.module.scss";
 
-export default function Button() {
-  return (
-    <button className={styles.button}>
-      <p className={styles.button_text}>Пройти квиз</p>
+interface ButtonProps {
+  label: string;
+  variant: "white" | "black";
+  onClick?: () => void;
 
-      <Icon name="arrowRight" className={styles.button_icon} />
+  className?: string;
+}
+
+export default function Button({
+  label,
+  variant,
+  onClick,
+  className,
+}: ButtonProps) {
+  return (
+    <button
+      className={clsx(styles.button, styles[`button--${variant}`], className)}
+      onClick={onClick}
+    >
+      <span
+        className={clsx(
+          styles.button__text,
+          styles[`button__text--${variant}`]
+        )}
+      >
+        {label}
+      </span>
     </button>
   );
 }

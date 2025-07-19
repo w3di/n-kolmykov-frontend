@@ -9,39 +9,49 @@ import Sidebar from "./segments/sidebar";
 const mockQuestionTypes = [
   {
     id: "1",
-    name: "Что такое переменная в JS",
+    question: "Что такое переменная в JS",
     answer: "Переменная в JS - это контейнер для хранения данных",
-    type: "know",
+    theme: "JavaScript",
   },
   {
     id: "2",
-    name: "какие типы переменных существуют в JS",
-    answer: "Числовые, строковые, булевые, null, undefined, объекты, массивы",
-    type: "unknown",
+    question: "Что такое flexbox в CSS?",
+    answer:
+      "Flexbox - это метод раскладки CSS, который позволяет легко выравнивать и распределять элементы в контейнере по одной оси.",
+    theme: "CSS",
   },
   {
     id: "3",
-    name: "чем отличается var от let и const",
-    answer: "let и const - блочные, var - функциональные",
-    type: "unknown",
+    question: "Для чего используется тег <meta> в HTML?",
+    answer:
+      "Тег <meta> предоставляет метаданные о HTML документе, такие как описание, ключевые слова, кодировка и настройки viewport.",
+    theme: "HTML",
   },
   {
     id: "4",
-    name: "что такое hoisting и temporal dead zone",
+    question: "Что такое интерфейсы в TypeScript?",
     answer:
-      "Hoisting - это механизм, который позволяет использовать переменные до их объявления. Temporal dead zone - это область видимости, в которой переменные не могут быть использованы до их объявления.",
-    type: "unknown",
+      "Интерфейсы в TypeScript определяют структуру объекта, указывая какие свойства и методы должен иметь объект.",
+    theme: "TypeScript",
   },
   {
     id: "5",
-    name: "к чему применяется temporal dead zone",
+    question: "Что такое миксины в Sass?",
     answer:
-      "Temporal dead zone применяется для того, чтобы избежать использования переменных до их объявления",
-    type: "know",
+      "Миксины в Sass - это многократно используемые блоки CSS-кода, которые можно включать в другие селекторы с помощью @include.",
+    theme: "Sass",
+  },
+  {
+    id: "6",
+    question: "Что такое хуки в React?",
+    answer:
+      "Хуки - это функции, которые позволяют использовать состояние и другие возможности React в функциональных компонентах.",
+    theme: "React",
   },
 ];
+
 export default function QuizPage() {
-  const [currentStep, setCurrentStep] = useState(4);
+  const [currentStep, setCurrentStep] = useState(1);
 
   return (
     <main className={styles.quiz}>
@@ -57,12 +67,15 @@ export default function QuizPage() {
           <Header variant="short" />
           <StepperSection
             currentStep={currentStep}
-            totalSteps={16}
+            totalSteps={mockQuestionTypes.length}
             previousStep={() => setCurrentStep(currentStep - 1)}
             nextStep={() => setCurrentStep(currentStep + 1)}
           />
         </div>
-        <InformationSection currentStep={currentStep} totalSteps={16} />
+        <InformationSection
+          currentStep={currentStep}
+          totalSteps={mockQuestionTypes.length}
+        />
         <ContentSection />
       </section>
     </main>

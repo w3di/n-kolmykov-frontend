@@ -1,6 +1,5 @@
 import Image from "next/image";
 import styles from "./quiz-section.module.scss";
-import Button from "@/src/components/ui/button";
 import Icon from "@/src/components/ui/icon";
 
 export default function QuizSection() {
@@ -24,7 +23,12 @@ export default function QuizSection() {
             интерактивный квиз
           </span>
         </p>
-        <Button />
+
+        <button className={styles.button}>
+          <p className={styles.button_text}>Пройти квиз</p>
+
+          <Icon name="arrowRight" className={styles.button_icon} />
+        </button>
       </div>
     </section>
   );

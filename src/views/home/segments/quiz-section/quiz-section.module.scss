@@ -152,3 +152,80 @@
     }
   }
 }
+
+.button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+
+  width: max-content;
+
+  padding: 4px 8px;
+
+  background: a.$black-1;
+
+  border-radius: 4px;
+
+  isolation: isolate;
+
+  @include a.tablet {
+    gap: 8px;
+
+    padding: 6.5px 12px;
+
+    border-radius: 6px;
+  }
+
+  @include a.laptop {
+    gap: 6px;
+
+    padding: 9.5px 16px;
+
+    border-radius: 8px;
+  }
+
+  @include a.desktop-xl {
+    gap: 8px;
+
+    padding: 11.5px 24px;
+  }
+
+  &_text {
+    font-weight: a.$fw-medium;
+    font-size: 12px;
+    line-height: 16px;
+    color: a.$white-1;
+
+    @include a.tablet {
+      font-size: 14px;
+      line-height: 19px;
+    }
+
+    @include a.laptop {
+      font-size: 16px;
+      line-height: 21px;
+    }
+  }
+
+  &_icon {
+    width: 12px;
+    height: 12px;
+
+    @include a.tablet {
+      width: 14px;
+      height: 14px;
+    }
+
+    @include a.laptop {
+      width: 16px;
+      height: 16px;
+    }
+
+    @include a.desktop-xl {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}

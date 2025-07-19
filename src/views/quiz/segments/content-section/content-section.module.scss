@@ -22,10 +22,8 @@
   }
 }
 
-.QuistionContainer {
+.quistionContainer {
   flex-grow: 1;
-
-  height: 330px;
 
   padding: 24px;
 
@@ -34,8 +32,76 @@
   border: 1px solid a.$black-7;
   border-radius: 8px;
 
-  @include a.tablet {
-    height: 287px;
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    @include a.tablet {
+      gap: 12px;
+    }
+
+    &__icon {
+      width: 14px;
+      height: 14px;
+
+      @include a.desktop-xl {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &__text {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 19px;
+      color: rgba(36, 36, 36, 0.8);
+
+      @include a.desktop-xl {
+        font-size: 16px;
+        line-height: 21px;
+      }
+    }
+  }
+
+  &__question {
+    margin-top: 16px;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #242424;
+
+    @include a.tablet {
+      font-size: 20px;
+      line-height: 27px;
+    }
+
+    @include a.desktop-xl {
+      margin-top: 24px;
+
+      font-size: 28px;
+      line-height: 37px;
+    }
+  }
+
+  &__buttonsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+
+    margin-top: 24px;
+
+    @include a.tablet {
+      gap: 8px;
+    }
+
+    @include a.desktop-xl {
+      gap: 12px;
+
+      margin-top: 36px;
+    }
   }
 }
 
