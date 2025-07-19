@@ -1,5 +1,5 @@
 import Icon from "@/src/components/ui/icon";
-import styles from "./codeExamplesSection.module.scss";
+import styles from "./code-examples-section.module.scss";
 
 export default function CodeExamplesSection() {
   return (

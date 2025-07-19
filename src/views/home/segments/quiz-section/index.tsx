@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "./quizSection.module.scss";
+import styles from "./quiz-section.module.scss";
 import Button from "@/src/components/ui/button";
 import Icon from "@/src/components/ui/icon";
 

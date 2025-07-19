@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "./heroSection.module.scss";
+import styles from "./hero-section.module.scss";
 import Icon from "@/src/components/ui/icon";
 import { CollectionBlock } from "@/src/components/ui";
 

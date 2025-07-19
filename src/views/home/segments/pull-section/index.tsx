@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "./pullSection.module.scss";
+import styles from "./pull-section.module.scss";
 import clsx from "clsx";
 import Icon from "@/src/components/ui/icon";
 

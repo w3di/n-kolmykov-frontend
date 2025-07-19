@@ -1,5 +1,5 @@
 import Icon from "@/src/components/ui/icon";
-import styles from "./statsSection.module.scss";
+import styles from "./stats-section.module.scss";
 
 const stats = [
   {
