@@ -2,6 +2,7 @@
 
 .content {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 16px;
 
@@ -24,6 +25,8 @@
 
 .quistionContainer {
   flex-grow: 1;
+
+  max-height: max-content;
 
   padding: 24px;
 
@@ -111,11 +114,11 @@
     flex-direction: column;
     gap: 14px;
 
-    min-height: 100vh;
-
     padding-left: 16px;
 
     border-left: 1px solid a.$black-7;
+
+    //min-height: 100vh;
   }
 
   @include a.desktop-xl {

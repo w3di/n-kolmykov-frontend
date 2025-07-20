@@ -1,19 +1,23 @@
-import { QuestionType } from "../..";
 import styles from "./content.module.scss";
 import { AnswerAccordion } from "./ui";
 import { Button, Icon } from "@/src/shared/ui/kit";
+import {
+  useQuizData,
+  useQuizStats,
+  useQuizNavigation,
+} from "../../model/quiz-context";
 
-export default function Content({
-  questionData,
-  currentStep,
-  onAnswerClick,
-  quizStats,
-}: {
-  questionData: QuestionType[];
-  currentStep: number;
-  onAnswerClick: (id: number, answer: "know" | "unknown") => void;
-  quizStats: { know: number; unknown: number };
-}) {
+export default function Content() {
+  const { quizData, setQuestionAnswer } = useQuizData();
+  const { quizStats } = useQuizStats();
+  const { currentStepIndex } = useQuizNavigation();
+
+  const currentQuestion = quizData[currentStepIndex];
+
+  if (!currentQuestion) {
+    return <div>/src/features/quiz/ui/content/index error</div>;
+  }
+
   return (
     <section className={styles.content}>
       <div className={styles.quistionContainer}>
@@ -23,24 +27,24 @@ export default function Content({
             className={styles.quistionContainer__header__icon}
           />
           <span className={styles.quistionContainer__header__text}>
-            {questionData[currentStep].theme}
+            {currentQuestion.theme}
           </span>
         </div>
         <p className={styles.quistionContainer__question}>
-          {questionData[currentStep].question}
+          {currentQuestion.question}
         </p>
-        <AnswerAccordion answer={questionData[currentStep].answer} />
+        <AnswerAccordion answer={currentQuestion.answer} />
 
         <div className={styles.quistionContainer__buttonsContainer}>
           <Button
             variant="black"
             label="Знаю"
-            onClick={() => onAnswerClick(currentStep, "know")}
+            onClick={() => setQuestionAnswer(currentStepIndex, "know")}
           />
           <Button
             variant="white"
             label="Не знаю"
-            onClick={() => onAnswerClick(currentStep, "unknown")}
+            onClick={() => setQuestionAnswer(currentStepIndex, "unknown")}
           />
         </div>
       </div>

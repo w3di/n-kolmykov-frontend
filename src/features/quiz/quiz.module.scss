@@ -1,7 +1,11 @@
 @use "abstracts" as a;
 
 .quiz {
+  display: flex;
+  flex-direction: column;
+
   max-width: 100vw;
+  min-height: 100vh;
 
   padding-bottom: 24px;
 
@@ -11,7 +15,9 @@
   }
 
   &__content {
+    display: flex;
     flex: 1;
+    flex-direction: column;
 
     margin: 0 16px;
 

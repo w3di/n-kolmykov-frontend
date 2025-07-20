@@ -1,19 +1,13 @@
 import styles from "./information.module.scss";
+import { useQuizNavigation } from "../../model/quiz-context";
 
-export default function Information({
-  currentStep,
-  totalSteps,
-}: {
-  currentStep: number;
-  totalSteps: number;
-}) {
+export default function Information() {
+  const { currentStep } = useQuizNavigation();
+
   return (
     <section className={styles.information}>
-      <p className={styles.information__title}>Вопрос {currentStep}</p>
+      <p className={styles.information__title}>Вопрос {currentStep + 1}</p>
       <div className={styles.information__textContainer}>
-        <p className={styles.information__text}>
-          {currentStep} из {totalSteps} шагов пройдено
-        </p>
         <p className={styles.information__text}>
           Последнее обновление: {new Date().toLocaleDateString("ru-RU")}
         </p>

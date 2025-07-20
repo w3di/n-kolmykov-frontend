@@ -1,1 +1,1 @@
-export { mockQuestionTypes } from "./mock-data";
+export { mockQuestionTypes, mockQuestionTypeFilters } from "./mock-data";

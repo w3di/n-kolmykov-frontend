@@ -3,7 +3,7 @@
 import { Accordion, Icon } from "@/src/shared/ui/kit";
 import styles from "./question-history-accordion.module.scss";
 import clsx from "clsx";
-import { QuestionType } from "../../../../types";
+import { QuestionType } from "@/src/features/quiz/qustionsType";
 
 interface QuestionHistoryAccordionProps {
   questionData: QuestionType[];

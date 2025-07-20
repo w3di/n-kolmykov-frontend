@@ -4,18 +4,20 @@ import styles from "./sidebar.module.scss";
 import Image from "next/image";
 
 import { QuestionHistoryAccordion, QuestionTypesAccordion } from "./ui";
-import { QuestionType } from "../../qustionsType";
 import { Icon } from "@/src/shared/ui/kit";
+import {
+  useQuizData,
+  useQuizNavigation,
+  useQuestionTypesContext,
+} from "../../model/quiz-context";
 
-export default function Sidebar({
-  questionData,
-  currentStep,
-  onQuestionClick,
-}: {
-  questionData: QuestionType[];
-  currentStep: number;
-  onQuestionClick: (index: number) => void;
-}) {
+export default function Sidebar() {
+  const { quizData } = useQuizData();
+  const { currentStepIndex, setCurrentStepIndex } = useQuizNavigation();
+  const { questionTypes, toggleQuestionType } = useQuestionTypesContext();
+
+  const activeTypesCount = questionTypes.filter((type) => type.active).length;
+
   return (
     <aside className={styles.sidebar}>
       <header className={styles.sidebar__header}>
@@ -29,13 +31,17 @@ export default function Sidebar({
       </header>
 
       <div className={styles.sidebar__typesContainer}>
-        <QuestionTypesAccordion />
+        <QuestionTypesAccordion
+          questionTypes={questionTypes}
+          onToggleQuestionType={toggleQuestionType}
+        />
       </div>
+
       <div className={styles.sidebar__typesContainer}>
         <QuestionHistoryAccordion
-          questionData={questionData}
-          currentStep={currentStep}
-          onQuestionClick={onQuestionClick}
+          questionData={quizData}
+          currentStep={currentStepIndex}
+          onQuestionClick={setCurrentStepIndex}
         />
       </div>
     </aside>

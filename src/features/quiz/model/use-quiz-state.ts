@@ -1,44 +1,32 @@
-import { useEffect, useState } from "react";
-import { mockQuestionTypes } from "../api";
-import { QuestionType } from "..";
+import { useQuestionTypes } from "./use-question-types";
+import { useQuizStats } from "./use-quiz-stats";
+import { useQuizNavigation } from "./use-quiz-navigation";
+import { useQuizData } from "./use-quiz-data";
 
+/**
+ * Главный хук для управления состоянием квиза
+ * Объединяет все отдельные хуки в единый интерфейс
+ */
 export const useQuizState = () => {
-  const [quizData, setQuizData] = useState<QuestionType[]>(mockQuestionTypes);
+  const questionTypesState = useQuestionTypes();
+  const statsState = useQuizStats();
+  const navigationState = useQuizNavigation();
 
-  const [quizStats, setQuizStats] = useState({
-    know: 0,
-    unknown: 0,
-  });
+  const quizDataState = useQuizData(
+    questionTypesState.activeQuestionTypes,
+    statsState.updateStats,
+    navigationState.nextStep
+  );
 
-  const setQuestionAnswer = (id: number, answer: "know" | "unknown") => {
-    setQuizData((prev) => {
-      const newQuizData = [...prev];
-      const previousAnswer = prev[id].typeAnswer;
-
-      if (previousAnswer !== answer) {
-        setQuizStats((prevStats) => {
-          let newStats = { ...prevStats };
-
-          if (previousAnswer === "know") {
-            newStats.know -= 1;
-          } else if (previousAnswer === "unknown") {
-            newStats.unknown -= 1;
-          }
-
-          if (answer === "know") {
-            newStats.know += 1;
-          } else if (answer === "unknown") {
-            newStats.unknown += 1;
-          }
-
-          return newStats;
-        });
-      }
-
-      newQuizData[id].typeAnswer = answer;
-      return newQuizData;
-    });
+  return {
+    // Данные квиза
+    ...quizDataState,
+    // Статистика
+    quizStats: statsState.quizStats,
+    // Типы вопросов
+    questionTypes: questionTypesState.questionTypes,
+    toggleQuestionType: questionTypesState.toggleQuestionType,
+    // Навигация
+    ...navigationState,
   };
-
-  return { quizData, setQuestionAnswer, quizStats };
 };

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../public/styles/main.scss";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const involve = localFont({
   src: [
@@ -51,6 +53,21 @@ const involve = localFont({
 export const metadata: Metadata = {
   title: "nKolmykov",
   description: "My portfolio",
+  icons: {
+    icon: [
+      {
+        url: "/images/myLogo.png",
+        sizes: "15x24",
+        type: "image/png",
+      },
+      {
+        url: "/images/myLogo.png",
+        sizes: "30x48",
+        type: "image/png",
+      },
+    ],
+    apple: "/images/myLogo.png",
+  },
 };
 
 export default function RootLayout({
@@ -60,7 +77,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={involve.variable}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
+      </body>
     </html>
   );
 }

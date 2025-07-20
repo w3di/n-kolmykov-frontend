@@ -1,24 +1,24 @@
 import { Icon } from "@/src/shared/ui/kit";
 import styles from "./stepper.module.scss";
 import clsx from "clsx";
+import { useQuizNavigation } from "../../model/quiz-context";
 
-export default function Stepper({
-  currentStep,
-  totalSteps,
-  previousStep,
-  nextStep,
-}: {
-  currentStep: number;
-  totalSteps: number;
-  previousStep: () => void;
-  nextStep: () => void;
-}) {
+export default function Stepper() {
+  const {
+    currentStep,
+    totalSteps,
+    canGoPrevious,
+    canGoNext,
+    previousStep,
+    nextStep,
+  } = useQuizNavigation();
+
   return (
     <section className={styles.stepper}>
       <button
         className={styles.stepper__button}
         onClick={previousStep}
-        disabled={currentStep === 1}
+        disabled={!canGoPrevious}
       >
         <Icon
           name="arrowBack"
@@ -26,12 +26,12 @@ export default function Stepper({
         />
       </button>
       <p className={styles.stepper__text}>
-        Шаг {currentStep} из {totalSteps}
+        Вопрос {currentStep + 1} из {totalSteps}
       </p>
       <button
         className={styles.stepper__button}
         onClick={nextStep}
-        disabled={currentStep === totalSteps}
+        disabled={!canGoNext}
       >
         <Icon name="arrowBack" className={styles.stepper__icon} />
       </button>
