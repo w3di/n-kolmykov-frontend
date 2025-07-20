@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const ICONS_DIR = path.join(__dirname, "/public/svg/icons");
-const OUTPUT_FILE = path.join(__dirname, "/src/components/ui/icon/index.tsx");
+const OUTPUT_FILE = path.join(__dirname, "/src/shared/ui/kit/icon/index.tsx");
 
 const OUTPUT_DIR = path.dirname(OUTPUT_FILE);
 

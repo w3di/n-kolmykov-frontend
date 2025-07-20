@@ -1,0 +1,117 @@
+@use "abstracts" as a;
+
+.codeExamples {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 12px;
+
+  border-color: a.$gray-1;
+  border-style: solid;
+  border-width: 0 1px 1px;
+
+  @include a.tablet {
+    padding: 24px 0;
+  }
+
+  @include a.laptop {
+    padding: 32px 0;
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 21px;
+  text-align: center;
+  color: a.$black-3;
+
+  @include a.tablet {
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  @include a.laptop {
+    font-size: 20px;
+    line-height: 27px;
+  }
+
+  @include a.desktop-xl {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    @include a.tablet {
+      display: contents;
+    }
+  }
+
+  &__block {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+
+    box-sizing: border-box;
+
+    padding: 12px 6px;
+
+    background: a.$white-3;
+
+    border: 1px solid a.$black-9;
+    border-radius: 6px;
+
+    @include a.laptop {
+      padding: 10.5px 8px;
+    }
+
+    @include a.desktop-xl {
+      padding: 10.5px 12px;
+    }
+
+    span {
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 16px;
+      color: a.$black-2;
+
+      @include a.laptop {
+        font-size: 14px;
+        line-height: 19px;
+      }
+    }
+  }
+
+  &__icon {
+    width: 14px;
+    height: 14px;
+
+    @include a.laptop {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__spacing {
+    @include a.tablet {
+      margin-right: calc(5px - 16px);
+    }
+  }
+}

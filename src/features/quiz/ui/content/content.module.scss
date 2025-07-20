@@ -1,0 +1,225 @@
+@use "abstracts" as a;
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding-top: 16px;
+
+  @include a.tablet {
+    gap: 24px;
+
+    padding-top: 24px;
+  }
+
+  @include a.laptop {
+    flex-direction: row;
+  }
+
+  @include a.desktop-xl {
+    padding-top: 48px;
+  }
+}
+
+.quistionContainer {
+  flex-grow: 1;
+
+  padding: 24px;
+
+  background: a.$white-1;
+
+  border: 1px solid a.$black-7;
+  border-radius: 8px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    @include a.tablet {
+      gap: 12px;
+    }
+
+    &__icon {
+      width: 14px;
+      height: 14px;
+
+      @include a.desktop-xl {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    &__text {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 19px;
+      color: rgba(36, 36, 36, 0.8);
+
+      @include a.desktop-xl {
+        font-size: 16px;
+        line-height: 21px;
+      }
+    }
+  }
+
+  &__question {
+    margin-top: 16px;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    color: #242424;
+
+    @include a.tablet {
+      font-size: 20px;
+      line-height: 27px;
+    }
+
+    @include a.desktop-xl {
+      margin-top: 24px;
+
+      font-size: 28px;
+      line-height: 37px;
+    }
+  }
+
+  &__buttonsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+
+    margin-top: 24px;
+
+    @include a.tablet {
+      gap: 8px;
+    }
+
+    @include a.desktop-xl {
+      gap: 12px;
+
+      margin-top: 36px;
+    }
+  }
+}
+
+.statsBarContainer {
+  @include a.laptop {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    min-height: 100vh;
+
+    padding-left: 16px;
+
+    border-left: 1px solid a.$black-7;
+  }
+
+  @include a.desktop-xl {
+    padding-left: 24px;
+  }
+
+  &__title {
+    display: none;
+
+    @include a.laptop {
+      display: block;
+
+      font-weight: a.$fw-medium;
+      font-size: 14px;
+      line-height: 19px;
+      color: a.$black-3;
+    }
+
+    @include a.desktop-xl {
+    }
+  }
+}
+
+.statsBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  padding: 12px;
+
+  background: a.$black-8;
+
+  border: 1px solid a.$black-7;
+  border-radius: 4px;
+
+  @include a.only-laptop {
+    flex-direction: column;
+
+    padding: 12px 78px;
+  }
+
+  @include a.only-desktop {
+    flex-direction: column;
+
+    padding: 12px 78px;
+  }
+
+  @include a.desktop-xl {
+    padding: 12px 24px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    &__number {
+      font-weight: a.$fw-medium;
+      font-size: 16px;
+      line-height: 21px;
+
+      @include a.desktop-xl {
+        font-size: 20px;
+        line-height: 27px;
+      }
+    }
+
+    &__text {
+      font-weight: a.$fw-medium;
+      font-size: 12px;
+      line-height: 16px;
+
+      @include a.tablet {
+        font-size: 14px;
+        line-height: 19px;
+      }
+
+      @include a.desktop-xl {
+        font-size: 16px;
+        line-height: 21px;
+      }
+    }
+
+    &:nth-child(1) {
+      .statsBar__item__number,
+      .statsBar__item__text {
+        color: a.$orange-1;
+      }
+    }
+
+    &:nth-child(2) {
+      .statsBar__item__number,
+      .statsBar__item__text {
+        color: a.$black-1;
+      }
+    }
+
+    &:nth-child(3) {
+      .statsBar__item__number,
+      .statsBar__item__text {
+        color: a.$black-4;
+      }
+    }
+  }
+}

@@ -1,0 +1,96 @@
+@use "abstracts" as a;
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  border-color: a.$gray-1;
+  border-style: solid;
+  border-width: 0 1px 1px;
+
+  @include a.tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+
+    padding: 12px;
+
+    @include a.tablet {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      padding: 16px;
+    }
+
+    @include a.laptop {
+      padding: 24px;
+    }
+
+    &:not(:first-child) {
+      border-top: 1px solid a.$gray-1;
+
+      @include a.tablet {
+        border-top: none;
+        border-left: 1px solid a.$gray-1;
+      }
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.text {
+  font-weight: a.$fw-medium;
+  font-size: 14px;
+  font-style: normal;
+  line-height: 19px;
+  color: a.$black-5;
+
+  @include a.desktop-xl {
+    font-size: 16px;
+    line-height: 21px;
+  }
+}
+
+.countText {
+  font-weight: a.$fw-medium;
+  font-size: 28px;
+  line-height: 37px;
+  color: a.$black-1;
+
+  @include a.laptop {
+    font-size: 32px;
+    line-height: 43px;
+  }
+
+  @include a.desktop-xl {
+    font-size: 44px;
+    line-height: 59px;
+  }
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+
+  @include a.tablet {
+    width: 18px;
+    height: 18px;
+  }
+
+  @include a.desktop-xl {
+    width: 24px;
+    height: 24px;
+  }
+}

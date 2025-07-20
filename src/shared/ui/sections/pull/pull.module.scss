@@ -1,0 +1,220 @@
+@use "abstracts" as a;
+
+.pull {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 1fr;
+
+  border-color: a.$gray-1;
+  border-style: solid;
+  border-width: 0 1px 1px;
+
+  @include a.tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__item {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 12px 12px 43px;
+
+    &:not(:first-child) {
+      border-top: 1px solid a.$gray-1;
+
+      @include a.tablet {
+        border-top: none;
+        border-left: 1px solid a.$gray-1;
+      }
+    }
+
+    @include a.only-mobile {
+      align-items: center;
+    }
+
+    @include a.tablet {
+      padding: 24px 24px 32px;
+    }
+
+    @include a.laptop {
+      padding: 24px 24px 75px;
+    }
+
+    @include a.desktop-xl {
+      padding: 24px 24px 66px;
+    }
+  }
+}
+
+.titleBlock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @include a.only-mobile {
+    align-items: start;
+
+    width: 100%;
+  }
+
+  &__icon {
+    width: 14px;
+    height: 14px;
+
+    @include a.laptop {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__title {
+    font-size: 14px;
+    line-height: 19px;
+    color: rgb(36 36 36 / 60%);
+
+    @include a.laptop {
+      font-size: 16px;
+      line-height: 21px;
+    }
+
+    @include a.desktop-xl {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+}
+
+.description {
+  margin-top: 12px;
+
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 21px;
+  color: rgb(36 36 36 / 50%);
+
+  span {
+    color: rgb(36 36 36 / 100%);
+  }
+
+  @include a.tablet {
+    margin-top: 14px;
+
+    line-height: 25px;
+  }
+
+  @include a.laptop {
+    margin-top: 18px;
+
+    font-size: 20px;
+    line-height: 27px;
+  }
+
+  @include a.desktop-xl {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+.pullRequestImageBlock {
+  %pull-base {
+    width: 300px;
+    height: 59px;
+  }
+
+  position: relative;
+
+  width: 300px;
+  height: 241px;
+
+  margin-top: 32px;
+
+  @include a.tablet {
+    width: 304px;
+    height: 272px;
+  }
+
+  @include a.laptop {
+    width: 424px;
+  }
+
+  @include a.desktop-xl {
+    width: 492px;
+  }
+
+  &__pull50 {
+    @extend %pull-base;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &__lineToPull {
+    position: absolute;
+    top: 63px;
+    left: 50%;
+
+    width: 91.6px;
+    height: 120px;
+
+    transform: translateX(-50%);
+
+    @include a.tablet {
+      top: 61px;
+
+      width: 116px;
+      height: 152px;
+    }
+  }
+
+  &__pull90 {
+    @extend %pull-base;
+
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    @include a.tablet {
+      width: 116px;
+      height: 152px;
+    }
+  }
+}
+
+.showCodeImageBlock {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+
+  display: none;
+
+  transform: translateX(-50%);
+
+  &__360 {
+    @include a.only-mobile {
+      display: block;
+    }
+
+    @include a.only-tablet {
+      display: block;
+    }
+  }
+
+  &__1024 {
+    @include a.only-laptop {
+      display: block;
+    }
+
+    @include a.only-desktop {
+      display: block;
+    }
+  }
+
+  &__1920 {
+    @include a.desktop-xl {
+      display: block;
+    }
+  }
+}
