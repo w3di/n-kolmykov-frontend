@@ -41,7 +41,9 @@ const skillsData = [
 export default function MySkills() {
   return (
     <section className={styles.mySkills}>
-      <p className={styles.title}>Мой тернистый путь в IT</p>
+      <p className={styles.title}>
+        <strong>FullStack Evolution:</strong> от интерфейсов до инфраструктуры
+      </p>
       <ul className={styles.squaresList}>
         {skillsData.map((skill) => (
           <li key={skill.id}>

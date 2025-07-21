@@ -147,3 +147,125 @@
     }
   }
 }
+
+.react {
+  width: 36px;
+  height: 36px;
+  @include a.tablet {
+    width: 48px;
+    height: 48px;
+  }
+  @include a.desktop-xl {
+    width: 64px;
+    height: 64px;
+  }
+}
+.ts {
+  width: 32px;
+  height: 32px;
+  @include a.tablet {
+    width: 40px;
+    height: 40px;
+  }
+  @include a.desktop-xl {
+    width: 54px;
+    height: 54px;
+  }
+}
+.node {
+  width: 52.25px;
+  height: 32px;
+  @include a.tablet {
+    width: 65.31px;
+    height: 40px;
+  }
+  @include a.desktop-xl {
+    width: 88.17px;
+    height: 54px;
+  }
+}
+.nest {
+  width: 32.13px;
+  height: 32px;
+  @include a.tablet {
+    width: 40.16px;
+    height: 40px;
+  }
+  @include a.desktop-xl {
+    width: 54.21px;
+    height: 54px;
+  }
+}
+.next {
+  width: 32px;
+  height: 32px;
+  @include a.tablet {
+    width: 40px;
+    height: 40px;
+  }
+  @include a.desktop-xl {
+    width: 54px;
+    height: 54px;
+  }
+}
+.pg {
+  width: 38.8px;
+  height: 40px;
+  @include a.tablet {
+    width: 38.8px;
+    height: 40px;
+  }
+  @include a.desktop-xl {
+    width: 52.39px;
+    height: 54px;
+  }
+}
+.expo {
+  width: 60px;
+  height: 32px;
+  @include a.tablet {
+    width: 80px;
+    height: 40px;
+  }
+  @include a.desktop-xl {
+    width: 100px;
+    height: 54px;
+  }
+}
+.github {
+  width: 32px;
+  height: 32px;
+  @include a.tablet {
+    width: 40px;
+    height: 40px;
+  }
+  @include a.desktop-xl {
+    width: 54px;
+    height: 54px;
+  }
+}
+.docker {
+  width: 57.59px;
+  height: 40px;
+  @include a.tablet {
+    width: 57.59px;
+    height: 40px;
+  }
+  @include a.desktop-xl {
+    width: 77.74px;
+    height: 54px;
+  }
+}
+
+.cicd {
+  width: 40px;
+  height: 20px;
+  @include a.tablet {
+    width: 60px;
+    height: 28px;
+  }
+  @include a.desktop-xl {
+    width: 85px;
+    height: 36px;
+  }
+}
