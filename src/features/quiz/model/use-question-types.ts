@@ -1,23 +1,17 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
-import { mockQuestionTypeFilters } from "../api";
+import { mockQuestionTypeFilters, QuestionTypeFilter } from "../api";
 import { toast } from "react-toastify";
-
-export type QuestionTypeConfig = {
-  id: string;
-  name: string;
-  active: boolean;
-};
 
 const LOCALSTORAGE_KEY = "quiz-active-question-types";
 
-const getInitialQuestionTypes = (): QuestionTypeConfig[] => {
+const getInitialQuestionTypes = (): QuestionTypeFilter[] => {
   if (typeof window !== "undefined") {
     try {
       const saved = localStorage.getItem(LOCALSTORAGE_KEY);
       if (saved) {
         const savedTypes = JSON.parse(saved);
         const hasActiveTypes = savedTypes.some(
-          (type: QuestionTypeConfig) => type.active
+          (type: QuestionTypeFilter) => type.active
         );
         if (!hasActiveTypes && savedTypes.length > 0) {
           savedTypes[0].active = true;
@@ -39,7 +33,7 @@ const getInitialQuestionTypes = (): QuestionTypeConfig[] => {
 };
 
 export const useQuestionTypes = () => {
-  const [questionTypes, setQuestionTypes] = useState<QuestionTypeConfig[]>(
+  const [questionTypes, setQuestionTypes] = useState<QuestionTypeFilter[]>(
     getInitialQuestionTypes
   );
 

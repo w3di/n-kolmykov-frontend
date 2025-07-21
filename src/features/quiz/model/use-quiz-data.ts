@@ -1,11 +1,10 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { mockQuestionTypes } from "../api";
+import { mockQuestionTypes, QuestionTypeFilter } from "../api";
 import { QuestionType } from "../qustionsType";
-import { QuestionTypeConfig } from "./use-question-types";
 import { toast } from "react-toastify";
 
 export const useQuizData = (
-  activeQuestionTypes: QuestionTypeConfig[],
+  activeQuestionTypes: QuestionTypeFilter[],
   updateStats: (
     prev: "know" | "unknown" | undefined,
     current: "know" | "unknown"
@@ -18,7 +17,7 @@ export const useQuizData = (
 
   const getRandomFilteredQuestions = useCallback(() => {
     const filteredQuestions = quizInitialData.current.filter((item) =>
-      activeQuestionTypes.some((type) => type.name === item.theme)
+      activeQuestionTypes.some((type) => type.id === item.theme)
     );
 
     if (filteredQuestions.length === 0) {

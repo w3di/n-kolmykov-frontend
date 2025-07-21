@@ -31,10 +31,10 @@
 
     border-bottom: 1px dashed a.$black-9;
 
+    transition: opacity 0.2s ease;
+
     &__logoIcon {
     }
-
-    transition: opacity 0.2s ease;
 
     &:hover {
       opacity: 0.8;

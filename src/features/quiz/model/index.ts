@@ -18,5 +18,4 @@ export {
 } from "./quiz-context";
 
 // Типы
-export type { QuestionTypeConfig } from "./use-question-types";
 export type { QuizStats } from "./use-quiz-stats";

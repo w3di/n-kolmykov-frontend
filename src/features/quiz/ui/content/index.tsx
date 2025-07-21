@@ -33,7 +33,7 @@ export default function Content() {
         <p className={styles.quistionContainer__question}>
           {currentQuestion.question}
         </p>
-        <AnswerAccordion answer={currentQuestion.answer} />
+        <AnswerAccordion answer={currentQuestion.answers} />
 
         <div className={styles.quistionContainer__buttonsContainer}>
           <Button

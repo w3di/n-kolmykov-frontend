@@ -33,7 +33,7 @@ export default function Hero() {
           icon="book"
           afterLabel="вопросов"
         />
-        <h1 className={styles.textBlock__title}>Готовься к собеседованию!</h1>
+        <h1 className={styles.textBlock__title}>Привет, разработчик!</h1>
         <p className={styles.textBlock__description}>
           Open-source проект для подготовки к техническим собеседованиям.{" "}
           <br className={styles.textBlock__description__br} />

@@ -5,7 +5,7 @@ import styles from "./answer-accordion.module.scss";
 import { Icon } from "@/src/shared/ui/kit";
 
 interface AnswerAccordionProps {
-  answer: string;
+  answer: string[];
 }
 
 export default function AnswerAccordion({ answer }: AnswerAccordionProps) {
@@ -36,7 +36,11 @@ export default function AnswerAccordion({ answer }: AnswerAccordionProps) {
           [styles.open]: isOpen,
         })}
       >
-        <p className={styles.answerAccordion__content__text}>{answer}</p>
+        <div className={styles.answerAccordion__content__text}>
+          {answer.map((item, index) => (
+            <p key={index}>{item}</p>
+          ))}
+        </div>
       </div>
     </div>
   );

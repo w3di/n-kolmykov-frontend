@@ -3,7 +3,7 @@
 import React, { createContext, useContext, ReactNode } from "react";
 import { useQuizState } from "./use-quiz-state";
 import { QuestionType } from "../qustionsType";
-import { QuestionTypeConfig } from "./use-question-types";
+import { QuestionTypeFilter } from "../api";
 
 interface QuizContextType {
   // Данные квиза
@@ -14,7 +14,7 @@ interface QuizContextType {
   quizStats: { know: number; unknown: number };
 
   // Типы вопросов
-  questionTypes: QuestionTypeConfig[];
+  questionTypes: QuestionTypeFilter[];
   toggleQuestionType: (id: string) => void;
 
   // Навигация
