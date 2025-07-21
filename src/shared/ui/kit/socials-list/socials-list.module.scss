@@ -8,11 +8,12 @@
     gap: 4px;
   }
 
-  a,
   &__item {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    transition: all 0.2s ease;
 
     @include a.tablet {
       padding: 5px;
@@ -33,6 +34,22 @@
       padding: 12px;
 
       border-radius: 10px;
+    }
+
+    &:hover {
+      background: a.$gray-light;
+
+      border-color: a.$black-6;
+    }
+
+    &:active {
+      background: a.$black-8;
+
+      border-color: a.$orange-2;
+
+      * {
+        fill: a.$orange-1;
+      }
     }
   }
 

@@ -11,34 +11,22 @@ export default function Header({
 }) {
   return (
     <header className={clsx(styles.header, styles[`header--${variant}`])}>
-      <Icon
-        name="nKolmykov"
-        className={clsx(styles.logo, styles[`logo--${variant}`])}
-      />
+      <Link href="/" className={clsx(styles.logo, styles[`logo--${variant}`])}>
+        <Icon
+          name="nKolmykov"
+          className={clsx(styles.logo, styles[`logo--${variant}`])}
+        />
+      </Link>
 
       <div className={styles.navigationList}>
         <Link
           href="/about-me"
-          className={clsx(
-            styles.navigationList__itemLink,
-            styles[`navigationList__itemLink--${variant}`]
-          )}
+          className={clsx(styles.navigationList__itemLink)}
         >
           Об авторе
         </Link>
-        <div
-          className={clsx(
-            styles.navigationList__separator,
-            styles[`navigationList__separator--${variant}`]
-          )}
-        />
-        <Link
-          href="/quiz"
-          className={clsx(
-            styles.navigationList__itemLink,
-            styles[`navigationList__itemLink--${variant}`]
-          )}
-        >
+        <div className={clsx(styles.navigationList__separator)} />
+        <Link href="/quiz" className={clsx(styles.navigationList__itemLink)}>
           Квиз
         </Link>
       </div>

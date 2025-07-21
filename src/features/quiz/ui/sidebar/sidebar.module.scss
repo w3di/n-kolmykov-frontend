@@ -9,6 +9,7 @@
 
     width: 200px;
     height: 100vh;
+    max-height: 100vh;
 
     padding: 24px;
 
@@ -33,18 +34,62 @@
     &__logoIcon {
     }
 
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.6;
+    }
+
     @include a.desktop-xl {
       padding-bottom: 25px;
     }
   }
 
+  &__accordionsContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 10px;
+
+    overflow: hidden;
+
+    min-height: 0;
+  }
+
   &__typesContainer {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 0;
+
     padding-bottom: 13px;
 
     border-bottom: 1px dashed a.$black-9;
 
+    scrollbar-width: none;
+
     @include a.desktop-xl {
       padding-bottom: 16px;
+    }
+
+    &--types {
+      flex: 0 0 auto;
+
+      overflow-y: auto;
+
+      max-height: 50%;
+    }
+
+    &--history {
+      flex: 1;
+
+      overflow-y: auto;
+
+      min-height: 0;
     }
 
     &__list {

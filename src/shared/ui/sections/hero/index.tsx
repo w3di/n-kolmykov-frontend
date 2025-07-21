@@ -1,44 +1,61 @@
 import styles from "./hero.module.scss";
 import { Icon, CollectionBlock } from "@/src/shared/ui/kit";
+import clsx from "clsx";
 
 export default function Hero() {
+  const technologies = [
+    {
+      id: "frontend",
+      icon: "react" as const,
+      label: "Frontend",
+      className: "",
+    },
+    {
+      id: "mobile",
+      icon: "expo" as const,
+      label: "Mobile",
+      className: "",
+    },
+    {
+      id: "backend",
+      icon: "graph" as const,
+      label: "Backend",
+      className: styles.frameworksBlock__item__frameworksIcon__backend,
+    },
+  ];
+
   return (
     <section className={styles.hero}>
       <div className={styles.contentWrapper}>
         <CollectionBlock
-          count="250+"
-          label="Коллекция из"
+          count="100+"
+          label="База"
           icon="book"
-          afterLabel="тем"
+          afterLabel="вопросов"
         />
-        <h1 className={styles.textBlock__title}>Привет, разработчик!</h1>
+        <h1 className={styles.textBlock__title}>Готовься к собеседованию!</h1>
         <p className={styles.textBlock__description}>
-          Добро пожаловать на мой open-source проект по подшготовке к
-          техническим
-          <br className={styles.textBlock__description__br} /> собеседованиям.
-          Здесь собрана коллекция актуальных вопросов и ответов, которые помогут{" "}
+          Open-source проект для подготовки к техническим собеседованиям.{" "}
           <br className={styles.textBlock__description__br} />
-          вам успешно пройти интервью
+          Коллекция актуальных вопросов и развернутых ответов по популярным{" "}
+          <br className={styles.textBlock__description__br} />
+          технологиям. Повышай свои знания и уверенность перед интервью.
         </p>
         <ul className={styles.frameworksBlock}>
-          <li className={styles.frameworksBlock__item}>
-            <Icon
-              name="react"
-              className={styles.frameworksBlock__item__frameworksIcon}
-            />
-            <p className={styles.frameworksBlock__item__text}>
-              библиотека <span>React</span>
-            </p>
-          </li>
-          <li className={styles.frameworksBlock__item}>
-            <Icon
-              name="expo"
-              className={styles.frameworksBlock__item__frameworksIcon}
-            />
-            <p className={styles.frameworksBlock__item__text}>
-              фреймворк <span>Expo</span>
-            </p>
-          </li>
+          {technologies.map((tech) => (
+            <li key={tech.id} className={styles.frameworksBlock__item}>
+              <Icon
+                name={tech.icon}
+                className={clsx(
+                  styles.frameworksBlock__item__frameworksIcon,
+                  tech.className
+                )}
+              />
+              <p className={styles.frameworksBlock__item__text}>
+                <span>{tech.label}</span>
+              </p>
+            </li>
+          ))}
         </ul>
       </div>
 

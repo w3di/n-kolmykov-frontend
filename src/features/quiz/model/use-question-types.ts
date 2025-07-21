@@ -10,27 +10,8 @@ export type QuestionTypeConfig = {
 
 const LOCALSTORAGE_KEY = "quiz-active-question-types";
 
-export const useQuestionTypes = () => {
-  const [questionTypes, setQuestionTypes] = useState<QuestionTypeConfig[]>(
-    () => {
-      const hasActiveTypes = mockQuestionTypeFilters.some(
-        (type) => type.active
-      );
-      if (!hasActiveTypes && mockQuestionTypeFilters.length > 0) {
-        const initialTypes = [...mockQuestionTypeFilters];
-        initialTypes[0].active = true;
-        return initialTypes;
-      }
-      return mockQuestionTypeFilters;
-    }
-  );
-
-  const activeQuestionTypes = useMemo(
-    () => questionTypes.filter((item) => item.active),
-    [questionTypes]
-  );
-
-  useEffect(() => {
+const getInitialQuestionTypes = (): QuestionTypeConfig[] => {
+  if (typeof window !== "undefined") {
     try {
       const saved = localStorage.getItem(LOCALSTORAGE_KEY);
       if (saved) {
@@ -41,18 +22,39 @@ export const useQuestionTypes = () => {
         if (!hasActiveTypes && savedTypes.length > 0) {
           savedTypes[0].active = true;
         }
-        setQuestionTypes(savedTypes);
+        return savedTypes;
       }
     } catch (error) {
       console.error("Ошибка при загрузке из localStorage:", error);
     }
-  }, []);
+  }
+
+  const hasActiveTypes = mockQuestionTypeFilters.some((type) => type.active);
+  if (!hasActiveTypes && mockQuestionTypeFilters.length > 0) {
+    const initialTypes = [...mockQuestionTypeFilters];
+    initialTypes[0].active = true;
+    return initialTypes;
+  }
+  return mockQuestionTypeFilters;
+};
+
+export const useQuestionTypes = () => {
+  const [questionTypes, setQuestionTypes] = useState<QuestionTypeConfig[]>(
+    getInitialQuestionTypes
+  );
+
+  const activeQuestionTypes = useMemo(
+    () => questionTypes.filter((item) => item.active),
+    [questionTypes]
+  );
 
   useEffect(() => {
-    try {
-      localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(questionTypes));
-    } catch (error) {
-      console.error("Ошибка при сохранении в localStorage:", error);
+    if (typeof window !== "undefined") {
+      try {
+        localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(questionTypes));
+      } catch (error) {
+        console.error("Ошибка при сохранении в localStorage:", error);
+      }
     }
   }, [questionTypes]);
 
@@ -64,7 +66,9 @@ export const useQuestionTypes = () => {
       if (targetType.active) {
         const activeCount = prev.filter((type) => type.active).length;
         if (activeCount <= 1) {
-          toast.warning("Нельзя отключить все типы вопросов!");
+          setTimeout(() => {
+            toast.warning("Нельзя отключить все типы вопросов!");
+          }, 0);
           return prev;
         }
       }

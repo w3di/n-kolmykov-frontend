@@ -168,6 +168,8 @@
 
   border-radius: 4px;
 
+  transition: background 0.2s ease;
+
   isolation: isolate;
 
   @include a.tablet {
@@ -190,6 +192,14 @@
     gap: 8px;
 
     padding: 11.5px 24px;
+  }
+
+  &:hover {
+    background: a.$black-2;
+  }
+
+  &:active {
+    background: a.$orange-1;
   }
 
   &_text {

@@ -10,13 +10,13 @@
   @include a.tablet {
     width: 704px;
 
-    margin: 56px auto;
+    margin: 56px auto 0;
   }
 
   @include a.laptop {
     width: 944px;
 
-    margin: 64px auto;
+    margin: 64px auto 0;
   }
 
   @include a.desktop-xl {

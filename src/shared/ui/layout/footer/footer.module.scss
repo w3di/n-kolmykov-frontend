@@ -64,6 +64,8 @@
     line-height: 16px;
     color: a.$black-3;
 
+    transition: color 0.2s ease;
+
     @include a.laptop {
       font-size: 14px;
       line-height: 19px;
@@ -72,6 +74,14 @@
     @include a.desktop-xl {
       font-size: 16px;
       line-height: 21px;
+    }
+
+    &:hover {
+      color: a.$black-2;
+    }
+
+    &:active {
+      color: a.$orange-1;
     }
   }
 }

@@ -212,6 +212,12 @@
       width: 14px;
       height: 14px;
 
+      &__backend {
+        * {
+          fill: #23b2e7;
+        }
+      }
+
       @include a.laptop {
         width: 16px;
         height: 16px;

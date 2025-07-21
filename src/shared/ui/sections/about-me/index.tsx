@@ -2,51 +2,57 @@ import { CollectionBlock, Icon } from "@/src/shared/ui/kit";
 import styles from "./about-me.module.scss";
 
 export default function AboutMe() {
+  const qualities = [
+    {
+      icon: "boundingBox" as const,
+      title: "Легкость",
+      description: "Изучаю новый материал и постоянно учусь",
+    },
+    {
+      icon: "globeSimple" as const,
+      title: "Универсальность",
+      description: "Готов брать на себя полный цикл разработки",
+    },
+    {
+      icon: "graph" as const,
+      title: "Ответственность",
+      description: "Гарантирую исполнение любого проекта в срок",
+    },
+  ];
+
   return (
     <section className={styles.aboutMe}>
       <div className={styles.BlockInfo}>
         <CollectionBlock icon="smiley" label="Обо мне" />
         <p className={styles.BlockInfo__description}>
-          Я Fullstack Frontend разработчик с 3-х летним опытом создания
-          современных веб-приложений. Специализируюсь на React, Typescrpt и
-          Next.js, но также имею опыт работы с бэкедом (Node.js. Nest.js) и
-          различными базами данных
+          Frontend разработчик с опытом работы 3 года, в течение которых я
+          создавал сайты и мобильные приложения. Люблю оптимизировать
+          существующие приложения и привносить автоматизацию в проекты. В
+          свободное время занимаюсь изучением DevOps, backend и развиваюсь в
+          качестве Fullstack JS разработчика.
           <br />
           <br />
-          Этот проект был создан с целью помочь разработчика подготовиться к
-          техническим собеседованиям. Здесь собраны актуальные вопросы и ответы,
-          которые часто задают на интервью, а также практические задания для
-          проверки знаний.
+          Имею успешный опыт преподавания разработки. Этот проект создан с целью
+          поделиться знаниями и помочь разработчикам подготовиться к техническим
+          собеседованиям. Здесь собраны актуальные вопросы, практические задания
+          и проверенные решения.
         </p>
       </div>
       <ul className={styles.BlockList}>
-        <li className={styles.BlockList__item}>
-          <Icon name="boundingBox" className={styles.BlockList__item__icon} />
-          <div className={styles.BlockList__item__textWrapper}>
-            <p className={styles.BlockList__item__title}>Легкость</p>
-            <p className={styles.BlockList__item__description}>
-              Изучаю новый материал и постоянно учусь
-            </p>
-          </div>
-        </li>
-        <li className={styles.BlockList__item}>
-          <Icon name="globeSimple" className={styles.BlockList__item__icon} />
-          <div className={styles.BlockList__item__textWrapper}>
-            <p className={styles.BlockList__item__title}>Универсальность</p>
-            <p className={styles.BlockList__item__description}>
-              Готов брать на себя полный цикл разработки
-            </p>
-          </div>
-        </li>
-        <li className={styles.BlockList__item}>
-          <Icon name="graph" className={styles.BlockList__item__icon} />
-          <div className={styles.BlockList__item__textWrapper}>
-            <p className={styles.BlockList__item__title}>Ответственность</p>
-            <p className={styles.BlockList__item__description}>
-              Гарантирую исполнение любого проекта в срок
-            </p>
-          </div>
-        </li>
+        {qualities.map((quality, index) => (
+          <li key={index} className={styles.BlockList__item}>
+            <Icon
+              name={quality.icon}
+              className={styles.BlockList__item__icon}
+            />
+            <div className={styles.BlockList__item__textWrapper}>
+              <p className={styles.BlockList__item__title}>{quality.title}</p>
+              <p className={styles.BlockList__item__description}>
+                {quality.description}
+              </p>
+            </div>
+          </li>
+        ))}
       </ul>
     </section>
   );

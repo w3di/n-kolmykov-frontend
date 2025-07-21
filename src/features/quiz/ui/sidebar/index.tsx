@@ -10,17 +10,17 @@ import {
   useQuizNavigation,
   useQuestionTypesContext,
 } from "../../model/quiz-context";
+import clsx from "clsx";
+import Link from "next/link";
 
 export default function Sidebar() {
   const { quizData } = useQuizData();
   const { currentStepIndex, setCurrentStepIndex } = useQuizNavigation();
   const { questionTypes, toggleQuestionType } = useQuestionTypesContext();
 
-  const activeTypesCount = questionTypes.filter((type) => type.active).length;
-
   return (
     <aside className={styles.sidebar}>
-      <header className={styles.sidebar__header}>
+      <Link href="/" className={styles.sidebar__header}>
         <Image
           src="/images/myLogo.png"
           alt="Autor logo"
@@ -28,21 +28,32 @@ export default function Sidebar() {
           height={24}
         />
         <Icon name="nKolmykov" className={styles.sidebar__header__logoIcon} />
-      </header>
+      </Link>
+      <div className={styles.sidebar__accordionsContainer}>
+        <div
+          className={clsx(
+            styles.sidebar__typesContainer,
+            styles[`sidebar__typesContainer--types`]
+          )}
+        >
+          <QuestionTypesAccordion
+            questionTypes={questionTypes}
+            onToggleQuestionType={toggleQuestionType}
+          />
+        </div>
 
-      <div className={styles.sidebar__typesContainer}>
-        <QuestionTypesAccordion
-          questionTypes={questionTypes}
-          onToggleQuestionType={toggleQuestionType}
-        />
-      </div>
-
-      <div className={styles.sidebar__typesContainer}>
-        <QuestionHistoryAccordion
-          questionData={quizData}
-          currentStep={currentStepIndex}
-          onQuestionClick={setCurrentStepIndex}
-        />
+        <div
+          className={clsx(
+            styles.sidebar__typesContainer,
+            styles[`sidebar__typesContainer--history`]
+          )}
+        >
+          <QuestionHistoryAccordion
+            questionData={quizData}
+            currentStep={currentStepIndex}
+            onQuestionClick={setCurrentStepIndex}
+          />
+        </div>
       </div>
     </aside>
   );

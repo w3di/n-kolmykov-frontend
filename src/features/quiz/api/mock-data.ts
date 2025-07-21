@@ -16,6 +16,8 @@ export const mockQuestionTypeFilters: QuestionTypeFilter[] = [
   { id: "nextjs", name: "Next.js", active: false },
   { id: "reactnative", name: "React Native", active: false },
   { id: "expo", name: "Expo SDK", active: false },
+  { id: "all", name: "All", active: false },
+  { id: "disabled", name: "Disabled", active: true },
 ];
 
 export const mockQuestionTypes: QuestionType[] = [
