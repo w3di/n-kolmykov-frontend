@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# nKolmykov Lore
 
-## Getting Started
+> Open-source проект для подготовки к техническим собеседованиям по фронтенду и не только.
 
-First, run the development server:
+## О проекте
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**nKolmykov Lore** — это коллекция актуальных вопросов, развернутых ответов и практических заданий по современным веб-технологиям. Проект создан для помощи разработчикам в подготовке к собеседованиям, а также для систематизации знаний.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Основные разделы
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Главная страница** — приветствие, статистика, быстрый доступ к квизу, анонсы новых тем и улучшений, примеры заданий.
+- **Обо мне** — информация об авторе, навыках, технологическом стеке и контактах.
+- **Квиз** — интерактивный раздел с вопросами по JavaScript, TypeScript, CSS, HTML, React, Next.js и другим технологиям. Вопросы сгруппированы по темам, есть история ответов и фильтрация.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Структура проекта
 
-## Learn More
+- `app/` — страницы приложения (Next.js App Router)
+- `src/shared/ui/sections/` — секции для главной и других страниц (Hero, Stats, Quiz, Pull, CodeExamples, AboutMe, MySkills, MyStack, ContactMe и др.)
+- `src/features/quiz/` — вся логика и UI квиза: вопросы, фильтры, состояние, навигация, статистика, мок-данные
+- `public/` — стили, шрифты, изображения, SVG-иконки
 
-To learn more about Next.js, take a look at the following resources:
+## Технологии
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Next.js 15** (App Router)
+- **React 19**
+- **TypeScript**
+- **SCSS** (модули, структура по секциям)
+- **React Toastify** (уведомления)
+- **Custom Icons** (SVG)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Быстрый старт
 
-## Deploy on Vercel
+1. Установите зависимости:
+   ```bash
+   npm install
+   ```
+2. Запустите проект в режиме разработки:
+   ```bash
+   npm run dev
+   ```
+3. Откройте [http://localhost:3000](http://localhost:3000)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Скрипты
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `npm run dev` — запуск в режиме разработки
+- `npm run build` — сборка приложения
+- `npm run start` — запуск production-сборки
+- `npm run lint` — проверка кода линтером
+- `npm run stylelint` — проверка стилей
+- `npm run icons` — генерация иконок
+
+## Контакты
+
+- Telegram: [@closer2death](https://t.me/closer2death)
+- LinkedIn: [Nikolay Kolmykov](https://www.linkedin.com/in/nikolay-kolmykov-26b877279/)
+- GitHub: [w3di](https://github.com/w3di)
+- Email: koliakolmikov@gmail.com
+
+---
+
+Проект развивается и открыт для ваших идей и pull request'ов!
+
+## TODO / Планы развития
+
+- [ ] **Backend** — реализовать серверную часть для хранения и управления вопросами, пользователями и результатами.
+- [ ] **Больше вопросов** — расширить базу вопросов по разным темам.
+- [ ] **Генерация новых вопросов с помощью AI** — добавить возможность создавать вопросы автоматически с помощью искусственного интеллекта.
+- [ ] **Личный кабинет** — реализовать профиль пользователя с историей прохождения квизов и настройками.
+- [ ] **Перевод на английский** — сделать проект доступным на английском языке.
+- [ ] **Анимированная сетка на главном экране** — добавить красивую анимацию сетки для улучшения визуала.
+- [ ] **Смена картинок с кодом на главной** — обновить изображения с примерами кода для разных устройств.
+- [ ] **Красивые hover-анимации в about-me** — добавить современные анимации при наведении на блоки в разделе обо мне.
+- [ ] **Разделы с теорией (база знаний)** — реализовать отдельные страницы с теоретическими материалами и статьями для углубленного изучения тем.
+- [ ] **Добавить задачки** — внедрить интерактивные или письменные задачи для самостоятельной практики.
+- [ ] **Блок с книгами** — создать подборку рекомендуемой литературы для изучения и развития.
