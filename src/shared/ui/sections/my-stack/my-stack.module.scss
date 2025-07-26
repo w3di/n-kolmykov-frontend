@@ -104,6 +104,12 @@
   border-right: 1px solid a.$gray-1;
   border-bottom: 1px solid a.$gray-1;
 
+  &:hover {
+    .item__icon {
+      filter: grayscale(0%);
+    }
+  }
+
   &:nth-last-child(-n + 3) {
     background-color: transparent;
   }
@@ -135,6 +141,10 @@
   &__icon {
     width: 36px;
     height: 36px;
+
+    transition: filter 0.5s ease-in-out;
+
+    filter: grayscale(100%);
 
     @include a.tablet {
       width: 48px;
