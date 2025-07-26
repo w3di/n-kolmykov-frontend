@@ -4,13 +4,17 @@ import styles from "./hi-its-me.module.scss";
 export default function HiItsMe() {
   return (
     <section className={styles.hiItsMe}>
-      <Image
-        src="/images/myLogo.png"
-        alt="myLogo"
-        width={64}
-        height={64}
-        className={styles.meImage}
-      />
+      <div className={styles.meImage}>
+        <Image
+          src="/images/my-photo.jpeg"
+          alt="myLogo"
+          priority
+          quality={100}
+          fill
+          objectFit="cover"
+          objectPosition="center"
+        />
+      </div>
       <Image
         src="/svg/ariana_cursor.svg"
         alt="myLogo"
