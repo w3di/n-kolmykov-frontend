@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef } from "react";
 import Lottie, { LottieRefCurrentProps } from "lottie-react";
-import clsx from "clsx";
 
 interface LottieAnimationProps {
   animationUrl: string;
@@ -19,7 +18,7 @@ export default function LottieAnimation({
   style,
   autoplay = true,
 }: LottieAnimationProps) {
-  const [animationData, setAnimationData] = useState<any>(null);
+  const [animationData, setAnimationData] = useState<object | null>(null);
   const lottieRef = useRef<LottieRefCurrentProps>(null);
 
   useEffect(() => {
