@@ -1,4 +1,13 @@
-// src/styles/base/_base.scss
+:root {
+  --toastify-toast-padding: 0;
+  --toastify-toast-min-height: none;
+  --toastify-toast-margin: 0;
+  --toastify-toast-width: auto;
+
+  --toastify-toast-border-radius: 0;
+  --toastify-toast-box-shadow: none;
+  --toastify-toast-color: none;
+}
 
 // Устанавливаем базовые интерактивные стили для ссылок и кнопок
 a,

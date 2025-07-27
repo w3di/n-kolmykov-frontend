@@ -1,0 +1,53 @@
+.toast {
+  display: flex;
+  align-items: center;
+
+  width: 298px;
+  min-height: 36px;
+
+  padding: 8.5px 6px;
+
+  background: #242424;
+
+  border-radius: 6px;
+
+  &__icon {
+    flex-shrink: 0;
+
+    width: 16px;
+    height: 16px;
+
+    margin-right: 8px;
+  }
+
+  &__text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    color: #ffffff;
+  }
+
+  &__separator {
+    display: block;
+    flex-shrink: 0;
+    align-self: stretch;
+
+    width: 1px;
+    height: auto;
+
+    background: #ffffff;
+
+    opacity: 0.2;
+  }
+
+  &__closeButton {
+    display: flex;
+
+    padding: 6px 8px;
+
+    &__icon {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}

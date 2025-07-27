@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { mockQuestionTypeFilters, QuestionTypeFilter } from "../api";
 import { toast } from "react-toastify";
+import { Toast } from "@/src/shared/ui/kit";
 
 const LOCALSTORAGE_KEY = "quiz-active-question-types";
 
@@ -61,7 +62,20 @@ export const useQuestionTypes = () => {
         const activeCount = prev.filter((type) => type.active).length;
         if (activeCount <= 1) {
           setTimeout(() => {
-            toast.warning("Нельзя отключить все типы вопросов!");
+            toast(
+              (props) => (
+                <Toast
+                  text="Нельзя отключить все типы вопросов!"
+                  state="warning"
+                  {...props}
+                />
+              ),
+              {
+                onClose: (reason) => {
+                  console.log("Toast закрыт с причиной:", reason);
+                },
+              }
+            );
           }, 0);
           return prev;
         }

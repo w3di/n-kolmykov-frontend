@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "../public/styles/main.scss";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const involve = localFont({
   src: [
@@ -79,17 +78,17 @@ export default function RootLayout({
     <html lang="en" className={involve.variable}>
       <body>
         {children}
+
         <ToastContainer
           position="top-right"
           autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop={false}
+          closeButton={false}
+          hideProgressBar={true}
           closeOnClick
           rtl={false}
           pauseOnFocusLoss
           draggable
-          pauseOnHover
-          theme="dark"
+          limit={3}
         />
       </body>
     </html>

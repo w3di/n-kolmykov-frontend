@@ -5,3 +5,4 @@ export { default as Icon } from "./icon";
 export { default as SocialList } from "./socials-list";
 export { default as Accordion } from "./accordion";
 export { default as LottieAnimation } from "./lottie-animation";
+export { default as Toast } from "./toast";

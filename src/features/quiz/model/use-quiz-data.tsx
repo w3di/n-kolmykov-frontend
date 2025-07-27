@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { mockQuestionTypes, QuestionTypeFilter } from "../api";
 import { QuestionType } from "../qustionsType";
 import { toast } from "react-toastify";
+import { Toast } from "@/src/shared/ui/kit";
 
 export const useQuizData = (
   activeQuestionTypes: QuestionTypeFilter[],
@@ -65,9 +66,13 @@ export const useQuizData = (
           setQuizData((prev) => [...prev, nextQuestion]);
           nextStep();
         } else {
-          toast.info(
-            "Вопросы для выбранных типов закончились! Выберите больше типов вопросов."
-          );
+          toast((props) => (
+            <Toast
+              text="Вопросы для выбранных типов закончились! Выберите больше типов вопросов."
+              state="info"
+              {...props}
+            />
+          ));
         }
       } else {
         nextStep();
