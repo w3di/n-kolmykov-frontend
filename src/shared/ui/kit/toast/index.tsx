@@ -1,5 +1,5 @@
 import React from "react";
-import { ToastContentProps, toast } from "react-toastify";
+import { ToastContentProps } from "react-toastify";
 
 import styles from "./toast.module.scss";
 import Icon from "../icon";

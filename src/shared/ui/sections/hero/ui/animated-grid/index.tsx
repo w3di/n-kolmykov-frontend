@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useRef, useEffect, useState, useMemo } from "react";
+import React, {
+  useRef,
+  useEffect,
+  useState,
+  useMemo,
+  useCallback,
+} from "react";
 import styles from "./anumated-grid.module.scss";
 
 interface AnimatedGridProps {
@@ -16,6 +22,62 @@ interface Point {
   velocityY: number;
 }
 
+const ICONS_NAMES = [
+  "spore",
+  "hash",
+  "git-commit",
+  "git-branch",
+  "flow-arrow",
+  "fingerprint",
+  "code-simple",
+  "code-block",
+  "binary",
+  "bezier-curve",
+] as const;
+
+const DEFAULT_NOT_ALLOW_CELLS = [
+  { x: 1, y: 1 },
+  { x: 2, y: 1 },
+  { x: 3, y: 1 },
+  { x: 4, y: 1 },
+  { x: 5, y: 1 },
+  { x: 6, y: 1 },
+  { x: 7, y: 1 },
+  { x: 8, y: 1 },
+  { x: 9, y: 1 },
+  { x: 10, y: 1 },
+  { x: 1, y: 2 },
+  { x: 2, y: 2 },
+  { x: 3, y: 2 },
+  { x: 4, y: 2 },
+  { x: 5, y: 2 },
+  { x: 6, y: 2 },
+  { x: 7, y: 2 },
+  { x: 8, y: 2 },
+  { x: 9, y: 2 },
+  { x: 10, y: 2 },
+  { x: 1, y: 3 },
+  { x: 2, y: 3 },
+  { x: 3, y: 3 },
+  { x: 4, y: 3 },
+  { x: 5, y: 3 },
+  { x: 6, y: 3 },
+  { x: 7, y: 3 },
+  { x: 8, y: 3 },
+  { x: 9, y: 3 },
+  { x: 10, y: 3 },
+  { x: 1, y: 4 },
+  { x: 2, y: 4 },
+  { x: 3, y: 4 },
+  { x: 4, y: 4 },
+  { x: 5, y: 4 },
+  { x: 6, y: 4 },
+  { x: 7, y: 4 },
+  { x: 8, y: 4 },
+  { x: 9, y: 4 },
+  { x: 10, y: 4 },
+];
+
 export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mousePosRef = useRef<Point>({
@@ -30,63 +92,7 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
   const [containerStyle, setContainerStyle] = useState<React.CSSProperties>({});
   const iconsCache = useRef<Map<string, HTMLImageElement>>(new Map());
 
-  const iconsNames = [
-    "spore",
-    "hash",
-    "git-commit",
-    "git-branch",
-    "flow-arrow",
-    "fingerprint",
-    "code-simple",
-    "code-block",
-    "binary",
-    "bezier-curve",
-  ] as const;
-
-  const defaultNotAllowCells = [
-    { x: 1, y: 1 },
-    { x: 2, y: 1 },
-    { x: 3, y: 1 },
-    { x: 4, y: 1 },
-    { x: 5, y: 1 },
-    { x: 6, y: 1 },
-    { x: 7, y: 1 },
-    { x: 8, y: 1 },
-    { x: 9, y: 1 },
-    { x: 10, y: 1 },
-    { x: 1, y: 2 },
-    { x: 2, y: 2 },
-    { x: 3, y: 2 },
-    { x: 4, y: 2 },
-    { x: 5, y: 2 },
-    { x: 6, y: 2 },
-    { x: 7, y: 2 },
-    { x: 8, y: 2 },
-    { x: 9, y: 2 },
-    { x: 10, y: 2 },
-    { x: 1, y: 3 },
-    { x: 2, y: 3 },
-    { x: 3, y: 3 },
-    { x: 4, y: 3 },
-    { x: 5, y: 3 },
-    { x: 6, y: 3 },
-    { x: 7, y: 3 },
-    { x: 8, y: 3 },
-    { x: 9, y: 3 },
-    { x: 10, y: 3 },
-    { x: 1, y: 4 },
-    { x: 2, y: 4 },
-    { x: 3, y: 4 },
-    { x: 4, y: 4 },
-    { x: 5, y: 4 },
-    { x: 6, y: 4 },
-    { x: 7, y: 4 },
-    { x: 8, y: 4 },
-    { x: 9, y: 4 },
-    { x: 10, y: 4 },
-  ];
-
-  const generateRandomCells = () => {
+  const generateRandomCells = useCallback(() => {
     const allCells = [];
     const gridWidth = 12;
     const gridHeight = 8;
@@ -99,28 +105,28 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
 
     const availableCells = allCells.filter(
       (cell) =>
-        !defaultNotAllowCells.some(
+        !DEFAULT_NOT_ALLOW_CELLS.some(
           (notAllow) => notAllow.x === cell.x && notAllow.y === cell.y
         )
     );
 
     const shuffledCells = availableCells.sort(() => Math.random() - 0.5);
 
-    const cellsForIcons = shuffledCells.slice(0, iconsNames.length);
+    const cellsForIcons = shuffledCells.slice(0, ICONS_NAMES.length);
 
     return cellsForIcons.map((cell, index) => ({
       x: cell.x,
       y: cell.y,
-      iconName: iconsNames[index],
+      iconName: ICONS_NAMES[index],
     }));
-  };
+  }, []);
 
   const cells = useMemo(() => {
     return generateRandomCells();
-  }, []);
+  }, [generateRandomCells]);
 
   const notAllowCells = useMemo(() => {
-    return defaultNotAllowCells;
+    return DEFAULT_NOT_ALLOW_CELLS;
   }, []);
 
   useEffect(() => {
@@ -470,7 +476,7 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, []);
+  }, [cells, notAllowCells]);
 
   return (
     <div className={styles.animatedGrid} style={containerStyle}>
