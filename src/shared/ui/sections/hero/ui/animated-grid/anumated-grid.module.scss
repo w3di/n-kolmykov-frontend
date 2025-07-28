@@ -1,0 +1,30 @@
+@use "abstracts" as a;
+
+.animatedGrid {
+  position: relative;
+
+  width: 730.16px;
+  height: 426.76px;
+
+  @include a.tablet {
+    width: 705.2px;
+    height: 470.8px;
+  }
+
+  @include a.laptop {
+    width: 944.59px;
+    height: 630.4px;
+  }
+
+  @include a.desktop-xl {
+    width: 1079.95px;
+    height: 720.63px;
+  }
+}
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}

@@ -5,119 +5,41 @@
 }
 
 .contentWrapper {
+  position: absolute;
+  top: 64px;
+  right: 64px;
+  bottom: 62px * 2;
+  left: 64px;
+
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 12px;
 
-  height: 386.34px;
-
-  padding-top: 74.5px;
-
   @include a.tablet {
-    height: 445px;
+    top: 62px;
+    right: 62px;
+    bottom: 59px * 3;
+    left: 62px;
   }
 
   @include a.laptop {
+    top: 82px;
+    right: 82px;
+    bottom: 80px * 3;
+    left: 82px;
+
     gap: 14px;
-
-    height: 550px;
-
-    padding-top: 94.4px;
   }
 
   @include a.desktop-xl {
+    top: 94px;
+    right: 94px;
+    bottom: 91px * 3;
+    left: 94px;
+
     gap: 16px;
-
-    height: 719px;
-
-    padding-top: 138px;
-  }
-}
-
-.background {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  z-index: -1;
-
-  background-size: contain;
-  background-position: top center;
-  background-repeat: no-repeat;
-
-  pointer-events: none;
-
-  transform: translateX(-50%);
-
-  @include a.only-mobile {
-    width: 720px;
-    height: 386.34px;
-
-    background-image: url("/svg/bg_360.svg");
-  }
-
-  @include a.only-tablet {
-    width: 704px;
-    height: 445.5px;
-
-    background-image: url("/svg/bg_768.svg");
-  }
-
-  @include a.only-laptop {
-    width: 944px;
-    height: 550px;
-
-    background-image: url("/svg/bg_1024.svg");
-  }
-
-  @include a.only-desktop {
-    width: 944px;
-    height: 550px;
-
-    background-image: url("/svg/bg_1024.svg");
-  }
-
-  @include a.desktop-xl {
-    width: 1080px;
-    height: 719px;
-
-    background-image: url("/svg/bg_1920.svg");
-  }
-
-  &__cross {
-    position: absolute;
-    top: -10px;
-    left: -10px;
-    z-index: 2;
-
-    width: 21px;
-    height: 21px;
-
-    @include a.only-mobile {
-      display: none;
-    }
-
-    &:after {
-      display: absolute;
-
-      width: 21px;
-      height: 1px;
-
-      background-color: a.$black-4;
-
-      content: "";
-    }
-
-    &:before {
-      position: absolute;
-
-      width: 1px;
-      height: 21px;
-
-      background-color: a.$black-4;
-
-      content: "";
-    }
   }
 }
 
@@ -222,6 +144,23 @@
         width: 16px;
         height: 16px;
       }
+    }
+  }
+}
+
+.iconCell {
+  &__icon {
+    width: 16px;
+    height: 16px;
+
+    @include a.laptop {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include a.desktop-xl {
+      width: 24px;
+      height: 24px;
     }
   }
 }
