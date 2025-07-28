@@ -1,7 +1,7 @@
-import { useQuestionTypes } from "./use-question-types";
-import { useQuizStats } from "./use-quiz-stats";
-import { useQuizNavigation } from "./use-quiz-navigation";
-import { useQuizData } from "./use-quiz-data";
+import { useQuestionTypes } from './use-question-types';
+import { useQuizStats } from './use-quiz-stats';
+import { useQuizNavigation } from './use-quiz-navigation';
+import { useQuizData } from './use-quiz-data';
 
 /**
  * Главный хук для управления состоянием квиза
@@ -27,6 +27,6 @@ export const useQuizState = () => {
     questionTypes: questionTypesState.questionTypes,
     toggleQuestionType: questionTypesState.toggleQuestionType,
     // Навигация
-    ...navigationState,
+    ...navigationState
   };
 };

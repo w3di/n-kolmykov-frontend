@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import styles from "./sidebar.module.scss";
-import Image from "next/image";
+import styles from './sidebar.module.scss';
+import Image from 'next/image';
 
-import { QuestionHistoryAccordion, QuestionTypesAccordion } from "./ui";
-import { Icon } from "@/src/shared/ui/kit";
+import { QuestionHistoryAccordion, QuestionTypesAccordion } from './ui';
+import { Icon } from '@/src/shared/ui/kit';
 import {
   useQuizData,
   useQuizNavigation,
-  useQuestionTypesContext,
-} from "../../model/quiz-context";
-import clsx from "clsx";
-import Link from "next/link";
+  useQuestionTypesContext
+} from '../../model/quiz-context';
+import clsx from 'clsx';
+import Link from 'next/link';
 
 export default function Sidebar() {
   const { quizData } = useQuizData();
@@ -20,14 +20,14 @@ export default function Sidebar() {
 
   return (
     <aside className={styles.sidebar}>
-      <Link href="/" className={styles.sidebar__header}>
+      <Link href='/' className={styles.sidebar__header}>
         <Image
-          src="/images/myLogo.png"
-          alt="Autor logo"
+          src='/images/myLogo.png'
+          alt='Autor logo'
           width={15}
           height={24}
         />
-        <Icon name="nKolmykov" className={styles.sidebar__header__logoIcon} />
+        <Icon name='nKolmykov' className={styles.sidebar__header__logoIcon} />
       </Link>
       <div className={styles.sidebar__accordionsContainer}>
         <div

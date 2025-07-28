@@ -1,29 +1,29 @@
-import { CollectionBlock, Icon } from "@/src/shared/ui/kit";
-import styles from "./about-me.module.scss";
+import { CollectionBlock, Icon } from '@/src/shared/ui/kit';
+import styles from './about-me.module.scss';
 
 export default function AboutMe() {
   const qualities = [
     {
-      icon: "boundingBox" as const,
-      title: "Легкость",
-      description: "Изучаю новый материал и постоянно учусь",
+      icon: 'boundingBox' as const,
+      title: 'Легкость',
+      description: 'Изучаю новый материал и постоянно учусь'
     },
     {
-      icon: "globeSimple" as const,
-      title: "Универсальность",
-      description: "Готов брать на себя полный цикл разработки",
+      icon: 'globeSimple' as const,
+      title: 'Универсальность',
+      description: 'Готов брать на себя полный цикл разработки'
     },
     {
-      icon: "graph" as const,
-      title: "Ответственность",
-      description: "Гарантирую исполнение любого проекта в срок",
-    },
+      icon: 'graph' as const,
+      title: 'Ответственность',
+      description: 'Гарантирую исполнение любого проекта в срок'
+    }
   ];
 
   return (
     <section className={styles.aboutMe}>
       <div className={styles.BlockInfo}>
-        <CollectionBlock icon="smiley" label="Обо мне" />
+        <CollectionBlock icon='smiley' label='Обо мне' />
         <p className={styles.BlockInfo__description}>
           Frontend разработчик с опытом работы 3 года, в течение которых я
           создавал сайты и мобильные приложения. Люблю оптимизировать

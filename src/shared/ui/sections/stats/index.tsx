@@ -1,22 +1,22 @@
-import { Icon } from "@/src/shared/ui/kit";
-import styles from "./stats.module.scss";
+import { Icon } from '@/src/shared/ui/kit';
+import styles from './stats.module.scss';
 
 const stats = [
   {
-    icon: "listBullets" as const,
-    text: "вопросов",
-    count: "100+",
+    icon: 'listBullets' as const,
+    text: 'вопросов',
+    count: '100+'
   },
   {
-    icon: "network" as const,
-    text: "тем",
-    count: "20+",
+    icon: 'network' as const,
+    text: 'тем',
+    count: '20+'
   },
   {
-    icon: "clockCountdown" as const,
-    text: "часов изучения",
-    count: "500+",
-  },
+    icon: 'clockCountdown' as const,
+    text: 'часов изучения',
+    count: '500+'
+  }
 ];
 
 export default function Stats() {

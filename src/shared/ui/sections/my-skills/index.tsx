@@ -1,41 +1,41 @@
-import { Icon } from "@/src/shared/ui/kit";
-import styles from "./my-skills.module.scss";
-import clsx from "clsx";
-import { Squares } from "./ui";
+import { Icon } from '@/src/shared/ui/kit';
+import styles from './my-skills.module.scss';
+import clsx from 'clsx';
+import { Squares } from './ui';
 
 const skillsData = [
   {
     id: 1,
-    icon: "pcBlack",
-    colorVariant: "white",
-    text: "Разработка высоконагруженных веб-интерфейсов",
-    borderColor: "rgba(226, 226, 226, 1)",
-    hoverFillColor: "rgba(240, 240, 240, 1)",
+    icon: 'pcBlack',
+    colorVariant: 'white',
+    text: 'Разработка высоконагруженных веб-интерфейсов',
+    borderColor: 'rgba(226, 226, 226, 1)',
+    hoverFillColor: 'rgba(240, 240, 240, 1)'
   },
   {
     id: 2,
-    icon: "pcOrange",
-    colorVariant: "orange",
-    text: "Создание архитектуры и оптимизации",
-    borderColor: "rgba(255, 232, 224, 1)",
-    hoverFillColor: "rgba(255, 232, 224, 1)",
+    icon: 'pcOrange',
+    colorVariant: 'orange',
+    text: 'Создание архитектуры и оптимизации',
+    borderColor: 'rgba(255, 232, 224, 1)',
+    hoverFillColor: 'rgba(255, 232, 224, 1)'
   },
   {
     id: 3,
-    icon: "phoneBlue",
-    colorVariant: "blue",
-    text: "Разработка мобильных приложений",
-    borderColor: "rgba(217, 241, 249, 1)",
-    hoverFillColor: "rgba(217, 241, 249, 1)",
+    icon: 'phoneBlue',
+    colorVariant: 'blue',
+    text: 'Разработка мобильных приложений',
+    borderColor: 'rgba(217, 241, 249, 1)',
+    hoverFillColor: 'rgba(217, 241, 249, 1)'
   },
   {
     id: 4,
-    icon: "tagGreen",
-    colorVariant: "green",
-    text: "Разработка CI/DC пайплайнов",
-    borderColor: "rgba(215, 249, 235, 1)",
-    hoverFillColor: "rgba(215, 249, 235, 1)",
-  },
+    icon: 'tagGreen',
+    colorVariant: 'green',
+    text: 'Разработка CI/DC пайплайнов',
+    borderColor: 'rgba(215, 249, 235, 1)',
+    hoverFillColor: 'rgba(215, 249, 235, 1)'
+  }
 ] as const;
 
 export default function MySkills() {
@@ -62,10 +62,10 @@ export default function MySkills() {
               <Squares
                 speed={0.1}
                 squareSize={40}
-                direction="diagonal"
+                direction='diagonal'
                 borderColor={skill.borderColor}
                 hoverFillColor={skill.hoverFillColor}
-                borderStyle="dashed"
+                borderStyle='dashed'
                 dashPattern={[8, 4]}
                 className={clsx(
                   styles.squaresList__item__background,

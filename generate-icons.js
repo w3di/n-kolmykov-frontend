@@ -1,8 +1,8 @@
-const fs = require("fs");
-const path = require("path");
+const fs = require('fs');
+const path = require('path');
 
-const ICONS_DIR = path.join(__dirname, "/public/svg/icons");
-const OUTPUT_FILE = path.join(__dirname, "/src/shared/ui/kit/icon/index.tsx");
+const ICONS_DIR = path.join(__dirname, '/public/svg/icons');
+const OUTPUT_FILE = path.join(__dirname, '/src/shared/ui/kit/icon/index.tsx');
 
 const OUTPUT_DIR = path.dirname(OUTPUT_FILE);
 
@@ -15,12 +15,12 @@ function toCamelCase(str) {
 // Функция для преобразования в kebab-case
 function toKebabCase(str) {
   return str
-    .replace(/([a-z])([A-Z])/g, "$1-$2") // camelCase -> kebab-case
-    .replace(/[\s_]+/g, "-") // пробелы и underscores -> дефисы
-    .replace(/[^a-zA-Z0-9-]/g, "") // удаляем специальные символы
+    .replace(/([a-z])([A-Z])/g, '$1-$2') // camelCase -> kebab-case
+    .replace(/[\s_]+/g, '-') // пробелы и underscores -> дефисы
+    .replace(/[^a-zA-Z0-9-]/g, '') // удаляем специальные символы
     .toLowerCase()
-    .replace(/-+/g, "-") // множественные дефисы -> один дефис
-    .replace(/^-|-$/g, ""); // убираем дефисы в начале и конце
+    .replace(/-+/g, '-') // множественные дефисы -> один дефис
+    .replace(/^-|-$/g, ''); // убираем дефисы в начале и конце
 }
 
 // Функция для переименования файлов в kebab-case
@@ -28,19 +28,19 @@ function renameIconsToKebabCase() {
   try {
     const files = fs
       .readdirSync(ICONS_DIR)
-      .filter((file) => file.endsWith(".svg"));
+      .filter((file) => file.endsWith('.svg'));
 
     if (files.length === 0) {
-      console.log("❌ SVG файлы не найдены в папке:", ICONS_DIR);
+      console.log('❌ SVG файлы не найдены в папке:', ICONS_DIR);
       return;
     }
 
-    console.log("🔄 Переименование файлов в kebab-case...");
+    console.log('🔄 Переименование файлов в kebab-case...');
 
     let renamedCount = 0;
 
     files.forEach((file) => {
-      const fileName = path.basename(file, ".svg");
+      const fileName = path.basename(file, '.svg');
       const kebabName = toKebabCase(fileName);
 
       if (fileName !== kebabName) {
@@ -62,20 +62,20 @@ function renameIconsToKebabCase() {
     });
 
     if (renamedCount === 0) {
-      console.log("✅ Все файлы уже в kebab-case формате");
+      console.log('✅ Все файлы уже в kebab-case формате');
     } else {
       console.log(`✅ Переименовано ${renamedCount} файлов`);
     }
-    console.log("");
+    console.log('');
   } catch (error) {
-    console.error("❌ Ошибка при переименовании файлов:", error.message);
+    console.error('❌ Ошибка при переименовании файлов:', error.message);
     throw error;
   }
 }
 
 function extractSvgContent(svgContent) {
   const match = svgContent.match(/<svg[^>]*>([\s\S]*?)<\/svg>/i);
-  if (!match) return "";
+  if (!match) return '';
 
   let content = match[1].trim();
 
@@ -85,7 +85,7 @@ function extractSvgContent(svgContent) {
 // Функция для извлечения viewBox из SVG
 function extractViewBox(svgContent) {
   const match = svgContent.match(/viewBox="([^"]*)"/i);
-  return match ? match[1] : "0 0 24 24";
+  return match ? match[1] : '0 0 24 24';
 }
 
 // Функция для извлечения width из SVG
@@ -114,10 +114,10 @@ function generateIconComponent() {
     // Читаем все SVG файлы
     const files = fs
       .readdirSync(ICONS_DIR)
-      .filter((file) => file.endsWith(".svg"));
+      .filter((file) => file.endsWith('.svg'));
 
     if (files.length === 0) {
-      console.log("❌ SVG файлы не найдены в папке:", ICONS_DIR);
+      console.log('❌ SVG файлы не найдены в папке:', ICONS_DIR);
       return;
     }
 
@@ -129,9 +129,9 @@ function generateIconComponent() {
     const iconObjects = [];
 
     files.forEach((file) => {
-      const fileName = path.basename(file, ".svg");
+      const fileName = path.basename(file, '.svg');
       const kebabName = toCamelCase(fileName);
-      const svgContent = fs.readFileSync(path.join(ICONS_DIR, file), "utf8");
+      const svgContent = fs.readFileSync(path.join(ICONS_DIR, file), 'utf8');
 
       const content = extractSvgContent(svgContent);
       const viewBox = extractViewBox(svgContent);
@@ -151,10 +151,10 @@ function generateIconComponent() {
     content: (
       <>
         ${content
-          .split("\n")
+          .split('\n')
           .map((line) => line.trim())
           .filter(Boolean)
-          .join("\n        ")}
+          .join('\n        ')}
       </>
     ),
   }`);
@@ -164,13 +164,13 @@ function generateIconComponent() {
     const componentContent = `import { SVGProps } from 'react'
 
 interface IconProps extends SVGProps<SVGSVGElement> {
-  name: ${iconNames.join(" | ")}
+  name: ${iconNames.join(' | ')}
   width?: number
   height?: number
 }
 
 const icons = {
-${iconObjects.join(",\n")}
+${iconObjects.join(',\n')}
 } as const
 
 export default function Icon({ name, width, height, className, ...props }: IconProps) {
@@ -198,23 +198,23 @@ export default function Icon({ name, width, height, className, ...props }: IconP
 }
 
 // Экспорт всех доступных имен иконок для удобства
-export const iconNames = [${iconNames.join(", ")}] as const
+export const iconNames = [${iconNames.join(', ')}] as const
 export type IconName = typeof iconNames[number]
 `;
 
     // Записываем файл
-    fs.writeFileSync(OUTPUT_FILE, componentContent, "utf8");
+    fs.writeFileSync(OUTPUT_FILE, componentContent, 'utf8');
 
-    console.log("✅ Компонент Icon успешно сгенерирован!");
+    console.log('✅ Компонент Icon успешно сгенерирован!');
     console.log(`📁 Файл: ${OUTPUT_FILE}`);
-    console.log(`🎨 Доступные иконки: ${iconNames.join(", ")}`);
-    console.log("");
-    console.log("📋 Пример использования:");
+    console.log(`🎨 Доступные иконки: ${iconNames.join(', ')}`);
+    console.log('');
+    console.log('📋 Пример использования:');
     console.log('  import Icon from "@/src/components/ui/Icon"');
     console.log('  <Icon name="book" width={20} height={20} />');
     console.log('  <Icon name="book" /> // использует оригинальные размеры');
   } catch (error) {
-    console.error("❌ Ошибка при генерации компонента:", error.message);
+    console.error('❌ Ошибка при генерации компонента:', error.message);
     process.exit(1);
   }
 }

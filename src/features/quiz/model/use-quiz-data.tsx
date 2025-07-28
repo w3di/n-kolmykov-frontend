@@ -1,14 +1,14 @@
-import { useState, useRef, useEffect, useCallback } from "react";
-import { mockQuestionTypes, QuestionTypeFilter } from "../api";
-import { QuestionType } from "../qustionsType";
-import { toast } from "react-toastify";
-import { Toast } from "@/src/shared/ui/kit";
+import { useState, useRef, useEffect, useCallback } from 'react';
+import { mockQuestionTypes, QuestionTypeFilter } from '../api';
+import { QuestionType } from '../qustionsType';
+import { toast } from 'react-toastify';
+import { Toast } from '@/src/shared/ui/kit';
 
 export const useQuizData = (
   activeQuestionTypes: QuestionTypeFilter[],
   updateStats: (
-    prev: "know" | "unknown" | undefined,
-    current: "know" | "unknown"
+    prev: 'know' | 'unknown' | undefined,
+    current: 'know' | 'unknown'
   ) => void,
   nextStep: () => void
 ) => {
@@ -47,7 +47,7 @@ export const useQuizData = (
   }, [activeQuestionTypes, getRandomFilteredQuestions]);
 
   const setQuestionAnswer = useCallback(
-    (id: number, answer: "know" | "unknown") => {
+    (id: number, answer: 'know' | 'unknown') => {
       setQuizData((prev) => {
         const newQuizData = [...prev];
         const previousAnswer = prev[id].typeAnswer;
@@ -68,8 +68,8 @@ export const useQuizData = (
         } else {
           toast((props) => (
             <Toast
-              text="Вопросы для выбранных типов закончились! Выберите больше типов вопросов."
-              state="info"
+              text='Вопросы для выбранных типов закончились! Выберите больше типов вопросов.'
+              state='info'
               {...props}
             />
           ));
@@ -83,6 +83,6 @@ export const useQuizData = (
 
   return {
     quizData,
-    setQuestionAnswer,
+    setQuestionAnswer
   };
 };

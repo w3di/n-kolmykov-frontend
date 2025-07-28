@@ -1,10 +1,10 @@
-import React from "react";
-import { ToastContentProps } from "react-toastify";
+import React from 'react';
+import { ToastContentProps } from 'react-toastify';
 
-import styles from "./toast.module.scss";
-import Icon from "../icon";
+import styles from './toast.module.scss';
+import Icon from '../icon';
 
-export type ToastState = "info" | "warning" | "success" | "error";
+export type ToastState = 'info' | 'warning' | 'success' | 'error';
 
 export interface ToastProps {
   state: ToastState;
@@ -26,10 +26,10 @@ const Toast = ({ text, state, closeToast }: ToastProps & ToastContentProps) => {
       <button
         className={styles.toast__closeButton}
         onClick={handleClose}
-        type="button"
-        aria-label="Закрыть уведомление"
+        type='button'
+        aria-label='Закрыть уведомление'
       >
-        <Icon name="closeCross" className={styles.toast__closeButton__icon} />
+        <Icon name='closeCross' className={styles.toast__closeButton__icon} />
       </button>
     </div>
   );

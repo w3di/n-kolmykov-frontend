@@ -8,7 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "stylelint": "stylelint \"**/*.{css,scss}\" --fix",
-    "icons": "node generate-icons.js"
+    "icons": "node generate-icons.js",
+    "prepare": "husky",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "format:fix": "prettier --write --ignore-unknown ."
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -25,6 +29,9 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "prettier": "3.6.2",
     "sass": "^1.89.2",
     "stylelint": "^16.21.0",
     "stylelint-order": "^7.0.0",

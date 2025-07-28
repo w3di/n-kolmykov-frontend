@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { useRef, useEffect } from "react";
-import styles from "./squares.module.scss";
-import clsx from "clsx";
+import { useRef, useEffect } from 'react';
+import styles from './squares.module.scss';
+import clsx from 'clsx';
 
 interface SquaresProps {
-  direction?: "right" | "left" | "up" | "down" | "diagonal";
+  direction?: 'right' | 'left' | 'up' | 'down' | 'diagonal';
   speed?: number;
   borderColor?: string;
   squareSize?: number;
   hoverFillColor?: string;
   className?: string;
-  borderStyle?: "solid" | "dashed";
+  borderStyle?: 'solid' | 'dashed';
   dashPattern?: number[];
 }
 
@@ -21,14 +21,14 @@ interface HoveredSquare {
 }
 
 const Squares = ({
-  direction = "right",
+  direction = 'right',
   speed = 1,
-  borderColor = "#999",
+  borderColor = '#999',
   squareSize = 40,
-  hoverFillColor = "#222",
-  className = "",
-  borderStyle = "solid",
-  dashPattern = [5, 5],
+  hoverFillColor = '#222',
+  className = '',
+  borderStyle = 'solid',
+  dashPattern = [5, 5]
 }: SquaresProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const requestRef = useRef<number | null>(null);
@@ -41,7 +41,7 @@ const Squares = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     const resizeCanvas = () => {
@@ -52,7 +52,7 @@ const Squares = ({
       numSquaresY.current = Math.ceil(canvas.height / squareSize) + 1;
     };
 
-    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
     const drawGrid = () => {
@@ -84,7 +84,7 @@ const Squares = ({
         }
       }
 
-      if (borderStyle === "dashed") {
+      if (borderStyle === 'dashed') {
         ctx.setLineDash(dashPattern);
       } else {
         ctx.setLineDash([]);
@@ -122,7 +122,7 @@ const Squares = ({
         canvas.height / 2,
         Math.sqrt(canvas.width ** 2 + canvas.height ** 2) / 2
       );
-      gradient.addColorStop(0, "rgba(0, 0, 0, 0)");
+      gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
 
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -131,23 +131,23 @@ const Squares = ({
     const updateAnimation = () => {
       const effectiveSpeed = Math.max(speed, 0.1);
       switch (direction) {
-        case "right":
+        case 'right':
           gridOffset.current.x =
             (gridOffset.current.x - effectiveSpeed + squareSize) % squareSize;
           break;
-        case "left":
+        case 'left':
           gridOffset.current.x =
             (gridOffset.current.x + effectiveSpeed + squareSize) % squareSize;
           break;
-        case "up":
+        case 'up':
           gridOffset.current.y =
             (gridOffset.current.y + effectiveSpeed + squareSize) % squareSize;
           break;
-        case "down":
+        case 'down':
           gridOffset.current.y =
             (gridOffset.current.y - effectiveSpeed + squareSize) % squareSize;
           break;
-        case "diagonal":
+        case 'diagonal':
           gridOffset.current.x =
             (gridOffset.current.x - effectiveSpeed + squareSize) % squareSize;
           gridOffset.current.y =
@@ -190,19 +190,19 @@ const Squares = ({
       hoveredSquare.current = null;
     };
 
-    canvas.addEventListener("mousemove", handleMouseMove);
-    canvas.addEventListener("mouseleave", handleMouseLeave);
+    canvas.addEventListener('mousemove', handleMouseMove);
+    canvas.addEventListener('mouseleave', handleMouseLeave);
 
     requestRef.current = requestAnimationFrame(updateAnimation);
 
     return () => {
-      window.removeEventListener("resize", resizeCanvas);
+      window.removeEventListener('resize', resizeCanvas);
       if (requestRef.current !== null) {
         cancelAnimationFrame(requestRef.current);
       }
       if (canvas) {
-        canvas.removeEventListener("mousemove", handleMouseMove);
-        canvas.removeEventListener("mouseleave", handleMouseLeave);
+        canvas.removeEventListener('mousemove', handleMouseMove);
+        canvas.removeEventListener('mouseleave', handleMouseLeave);
       }
     };
   }, [
@@ -212,7 +212,7 @@ const Squares = ({
     hoverFillColor,
     squareSize,
     borderStyle,
-    dashPattern,
+    dashPattern
   ]);
 
   return (

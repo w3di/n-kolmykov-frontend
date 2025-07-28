@@ -1,6 +1,6 @@
-import { Icon } from "..";
-import { IconName } from "../icon";
-import styles from "./tag.module.scss";
+import { Icon } from '..';
+import { IconName } from '../icon';
+import styles from './tag.module.scss';
 
 interface TagProps {
   count?: string;

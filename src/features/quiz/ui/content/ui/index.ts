@@ -1,1 +1,1 @@
-export { default as AnswerAccordion } from "./answer-accordion";
+export { default as AnswerAccordion } from './answer-accordion';

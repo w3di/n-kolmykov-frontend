@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback } from 'react';
 
 export const useQuizNavigation = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -15,6 +15,6 @@ export const useQuizNavigation = () => {
     currentStep,
     setCurrentStep,
     nextStep,
-    previousStep,
+    previousStep
   };
 };

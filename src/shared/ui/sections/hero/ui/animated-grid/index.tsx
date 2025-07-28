@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
 import React, {
   useRef,
   useEffect,
   useState,
   useMemo,
-  useCallback,
-} from "react";
-import styles from "./anumated-grid.module.scss";
+  useCallback
+} from 'react';
+import styles from './anumated-grid.module.scss';
 
 interface AnimatedGridProps {
   children?: React.ReactNode;
@@ -23,16 +23,16 @@ interface Point {
 }
 
 const ICONS_NAMES = [
-  "spore",
-  "hash",
-  "git-commit",
-  "git-branch",
-  "flow-arrow",
-  "fingerprint",
-  "code-simple",
-  "code-block",
-  "binary",
-  "bezier-curve",
+  'spore',
+  'hash',
+  'git-commit',
+  'git-branch',
+  'flow-arrow',
+  'fingerprint',
+  'code-simple',
+  'code-block',
+  'binary',
+  'bezier-curve'
 ] as const;
 
 const DEFAULT_NOT_ALLOW_CELLS = [
@@ -75,7 +75,7 @@ const DEFAULT_NOT_ALLOW_CELLS = [
   { x: 7, y: 4 },
   { x: 8, y: 4 },
   { x: 9, y: 4 },
-  { x: 10, y: 4 },
+  { x: 10, y: 4 }
 ];
 
 export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
@@ -86,7 +86,7 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
     originalX: -1000,
     originalY: -1000,
     velocityX: 0,
-    velocityY: 0,
+    velocityY: 0
   });
   const animationRef = useRef<number>(null);
   const [containerStyle, setContainerStyle] = useState<React.CSSProperties>({});
@@ -117,7 +117,7 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
     return cellsForIcons.map((cell, index) => ({
       x: cell.x,
       y: cell.y,
-      iconName: ICONS_NAMES[index],
+      iconName: ICONS_NAMES[index]
     }));
   }, []);
 
@@ -133,7 +133,7 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
     const getGridConfig = () => {
@@ -206,7 +206,7 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
       width: `${canvasWidth}px`,
       height: `${canvasHeight}px`,
       minWidth: `${canvasWidth}px`,
-      minHeight: `${canvasHeight}px`,
+      minHeight: `${canvasHeight}px`
     });
 
     const points: Point[][] = [];
@@ -219,7 +219,7 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
           originalX: x * squareSize + padding,
           originalY: y * squareSize + padding,
           velocityX: 0,
-          velocityY: 0,
+          velocityY: 0
         };
       }
     }
@@ -239,7 +239,7 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
         originalX: mouseX,
         originalY: mouseY,
         velocityX: 0,
-        velocityY: 0,
+        velocityY: 0
       };
     };
 
@@ -250,12 +250,12 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
         originalX: -1000,
         originalY: -1000,
         velocityX: 0,
-        velocityY: 0,
+        velocityY: 0
       };
     };
 
-    canvas.addEventListener("mousemove", handleMouseMove);
-    canvas.addEventListener("mouseleave", handleMouseLeave);
+    canvas.addEventListener('mousemove', handleMouseMove);
+    canvas.addEventListener('mouseleave', handleMouseLeave);
 
     const handleResize = () => {
       const newConfig = getGridConfig();
@@ -274,7 +274,7 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
         width: `${newCanvasWidth}px`,
         height: `${newCanvasHeight}px`,
         minWidth: `${newCanvasWidth}px`,
-        minHeight: `${newCanvasHeight}px`,
+        minHeight: `${newCanvasHeight}px`
       });
 
       for (let y = 0; y <= newGridHeight; y++) {
@@ -287,7 +287,7 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
               originalX: x * newSquareSize + padding,
               originalY: y * newSquareSize + padding,
               velocityX: 0,
-              velocityY: 0,
+              velocityY: 0
             };
           } else {
             points[y][x].originalX = x * newSquareSize + padding;
@@ -299,7 +299,7 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
       }
     };
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
 
     loadAllIcons().then(() => {
       animate();
@@ -402,7 +402,7 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
         }
       }
 
-      ctx.strokeStyle = "rgb(226, 226, 226)";
+      ctx.strokeStyle = 'rgb(226, 226, 226)';
       ctx.lineWidth = 1;
 
       for (let x = 0; x <= gridWidth; x++) {
@@ -434,7 +434,7 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
         const bottomRight = points[cell.y + 1]?.[cell.x + 1];
 
         if (topLeft && topRight && bottomLeft && bottomRight) {
-          ctx.fillStyle = "white";
+          ctx.fillStyle = 'white';
 
           ctx.beginPath();
           ctx.moveTo(topLeft.x, topLeft.y);
@@ -469,9 +469,9 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
     };
 
     return () => {
-      canvas.removeEventListener("mousemove", handleMouseMove);
-      canvas.removeEventListener("mouseleave", handleMouseLeave);
-      window.removeEventListener("resize", handleResize);
+      canvas.removeEventListener('mousemove', handleMouseMove);
+      canvas.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('resize', handleResize);
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }

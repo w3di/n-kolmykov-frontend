@@ -1,7 +1,7 @@
-import { Icon } from "@/src/shared/ui/kit";
-import styles from "./stepper.module.scss";
-import clsx from "clsx";
-import { useQuizNavigation } from "../../model/quiz-context";
+import { Icon } from '@/src/shared/ui/kit';
+import styles from './stepper.module.scss';
+import clsx from 'clsx';
+import { useQuizNavigation } from '../../model/quiz-context';
 
 export default function Stepper() {
   const {
@@ -10,7 +10,7 @@ export default function Stepper() {
     canGoPrevious,
     canGoNext,
     previousStep,
-    nextStep,
+    nextStep
   } = useQuizNavigation();
 
   return (
@@ -21,7 +21,7 @@ export default function Stepper() {
         disabled={!canGoPrevious}
       >
         <Icon
-          name="arrowBack"
+          name='arrowBack'
           className={clsx(styles.stepper__icon, styles.stepper__icon_left)}
         />
       </button>
@@ -33,7 +33,7 @@ export default function Stepper() {
         onClick={nextStep}
         disabled={!canGoNext}
       >
-        <Icon name="arrowBack" className={styles.stepper__icon} />
+        <Icon name='arrowBack' className={styles.stepper__icon} />
       </button>
     </section>
   );

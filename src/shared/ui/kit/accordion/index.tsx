@@ -1,8 +1,8 @@
-"use client";
-import { ReactNode, useState, useRef, useEffect } from "react";
-import clsx from "clsx";
-import { Icon } from "@/src/shared/ui/kit";
-import styles from "./accordion.module.scss";
+'use client';
+import { ReactNode, useState, useRef, useEffect } from 'react';
+import clsx from 'clsx';
+import { Icon } from '@/src/shared/ui/kit';
+import styles from './accordion.module.scss';
 
 interface AccordionProps {
   title: string;
@@ -15,7 +15,7 @@ export default function Accordion({
   title,
   children,
   defaultOpen = true,
-  className,
+  className
 }: AccordionProps) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const [contentHeight, setContentHeight] = useState<number>(0);
@@ -39,7 +39,7 @@ export default function Accordion({
       childList: true,
       subtree: true,
       attributes: true,
-      characterData: true,
+      characterData: true
     });
 
     return () => {
@@ -57,20 +57,20 @@ export default function Accordion({
       <button className={styles.accordion__header} onClick={toggleAccordion}>
         <p className={styles.accordion__title}>{title}</p>
         <Icon
-          name="arrowBack"
+          name='arrowBack'
           className={clsx(styles.accordion__arrowIcon, {
-            [styles["accordion__arrowIcon--open"]]: isOpen,
-            [styles["accordion__arrowIcon--closed"]]: !isOpen,
+            [styles['accordion__arrowIcon--open']]: isOpen,
+            [styles['accordion__arrowIcon--closed']]: !isOpen
           })}
         />
       </button>
       <div
         className={clsx(styles.accordion__contentWrapper, {
-          [styles["accordion__contentWrapper--open"]]: isOpen,
-          [styles["accordion__contentWrapper--closed"]]: !isOpen,
+          [styles['accordion__contentWrapper--open']]: isOpen,
+          [styles['accordion__contentWrapper--closed']]: !isOpen
         })}
         style={{
-          maxHeight: isOpen ? `${contentHeight}px` : "0px",
+          maxHeight: isOpen ? `${contentHeight}px` : '0px'
         }}
       >
         <div ref={contentRef} className={styles.accordion__content}>

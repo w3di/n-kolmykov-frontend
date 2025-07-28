@@ -1,11 +1,11 @@
-import styles from "./content.module.scss";
-import { AnswerAccordion } from "./ui";
-import { Button, Icon } from "@/src/shared/ui/kit";
+import styles from './content.module.scss';
+import { AnswerAccordion } from './ui';
+import { Button, Icon } from '@/src/shared/ui/kit';
 import {
   useQuizData,
   useQuizStats,
-  useQuizNavigation,
-} from "../../model/quiz-context";
+  useQuizNavigation
+} from '../../model/quiz-context';
 
 export default function Content() {
   const { quizData, setQuestionAnswer } = useQuizData();
@@ -23,7 +23,7 @@ export default function Content() {
       <div className={styles.quistionContainer}>
         <div className={styles.quistionContainer__header}>
           <Icon
-            name="lightning"
+            name='lightning'
             className={styles.quistionContainer__header__icon}
           />
           <span className={styles.quistionContainer__header__text}>
@@ -37,14 +37,14 @@ export default function Content() {
 
         <div className={styles.quistionContainer__buttonsContainer}>
           <Button
-            variant="black"
-            label="Знаю"
-            onClick={() => setQuestionAnswer(currentStepIndex, "know")}
+            variant='black'
+            label='Знаю'
+            onClick={() => setQuestionAnswer(currentStepIndex, 'know')}
           />
           <Button
-            variant="white"
-            label="Не знаю"
-            onClick={() => setQuestionAnswer(currentStepIndex, "unknown")}
+            variant='white'
+            label='Не знаю'
+            onClick={() => setQuestionAnswer(currentStepIndex, 'unknown')}
           />
         </div>
       </div>

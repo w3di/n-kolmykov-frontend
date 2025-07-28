@@ -1,9 +1,9 @@
-import clsx from "clsx";
-import styles from "./button.module.scss";
+import clsx from 'clsx';
+import styles from './button.module.scss';
 
 interface ButtonProps {
   label: string;
-  variant: "white" | "black";
+  variant: 'white' | 'black';
   onClick?: () => void;
 
   className?: string;
@@ -13,7 +13,7 @@ export default function Button({
   label,
   variant,
   onClick,
-  className,
+  className
 }: ButtonProps) {
   return (
     <button

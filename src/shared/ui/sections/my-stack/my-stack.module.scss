@@ -1,4 +1,4 @@
-@use "abstracts" as a;
+@use 'abstracts' as a;
 
 .myStack {
   display: grid;
@@ -52,7 +52,7 @@
 
     background-color: a.$gray-1;
 
-    content: "";
+    content: '';
   }
 
   &::after {
@@ -68,7 +68,7 @@
 
     background-color: a.$gray-1;
 
-    content: "";
+    content: '';
   }
 
   @include a.tablet {

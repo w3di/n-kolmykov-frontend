@@ -1,12 +1,12 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
-import { mockQuestionTypeFilters, QuestionTypeFilter } from "../api";
-import { toast } from "react-toastify";
-import { Toast } from "@/src/shared/ui/kit";
+import { useState, useEffect, useMemo, useCallback } from 'react';
+import { mockQuestionTypeFilters, QuestionTypeFilter } from '../api';
+import { toast } from 'react-toastify';
+import { Toast } from '@/src/shared/ui/kit';
 
-const LOCALSTORAGE_KEY = "quiz-active-question-types";
+const LOCALSTORAGE_KEY = 'quiz-active-question-types';
 
 const getInitialQuestionTypes = (): QuestionTypeFilter[] => {
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     try {
       const saved = localStorage.getItem(LOCALSTORAGE_KEY);
       if (saved) {
@@ -20,7 +20,7 @@ const getInitialQuestionTypes = (): QuestionTypeFilter[] => {
         return savedTypes;
       }
     } catch (error) {
-      console.error("Ошибка при загрузке из localStorage:", error);
+      console.error('Ошибка при загрузке из localStorage:', error);
     }
   }
 
@@ -44,11 +44,11 @@ export const useQuestionTypes = () => {
   );
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       try {
         localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(questionTypes));
       } catch (error) {
-        console.error("Ошибка при сохранении в localStorage:", error);
+        console.error('Ошибка при сохранении в localStorage:', error);
       }
     }
   }, [questionTypes]);
@@ -65,15 +65,15 @@ export const useQuestionTypes = () => {
             toast(
               (props) => (
                 <Toast
-                  text="Нельзя отключить все типы вопросов!"
-                  state="warning"
+                  text='Нельзя отключить все типы вопросов!'
+                  state='warning'
                   {...props}
                 />
               ),
               {
                 onClose: (reason) => {
-                  console.log("Toast закрыт с причиной:", reason);
-                },
+                  console.log('Toast закрыт с причиной:', reason);
+                }
               }
             );
           }, 0);
@@ -90,6 +90,6 @@ export const useQuestionTypes = () => {
   return {
     questionTypes,
     activeQuestionTypes,
-    toggleQuestionType,
+    toggleQuestionType
   };
 };

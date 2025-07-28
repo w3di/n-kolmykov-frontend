@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import React, { createContext, useContext, ReactNode } from "react";
-import { useQuizState } from "./use-quiz-state";
-import { QuestionType } from "../qustionsType";
-import { QuestionTypeFilter } from "../api";
+import React, { createContext, useContext, ReactNode } from 'react';
+import { useQuizState } from './use-quiz-state';
+import { QuestionType } from '../qustionsType';
+import { QuestionTypeFilter } from '../api';
 
 interface QuizContextType {
   // Данные квиза
   quizData: QuestionType[];
-  setQuestionAnswer: (id: number, answer: "know" | "unknown") => void;
+  setQuestionAnswer: (id: number, answer: 'know' | 'unknown') => void;
 
   // Статистика
   quizStats: { know: number; unknown: number };
@@ -30,7 +30,7 @@ export const QuizProvider = ({ children }: { children: ReactNode }) => {
   const quizState = useQuizState();
 
   const contextValue: QuizContextType = {
-    ...quizState,
+    ...quizState
   };
 
   return (
@@ -42,7 +42,7 @@ export const useQuizContext = (): QuizContextType => {
   const context = useContext(QuizContext);
 
   if (!context) {
-    throw new Error("useQuizContext должен использоваться внутри QuizProvider");
+    throw new Error('useQuizContext должен использоваться внутри QuizProvider');
   }
 
   return context;
@@ -93,7 +93,7 @@ export const useQuizNavigation = () => {
     goToStep,
     goToFirstStep,
     goToLastStep,
-    setCurrentStepIndex: setCurrentStep,
+    setCurrentStepIndex: setCurrentStep
   };
 };
 

@@ -3,5 +3,5 @@ export type QuestionType = {
   question: string;
   answers: string[];
   theme: string;
-  typeAnswer?: "know" | "unknown" | undefined;
+  typeAnswer?: 'know' | 'unknown' | undefined;
 };

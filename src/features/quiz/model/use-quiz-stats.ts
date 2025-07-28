@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback } from 'react';
 
 export type QuizStats = {
   know: number;
@@ -8,26 +8,26 @@ export type QuizStats = {
 export const useQuizStats = () => {
   const [quizStats, setQuizStats] = useState<QuizStats>({
     know: 0,
-    unknown: 0,
+    unknown: 0
   });
 
   const updateStats = useCallback(
     (
-      previousAnswer: "know" | "unknown" | undefined,
-      newAnswer: "know" | "unknown"
+      previousAnswer: 'know' | 'unknown' | undefined,
+      newAnswer: 'know' | 'unknown'
     ) => {
       setQuizStats((prevStats) => {
         const newStats = { ...prevStats };
 
-        if (previousAnswer === "know") {
+        if (previousAnswer === 'know') {
           newStats.know -= 1;
-        } else if (previousAnswer === "unknown") {
+        } else if (previousAnswer === 'unknown') {
           newStats.unknown -= 1;
         }
 
-        if (newAnswer === "know") {
+        if (newAnswer === 'know') {
           newStats.know += 1;
-        } else if (newAnswer === "unknown") {
+        } else if (newAnswer === 'unknown') {
           newStats.unknown += 1;
         }
 
@@ -39,6 +39,6 @@ export const useQuizStats = () => {
 
   return {
     quizStats,
-    updateStats,
+    updateStats
   };
 };

@@ -1,16 +1,16 @@
-import { Icon } from "@/src/shared/ui/kit";
-import styles from "./my-stack.module.scss";
+import { Icon } from '@/src/shared/ui/kit';
+import styles from './my-stack.module.scss';
 
 const stack = [
-  { name: "reactjs", label: "React", sizeClass: styles.react },
-  { name: "typescript", label: "TypeScript", sizeClass: styles.ts },
-  { name: "nextjs", label: "Next.js", sizeClass: styles.next },
-  { name: "expoFull", label: "Expo", sizeClass: styles.expo },
-  { name: "nodejs", label: "Node.js", sizeClass: styles.node },
-  { name: "nestjs", label: "NestJS", sizeClass: styles.nest },
-  { name: "postgresqlElephant", label: "PostgreSQL", sizeClass: styles.pg },
-  { name: "docker", label: "Docker", sizeClass: styles.docker },
-  { name: "cicd", label: "CI/CD", sizeClass: styles.cicd },
+  { name: 'reactjs', label: 'React', sizeClass: styles.react },
+  { name: 'typescript', label: 'TypeScript', sizeClass: styles.ts },
+  { name: 'nextjs', label: 'Next.js', sizeClass: styles.next },
+  { name: 'expoFull', label: 'Expo', sizeClass: styles.expo },
+  { name: 'nodejs', label: 'Node.js', sizeClass: styles.node },
+  { name: 'nestjs', label: 'NestJS', sizeClass: styles.nest },
+  { name: 'postgresqlElephant', label: 'PostgreSQL', sizeClass: styles.pg },
+  { name: 'docker', label: 'Docker', sizeClass: styles.docker },
+  { name: 'cicd', label: 'CI/CD', sizeClass: styles.cicd }
 ] as const;
 
 export default function MyStack() {

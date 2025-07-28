@@ -1,4 +1,4 @@
-@use "abstracts" as a;
+@use 'abstracts' as a;
 
 .accordion {
   &__header {
@@ -64,7 +64,9 @@
   &__contentWrapper {
     overflow: hidden;
 
-    transition: max-height 0.3s ease, opacity 0.3s ease;
+    transition:
+      max-height 0.3s ease,
+      opacity 0.3s ease;
 
     &--open {
       opacity: 1;
