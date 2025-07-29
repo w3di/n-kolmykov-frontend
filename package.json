@@ -11,8 +11,8 @@
     "icons": "node generate-icons.js",
     "prepare": "husky",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "format:fix": "prettier --write --ignore-unknown ."
+    "lint-staged": "lint-staged",
+    "format:all": "prettier --write . && eslint --fix . && stylelint \"**/*.{css,scss}\" --fix"
   },
   "dependencies": {
     "clsx": "^2.1.1",
