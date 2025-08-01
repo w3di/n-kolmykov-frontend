@@ -23,8 +23,8 @@ function toKebabCase(str) {
     .replace(/^-|-$/g, ''); // убираем дефисы в начале и конце
 }
 
-// Функция для переименования файлов в kebab-case
-function renameIconsToKebabCase() {
+// Функция для обработки SVG файлов (переименование и автозамена атрибутов)
+function processSvgFiles() {
   try {
     const files = fs
       .readdirSync(ICONS_DIR)
@@ -35,16 +35,45 @@ function renameIconsToKebabCase() {
       return;
     }
 
-    console.log('🔄 Переименование файлов в kebab-case...');
+    console.log('🔄 Обработка SVG файлов...');
 
     let renamedCount = 0;
+    let processedCount = 0;
 
     files.forEach((file) => {
+      const filePath = path.join(ICONS_DIR, file);
+      let svgContent = fs.readFileSync(filePath, 'utf8');
+      let contentChanged = false;
+
+      // Автозамена SVG атрибутов в camelCase формат для React
+      const attributeReplacements = [
+        { from: 'fill-opacity', to: 'fillOpacity' },
+        { from: 'fill-rule', to: 'fillRule' },
+        { from: 'clip-rule', to: 'clipRule' },
+        { from: 'clip-path', to: 'clipPath' },
+        { from: 'stroke-width', to: 'strokeWidth' },
+        { from: 'stroke-linejoin', to: 'strokeLinejoin' },
+        { from: 'stroke-linecap', to: 'strokeLinecap' }
+      ];
+
+      let hasChanges = false;
+      attributeReplacements.forEach(({ from, to }) => {
+        if (svgContent.includes(from)) {
+          svgContent = svgContent.replace(new RegExp(from, 'g'), to);
+          hasChanges = true;
+        }
+      });
+
+      if (hasChanges) {
+        fs.writeFileSync(filePath, svgContent, 'utf8');
+        console.log(`  🔧 Обработан ${file}: SVG атрибуты → camelCase`);
+        contentChanged = true;
+      }
+
       const fileName = path.basename(file, '.svg');
       const kebabName = toKebabCase(fileName);
 
       if (fileName !== kebabName) {
-        const oldPath = path.join(ICONS_DIR, file);
         const newPath = path.join(ICONS_DIR, `${kebabName}.svg`);
 
         // Проверяем, что файл с новым именем не существует
@@ -55,9 +84,13 @@ function renameIconsToKebabCase() {
           return;
         }
 
-        fs.renameSync(oldPath, newPath);
+        fs.renameSync(filePath, newPath);
         console.log(`  ✅ ${file} → ${kebabName}.svg`);
         renamedCount++;
+      }
+
+      if (contentChanged) {
+        processedCount++;
       }
     });
 
@@ -66,9 +99,15 @@ function renameIconsToKebabCase() {
     } else {
       console.log(`✅ Переименовано ${renamedCount} файлов`);
     }
+
+    if (processedCount === 0) {
+      console.log('✅ Все SVG файлы уже содержат правильные атрибуты');
+    } else {
+      console.log(`✅ Обработано ${processedCount} файлов с заменой атрибутов`);
+    }
     console.log('');
   } catch (error) {
-    console.error('❌ Ошибка при переименовании файлов:', error.message);
+    console.error('❌ Ошибка при обработке файлов:', error.message);
     throw error;
   }
 }
@@ -78,6 +117,21 @@ function extractSvgContent(svgContent) {
   if (!match) return '';
 
   let content = match[1].trim();
+
+  // Автозамена SVG атрибутов в camelCase формат для React JSX
+  const attributeReplacements = [
+    { from: 'fill-opacity', to: 'fillOpacity' },
+    { from: 'fill-rule', to: 'fillRule' },
+    { from: 'clip-rule', to: 'clipRule' },
+    { from: 'clip-path', to: 'clipPath' },
+    { from: 'stroke-width', to: 'strokeWidth' },
+    { from: 'stroke-linejoin', to: 'strokeLinejoin' },
+    { from: 'stroke-linecap', to: 'strokeLinecap' }
+  ];
+
+  attributeReplacements.forEach(({ from, to }) => {
+    content = content.replace(new RegExp(from, 'g'), to);
+  });
 
   return content;
 }
@@ -103,8 +157,8 @@ function extractHeight(svgContent) {
 // Основная функция генерации
 function generateIconComponent() {
   try {
-    // Сначала переименовываем файлы в kebab-case
-    renameIconsToKebabCase();
+    // Сначала обрабатываем SVG файлы (переименование и автозамена атрибутов)
+    processSvgFiles();
 
     // Создаем директорию для компонента, если она не существует
     if (!fs.existsSync(OUTPUT_DIR)) {

@@ -1,0 +1,208 @@
+@use 'abstracts' as a;
+
+.finished {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+
+  padding: 16px;
+
+  background: #f7f7f7;
+
+  @include a.tablet {
+    padding: 32px;
+  }
+
+  @include a.laptop {
+    padding: 24px;
+  }
+
+  @include a.desktop-xl {
+    padding: 48px;
+  }
+
+  &__container {
+    width: 100%;
+    max-width: 400px;
+
+    padding: 24px 20px;
+
+    background: white;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    box-shadow: 0 2px 12px rgba(36, 36, 36, 0.08);
+
+    @include a.tablet {
+      padding: 32px 24px;
+    }
+
+    @include a.laptop {
+      padding: 40px 32px;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 48px;
+    height: 48px;
+
+    margin: 0 auto 16px;
+
+    background: #f05023;
+
+    border-radius: 50%;
+
+    @include a.tablet {
+      width: 56px;
+      height: 56px;
+
+      margin-bottom: 20px;
+    }
+
+    @include a.laptop {
+      width: 64px;
+      height: 64px;
+
+      margin-bottom: 24px;
+    }
+  }
+
+  &__checkmark {
+    font-weight: 600;
+    font-size: 18px;
+    color: white;
+
+    @include a.tablet {
+      font-size: 24px;
+    }
+
+    @include a.laptop {
+      font-size: 28px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 12px;
+
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.2;
+    color: #242424;
+
+    @include a.tablet {
+      margin-bottom: 16px;
+
+      font-size: 24px;
+    }
+
+    @include a.laptop {
+      margin-bottom: 20px;
+
+      font-size: 28px;
+    }
+  }
+
+  &__subtitle {
+    margin-bottom: 24px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.4;
+    color: rgba(36, 36, 36, 0.7);
+
+    @include a.tablet {
+      margin-bottom: 32px;
+
+      font-size: 16px;
+    }
+
+    @include a.laptop {
+      margin-bottom: 40px;
+
+      font-size: 18px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include a.tablet {
+      flex-direction: row;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    @include a.laptop {
+      gap: 16px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 8px 16px;
+
+    border: 1px solid transparent;
+    border-radius: 6px;
+
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.2;
+    color: white;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease-in-out;
+
+    @include a.tablet {
+      padding: 10px 20px;
+
+      font-size: 13px;
+    }
+
+    @include a.laptop {
+      padding: 10px 18px;
+
+      font-size: 12px;
+    }
+
+    &:first-child {
+      background: #242424;
+
+      &:hover {
+        background: #333333;
+      }
+
+      &:active {
+        background: #1a1a1a;
+      }
+    }
+
+    &:last-child {
+      background: #f05023;
+
+      &:hover {
+        background: #e0451a;
+      }
+
+      &:active {
+        background: #d03d15;
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+}

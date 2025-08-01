@@ -7,7 +7,11 @@ import {
   useQuizNavigation
 } from '../../model/quiz-context';
 
-export default function Content() {
+type ContentProps = {
+  setIsFinished: (isFinished: boolean) => void;
+};
+
+export default function Content({ setIsFinished }: ContentProps) {
   const { quizData, setQuestionAnswer } = useQuizData();
   const { quizStats } = useQuizStats();
   const { currentStepIndex } = useQuizNavigation();
@@ -35,17 +39,34 @@ export default function Content() {
         </p>
         <AnswerAccordion answer={currentQuestion.answers} />
 
-        <div className={styles.quistionContainer__buttonsContainer}>
-          <Button
-            variant='black'
-            label='Знаю'
-            onClick={() => setQuestionAnswer(currentStepIndex, 'know')}
-          />
-          <Button
-            variant='white'
-            label='Не знаю'
-            onClick={() => setQuestionAnswer(currentStepIndex, 'unknown')}
-          />
+        <div className={styles.quistionContainer__buttons}>
+          <div className={styles.quistionContainer__buttons__leftButtons}>
+            <Button
+              variant='black'
+              label='Знаю'
+              onClick={() => setQuestionAnswer(currentStepIndex, 'know')}
+            />
+            <Button
+              variant='white'
+              label='Не знаю'
+              onClick={() => setQuestionAnswer(currentStepIndex, 'unknown')}
+            />
+          </div>
+          <button
+            className={styles.quistionContainer__buttons__rightButton}
+            onClick={() => setIsFinished(true)}
+            type='button'
+          >
+            <span
+              className={styles.quistionContainer__buttons__rightButton__text}
+            >
+              Завершить
+            </span>
+            <Icon
+              name='arrowRight'
+              className={styles.quistionContainer__buttons__rightButton__icon}
+            />
+          </button>
         </div>
       </div>
       <div className={styles.statsBarContainer}>

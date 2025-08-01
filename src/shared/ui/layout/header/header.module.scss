@@ -56,6 +56,12 @@
       border-bottom: 1px solid a.$black-9;
     }
   }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 }
 
 .logo {
@@ -97,6 +103,10 @@
 .navigationList {
   display: flex;
   align-items: center;
+
+  @include a.only-mobile {
+    display: none;
+  }
 
   &__itemLink {
     padding: 8px 12px !important;
@@ -141,5 +151,35 @@
     @include a.desktop-xl {
       height: 32px;
     }
+  }
+}
+
+.mobileMenuButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+
+  background: none;
+
+  border: none;
+  border-radius: 4px;
+
+  cursor: pointer;
+
+  transition: background-color 0.2s ease;
+
+  @include a.laptop {
+    display: none;
+  }
+
+  &:hover {
+    background-color: a.$black-8;
+  }
+
+  &:active {
+    background-color: a.$black-7;
   }
 }
