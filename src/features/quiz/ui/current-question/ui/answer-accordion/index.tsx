@@ -1,4 +1,4 @@
-'use client';
+'use client'; //todo to scss accordion
 import { useState } from 'react';
 import clsx from 'clsx';
 import styles from './answer-accordion.module.scss';

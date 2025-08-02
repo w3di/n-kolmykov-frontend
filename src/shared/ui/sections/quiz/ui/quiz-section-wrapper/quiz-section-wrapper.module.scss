@@ -1,0 +1,32 @@
+@use 'abstracts' as a;
+
+.quizSectionWrapper {
+  position: relative;
+
+  padding-top: 105px;
+
+  background: linear-gradient(
+    180deg,
+    a.$gray-light-transparent 0%,
+    a.$gray-light 76.77%
+  );
+
+  border-color: a.$gray-1;
+  border-style: solid;
+  border-width: 0 1px 1px;
+
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+
+  @include a.tablet {
+    padding-top: 102px;
+  }
+
+  @include a.laptop {
+    padding-top: 260px;
+  }
+
+  @include a.desktop-xl {
+    padding-top: 391px;
+  }
+}

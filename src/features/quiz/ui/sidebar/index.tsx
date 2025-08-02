@@ -1,4 +1,4 @@
-'use client';
+'use client'; //todo hooks inside
 
 import styles from './sidebar.module.scss';
 import Image from 'next/image';

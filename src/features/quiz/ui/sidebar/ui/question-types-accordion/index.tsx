@@ -1,5 +1,3 @@
-'use client';
-
 import { Accordion, Icon } from '@/src/shared/ui/kit';
 import styles from './question-types-accordion.module.scss';
 import clsx from 'clsx';

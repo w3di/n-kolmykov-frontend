@@ -1,4 +1,4 @@
-import styles from './content.module.scss';
+import styles from './current-question.module.scss';
 import { AnswerAccordion } from './ui';
 import { Button, Icon } from '@/src/shared/ui/kit';
 import {
@@ -7,11 +7,13 @@ import {
   useQuizNavigation
 } from '../../model/quiz-context';
 
-type ContentProps = {
+type CurrentQuestionProps = {
   setIsFinished: (isFinished: boolean) => void;
 };
 
-export default function Content({ setIsFinished }: ContentProps) {
+export default function CurrentQuestion({
+  setIsFinished
+}: CurrentQuestionProps) {
   const { quizData, setQuestionAnswer } = useQuizData();
   const { quizStats } = useQuizStats();
   const { currentStepIndex } = useQuizNavigation();
@@ -23,7 +25,7 @@ export default function Content({ setIsFinished }: ContentProps) {
   }
 
   return (
-    <section className={styles.content}>
+    <section className={styles.currentQuestion}>
       <div className={styles.quistionContainer}>
         <div className={styles.quistionContainer__header}>
           <Icon
