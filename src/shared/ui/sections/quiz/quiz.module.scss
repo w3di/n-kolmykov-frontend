@@ -26,6 +26,182 @@
   @include a.desktop-xl {
     padding-top: 391px;
   }
+
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+.backgroundLayer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+
+  width: 100%;
+  height: 100%;
+}
+
+.contentLayer {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 22px 0 15px;
+
+  @include a.tablet {
+    padding: 106px 0 44px;
+  }
+
+  @include a.laptop {
+    padding: 60px 0 64px;
+  }
+
+  @include a.desktop-xl {
+    padding: 22px 0 63px;
+  }
+
+  &__text {
+    margin: 8px 0 12px;
+
+    font-weight: a.$fw-semibold;
+    font-size: 16px;
+    line-height: 21px;
+    text-align: center;
+    color: a.$black-1;
+
+    @include a.tablet {
+      margin: 12px 0 16px;
+
+      font-size: 20px;
+      line-height: 27px;
+    }
+
+    @include a.laptop {
+      margin: 16px 0;
+
+      font-size: 24px;
+      line-height: 32px;
+    }
+
+    @include a.desktop-xl {
+      margin: 16px 0 24px;
+
+      font-size: 28px;
+      line-height: 37px;
+    }
+
+    span {
+      font-weight: a.$fw-medium;
+      color: a.$black-5;
+    }
+  }
+
+  &__lightningCircle {
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    width: 36px;
+    height: 36px;
+
+    padding: 4px;
+
+    border-radius: 50%;
+
+    box-shadow:
+      0px 5.33333px 10.6667px rgba(116, 27, 2, 0.06),
+      0px 2.66667px 5.33333px rgba(116, 27, 2, 0.04),
+      0px 1.33333px 2.66667px rgba(116, 27, 2, 0.04),
+      inset 0px -0.666667px 0.666667px rgba(240, 80, 35, 0.08);
+
+    &::after {
+      position: absolute;
+      inset: -1.5px;
+      z-index: -1;
+
+      width: calc(100% + 3px);
+      height: calc(100% + 3px);
+
+      background: conic-gradient(
+        from 0deg,
+        rgba(240, 80, 35, 0.8) 0deg,
+        rgba(240, 80, 35, 0.4) 60deg,
+        rgba(240, 80, 35, 0.1) 120deg,
+        rgba(36, 36, 36, 0.05) 180deg,
+        rgba(240, 80, 35, 0.1) 240deg,
+        rgba(240, 80, 35, 0.4) 300deg,
+        rgba(240, 80, 35, 0.8) 360deg
+      );
+
+      border-radius: 50%;
+
+      content: '';
+
+      animation: loadingGradient 2s linear infinite;
+
+      -webkit-mask: radial-gradient(circle, transparent 65%, black 65%);
+      mask: radial-gradient(circle, transparent 65%, black 65%);
+    }
+
+    @include a.tablet {
+      width: 44px;
+      height: 44px;
+    }
+
+    @include a.laptop {
+      width: 48px;
+      height: 48px;
+    }
+
+    @include a.desktop-xl {
+      width: 64px;
+      height: 64px;
+
+      padding: 8px;
+    }
+
+    &__iconBg {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      width: 100%;
+      height: 100%;
+
+      background: #ffffff;
+
+      border-radius: 50%;
+      &__icon {
+        width: 12px;
+        height: 12px;
+
+        @include a.tablet {
+          width: 14px;
+          height: 14px;
+        }
+
+        @include a.laptop {
+          width: 16px;
+          height: 16px;
+        }
+
+        @include a.desktop-xl {
+          width: 18.67px;
+          height: 18.67px;
+        }
+      }
+    }
+  }
 }
 
 .codeShowImage {
@@ -69,12 +245,14 @@
 }
 
 .blurBlock {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 
-  padding: 22px 0 15px;
+  width: 100%;
+  height: 100%;
 
   background: linear-gradient(
     180deg,
@@ -84,73 +262,17 @@
 
   backdrop-filter: blur(1.5px);
 
-  @include a.tablet {
-    padding: 106px 0 44px;
-  }
+  -webkit-mask: radial-gradient(
+    circle 200px at var(--mouse-x) var(--mouse-y),
+    transparent 0%,
+    black 100%
+  );
 
-  @include a.laptop {
-    padding: 60px 0 64px;
-  }
-
-  @include a.desktop-xl {
-    padding: 22px 0 63px;
-  }
-
-  &_icon {
-    width: 36px;
-    height: 36px;
-
-    @include a.tablet {
-      width: 44px;
-      height: 44px;
-    }
-
-    @include a.laptop {
-      width: 48px;
-      height: 48px;
-    }
-
-    @include a.desktop-xl {
-      width: 64px;
-      height: 64px;
-    }
-  }
-
-  &_text {
-    margin: 8px 0 12px;
-
-    font-weight: a.$fw-semibold;
-    font-size: 16px;
-    line-height: 21px;
-    text-align: center;
-    color: a.$black-1;
-
-    @include a.tablet {
-      margin: 12px 0 16px;
-
-      font-size: 20px;
-      line-height: 27px;
-    }
-
-    @include a.laptop {
-      margin: 16px 0;
-
-      font-size: 24px;
-      line-height: 32px;
-    }
-
-    @include a.desktop-xl {
-      margin: 16px 0 24px;
-
-      font-size: 28px;
-      line-height: 37px;
-    }
-
-    span {
-      font-weight: a.$fw-medium;
-      color: a.$black-5;
-    }
-  }
+  mask: radial-gradient(
+    circle 200px at var(--mouse-x) var(--mouse-y),
+    transparent 0%,
+    black 100%
+  );
 }
 
 .button {
@@ -217,6 +339,11 @@
       font-size: 16px;
       line-height: 21px;
     }
+
+    @include a.desktop-xl {
+      font-size: 16px;
+      line-height: 21px;
+    }
   }
 
   &_icon {
@@ -237,5 +364,14 @@
       width: 18px;
       height: 18px;
     }
+  }
+}
+
+@keyframes loadingGradient {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

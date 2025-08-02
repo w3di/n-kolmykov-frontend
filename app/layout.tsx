@@ -55,17 +55,17 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/images/myLogo.png',
+        url: '/images/myLogo.webp',
         sizes: '15x24',
         type: 'image/png'
       },
       {
-        url: '/images/myLogo.png',
+        url: '/images/myLogo.webp',
         sizes: '30x48',
         type: 'image/png'
       }
     ],
-    apple: '/images/myLogo.png'
+    apple: '/images/myLogo.webp'
   }
 };
 

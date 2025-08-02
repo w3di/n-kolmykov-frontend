@@ -16,21 +16,21 @@ export default function Pull() {
         </p>
         <div className={styles.pullRequestImageBlock}>
           <Image
-            src='/images/pull_50.png'
+            src='/images/pull_50.webp'
             alt='Pull request с 50 коммитами'
             width={300}
             height={59}
             className={styles.pullRequestImageBlock__pull50}
           />
           <Image
-            src='/images/line_to_pull.png'
+            src='/images/line_to_pull.webp'
             alt=''
             width={116}
             height={152}
             className={styles.pullRequestImageBlock__lineToPull}
           />
           <Image
-            src='/images/pull_90.png'
+            src='/images/pull_90.webp'
             alt='Pull request с 90 коммитами'
             width={300}
             height={59}
@@ -49,7 +49,7 @@ export default function Pull() {
           Расширения существующих тем и добавления <span>примеров кода</span>
         </p>
         <Image
-          src='/images/show_code_360.png'
+          src='/images/show_code_360.webp'
           alt='Пример кода для мобильных устройств'
           width={305}
           height={286}
@@ -60,7 +60,7 @@ export default function Pull() {
           )}
         />
         <Image
-          src='/images/show_code_1024.png'
+          src='/images/show_code_1024.webp'
           alt='Пример кода для планшетов'
           width={418}
           height={342}
@@ -71,7 +71,7 @@ export default function Pull() {
           )}
         />
         <Image
-          src='/images/show_code_1920.png'
+          src='/images/show_code_1920.webp'
           alt='Пример кода для десктопа'
           width={494}
           height={339}

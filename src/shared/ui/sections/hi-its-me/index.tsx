@@ -6,13 +6,14 @@ export default function HiItsMe() {
     <section className={styles.hiItsMe}>
       <div className={styles.meImage}>
         <Image
-          src='/images/my-photo.jpeg'
+          src='/images/my-photo.webp'
           alt='myLogo'
           priority
           quality={100}
           fill
           objectFit='cover'
           objectPosition='center'
+          property='true'
         />
       </div>
       <Image

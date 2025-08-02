@@ -22,7 +22,7 @@ export default function Sidebar() {
     <aside className={styles.sidebar}>
       <Link href='/' className={styles.sidebar__header}>
         <Image
-          src='/images/myLogo.png'
+          src='/images/myLogo.webp'
           alt='Autor logo'
           width={15}
           height={24}

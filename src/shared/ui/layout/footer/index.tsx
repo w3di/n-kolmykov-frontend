@@ -19,7 +19,7 @@ export default function Footer() {
       </div>
 
       <Image
-        src='/images/myLogo.png'
+        src='/images/myLogo.webp'
         alt='Autor logo'
         width={15}
         height={24}
