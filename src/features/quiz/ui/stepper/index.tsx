@@ -1,3 +1,4 @@
+'use client';
 import { Icon } from '@/src/shared/ui/kit';
 import styles from './stepper.module.scss';
 import clsx from 'clsx';
