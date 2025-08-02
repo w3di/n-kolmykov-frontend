@@ -1,3 +1,5 @@
+'use client';
+
 import styles from './information.module.scss';
 import { useQuizNavigation } from '../../model/quiz-context';
 

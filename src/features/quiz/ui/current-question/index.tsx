@@ -1,3 +1,5 @@
+'use client';
+
 import styles from './current-question.module.scss';
 import { AnswerAccordion } from './ui';
 import { Button, Icon } from '@/src/shared/ui/kit';
