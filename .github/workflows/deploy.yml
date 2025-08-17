@@ -1,4 +1,4 @@
-name: Deploy Next.js to VPS (prebuilt)
+name: Deploy Next.js to VPS
 
 on:
   push:
@@ -9,28 +9,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Забираем код
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20'
-
-      - name: Install dependencies and build
+      # 2. Устанавливаем зависимости и собираем проект
+      - name: Install dependencies & build
         run: |
           npm ci
           npm run build
 
+      # 3. Список файлов для проверки
+      - name: List build files
+        run: ls -la .next public package.json package-lock.json
+
+      # 4. Копируем готовый билд на VPS
       - name: Copy build to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_KEY }}
-          source: ".next package.json package-lock.json public node_modules"
+          source: ".next package.json package-lock.json public"
           target: "/apps/n-kolmykov/apps/current"
 
+      # 5. Запускаем контейнер на VPS
       - name: Deploy container on VPS
         uses: appleboy/ssh-action@v0.1.7
         with:
@@ -43,11 +46,13 @@ jobs:
             # остановка старого контейнера
             docker stop n-kolmykov-frontend || true
             docker rm n-kolmykov-frontend || true
-            # запуск нового контейнера с готовым билдом
+            # собираем Docker image прямо на VPS
+            docker build -t nextjs-app:latest apps/current
+            # запускаем контейнер с готовым билдом и конфигом хоста
             docker run -d \
               --name n-kolmykov-frontend \
               -v /apps/n-kolmykov/apps/current:/app \
               -v /apps/n-kolmykov/host:/app/host:ro \
               -p 3000:3000 \
-              node:20 \
-              sh -c "cd /app && npm install --production && npm run start"
+              nextjs-app:latest
+            echo "✅ Deployment completed at $(date)" >> /var/log/github-ci.log
