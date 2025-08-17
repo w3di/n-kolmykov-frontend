@@ -2,41 +2,47 @@ name: Deploy Next.js to VPS
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Install dependencies
+      - name: Install deps
         run: npm ci
 
       - name: Build Next.js
         run: npm run build
 
-      - name: Create deploy archive
-        run: tar -czf build.tar.gz .next public package.json package-lock.json
+      # Собираем Docker-образ из репозитория (multi-stage Dockerfile уже есть)
+      - name: Build Docker image
+        run: docker build --pull -t nkolmykov/frontend:${{ github.sha }} .
 
-      - name: Copy to VPS
+      # Упаковываем образ в tar.gz
+      - name: Save image to tar.gz
+        run: docker save nkolmykov/frontend:${{ github.sha }} | gzip > image_${{ github.sha }}.tar.gz
+
+      # Копируем tar.gz на VPS
+      - name: Copy image to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_KEY }}
           port: 22
-          source: "build.tar.gz"
-          target: "~/apps/n-kolmykov/n-kolmykov-frontend"
+          source: "image_${{ github.sha }}.tar.gz"
+          target: "~/apps/n-kolmykov/releases"
 
-      - name: Extract and run container on VPS
+      # Загружаем образ и перезапускаем контейнер
+      - name: Load and run on VPS
         uses: appleboy/ssh-action@v0.1.6
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -44,9 +50,18 @@ jobs:
           key: ${{ secrets.VPS_KEY }}
           port: 22
           script: |
-            cd ~/apps/n-kolmykov/n-kolmykov-frontend
-            tar -xzf build.tar.gz
+            set -euo pipefail
+            cd ~/apps/n-kolmykov/releases
+            gunzip -c image_${{ github.sha }}.tar.gz | docker load
+
             docker stop n-kolmykov-frontend || true
             docker rm n-kolmykov-frontend || true
-            docker build -t nextjs-app .
-            docker run -d --name n-kolmykov-frontend -p 3000:3000 nextjs-app
+
+            # Привязываем к localhost, чтобы наружу ходили через Nginx
+            docker run -d --name n-kolmykov-frontend \
+              -p 127.0.0.1:3000:3000 \
+              --restart unless-stopped \
+              nkolmykov/frontend:${{ github.sha }}
+
+            # Чистим старые тарболы (оставить последние 3)
+            ls -t image_*.tar.gz | tail -n +4 | xargs -r rm --
