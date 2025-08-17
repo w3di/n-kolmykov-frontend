@@ -34,7 +34,7 @@ jobs:
           key: ${{ secrets.VPS_KEY }}
           port: 22
           source: "build.tar.gz"
-          target: "~/deploy/"
+          target: "~/apps/n-kolmykov/n-kolmykov-frontend"
 
       - name: Extract and run container on VPS
         uses: appleboy/ssh-action@v0.1.6
@@ -44,7 +44,7 @@ jobs:
           key: ${{ secrets.VPS_KEY }}
           port: 22
           script: |
-            cd ~/deploy
+            cd ~/apps/n-kolmykov/n-kolmykov-frontend
             tar -xzf build.tar.gz
             docker stop n-kolmykov-frontend || true
             docker rm n-kolmykov-frontend || true
