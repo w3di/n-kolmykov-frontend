@@ -1,12 +1,11 @@
-name: CI Build Next.js
+name: Deploy Next.js to VPS
 
 on:
   push:
-    branches: [ "main" ]
-  workflow_dispatch: # можно запускать вручную
+    branches: ["main"]
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,7 +13,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: 20
 
@@ -24,22 +23,43 @@ jobs:
       - name: Build Next.js app
         run: npm run build
 
-      - name: Report success to VPS
-        if: success()
-        uses: appleboy/ssh-action@v0.1.7
-        with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_KEY }}
-          script: |
-            echo "✅ Build succeeded at $(date)" >> /var/log/github-ci.log
+      - name: Build Docker image
+        run: |
+          docker build -t nextjs-app:latest .
 
-      - name: Report failure to VPS
-        if: failure()
+      - name: Save Docker image to tar
+        run: |
+          docker save nextjs-app:latest | gzip > image.tar.gz
+
+      - name: Copy image to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_KEY }}
+          source: "image.tar.gz"
+          target: "/apps/n-kolmykov/"
+
+      - name: Deploy container on VPS
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_KEY }}
           script: |
-            echo "❌ Build failed at $(date)" >> /var/log/github-ci.log
+            set -e
+            cd /apps/n-kolmykov
+            mkdir -p apps/current
+            gunzip -f image.tar.gz
+            docker load < image.tar
+            # остановка и удаление старого контейнера
+            docker stop n-kolmykov-frontend || true
+            docker rm n-kolmykov-frontend || true
+            # запуск нового контейнера
+            docker run -d \
+              --name n-kolmykov-frontend \
+              -v /apps/n-kolmykov/apps/current:/app \
+              -v /apps/n-kolmykov/host:/app/host:ro \
+              -p 3000:3000 \
+              nextjs-app:latest
+            echo "✅ Deployment completed at $(date)" >> /var/log/github-ci.log
