@@ -1,7 +1,7 @@
 export type QuestionType = {
-  id: number;
+  id: string;
   question: string;
   answers: string[];
   theme: string;
-  typeAnswer?: 'know' | 'unknown' | undefined;
+  typeAnswer: 'know' | 'unknown' | null;
 };

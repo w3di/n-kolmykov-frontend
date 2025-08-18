@@ -142,11 +142,7 @@
   }
 
   &_open {
-    height: calc(100vh - 113px);
-
-    @include a.tablet {
-      height: calc(100vh - 125px);
-    }
+    height: var(--slide-menu-height, 0px);
   }
 
   &__content {

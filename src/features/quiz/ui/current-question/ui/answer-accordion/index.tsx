@@ -1,5 +1,5 @@
 'use client'; //todo to scss accordion
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import styles from './answer-accordion.module.scss';
 import { Icon } from '@/src/shared/ui/kit';
@@ -14,6 +14,10 @@ export default function AnswerAccordion({ answer }: AnswerAccordionProps) {
   const toggleAccordion = () => {
     setIsOpen(!isOpen);
   };
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [answer]);
 
   return (
     <div className={styles.answerAccordion}>

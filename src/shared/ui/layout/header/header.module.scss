@@ -104,10 +104,6 @@
   display: flex;
   align-items: center;
 
-  @include a.only-mobile {
-    display: none;
-  }
-
   &__itemLink {
     padding: 8px 12px !important;
 

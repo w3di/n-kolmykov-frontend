@@ -13,7 +13,7 @@ export const useQuizStats = () => {
 
   const updateStats = useCallback(
     (
-      previousAnswer: 'know' | 'unknown' | undefined,
+      previousAnswer: 'know' | 'unknown' | null,
       newAnswer: 'know' | 'unknown'
     ) => {
       setQuizStats((prevStats) => {

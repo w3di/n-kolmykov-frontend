@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { mockQuestionTypeFilters, QuestionTypeFilter } from '../api';
+import { defaultQuestionTypeFilters, QuestionTypeFilter } from '../api';
 import { toast } from 'react-toastify';
 import { Toast } from '@/src/shared/ui/kit';
 
@@ -24,13 +24,13 @@ const getInitialQuestionTypes = (): QuestionTypeFilter[] => {
     }
   }
 
-  const hasActiveTypes = mockQuestionTypeFilters.some((type) => type.active);
-  if (!hasActiveTypes && mockQuestionTypeFilters.length > 0) {
-    const initialTypes = [...mockQuestionTypeFilters];
+  const hasActiveTypes = defaultQuestionTypeFilters.some((type) => type.active);
+  if (!hasActiveTypes && defaultQuestionTypeFilters.length > 0) {
+    const initialTypes = [...defaultQuestionTypeFilters];
     initialTypes[0].active = true;
     return initialTypes;
   }
-  return mockQuestionTypeFilters;
+  return defaultQuestionTypeFilters;
 };
 
 export const useQuestionTypes = () => {

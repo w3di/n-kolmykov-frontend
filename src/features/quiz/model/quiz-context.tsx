@@ -8,6 +8,7 @@ import { QuestionTypeFilter } from '../api';
 interface QuizContextType {
   // Данные квиза
   quizData: QuestionType[];
+  isLoading: boolean;
   setQuestionAnswer: (id: number, answer: 'know' | 'unknown') => void;
 
   // Статистика
@@ -33,6 +34,10 @@ export const QuizProvider = ({ children }: { children: ReactNode }) => {
     ...quizState
   };
 
+  if (quizState.isLoading) {
+    return <div>loading</div>;
+  }
+
   return (
     <QuizContext.Provider value={contextValue}>{children}</QuizContext.Provider>
   );
@@ -49,8 +54,8 @@ export const useQuizContext = (): QuizContextType => {
 };
 
 export const useQuizData = () => {
-  const { quizData, setQuestionAnswer } = useQuizContext();
-  return { quizData, setQuestionAnswer };
+  const { quizData, isLoading, setQuestionAnswer } = useQuizContext();
+  return { quizData, isLoading, setQuestionAnswer };
 };
 
 export const useQuizStats = () => {

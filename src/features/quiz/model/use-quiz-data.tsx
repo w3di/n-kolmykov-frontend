@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { mockQuestionTypes, QuestionTypeFilter } from '../api';
+import { loadAllQuestions, QuestionTypeFilter } from '../api';
 import { QuestionType } from '../qustionsType';
 import { toast } from 'react-toastify';
 import { Toast } from '@/src/shared/ui/kit';
@@ -7,13 +7,14 @@ import { Toast } from '@/src/shared/ui/kit';
 export const useQuizData = (
   activeQuestionTypes: QuestionTypeFilter[],
   updateStats: (
-    prev: 'know' | 'unknown' | undefined,
+    prev: 'know' | 'unknown' | null,
     current: 'know' | 'unknown'
   ) => void,
   nextStep: () => void
 ) => {
   const [quizData, setQuizData] = useState<QuestionType[]>([]);
-  const quizInitialData = useRef(mockQuestionTypes);
+  const [isLoading, setIsLoading] = useState(false);
+  const quizInitialData = useRef<QuestionType[]>([]);
   const isInitialized = useRef(false);
 
   const getRandomFilteredQuestions = useCallback(() => {
@@ -35,15 +36,27 @@ export const useQuizData = (
     return randomQuestion;
   }, [activeQuestionTypes]);
 
-  // Инициализация только при первом рендере
+  // Инициализация только при первом рендере: загрузка вопросов из public JSON по активным темам
   useEffect(() => {
-    if (!isInitialized.current && activeQuestionTypes.length > 0) {
-      const initialQuestion = getRandomFilteredQuestions();
-      if (initialQuestion) {
-        setQuizData([initialQuestion]);
-        isInitialized.current = true;
+    const init = async () => {
+      if (isInitialized.current) return;
+      if (activeQuestionTypes.length === 0) return;
+      try {
+        setIsLoading(true);
+        const loaded = await loadAllQuestions();
+        quizInitialData.current = loaded;
+        const initialQuestion = getRandomFilteredQuestions();
+        if (initialQuestion) {
+          setQuizData([initialQuestion]);
+          isInitialized.current = true;
+        }
+        setIsLoading(false);
+      } catch (e) {
+        console.error(e);
+        setIsLoading(false);
       }
-    }
+    };
+    void init();
   }, [activeQuestionTypes, getRandomFilteredQuestions]);
 
   const setQuestionAnswer = useCallback(
@@ -83,6 +96,7 @@ export const useQuizData = (
 
   return {
     quizData,
+    isLoading,
     setQuestionAnswer
   };
 };

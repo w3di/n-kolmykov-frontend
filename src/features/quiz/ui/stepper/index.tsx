@@ -6,10 +6,12 @@ import {
   useQuizNavigation,
   useQuestionTypesContext
 } from '../../model/quiz-context';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Stepper() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuHeight, setMenuHeight] = useState<number | null>(null);
+  const menuRef = useRef<HTMLDivElement | null>(null);
   const {
     currentStep,
     totalSteps,
@@ -23,8 +25,49 @@ export default function Stepper() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
+    // document.body.style.overflow = isMenuOpen ? 'auto' : 'hidden';
   };
+
+  // useEffect(() => {
+  //   return () => {
+  //     document.body.style.overflow = 'auto';
+  //   };
+  // }, []);
+
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const recalcMenuHeight = () => {
+      if (!menuRef.current) return;
+      const docEl = document.documentElement;
+      const body = document.body;
+      const documentHeight = Math.max(
+        body.scrollHeight,
+        docEl.scrollHeight,
+        body.offsetHeight,
+        docEl.offsetHeight,
+        body.clientHeight,
+        docEl.clientHeight
+      );
+
+      const menuTopOnPage =
+        menuRef.current.getBoundingClientRect().top + window.scrollY;
+      const newHeight = Math.max(0, documentHeight - menuTopOnPage);
+      setMenuHeight(newHeight);
+    };
+
+    recalcMenuHeight();
+    window.addEventListener('resize', recalcMenuHeight);
+    window.addEventListener('orientationchange', recalcMenuHeight);
+    // Если контент страницы меняется при скролле, можно раскомментировать:
+    // window.addEventListener('scroll', recalcMenuHeight, { passive: true });
+
+    return () => {
+      window.removeEventListener('resize', recalcMenuHeight);
+      window.removeEventListener('orientationchange', recalcMenuHeight);
+      // window.removeEventListener('scroll', recalcMenuHeight as any);
+    };
+  }, [isMenuOpen]);
 
   return (
     <>
@@ -73,9 +116,17 @@ export default function Stepper() {
 
       {/* Выдвигающееся белое меню */}
       <div
+        ref={menuRef}
         className={clsx(styles.slideMenu, {
           [styles.slideMenu_open]: isMenuOpen
         })}
+        style={
+          isMenuOpen && menuHeight != null
+            ? ({
+                '--slide-menu-height': `${menuHeight}px`
+              } as React.CSSProperties)
+            : undefined
+        }
       >
         <div className={styles.slideMenu__content}>
           <div className={styles.slideMenu__header}>
