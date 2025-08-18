@@ -7,6 +7,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      # Берём из GitHub Actions Variables/Secrets
+      NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,7 +27,9 @@ jobs:
 
       # Собираем Docker-образ из репозитория (multi-stage Dockerfile уже есть)
       - name: Build Docker image
-        run: docker build --pull -t nkolmykov/frontend:${{ github.sha }} .
+        run: docker build --pull \
+          --build-arg NEXT_PUBLIC_SITE_URL="$NEXT_PUBLIC_SITE_URL" \
+          -t nkolmykov/frontend:${{ github.sha }} .
 
       # Упаковываем образ в tar.gz
       - name: Save image to tar.gz
@@ -60,6 +65,7 @@ jobs:
             # Привязываем к localhost, чтобы наружу ходили через Nginx
             docker run -d --name n-kolmykov-frontend \
               -p 127.0.0.1:3000:3000 \
+              -e NEXT_PUBLIC_SITE_URL="$NEXT_PUBLIC_SITE_URL" \
               --restart unless-stopped \
               nkolmykov/frontend:${{ github.sha }}
 
