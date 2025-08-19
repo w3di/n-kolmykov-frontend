@@ -35,7 +35,7 @@ export const QuizProvider = ({ children }: { children: ReactNode }) => {
   };
 
   if (quizState.isLoading) {
-    return <div>loading</div>;
+    return null;
   }
 
   return (
