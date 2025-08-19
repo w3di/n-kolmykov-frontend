@@ -91,6 +91,8 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
   const animationRef = useRef<number>(null);
   const [containerStyle, setContainerStyle] = useState<React.CSSProperties>({});
   const iconsCache = useRef<Map<string, HTMLImageElement>>(new Map());
+  const [isCanvasVisible, setIsCanvasVisible] = useState(false);
+  const hasRenderedOnceRef = useRef(false);
 
   const generateRandomCells = useCallback(() => {
     const allCells = [];
@@ -465,6 +467,11 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
         }
       });
 
+      if (!hasRenderedOnceRef.current) {
+        hasRenderedOnceRef.current = true;
+        setIsCanvasVisible(true);
+      }
+
       animationRef.current = requestAnimationFrame(animate);
     };
 
@@ -480,7 +487,10 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
 
   return (
     <div className={styles.animatedGrid} style={containerStyle}>
-      <canvas ref={canvasRef} className={styles.canvas} />
+      <canvas
+        ref={canvasRef}
+        className={`${styles.canvas} ${isCanvasVisible ? styles.visible : ''}`}
+      />
       <>{children}</>
     </div>
   );
