@@ -34,7 +34,7 @@ export default function Finished() {
           </button>
           <button
             className={styles.finished__button}
-            onClick={() => router.refresh()}
+            onClick={() => window.location.reload()}
           >
             Пройти ещё раз
           </button>
