@@ -290,7 +290,7 @@ const icons = {
           cx='12'
           cy='12'
           r='9.75'
-          fill='rgba(163, 163, 163, 1)'
+          fill='rgb(122, 122, 122)'
           strokeWidth='1'
         ></circle>
         <line
@@ -300,7 +300,7 @@ const icons = {
           x2='9'
           y2='9'
           fill='none'
-          stroke='rgb(0, 0, 0)'
+          stroke='rgb(255, 255, 255)'
           strokeLinecap='round'
           strokeLinejoin='round'
           strokeWidth='1'
@@ -311,7 +311,7 @@ const icons = {
           x2='15'
           y2='9'
           fill='none'
-          stroke='rgb(0, 0, 0)'
+          stroke='rgb(255, 255, 255)'
           strokeLinecap='round'
           strokeLinejoin='round'
           strokeWidth='1'
