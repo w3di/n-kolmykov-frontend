@@ -9,9 +9,8 @@
 
     width: 200px;
     height: 100vh;
-    max-height: 100vh;
 
-    padding: 24px;
+    padding: 20px;
 
     border-right: 1px solid a.$black-9;
 
@@ -27,10 +26,6 @@
     align-items: center;
     gap: 5px;
 
-    padding-bottom: 17px;
-
-    border-bottom: 1px dashed a.$black-9;
-
     transition: opacity 0.2s ease;
 
     &__logoIcon {
@@ -43,10 +38,6 @@
     &:active {
       opacity: 0.6;
     }
-
-    @include a.desktop-xl {
-      padding-bottom: 25px;
-    }
   }
 
   &__accordionsContainer {
@@ -55,106 +46,35 @@
     flex-direction: column;
     gap: 10px;
 
-    overflow: hidden;
+    overflow-y: hidden;
 
-    min-height: 0;
-  }
+    margin-top: 5px;
+    padding-top: 12px;
 
-  &__typesContainer {
-    display: flex;
-    flex-direction: column;
+    border-top: 1px dashed a.$black-9;
 
-    min-height: 0;
+    > *:first-child {
+      overflow: auto;
 
-    padding-bottom: 13px;
+      max-height: 40%;
 
-    border-bottom: 1px dashed a.$black-9;
+      padding-bottom: 5px;
 
-    scrollbar-width: none;
+      border-bottom: 1px dashed a.$black-9;
 
-    @include a.desktop-xl {
-      padding-bottom: 16px;
+      scrollbar-width: none;
     }
 
-    &--types {
-      flex: 0 0 auto;
-
-      overflow-y: auto;
-
-      max-height: 50%;
-    }
-
-    &--history {
-      flex: 1;
-
-      overflow-y: auto;
+    > *:last-child {
+      overflow: auto;
 
       min-height: 0;
-    }
 
-    &__list {
-      display: grid;
-      gap: 6px;
+      padding-bottom: 5px;
 
-      margin-top: 6px;
+      border-bottom: 1px dashed a.$black-9;
 
-      @include a.desktop-xl {
-        gap: 8px;
-      }
-    }
-
-    &__listItem {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-
-      padding: 4px;
-
-      border: 1px solid transparent;
-      border-radius: 4px;
-
-      cursor: pointer;
-
-      transition: all 0.2s ease;
-
-      &:hover:not(&--active) {
-        background-color: a.$black-8;
-
-        border: 1px solid a.$black-9;
-      }
-
-      @include a.desktop-xl {
-        padding: 6px;
-      }
-
-      &__emptyCircleIcon {
-        width: 12px;
-        height: 12px;
-
-        border: 1px dashed a.$black-9;
-        border-radius: 50%;
-      }
-
-      &__text {
-        font-weight: a.$fw-medium;
-        font-size: 12px;
-        line-height: 16px;
-        color: a.$black-5;
-
-        @include a.desktop-xl {
-          font-size: 14px;
-          line-height: 19px;
-        }
-      }
-
-      &--active {
-        background: a.$white-2;
-
-        border: 1px solid a.$black-7;
-        &__text {
-          color: a.$black-2;
-        }
-      }
+      scrollbar-width: none;
     }
   }
 }

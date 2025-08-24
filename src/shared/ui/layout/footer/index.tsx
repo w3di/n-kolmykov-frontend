@@ -6,6 +6,7 @@ import Link from 'next/link';
 export default function Footer() {
   return (
     <footer className={styles.footer}>
+      <SocialList />
       <div className={styles.navigationList}>
         <Link href='/' className={styles.navigationList__itemLink}>
           Главная
@@ -25,8 +26,6 @@ export default function Footer() {
         height={24}
         className={styles.logo}
       />
-
-      <SocialList />
     </footer>
   );
 }

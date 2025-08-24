@@ -19,6 +19,7 @@ export default function Button({
     <button
       className={clsx(styles.button, styles[`button--${variant}`], className)}
       onClick={onClick}
+      type='button'
     >
       <span
         className={clsx(

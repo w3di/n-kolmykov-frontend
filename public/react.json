@@ -3777,41 +3777,6 @@
       ]
     },
     {
-      "question": "Что делает useEvent и чем он отличается от useCallback?",
-      "id": "q-273-3f2612ec",
-      "answer": []
-    },
-    {
-      "question": "Почему useCallback не всегда решает проблему stale замыканий?",
-      "id": "q-274-8f388ffa",
-      "answer": []
-    },
-    {
-      "question": "Как useEvent сохраняет reference на последнюю версию функции без пересоздания?",
-      "id": "q-275-4281003f",
-      "answer": []
-    },
-    {
-      "question": "В чём польза useEvent при подписке на DOM-события или глобальные обработчики?",
-      "id": "q-276-e43089cd",
-      "answer": []
-    },
-    {
-      "question": "Как работает под капотом — через ref или proxy?",
-      "id": "q-277-de0b03bb",
-      "answer": []
-    },
-    {
-      "question": "Может ли useEvent быть использован как dependency для других хуков?",
-      "id": "q-278-24df2409",
-      "answer": []
-    },
-    {
-      "question": "Поддерживает ли useEvent серверный рендеринг?",
-      "id": "q-279-11bb1622",
-      "answer": []
-    },
-    {
       "question": "Что делает useOptimistic и как он связан с Server Actions?",
       "id": "q-280-a7ed46cc",
       "answer": [

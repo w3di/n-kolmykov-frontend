@@ -25,14 +25,7 @@ export default function Stepper() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    // document.body.style.overflow = isMenuOpen ? 'auto' : 'hidden';
   };
-
-  // useEffect(() => {
-  //   return () => {
-  //     document.body.style.overflow = 'auto';
-  //   };
-  // }, []);
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -59,13 +52,10 @@ export default function Stepper() {
     recalcMenuHeight();
     window.addEventListener('resize', recalcMenuHeight);
     window.addEventListener('orientationchange', recalcMenuHeight);
-    // Если контент страницы меняется при скролле, можно раскомментировать:
-    // window.addEventListener('scroll', recalcMenuHeight, { passive: true });
 
     return () => {
       window.removeEventListener('resize', recalcMenuHeight);
       window.removeEventListener('orientationchange', recalcMenuHeight);
-      // window.removeEventListener('scroll', recalcMenuHeight as any);
     };
   }, [isMenuOpen]);
 
@@ -75,6 +65,7 @@ export default function Stepper() {
         <button
           className={styles.stepper__burgerMenuButton__hide}
           onClick={toggleMenu}
+          type='button'
         >
           <Icon
             name='burgerMenu'
@@ -86,6 +77,7 @@ export default function Stepper() {
             className={styles.stepper__button}
             onClick={previousStep}
             disabled={!canGoPrevious}
+            type='button'
           >
             <Icon
               name='arrowBack'
@@ -99,6 +91,7 @@ export default function Stepper() {
             className={styles.stepper__button}
             onClick={nextStep}
             disabled={!canGoNext}
+            type='button'
           >
             <Icon name='arrowBack' className={styles.stepper__icon} />
           </button>
@@ -106,6 +99,7 @@ export default function Stepper() {
         <button
           className={styles.stepper__burgerMenuButton}
           onClick={toggleMenu}
+          type='button'
         >
           <Icon
             name='burgerMenu'
@@ -114,7 +108,6 @@ export default function Stepper() {
         </button>
       </section>
 
-      {/* Выдвигающееся белое меню */}
       <div
         ref={menuRef}
         className={clsx(styles.slideMenu, {

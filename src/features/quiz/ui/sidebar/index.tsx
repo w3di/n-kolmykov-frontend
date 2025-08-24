@@ -1,4 +1,4 @@
-'use client'; //todo hooks inside
+'use client';
 
 import styles from './sidebar.module.scss';
 import Image from 'next/image';
@@ -10,7 +10,6 @@ import {
   useQuizNavigation,
   useQuestionTypesContext
 } from '../../model/quiz-context';
-import clsx from 'clsx';
 import Link from 'next/link';
 
 export default function Sidebar() {
@@ -30,33 +29,17 @@ export default function Sidebar() {
         <Icon name='nKolmykov' className={styles.sidebar__header__logoIcon} />
       </Link>
       <div className={styles.sidebar__accordionsContainer}>
-        <div
-          className={clsx(
-            styles.sidebar__typesContainer,
-            styles[`sidebar__typesContainer--types`]
-          )}
-        >
-          <QuestionTypesAccordion
-            questionTypes={questionTypes}
-            onToggleQuestionType={toggleQuestionType}
-          />
-        </div>
-
-        <div
-          className={clsx(
-            styles.sidebar__typesContainer,
-            styles[`sidebar__typesContainer--history`]
-          )}
-        >
-          <QuestionHistoryAccordion
-            questionData={quizData}
-            currentStep={currentStepIndex}
-            onQuestionClick={setCurrentStepIndex}
-          />
-        </div>
+        <QuestionTypesAccordion
+          questionTypes={questionTypes}
+          onToggleQuestionType={toggleQuestionType}
+          title='Типы вопросов'
+        />
+        <QuestionHistoryAccordion
+          questionData={quizData}
+          currentStep={currentStepIndex}
+          onQuestionClick={setCurrentStepIndex}
+        />
       </div>
     </aside>
   );
 }
-
-//todo объеденить QuestionTypesAccordion и QuestionHistoryAccordion в один компонент

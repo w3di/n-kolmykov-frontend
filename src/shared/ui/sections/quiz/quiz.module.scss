@@ -287,9 +287,14 @@
 
   &:hover {
     background: a.$black-2;
+
+    .button_icon {
+      transform: translateX(2.5px);
+    }
   }
 
-  &:active {
+  &:active,
+  &:focus {
     background: a.$orange-1;
   }
 
@@ -318,6 +323,8 @@
   &_icon {
     width: 12px;
     height: 12px;
+
+    transition: transform 0.2s ease;
 
     @include a.tablet {
       width: 14px;

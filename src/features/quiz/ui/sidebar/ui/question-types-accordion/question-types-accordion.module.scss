@@ -1,14 +1,11 @@
 @use 'abstracts' as a;
 
 .list {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 6px;
 
-  overflow-y: auto;
-
   margin-top: 6px;
-
-  scrollbar-width: none;
 
   @include a.desktop-xl {
     gap: 8px;
@@ -19,6 +16,8 @@
   display: flex;
   align-items: center;
   gap: 4px;
+
+  width: 100%;
 
   padding: 4px;
 
@@ -39,18 +38,31 @@
     padding: 6px;
   }
 
+  &__checkmarkIcon {
+    flex-shrink: 0;
+
+    width: 13px;
+    height: 13px;
+  }
+
   &__emptyCircleIcon {
-    width: 12px;
-    height: 12px;
+    flex-shrink: 0;
+
+    width: 13px;
+    height: 13px;
 
     border: 1px dashed a.$black-9;
     border-radius: 50%;
   }
 
   &__text {
+    overflow: hidden;
+
     font-weight: a.$fw-medium;
     font-size: 12px;
     line-height: 16px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     color: a.$black-5;
 
     @include a.desktop-xl {

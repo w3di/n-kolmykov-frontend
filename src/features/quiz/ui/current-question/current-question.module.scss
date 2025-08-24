@@ -139,6 +139,7 @@
         font-weight: 500;
         font-size: 14px;
         line-height: 19px;
+        white-space: nowrap;
         color: rgba(36, 36, 36, 0.5);
 
         @include a.desktop-xl {
@@ -247,6 +248,7 @@
       font-weight: a.$fw-medium;
       font-size: 12px;
       line-height: 16px;
+      white-space: nowrap;
 
       @include a.tablet {
         font-size: 14px;

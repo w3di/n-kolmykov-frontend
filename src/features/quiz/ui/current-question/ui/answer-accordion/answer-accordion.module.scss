@@ -3,7 +3,6 @@
 .answerAccordion {
   display: flex;
   flex-direction: column;
-  gap: 16px;
 
   margin-top: 8px;
 
@@ -17,13 +16,21 @@
     align-items: center;
     gap: 4px;
 
+    width: max-content;
+
     padding: 4px 6px;
 
     background: none;
 
     border: none;
 
+    list-style: none;
+
     cursor: pointer;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
 
     @include a.desktop-xl {
       padding: 6.5px 6px;
@@ -41,6 +48,14 @@
       }
     }
 
+    &__text--show {
+      display: inline;
+    }
+
+    &__text--hide {
+      display: none;
+    }
+
     &__icon {
       width: 12px;
       height: 12px;
@@ -48,10 +63,6 @@
       transform: rotate(90deg);
 
       transition: transform 0.2s ease;
-
-      &.open {
-        transform: rotate(270deg);
-      }
 
       * {
         fill: #f05023;
@@ -61,8 +72,6 @@
 
   &__content {
     display: none;
-    justify-content: center;
-    align-items: center;
     align-self: stretch;
 
     overflow: hidden;
@@ -74,30 +83,16 @@
     border: 1px solid rgba(36, 36, 36, 0.05);
     border-radius: 4px;
 
-    &.open {
-      display: block;
-
-      padding: 8px;
-    }
-
     @include a.tablet {
       padding: 0 12px;
 
       border-radius: 6px;
-
-      &.open {
-        padding: 12px;
-      }
     }
 
     @include a.desktop-xl {
       padding: 0 16px;
 
       border-radius: 8px;
-
-      &.open {
-        padding: 16px;
-      }
     }
 
     &__text {
@@ -108,6 +103,34 @@
 
       @include a.desktop-xl {
         font-size: 14px;
+      }
+    }
+  }
+
+  &[open] {
+    .answerAccordion__trigger__icon {
+      transform: rotate(270deg);
+    }
+
+    .answerAccordion__trigger__text--show {
+      display: none;
+    }
+
+    .answerAccordion__trigger__text--hide {
+      display: inline;
+    }
+
+    .answerAccordion__content {
+      display: flex;
+
+      padding: 8px;
+
+      @include a.tablet {
+        padding: 12px;
+      }
+
+      @include a.desktop-xl {
+        padding: 16px;
       }
     }
   }

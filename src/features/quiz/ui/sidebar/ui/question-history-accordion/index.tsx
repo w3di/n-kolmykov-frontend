@@ -15,33 +15,39 @@ export default function QuestionHistoryAccordion({
   onQuestionClick
 }: QuestionHistoryAccordionProps) {
   return (
-    <Accordion title='История вопросов' defaultOpen={true}>
+    <Accordion title='История вопросов' defaultOpen>
       <ul className={styles.list}>
         {questionData.map((question, index) => (
-          <li
-            key={question.id}
-            className={clsx(styles.listItem, {
-              [styles.listItem_active]: index === currentStep
-            })}
-            onClick={() => onQuestionClick(index)}
-            role='button'
-            aria-pressed={index === currentStep}
-            tabIndex={0}
-          >
-            {question.typeAnswer === 'know' ? (
-              <Icon name='checkmarkOrangeCircle' />
-            ) : question.typeAnswer === 'unknown' ? (
-              <Icon name='crossGrayCircle' />
-            ) : (
-              <div className={styles.listItem__emptyCircleIcon} />
-            )}
-            <span
-              className={clsx(styles.listItem__text, {
-                [styles.listItem_active__text]: index === currentStep
+          <li key={question.id}>
+            <button
+              type='button'
+              className={clsx(styles.listItem, {
+                [styles.listItem_active]: index === currentStep
               })}
+              onClick={() => onQuestionClick(index)}
+              aria-pressed={index === currentStep}
             >
-              {question.question}
-            </span>
+              {question.typeAnswer === 'know' ? (
+                <Icon
+                  name='checkmarkOrangeCircle'
+                  className={styles.listItem__icon}
+                />
+              ) : question.typeAnswer === 'unknown' ? (
+                <Icon
+                  name='crossGrayCircle'
+                  className={styles.listItem__icon}
+                />
+              ) : (
+                <div className={styles.listItem__emptyCircleIcon} />
+              )}
+              <span
+                className={clsx(styles.listItem__text, {
+                  [styles.listItem_active__text]: index === currentStep
+                })}
+              >
+                {question.question}
+              </span>
+            </button>
           </li>
         ))}
       </ul>

@@ -18,35 +18,37 @@ interface QuestionTypesAccordionProps {
 export default function QuestionTypesAccordion({
   questionTypes,
   onToggleQuestionType,
-  title = 'Типы вопросов',
-  defaultOpen = true
+  title
 }: QuestionTypesAccordionProps) {
   return (
-    <Accordion title={title} defaultOpen={defaultOpen}>
+    <Accordion title={title} defaultOpen>
       <ul className={styles.list}>
         {questionTypes.map((questionType) => (
-          <li
-            key={questionType.id}
-            className={clsx(styles.listItem, {
-              [styles.listItem_active]: questionType.active
-            })}
-            onClick={() => onToggleQuestionType(questionType.id)}
-            role='checkbox'
-            aria-checked={questionType.active}
-            tabIndex={0}
-          >
-            {questionType.active ? (
-              <Icon name='checkmarkOrangeCircle' />
-            ) : (
-              <div className={styles.listItem__emptyCircleIcon} />
-            )}
-            <span
-              className={clsx(styles.listItem__text, {
-                [styles.listItem_active__text]: questionType.active
+          <li key={questionType.id}>
+            <button
+              type='button'
+              className={clsx(styles.listItem, {
+                [styles.listItem_active]: questionType.active
               })}
+              aria-pressed={questionType.active}
+              onClick={() => onToggleQuestionType(questionType.id)}
             >
-              {questionType.name}
-            </span>
+              {questionType.active ? (
+                <Icon
+                  name='checkmarkOrangeCircle'
+                  className={styles.listItem__checkmarkIcon}
+                />
+              ) : (
+                <div className={styles.listItem__emptyCircleIcon} />
+              )}
+              <span
+                className={clsx(styles.listItem__text, {
+                  [styles.listItem_active__text]: questionType.active
+                })}
+              >
+                {questionType.name}
+              </span>
+            </button>
           </li>
         ))}
       </ul>

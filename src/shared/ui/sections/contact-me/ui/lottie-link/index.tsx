@@ -23,6 +23,8 @@ export default function LottieLink({ contact }: { contact: Contact }) {
       rel='noopener noreferrer'
       onMouseEnter={() => setHoveredContact(contact.icon)}
       onMouseLeave={() => setHoveredContact(null)}
+      onFocus={() => setHoveredContact(contact.icon)}
+      onBlur={() => setHoveredContact(null)}
     >
       <LottieAnimation
         animationUrl={contact.icon}

@@ -12,6 +12,8 @@
   @include a.laptop {
     display: flex;
     flex-direction: row;
+
+    padding-bottom: 0;
   }
 
   &__content {

@@ -1,6 +1,3 @@
-'use client'; //todo to scss accordion
-import { useEffect, useState } from 'react';
-import clsx from 'clsx';
 import styles from './answer-accordion.module.scss';
 import { Icon } from '@/src/shared/ui/kit';
 
@@ -9,43 +6,39 @@ interface AnswerAccordionProps {
 }
 
 export default function AnswerAccordion({ answer }: AnswerAccordionProps) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen);
-  };
-
-  useEffect(() => {
-    setIsOpen(false);
-  }, [answer]);
-
   return (
-    <div className={styles.answerAccordion}>
-      <button
-        className={styles.answerAccordion__trigger}
-        onClick={toggleAccordion}
-      >
-        <span className={styles.answerAccordion__trigger__text}>
-          {isOpen ? 'Скрыть ответ' : 'Показать ответ'}
+    <details key={answer.join('|')} className={styles.answerAccordion}>
+      <summary className={styles.answerAccordion__trigger} role='button'>
+        <span
+          className={
+            styles.answerAccordion__trigger__text +
+            ' ' +
+            styles['answerAccordion__trigger__text--show']
+          }
+        >
+          {'Показать ответ'}
+        </span>
+        <span
+          className={
+            styles.answerAccordion__trigger__text +
+            ' ' +
+            styles['answerAccordion__trigger__text--hide']
+          }
+        >
+          {'Скрыть ответ'}
         </span>
         <Icon
           name='arrowBack'
-          className={clsx(styles.answerAccordion__trigger__icon, {
-            [styles.open]: isOpen
-          })}
+          className={styles.answerAccordion__trigger__icon}
         />
-      </button>
-      <div
-        className={clsx(styles.answerAccordion__content, {
-          [styles.open]: isOpen
-        })}
-      >
+      </summary>
+      <div className={styles.answerAccordion__content}>
         <div className={styles.answerAccordion__content__text}>
           {answer.map((item, index) => (
             <p key={index}>{item}</p>
           ))}
         </div>
       </div>
-    </div>
+    </details>
   );
 }
