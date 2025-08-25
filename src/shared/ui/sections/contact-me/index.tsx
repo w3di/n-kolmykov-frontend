@@ -11,7 +11,7 @@ const contacts = [
     style: { scale: 2.2 }
   },
   {
-    href: 'https://www.linkedin.com/in/nikolay-kolmykov-26b877279/',
+    href: 'https://www.linkedin.com/in/nkolmykov',
     icon: '/lottie/linkedin.json',
     name: 'LinkedIn',
     description: 'Следите за обновлениями по проекту',

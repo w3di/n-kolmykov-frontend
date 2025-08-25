@@ -52,7 +52,7 @@
 ## Контакты
 
 - Telegram: [@closer2death](https://t.me/closer2death)
-- LinkedIn: [Nikolay Kolmykov](https://www.linkedin.com/in/nikolay-kolmykov-26b877279/)
+- LinkedIn: [Nikolay Kolmykov](https://www.linkedin.com/in/nkolmykov)
 - GitHub: [w3di](https://github.com/w3di)
 - Email: koliakolmikov@gmail.com
 

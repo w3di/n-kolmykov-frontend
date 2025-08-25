@@ -7,8 +7,8 @@ const socials = [
     icon: 'telegram' as const
   },
   {
-    href: 'https://discord.com/',
-    icon: 'discord' as const
+    href: 'https://www.linkedin.com/in/nkolmykov',
+    icon: 'linkedIn' as const
   },
   {
     href: 'https://github.com/w3di',
