@@ -54,6 +54,8 @@
     border-top: 1px dashed a.$black-9;
 
     > *:first-child {
+      flex-shrink: 0;
+
       overflow: auto;
 
       max-height: 40%;

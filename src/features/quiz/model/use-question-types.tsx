@@ -1,57 +1,88 @@
-import { useState, useEffect, useMemo, useCallback } from 'react';
-import { defaultQuestionTypeFilters, QuestionTypeFilter } from '../api';
+import { useState, useMemo, useCallback, useEffect } from 'react';
+import {
+  defaultQuestionTypeFilters,
+  QuestionTypeFilter,
+  availableThemeIds
+} from '../api';
 import { toast } from 'react-toastify';
 import { Toast } from '@/src/shared/ui/kit';
 
 const LOCALSTORAGE_KEY = 'quiz-active-question-types';
 
-const getInitialQuestionTypes = (): QuestionTypeFilter[] => {
-  if (typeof window !== 'undefined') {
-    try {
-      const saved = localStorage.getItem(LOCALSTORAGE_KEY);
-      if (saved) {
-        const savedTypes = JSON.parse(saved);
-        const hasActiveTypes = savedTypes.some(
-          (type: QuestionTypeFilter) => type.active
-        );
-        if (!hasActiveTypes && savedTypes.length > 0) {
-          savedTypes[0].active = true;
-        }
-        return savedTypes;
-      }
-    } catch (error) {
-      console.error('Ошибка при загрузке из localStorage:', error);
+const reconcileQuestionTypes = (
+  saved: QuestionTypeFilter[]
+): QuestionTypeFilter[] => {
+  const defaultsMap = new Map(defaultQuestionTypeFilters.map((d) => [d.id, d]));
+
+  const result: QuestionTypeFilter[] = availableThemeIds.map((id) => {
+    const savedItem = saved.find((s) => s.id === id);
+    if (savedItem) {
+      const name = defaultsMap.get(id)?.name ?? id;
+      return { id, name, active: !!savedItem.active };
     }
+    const def = defaultsMap.get(id);
+    if (def) return { ...def };
+    return { id, name: id, active: true };
+  });
+
+  const hasActiveTypes = result.some((type) => type.active);
+  if (!hasActiveTypes && result.length > 0) {
+    result[0] = { ...result[0], active: true };
   }
 
-  const hasActiveTypes = defaultQuestionTypeFilters.some((type) => type.active);
-  if (!hasActiveTypes && defaultQuestionTypeFilters.length > 0) {
-    const initialTypes = [...defaultQuestionTypeFilters];
-    initialTypes[0].active = true;
-    return initialTypes;
-  }
-  return defaultQuestionTypeFilters;
+  return result;
+};
+
+const getInitialQuestionTypes = (): QuestionTypeFilter[] => {
+  // Важно: на сервере и при первом клиентском рендере возвращаем стабильный эталон,
+  // чтобы не было рассинхрона гидратации. Данные из localStorage подтянем после монтирования.
+  return reconcileQuestionTypes(defaultQuestionTypeFilters);
 };
 
 export const useQuestionTypes = () => {
   const [questionTypes, setQuestionTypes] = useState<QuestionTypeFilter[]>(
     getInitialQuestionTypes
   );
+  const [isHydrated, setIsHydrated] = useState(false);
 
   const activeQuestionTypes = useMemo(
     () => questionTypes.filter((item) => item.active),
     [questionTypes]
   );
 
+  // После монтирования читаем localStorage и приводим к эталону
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      try {
+    if (typeof window === 'undefined') return;
+    try {
+      const saved = localStorage.getItem(LOCALSTORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          const reconciled = reconcileQuestionTypes(
+            parsed as QuestionTypeFilter[]
+          );
+          setQuestionTypes(reconciled);
+        }
+      } else {
+        // Если в storage ничего нет — зафиксируем текущий эталон
         localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(questionTypes));
-      } catch (error) {
-        console.error('Ошибка при сохранении в localStorage:', error);
       }
+    } catch (error) {
+      console.error('Ошибка при загрузке из localStorage:', error);
+    } finally {
+      setIsHydrated(true);
     }
-  }, [questionTypes]);
+  }, []);
+
+  useEffect(() => {
+    if (!isHydrated) return; // Не перетирать сохранённые данные до инициализации
+    if (typeof window === 'undefined') return;
+    try {
+      localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(questionTypes));
+    } catch (error) {
+      console.error('Ошибка при сохранении в localStorage:', error);
+    }
+  }, [questionTypes, isHydrated]);
 
   const toggleQuestionType = useCallback((id: string) => {
     setQuestionTypes((prev) => {
@@ -90,6 +121,7 @@ export const useQuestionTypes = () => {
   return {
     questionTypes,
     activeQuestionTypes,
-    toggleQuestionType
+    toggleQuestionType,
+    isHydrated
   };
 };

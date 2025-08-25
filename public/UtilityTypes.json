@@ -1,0 +1,114 @@
+{
+  "items": [
+    {
+      "question": "Что делает утилитный тип Awaited?",
+      "id": "q-1-60a85fe4",
+      "answer": "\t1. Извлекает внутренний тип из Promise/Thenable, рекурсивно раскрывая промисы.\n\t2. Пример: type A = Awaited<Promise<number>>; // number\n\t3. Пример 2: type B = Awaited<Promise<Promise<string>>>; // string"
+    },
+    {
+      "question": "Что делает утилитный тип Partial?",
+      "id": "q-2-63261654",
+      "answer": "\t1. Делает все свойства типа опциональными.\n\t2. Пример: type A = Partial<{ a: number; b: string }>; // { a?: number; b?: string }"
+    },
+    {
+      "question": "Что делает утилитный тип Required?",
+      "id": "q-3-282f265a",
+      "answer": "\t1. Делает все свойства типа обязательными.\n\t2. Пример: type A = Required<{ a?: number; b?: string }>; // { a: number; b: string }"
+    },
+    {
+      "question": "Что делает утилитный тип Readonly?",
+      "id": "q-4-8051519f",
+      "answer": "\t1. Делает все свойства типа только для чтения (запрещает присваивания).\n\t2. Пример: type A = Readonly<{ a: number }>; // { readonly a: number }"
+    },
+    {
+      "question": "Что делает утилитный тип Record?",
+      "id": "q-5-edefb0de",
+      "answer": "\t1. Создаёт тип объекта с ключами из объединения Keys и значениями типа Type.\n\t2. Пример: type A = Record<'id' | 'name', string>; // { id: string; name: string }\n\t3. Пример 2: type B = Record<number, boolean>; // { [x: number]: boolean }"
+    },
+    {
+      "question": "Что делает утилитный тип Pick?",
+      "id": "q-6-3fccfaa7",
+      "answer": "\t1. Формирует тип с подмножеством свойств Type, перечисленных в Keys.\n\t2. Пример: type A = Pick<{ a: number; b: string }, 'a'>; // { a: number }"
+    },
+    {
+      "question": "Что делает утилитный тип Omit?",
+      "id": "q-7-1a9c12c2",
+      "answer": "\t1. Формирует тип из Type, исключая свойства, перечисленные в Keys.\n\t2. Пример: type A = Omit<{ a: number; b: string }, 'b'>; // { a: number }"
+    },
+    {
+      "question": "Что делает утилитный тип Exclude?",
+      "id": "q-8-55acf126",
+      "answer": "\t1. Убирает из объединения UnionType все члены, совместимые с ExcludedMembers.\n\t2. Пример: type A = Exclude<'a' | 'b' | 1, string>; // 1\n\t3. Пример 2: type B = Exclude<string | number, number>; // string"
+    },
+    {
+      "question": "Что делает утилитный тип Extract?",
+      "id": "q-9-364bbf9e",
+      "answer": "\t1. Оставляет в Type только члены, совместимые с Union (пересечение).\n\t2. Пример: type A = Extract<'a' | 'b' | 1, string>; // 'a' | 'b'\n\t3. Пример 2: type B = Extract<string | number, number | boolean>; // number"
+    },
+    {
+      "question": "Что делает утилитный тип NonNullable?",
+      "id": "q-10-e30b7362",
+      "answer": "\t1. Исключает значения null и undefined из Type.\n\t2. Пример: type A = NonNullable<string | null | undefined>; // string"
+    },
+    {
+      "question": "Что делает утилитный тип Parameters?",
+      "id": "q-11-e6aa9d32",
+      "answer": "\t1. Возвращает кортеж типов параметров функции Type.\n\t2. Пример: type Fn = (x: number, y: string) => void; type A = Parameters<Fn>; // [number, string]\n\t3. Пример 2: type A2 = Parameters<typeof Math.max>; // number[]"
+    },
+    {
+      "question": "Что делает утилитный тип ConstructorParameters?",
+      "id": "q-12-3b13e406",
+      "answer": "\t1. Возвращает кортеж типов параметров конструктора у типа-конструктора.\n\t2. Пример: type C = new (x: number) => {}; type A = ConstructorParameters<C>; // [number]\n\t3. Пример 2: class K { constructor(a: number, b: string) {} } type B = ConstructorParameters<typeof K>; // [number, string]"
+    },
+    {
+      "question": "Что делает утилитный тип ReturnType?",
+      "id": "q-13-cf9bde6d",
+      "answer": "\t1. Извлекает тип возвращаемого значения функции Type.\n\t2. Пример: type Fn = () => Promise<string>; type A = ReturnType<Fn>; // Promise<string>\n\t3. Пример 2: type B = ReturnType<() => { id: number }>; // { id: number }"
+    },
+    {
+      "question": "Что делает утилитный тип InstanceType?",
+      "id": "q-14-3e57e97b",
+      "answer": "\t1. Возвращает тип экземпляра, создаваемого конструктором Type.\n\t2. Пример: type C = new () => Date; type A = InstanceType<C>; // Date\n\t3. Пример 2: class K {} type B = InstanceType<typeof K>; // K"
+    },
+    {
+      "question": "Что делает утилитный тип NoInfer?",
+      "id": "q-15-f173a71a",
+      "answer": "\t1. Предотвращает вывод (инференс) Type из контекста, фиксируя переданный тип.\n\t2. Пример: declare function f<T>(x: T, y: NoInfer<T>): T; f('a', 'b'); // ok; f('a', 1); // ошибка типов"
+    },
+    {
+      "question": "Что делает утилитный тип ThisParameterType?",
+      "id": "q-16-2c7bff7f",
+      "answer": "\t1. Извлекает тип параметра this у функции Type.\n\t2. Пример: function fn(this: { id: number }) {} type A = ThisParameterType<typeof fn>; // { id: number }\n\t3. Пример 2: type B = ThisParameterType<(this: HTMLDivElement, x: number) => void>; // HTMLDivElement"
+    },
+    {
+      "question": "Что делает утилитный тип OmitThisParameter?",
+      "id": "q-17-b6dc25f5",
+      "answer": "\t1. Удаляет параметр this из сигнатуры функции Type.\n\t2. Пример: function fn(this: Date, x: number): void {} type A = OmitThisParameter<typeof fn>; // (x: number) => void\n\t3. Пример 2: type B = OmitThisParameter<(this: HTMLElement, e: MouseEvent) => void>; // (e: MouseEvent) => void"
+    },
+    {
+      "question": "Что делает утилитный тип ThisType?",
+      "id": "q-18-80cea7bb",
+      "answer": "\t1. Служит маркером контекстного типа this в объектных литералах (работает с lib ThisType).\n\t2. Пример: const obj: ThisType<{ id: number }> & { getId(): number } = { getId() { return this.id; } }; // this: { id: number }\n\t3. Пример 2: const m: ThisType<{ count: number }> & { inc(): void } = { inc() { this.count++; } }; // this: { count: number }"
+    },
+    {
+      "question": "Что делает утилитный тип Uppercase?",
+      "id": "q-19-0cd57d4e",
+      "answer": "\t1. Преобразует все символы строки в верхний регистр.\n\t2. Пример: type A = Uppercase<'ab'>; // 'AB'"
+    },
+    {
+      "question": "Что делает утилитный тип Lowercase?",
+      "id": "q-20-5d2c7c0b",
+      "answer": "\t1. Преобразует все символы строки в нижний регистр.\n\t2. Пример: type A = Lowercase<'AbC'>; // 'abc'"
+    },
+    {
+      "question": "Что делает утилитный тип Capitalize?",
+      "id": "q-21-f82d2480",
+      "answer": "\t1. Делает первый символ строки заглавным.\n\t2. Пример: type A = Capitalize<'hello'>; // 'Hello'"
+    },
+    {
+      "question": "Что делает утилитный тип Uncapitalize?",
+      "id": "q-22-ca783b89",
+      "answer": "\t1. Делает первый символ строки строчным.\n\t2. Пример: type A = Uncapitalize<'Hello'>; // 'hello'"
+    }
+  ]
+}

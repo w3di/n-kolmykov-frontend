@@ -12,8 +12,12 @@ export const useQuizState = () => {
   const statsState = useQuizStats();
   const navigationState = useQuizNavigation();
 
+  const effectiveActiveTypes = questionTypesState.isHydrated
+    ? questionTypesState.activeQuestionTypes
+    : [];
+
   const quizDataState = useQuizData(
-    questionTypesState.activeQuestionTypes,
+    effectiveActiveTypes,
     statsState.updateStats,
     navigationState.nextStep
   );
@@ -21,6 +25,7 @@ export const useQuizState = () => {
   return {
     // Данные квиза
     ...quizDataState,
+    isLoading: !questionTypesState.isHydrated || quizDataState.isLoading,
     // Статистика
     quizStats: statsState.quizStats,
     // Типы вопросов

@@ -8,44 +8,43 @@ export type QuestionTypeFilter = {
 
 // Сопоставление тем -> файлы в public
 const THEME_TO_JSON: Record<string, string> = {
-  React: '/react.json'
+  'JavaScript': '/JavaScript.json',
+  'React': '/React_new.json',
+  'TypeScript': '/Typescript.json',
+  'Utility Types': '/UtilityTypes.json'
 };
 
 export const availableThemeIds = Object.keys(THEME_TO_JSON);
 
 export const defaultQuestionTypeFilters: QuestionTypeFilter[] =
-  availableThemeIds.map((theme, index) => ({
+  availableThemeIds.map((theme) => ({
     id: theme,
     name: theme,
-    active: index === 0
+    active: true
   }));
-
-type AnswerNode = {
-  text: string;
-  answer?: AnswerNode[];
-};
 
 type PublicQuizJson = {
   theme: string;
   items: Array<{
     id: string;
     question: string;
-    answer: AnswerNode[];
+    answer: string;
   }>;
 };
 
-const flattenAnswers = (nodes: AnswerNode[] | undefined): string[] => {
-  if (!nodes || nodes.length === 0) return [];
-  const result: string[] = [];
-  const stack: AnswerNode[] = [...nodes];
-  while (stack.length) {
-    const node = stack.shift() as AnswerNode;
-    if (node.text) result.push(node.text);
-    if (node.answer && node.answer.length) {
-      stack.unshift(...node.answer);
-    }
-  }
-  return result;
+const parseAnswerString = (raw: string): string[] => {
+  return raw
+    .split('\n')
+    .map((line) => line.replace(/\t/g, ' ').trim())
+    .map((line) =>
+      line
+        // bullets like '-', '*', '•'
+        .replace(/^[-•*]\s*/, '')
+        // numbered bullets like '1. ', '1) '
+        .replace(/^\d+[\.)]\s*/, '')
+        .trim()
+    )
+    .filter((line) => line.length > 0);
 };
 
 const loadThemeJson = async (themeId: string): Promise<QuestionType[]> => {
@@ -58,7 +57,7 @@ const loadThemeJson = async (themeId: string): Promise<QuestionType[]> => {
   return data.items.map((item) => ({
     id: item.id,
     question: item.question,
-    answers: flattenAnswers(item.answer),
+    answers: parseAnswerString(item.answer),
     theme,
     typeAnswer: null
   }));
