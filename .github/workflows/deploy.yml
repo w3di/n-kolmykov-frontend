@@ -61,18 +61,66 @@ jobs:
           envs: NEXT_PUBLIC_SITE_URL
           script: |
             set -euo pipefail
+            
+            # Функция для логирования
+            log() {
+              echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1"
+            }
+            
+            # Проверяем место на диске перед началом
+            log "Checking disk space before deployment..."
+            df -h
+            log "Docker disk usage:"
+            docker system df
+            
             cd ~/apps/n-kolmykov/releases
-            gunzip -c image_${{ github.sha }}.tar.gz | docker load
-
+            
+            # Очищаем Docker ресурсы перед загрузкой нового образа
+            log "Cleaning up Docker resources..."
+            docker system prune -f --volumes
+            docker image prune -f
+            
+            # Останавливаем и удаляем старый контейнер
+            log "Stopping and removing old container..."
             docker stop n-kolmykov-frontend || true
             docker rm n-kolmykov-frontend || true
-
-            # Привязываем к localhost, чтобы наружу ходили через Nginx
+            
+            # Загружаем новый образ
+            log "Loading new Docker image..."
+            gunzip -c image_${{ github.sha }}.tar.gz | docker load
+            
+            # Проверяем место после загрузки
+            log "Disk usage after image load:"
+            df -h
+            docker system df
+            
+            # Запускаем новый контейнер
+            log "Starting new container..."
             docker run -d --name n-kolmykov-frontend \
               -p 127.0.0.1:3000:3000 \
               -e NEXT_PUBLIC_SITE_URL="$NEXT_PUBLIC_SITE_URL" \
               --restart unless-stopped \
               nkolmykov/frontend:${{ github.sha }}
-
-            # Чистим старые тарболы (оставить последние 3)
-            ls -t image_*.tar.gz | tail -n +4 | xargs -r rm --
+            
+            # Проверяем статус контейнера
+            log "Container status:"
+            docker ps --filter name=n-kolmykov-frontend
+            
+            # Очищаем старые образы (оставить только последние 2)
+            log "Cleaning up old Docker images (keeping last 2)..."
+            docker images nkolmykov/frontend --format "table {{.ID}}\t{{.CreatedAt}}" | tail -n +3 | awk '{print $1}' | xargs -r docker rmi || true
+            
+            # Очищаем старые tar.gz файлы (оставить последние 3)
+            log "Cleaning up old tar.gz files (keeping last 3)..."
+            ls -t image_*.tar.gz | tail -n +4 | xargs -r rm -- || true
+            
+            # Финальная очистка Docker
+            log "Final Docker cleanup..."
+            docker system prune -f --volumes
+            
+            # Финальная проверка места
+            log "Final disk usage:"
+            df -h
+            docker system df
+            
+            log "Deployment completed successfully!"
