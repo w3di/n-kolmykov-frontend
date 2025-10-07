@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { QuizPage } from '@/src/features/quiz';
+import { QuizProvider } from '@/src/components/context/quiz/quiz-context';
+import { QuizPage } from '@/src/components/pages/quiz/quiz';
 
 export const metadata: Metadata = {
   title: 'Quiz',
@@ -30,5 +31,9 @@ export const metadata: Metadata = {
 };
 
 export default function Quiz() {
-  return <QuizPage />;
+  return (
+    <QuizProvider>
+      <QuizPage />
+    </QuizProvider>
+  );
 }

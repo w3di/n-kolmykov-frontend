@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { MePage } from '@/src/shared/ui/pages';
+import { AboutMePage } from '@/src/components/pages/about-me/about-me';
 
 export const metadata: Metadata = {
   title: 'Обо мне',
@@ -29,6 +29,6 @@ export const metadata: Metadata = {
   }
 };
 
-export default function Me() {
-  return <MePage />;
+export default function AboutMe() {
+  return <AboutMePage />;
 }

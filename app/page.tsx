@@ -1,5 +1,5 @@
+import { HomePage } from '@/src/components/pages/home/home';
 import type { Metadata } from 'next';
-import { HomePage } from '@/src/shared/ui/pages';
 
 export const metadata: Metadata = {
   title: 'Главная - nKolmykov',
