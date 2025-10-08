@@ -93,9 +93,9 @@ export const metadata: Metadata = {
       'Open‑source проект для подготовки к техническим собеседованиям: коллекция актуальных вопросов и развернутых ответов по популярным технологиям.',
     images: [
       {
-        url: '/images/myLogo.webp',
-        width: 1024,
-        height: 576,
+        url: '/opengraph-image.png',
+        width: 1200,
+        height: 600,
         alt: 'nKolmykov — проект для подготовки к техническим собеседованиям'
       }
     ]
@@ -105,7 +105,7 @@ export const metadata: Metadata = {
     title: 'nKolmykov — проект для подготовки к техническим собеседованиям',
     description:
       'Open‑source проект для подготовки к техническим собеседованиям: коллекция актуальных вопросов и развернутых ответов по популярным технологиям.',
-    images: ['/images/myLogo.webp']
+    images: ['/twitter-image.png']
   },
   robots: {
     index: true,
@@ -118,18 +118,24 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/images/myLogo.webp',
-        sizes: '15x24',
-        type: 'image/webp'
+        url: '/favicon.ico',
+        sizes: 'any'
       },
       {
-        url: '/images/myLogo.webp',
-        sizes: '30x48',
-        type: 'image/webp'
+        url: '/icon.png',
+        sizes: '32x32',
+        type: 'image/png'
       }
     ],
-    apple: '/images/myLogo.webp'
-  }
+    apple: [
+      {
+        url: '/apple-icon.png',
+        sizes: '180x180',
+        type: 'image/png'
+      }
+    ]
+  },
+  manifest: '/manifest.json'
 };
 
 export default function RootLayout({
