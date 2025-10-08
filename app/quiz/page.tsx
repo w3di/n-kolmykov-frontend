@@ -5,18 +5,18 @@ import { QuizPage } from '@/src/components/pages/quiz/quiz';
 export const metadata: Metadata = {
   title: 'Quiz',
   description:
-    'Коллекция актуальных вопросов и развернутых ответов по популярным технологиям для подготовки к собеседованиям.',
+    'Интерактивный квиз для подготовки к собеседованиям Frontend разработчика. 1000+ вопросов по React, TypeScript, Next.js, JavaScript с развернутыми ответами.',
   alternates: { canonical: '/quiz' },
   openGraph: {
     title: 'Quiz — nKolmykov',
     description:
-      'Коллекция актуальных вопросов и развернутых ответов по популярным технологиям для подготовки к собеседованиям.',
+      'Интерактивный квиз для подготовки к собеседованиям Frontend разработчика. 1000+ вопросов по React, TypeScript, Next.js, JavaScript с развернутыми ответами.',
     url: '/quiz',
     images: [
       {
-        url: '/images/myLogo.webp',
-        width: 1024,
-        height: 576,
+        url: '/opengraph-image.png',
+        width: 1200,
+        height: 600,
         alt: 'Quiz — nKolmykov'
       }
     ]
@@ -25,8 +25,8 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Quiz — nKolmykov',
     description:
-      'Коллекция актуальных вопросов и развернутых ответов по популярным технологиям для подготовки к собеседованиям.',
-    images: ['/images/myLogo.webp']
+      'Интерактивный квиз для подготовки к собеседованиям Frontend разработчика. 1000+ вопросов по React, TypeScript, Next.js, JavaScript с развернутыми ответами.',
+    images: ['/twitter-image.png']
   }
 };
 

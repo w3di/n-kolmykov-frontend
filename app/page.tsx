@@ -2,7 +2,7 @@ import { HomePage } from '@/src/components/pages/home/home';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Главная - nKolmykov',
+  title: 'Главная',
   description:
     'Open‑source проект для подготовки к техническим собеседованиям: коллекция актуальных вопросов и развернутых ответов по популярным технологиям.',
   alternates: { canonical: '/' },
@@ -13,9 +13,9 @@ export const metadata: Metadata = {
     url: '/',
     images: [
       {
-        url: '/images/myLogo.webp',
-        width: 1024,
-        height: 576,
+        url: '/opengraph-image.png',
+        width: 1200,
+        height: 600,
         alt: 'Главная — nKolmykov'
       }
     ]
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     title: 'Главная — nKolmykov',
     description:
       'Open‑source проект для подготовки к техническим собеседованиям: коллекция актуальных вопросов и развернутых ответов по популярным технологиям.',
-    images: ['/images/myLogo.webp']
+    images: ['/twitter-image.png']
   }
 };
 
