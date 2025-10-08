@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import '../public/styles/main.scss';
 import { ToastContainer } from 'react-toastify';
+import { StructuredData } from '../src/components/base';
 
 const involve = localFont({
   src: [
@@ -66,19 +67,42 @@ export const metadata: Metadata = {
   referrer: 'origin-when-cross-origin',
   formatDetection: { email: false, address: false, telephone: false },
   keywords: [
-    'nKolmykov',
-    'портфолио',
-    'frontend',
+    // Основные ключевые слова
+    'подготовка к собеседованию',
+    'техническое собеседование',
+    'frontend разработчик',
+    'react собеседование',
+    'typescript вопросы',
+    'nextjs интервью',
+    'javascript собеседование',
+
+    // Технологии
     'react',
     'nextjs',
+    'next.js',
     'typescript',
-    'интервью',
+    'javascript',
+    'frontend',
+    'веб разработка',
+    'программирование',
+
+    // Форматы контента
     'вопросы и ответы',
-    'quiz',
-    'собеседование',
-    'фронтенд',
+    'квиз',
+    'тест',
+    'интерактивный',
+    'обучение',
+    'практика',
+
+    // Дополнительные
+    'nKolmykov',
     'колмыков',
-    'николай'
+    'николай',
+    'портфолио',
+    'open source',
+    'бесплатно',
+    'онлайн',
+    'самообразование'
   ],
   alternates: {
     canonical: '/'
@@ -103,6 +127,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'nKolmykov — проект для подготовки к техническим собеседованиям',
+    site: '@nKolmykov',
+    creator: '@nKolmykov',
     description:
       'Open‑source проект для подготовки к техническим собеседованиям: коллекция актуальных вопросов и развернутых ответов по популярным технологиям.',
     images: ['/twitter-image.png']
@@ -110,10 +136,24 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
-      index: true,
-      follow: true
+      'index': true,
+      'follow': true,
+      'noimageindex': false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1
     }
+  },
+  other: {
+    'msapplication-TileColor': '#f05023',
+    'theme-color': '#f05023',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'default',
+    'apple-mobile-web-app-title': 'nKolmykov',
+    'mobile-web-app-capable': 'yes',
+    'format-detection': 'telephone=no'
   },
   icons: {
     icon: [
@@ -146,6 +186,7 @@ export default function RootLayout({
   return (
     <html lang='ru' className={involve.variable}>
       <body>
+        <StructuredData />
         {children}
         <ToastContainer
           position='top-right'
