@@ -39,16 +39,16 @@ const parseAnswerString = (raw: string | null | undefined): string[] => {
     return [];
   }
 
-  return raw
-    .split('\n')
-    .map((line) => line.replace(/\t/g, ' ').trim())
-    .map((line) =>
-      line
-        .replace(/^[-•*]\s*/, '')
-        .replace(/^\d+[\.)]\s*/, '')
-        .trim()
-    )
-    .filter((line) => line.length > 0);
+  return [raw];
+  // .split('\n')
+  // .map((line) => line.replace(/\t/g, ' ').trim())
+  // .map((line) =>
+  //   line
+  //     .replace(/^[-•*]\s*/, '')
+  //     .replace(/^\d+[\.)]\s*/, '')
+  //     .trim()
+  // )
+  // .filter((line) => line.length > 0);
 };
 
 const loadThemeJson = async (themeId: string): Promise<QuestionType[]> => {

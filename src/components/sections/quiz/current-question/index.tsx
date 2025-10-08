@@ -38,9 +38,11 @@ export default function CurrentQuestion({
             {currentQuestion.theme}
           </span>
         </div>
-        <p className={styles.quistionContainer__question}>
-          {currentQuestion.question}
-        </p>
+        <p
+          className={styles.quistionContainer__question}
+          dangerouslySetInnerHTML={{ __html: currentQuestion.question }}
+        />
+
         <AnswerAccordion answer={currentQuestion.answers} />
 
         <div className={styles.quistionContainer__buttons}>

@@ -104,6 +104,22 @@
       @include a.desktop-xl {
         font-size: 14px;
       }
+
+      pre {
+        padding: 12px 10px;
+
+        background-color: rgba(36, 36, 36, 0.1);
+
+        border-radius: 3px;
+
+        font-family: 'Courier New', monospace;
+        font-size: 0.9em;
+
+        code {
+          font-weight: 500;
+          color: black;
+        }
+      }
     }
   }
 

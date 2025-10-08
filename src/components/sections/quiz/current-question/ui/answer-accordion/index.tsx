@@ -35,7 +35,7 @@ export default function AnswerAccordion({ answer }: AnswerAccordionProps) {
       <div className={styles.answerAccordion__content}>
         <div className={styles.answerAccordion__content__text}>
           {answer.map((item, index) => (
-            <p key={index}>{item}</p>
+            <p key={index} dangerouslySetInnerHTML={{ __html: item }} />
           ))}
         </div>
       </div>
