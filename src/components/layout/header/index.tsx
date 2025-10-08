@@ -11,7 +11,11 @@ export default function Header({
 }) {
   return (
     <header className={clsx(styles.header, styles[`header--${variant}`])}>
-      <Link href='/' className={clsx(styles.logo, styles[`logo--${variant}`])}>
+      <Link
+        href='/'
+        className={clsx(styles.logo, styles[`logo--${variant}`])}
+        aria-label='nKolmykov - перейти на главную страницу'
+      >
         <Icon
           name='nKolmykov'
           className={clsx(styles.logo, styles[`logo--${variant}`])}

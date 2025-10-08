@@ -19,7 +19,11 @@ export default function Sidebar() {
 
   return (
     <aside className={styles.sidebar}>
-      <Link href='/' className={styles.sidebar__header}>
+      <Link
+        href='/'
+        className={styles.sidebar__header}
+        aria-label='nKolmykov - перейти на главную страницу'
+      >
         <Image
           src='/images/myLogo.webp'
           alt='Autor logo'
