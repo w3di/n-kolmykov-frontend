@@ -18,14 +18,14 @@ export default function HiItsMe() {
         />
       </div>
       <Image
-        src='/svg/ariana_cursor.svg'
+        src='/images/ariana_cursor.webp'
         alt='myLogo'
         width={76.3}
         height={44}
         className={styles.arianaCursor}
       />
       <Image
-        src='/svg/nikolay_cursor.svg'
+        src='/images/nikolay_cursor.webp'
         alt='myLogo'
         width={80.7}
         height={44}
