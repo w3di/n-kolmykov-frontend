@@ -17,18 +17,18 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "lottie-react": "^2.4.1",
-    "next": "15.3.4",
+    "next": "^15.5.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-toastify": "^11.0.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/node": "^24.7.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
     "eslint": "^9",
-    "eslint-config-next": "15.3.4",
+    "eslint-config-next": "^15.5.4",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.2",
     "prettier": "3.6.2",
