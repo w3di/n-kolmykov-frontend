@@ -1,20 +1,18 @@
 import Image from 'next/image';
 import styles from './hi-its-me.module.scss';
-import myPhoto from '@/public/images/my-photo.webp';
 
 export default function HiItsMe() {
   return (
     <section className={styles.hiItsMe}>
       <div className={styles.meImage}>
         <Image
-          src={myPhoto}
+          src={'/images/my-photo.webp'}
           alt='myLogo'
           priority
           fetchPriority='high'
           quality={80}
           fill
-          objectFit='cover'
-          objectPosition='center'
+          sizes='(max-width: 768px) 64px, (max-width: 1024px) 120px, (max-width: 1440px) 160px, 200px'
         />
       </div>
       <Image

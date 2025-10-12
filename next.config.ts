@@ -3,7 +3,14 @@ import path from 'path';
 
 const nextConfig: NextConfig = {
   sassOptions: {
-    includePaths: [path.join(process.cwd(), 'public/styles')]
+    additionalData: `@use '${path.join(process.cwd(), 'public/styles/abstracts/_index.scss')}' as a;`
+  },
+  experimental: {
+    turbopackFileSystemCacheForDev: true
+  },
+  reactCompiler: true,
+  images: {
+    qualities: [25, 50, 75, 80, 90, 100]
   }
 };
 

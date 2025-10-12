@@ -12,6 +12,7 @@ export default function Quiz() {
         <Image
           src='/images/codeshow.webp'
           alt='code_show'
+          loading='eager'
           width={1016}
           height={635}
           className={styles.codeShowImage}

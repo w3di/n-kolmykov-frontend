@@ -53,7 +53,7 @@ export default function Pull() {
           alt='Пример кода для мобильных устройств'
           width={305}
           height={286}
-          quality={100}
+          quality={90}
           className={clsx(
             styles.showCodeImageBlock,
             styles.showCodeImageBlock__360
@@ -64,7 +64,7 @@ export default function Pull() {
           alt='Пример кода для планшетов'
           width={418}
           height={342}
-          quality={100}
+          quality={90}
           className={clsx(
             styles.showCodeImageBlock,
             styles.showCodeImageBlock__1024
@@ -75,7 +75,7 @@ export default function Pull() {
           alt='Пример кода для десктопа'
           width={494}
           height={339}
-          quality={100}
+          quality={90}
           className={clsx(
             styles.showCodeImageBlock,
             styles.showCodeImageBlock__1920

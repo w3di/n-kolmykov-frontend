@@ -1,5 +1,3 @@
-@use 'abstracts' as a;
-
 .hiItsMe {
   position: relative;
 
@@ -30,6 +28,11 @@
   height: 64px;
 
   border-radius: 100%;
+
+  img {
+    object-fit: cover;
+    object-position: center;
+  }
 
   @include a.tablet {
     width: 120px;
