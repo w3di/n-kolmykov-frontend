@@ -1,11 +1,14 @@
 import { useState, useMemo, useCallback, useEffect } from 'react';
+
+import { toast } from 'react-toastify';
+
 import {
   defaultQuestionTypeFilters,
   QuestionTypeFilter,
   availableThemeIds
-} from '../../api';
-import { toast } from 'react-toastify';
-import { Toast } from '@/src/components/base';
+} from '@/components/api';
+import { Toast } from '@/components/base';
+
 import { LOCALSTORAGE_KEY } from './constants';
 
 const reconcileQuestionTypes = (
@@ -49,6 +52,10 @@ export const useQuestionTypes = () => {
     [questionTypes]
   );
 
+  const setLocalStorage = useCallback(() => {
+    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(questionTypes));
+  }, [questionTypes]);
+
   // После монтирования читаем localStorage и приводим к эталону
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -64,24 +71,24 @@ export const useQuestionTypes = () => {
         }
       } else {
         // Если в storage ничего нет — зафиксируем текущий эталон
-        localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(questionTypes));
+        setLocalStorage();
       }
     } catch (error) {
       console.error('Ошибка при загрузке из localStorage:', error);
     } finally {
       setIsHydrated(true);
     }
-  }, []);
+  }, [setLocalStorage]);
 
   useEffect(() => {
     if (!isHydrated) return; // Не перетирать сохранённые данные до инициализации
     if (typeof window === 'undefined') return;
     try {
-      localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(questionTypes));
+      setLocalStorage();
     } catch (error) {
       console.error('Ошибка при сохранении в localStorage:', error);
     }
-  }, [questionTypes, isHydrated]);
+  }, [isHydrated, setLocalStorage]);
 
   const toggleQuestionType = useCallback((id: string) => {
     setQuestionTypes((prev) => {

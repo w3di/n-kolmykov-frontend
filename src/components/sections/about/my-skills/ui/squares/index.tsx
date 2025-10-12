@@ -1,8 +1,10 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-import styles from './squares.module.scss';
+
 import clsx from 'clsx';
+
+import styles from './squares.module.scss';
 
 interface SquaresProps {
   direction?: 'right' | 'left' | 'up' | 'down' | 'diagonal';
@@ -216,7 +218,7 @@ const Squares = ({
   ]);
 
   return (
-    <canvas ref={canvasRef} className={clsx(styles.squaresCanvas, className)} />
+    <canvas className={clsx(styles.squaresCanvas, className)} ref={canvasRef} />
   );
 };
 

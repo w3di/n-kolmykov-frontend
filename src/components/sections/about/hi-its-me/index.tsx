@@ -1,7 +1,8 @@
 import Image from 'next/image';
+
 import styles from './hi-its-me.module.scss';
 
-export default function HiItsMe() {
+const HiItsMe = () => {
   return (
     <section className={styles.hiItsMe}>
       <div className={styles.meImage}>
@@ -35,4 +36,6 @@ export default function HiItsMe() {
       </div>
     </section>
   );
-}
+};
+
+export default HiItsMe;

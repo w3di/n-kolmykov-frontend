@@ -1,14 +1,14 @@
+import { Separator } from '@/components/base';
+import { Defaults } from '@/components/layout';
+import CodeExamples from '@/components/sections/home/code-examples';
+import Hero from '@/components/sections/home/hero';
+import Pull from '@/components/sections/home/pull';
+import Quiz from '@/components/sections/home/quiz';
+import Stats from '@/components/sections/home/stats';
+
 import styles from './home.module.scss';
 
-import Hero from '../../sections/home/hero';
-import Stats from '../../sections/home/stats';
-import Quiz from '../../sections/home/quiz';
-import Pull from '../../sections/home/pull';
-import CodeExamples from '../../sections/home/code-examples';
-import { Separator } from '../../base';
-import { Defaults } from '../../layout';
-
-export function HomePage() {
+export const HomePage = () => {
   return (
     <Defaults className={styles.home}>
       <Hero />
@@ -19,4 +19,4 @@ export function HomePage() {
       <CodeExamples />
     </Defaults>
   );
-}
+};

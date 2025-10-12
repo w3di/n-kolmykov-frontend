@@ -1,7 +1,8 @@
-import { Icon } from '@/src/components/base';
+import { Icon } from '@/components/base';
+
 import styles from './code-examples.module.scss';
 
-export default function CodeExamples() {
+const CodeExamples = () => {
   return (
     <section className={styles.codeExamples}>
       <div className={styles.text}>
@@ -23,4 +24,6 @@ export default function CodeExamples() {
       </div>
     </section>
   );
-}
+};
+
+export default CodeExamples;

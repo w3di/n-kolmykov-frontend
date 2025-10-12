@@ -1,14 +1,11 @@
 import clsx from 'clsx';
+import Link from 'next/link';
+
+import { Icon, SocialList } from '@/components/base';
 
 import styles from './header.module.scss';
-import Link from 'next/link';
-import { Icon, SocialList } from '../../base';
 
-export default function Header({
-  variant = 'default'
-}: {
-  variant?: 'default' | 'short';
-}) {
+const Header = ({ variant = 'default' }: { variant?: 'default' | 'short' }) => {
   return (
     <header className={clsx(styles.header, styles[`header--${variant}`])}>
       <Link
@@ -38,4 +35,6 @@ export default function Header({
       <SocialList />
     </header>
   );
-}
+};
+
+export default Header;

@@ -1,5 +1,6 @@
-import { Icon } from '..';
-import { IconName } from '../icon';
+import { Icon } from '@/components/base';
+import { IconName } from '@/components/base/icon';
+
 import styles from './tag.module.scss';
 
 interface TagProps {
@@ -9,7 +10,7 @@ interface TagProps {
   icon: IconName;
 }
 
-export default function Tag({ count, label, icon, afterLabel }: TagProps) {
+const Tag = ({ count, label, icon, afterLabel }: TagProps) => {
   return (
     <div className={styles.tag}>
       <Icon name={icon} className={styles.tag__bookIcon} />
@@ -19,4 +20,6 @@ export default function Tag({ count, label, icon, afterLabel }: TagProps) {
       </p>
     </div>
   );
-}
+};
+
+export default Tag;

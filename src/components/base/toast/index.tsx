@@ -1,8 +1,10 @@
 import React from 'react';
+
 import { ToastContentProps } from 'react-toastify';
 
+import Icon from '@/components/base/icon';
+
 import styles from './toast.module.scss';
-import Icon from '../icon';
 
 export type ToastState = 'info' | 'warning' | 'success' | 'error';
 

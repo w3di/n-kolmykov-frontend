@@ -1,7 +1,9 @@
 'use client';
 import { useState } from 'react';
+
+import { LottieAnimation } from '@/components/base';
+
 import styles from './lottie-link.module.scss';
-import { LottieAnimation } from '@/src/components/base';
 
 type Contact = {
   href: string;
@@ -11,7 +13,7 @@ type Contact = {
   style?: { scale?: number };
 };
 
-export default function LottieLink({ contact }: { contact: Contact }) {
+const LottieLink = ({ contact }: { contact: Contact }) => {
   const [hoveredContact, setHoveredContact] = useState<string | null>(null);
 
   return (
@@ -39,4 +41,6 @@ export default function LottieLink({ contact }: { contact: Contact }) {
       </p>
     </a>
   );
-}
+};
+
+export default LottieLink;

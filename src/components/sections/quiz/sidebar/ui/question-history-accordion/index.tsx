@@ -1,7 +1,9 @@
-import styles from './question-history-accordion.module.scss';
 import clsx from 'clsx';
-import { QuestionType } from '@/src/components/types/qustionsType';
-import { Accordion, Icon } from '@/src/components/base';
+
+import { Accordion, Icon } from '@/components/base';
+import { QuestionType } from '@/components/types/qustionsType';
+
+import styles from './question-history-accordion.module.scss';
 
 interface QuestionHistoryAccordionProps {
   questionData: QuestionType[];
@@ -9,11 +11,11 @@ interface QuestionHistoryAccordionProps {
   onQuestionClick: (index: number) => void;
 }
 
-export default function QuestionHistoryAccordion({
+const QuestionHistoryAccordion = ({
   questionData,
   currentStep,
   onQuestionClick
-}: QuestionHistoryAccordionProps) {
+}: QuestionHistoryAccordionProps) => {
   return (
     <Accordion title='История вопросов' defaultOpen>
       <ul className={styles.list}>
@@ -53,4 +55,6 @@ export default function QuestionHistoryAccordion({
       </ul>
     </Accordion>
   );
-}
+};
+
+export default QuestionHistoryAccordion;

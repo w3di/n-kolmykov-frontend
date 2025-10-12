@@ -1,9 +1,12 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { loadAllQuestions, QuestionTypeFilter } from '../../api';
-import { QuestionType } from '../../types/qustionsType';
-import { QuizAnswer } from './types/quiz.types';
+
 import { toast } from 'react-toastify';
-import { Toast } from '@/src/components/base';
+
+import { loadAllQuestions, QuestionTypeFilter } from '@/components/api';
+import { Toast } from '@/components/base';
+import { QuestionType } from '@/components/types/qustionsType';
+
+import { QuizAnswer } from './types/quiz.types';
 
 export const useQuizData = (
   activeQuestionTypes: QuestionTypeFilter[],

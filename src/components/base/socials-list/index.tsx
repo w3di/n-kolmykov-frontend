@@ -1,4 +1,5 @@
-import Icon from '../icon';
+import Icon from '@/components/base/icon';
+
 import styles from './socials-list.module.scss';
 
 const socials = [
@@ -19,7 +20,7 @@ const socials = [
   }
 ];
 
-export default function SocialList() {
+const SocialList = () => {
   return (
     <div className={styles.socialsList}>
       {socials.map((item) => (
@@ -36,4 +37,6 @@ export default function SocialList() {
       ))}
     </div>
   );
-}
+};
+
+export default SocialList;

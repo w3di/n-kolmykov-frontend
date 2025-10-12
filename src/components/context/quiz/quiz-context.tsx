@@ -1,8 +1,9 @@
 'use client';
 
 import React, { createContext, useContext, ReactNode } from 'react';
-import { useQuizState } from './use-quiz-state';
+
 import { QuizContextType } from './types/quiz.types';
+import { useQuizState } from './use-quiz-state';
 
 const QuizContext = createContext<QuizContextType | null>(null);
 

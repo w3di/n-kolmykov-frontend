@@ -1,9 +1,10 @@
 'use client';
 
-import styles from './information.module.scss';
-import { useQuizNavigation } from '../../../context/quiz/quiz-context';
+import { useQuizNavigation } from '@/components/context/quiz/quiz-context';
 
-export default function Information() {
+import styles from './information.module.scss';
+
+const Information = () => {
   const { currentStep } = useQuizNavigation();
 
   return (
@@ -16,4 +17,6 @@ export default function Information() {
       </div>
     </section>
   );
-}
+};
+
+export default Information;

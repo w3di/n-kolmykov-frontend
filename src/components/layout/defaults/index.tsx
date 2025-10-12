@@ -1,13 +1,14 @@
 import { ReactNode } from 'react';
-import Header from '../header';
-import Footer from '../footer';
+
+import Footer from '@/components/layout/footer';
+import Header from '@/components/layout/header';
 
 interface LayoutProps {
   children: ReactNode;
   className?: string;
 }
 
-export default function Defaults({ children, className }: LayoutProps) {
+const Defaults = ({ children, className }: LayoutProps) => {
   return (
     <>
       <Header />
@@ -15,4 +16,6 @@ export default function Defaults({ children, className }: LayoutProps) {
       <Footer />
     </>
   );
-}
+};
+
+export default Defaults;

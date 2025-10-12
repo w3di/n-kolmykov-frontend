@@ -1,11 +1,13 @@
-import Image from 'next/image';
-import styles from './quiz.module.scss';
-import Link from 'next/link';
 import clsx from 'clsx';
-import QuizSectionWrapper from './ui/quiz-section-wrapper/quiz-section-wrapper';
-import { Icon } from '@/src/components/base';
+import Image from 'next/image';
+import Link from 'next/link';
 
-export default function Quiz() {
+import { Icon } from '@/components/base';
+
+import styles from './quiz.module.scss';
+import QuizSectionWrapper from './ui/quiz-section-wrapper/quiz-section-wrapper';
+
+const Quiz = () => {
   return (
     <QuizSectionWrapper>
       <div className={styles.backgroundLayer}>
@@ -42,4 +44,6 @@ export default function Quiz() {
       </div>
     </QuizSectionWrapper>
   );
-}
+};
+
+export default Quiz;

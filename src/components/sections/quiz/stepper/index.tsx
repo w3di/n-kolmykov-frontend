@@ -1,14 +1,17 @@
 'use client';
-import styles from './stepper.module.scss';
+import { useEffect, useRef, useState } from 'react';
+
 import clsx from 'clsx';
+
+import { Icon } from '@/components/base';
 import {
   useQuizNavigation,
   useQuestionTypesContext
-} from '../../../context/quiz/quiz-context';
-import { useEffect, useRef, useState } from 'react';
-import { Icon } from '@/src/components/base';
+} from '@/components/context/quiz/quiz-context';
 
-export default function Stepper() {
+import styles from './stepper.module.scss';
+
+const Stepper = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menuHeight, setMenuHeight] = useState<number | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -164,4 +167,6 @@ export default function Stepper() {
       </div>
     </>
   );
-}
+};
+
+export default Stepper;

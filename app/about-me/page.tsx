@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+
 import { AboutMePage } from '@/src/components/pages/about-me/about-me';
 
 export const metadata: Metadata = {
@@ -29,6 +30,8 @@ export const metadata: Metadata = {
   }
 };
 
-export default function AboutMe() {
+const AboutMe = () => {
   return <AboutMePage />;
-}
+};
+
+export default AboutMe;

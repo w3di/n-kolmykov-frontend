@@ -1,11 +1,11 @@
-import { Content } from '../../sections/quiz/content';
-import Sidebar from '../../sections/quiz/sidebar';
-import Stepper from '../../sections/quiz/stepper';
+import { Header } from '@/components/layout';
+import { Content } from '@/components/sections/quiz/content';
+import Sidebar from '@/components/sections/quiz/sidebar';
+import Stepper from '@/components/sections/quiz/stepper';
+
 import styles from './quiz.module.scss';
 
-import { Header } from '@/src/components/layout';
-
-export function QuizPage() {
+export const QuizPage = () => {
   return (
     <main className={styles.quiz}>
       <Sidebar />
@@ -18,4 +18,4 @@ export function QuizPage() {
       </section>
     </main>
   );
-}
+};

@@ -1,11 +1,12 @@
-import { Icon } from '@/src/components/base';
+import { Icon } from '@/components/base';
+
 import styles from './answer-accordion.module.scss';
 
 interface AnswerAccordionProps {
   answer: string[];
 }
 
-export default function AnswerAccordion({ answer }: AnswerAccordionProps) {
+const AnswerAccordion = ({ answer }: AnswerAccordionProps) => {
   return (
     <details key={answer.join('|')} className={styles.answerAccordion}>
       <summary className={styles.answerAccordion__trigger} role='button'>
@@ -41,4 +42,6 @@ export default function AnswerAccordion({ answer }: AnswerAccordionProps) {
       </div>
     </details>
   );
-}
+};
+
+export default AnswerAccordion;

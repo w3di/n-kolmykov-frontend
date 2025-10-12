@@ -1,7 +1,7 @@
 import { useQuestionTypes } from './use-question-types';
-import { useQuizStats } from './use-quiz-stats';
-import { useQuizNavigation } from './use-quiz-navigation';
 import { useQuizData } from './use-quiz-data';
+import { useQuizNavigation } from './use-quiz-navigation';
+import { useQuizStats } from './use-quiz-stats';
 
 export const useQuizState = () => {
   const questionTypesState = useQuestionTypes();

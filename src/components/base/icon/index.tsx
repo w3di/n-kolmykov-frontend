@@ -1043,13 +1043,7 @@ const icons = {
   }
 } as const;
 
-export default function Icon({
-  name,
-  width,
-  height,
-  className,
-  ...props
-}: IconProps) {
+const Icon = ({ name, width, height, className, ...props }: IconProps) => {
   const icon = icons[name];
 
   if (!icon) {
@@ -1071,7 +1065,9 @@ export default function Icon({
       {icon.content}
     </svg>
   );
-}
+};
+
+export default Icon;
 
 // Экспорт всех доступных имен иконок для удобства
 export const iconNames = [

@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import '../public/styles/main.scss';
+import '@/public/styles/main.scss';
 import { ToastContainer } from 'react-toastify';
-import { StructuredData } from '../src/components/base';
+
+import { StructuredData } from '@/components/base';
 
 const involve = localFont({
   src: [
@@ -177,11 +178,11 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({
+const RootLayout = ({
   children
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
     <html lang='ru' className={involve.variable}>
       <body>
@@ -201,4 +202,6 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

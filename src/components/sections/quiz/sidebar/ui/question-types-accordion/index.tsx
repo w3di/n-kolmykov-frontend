@@ -1,6 +1,8 @@
-import { Accordion, Icon } from '@/src/components/base';
-import styles from './question-types-accordion.module.scss';
 import clsx from 'clsx';
+
+import { Accordion, Icon } from '@/components/base';
+
+import styles from './question-types-accordion.module.scss';
 
 export interface QuestionType {
   id: string;
@@ -15,11 +17,11 @@ interface QuestionTypesAccordionProps {
   defaultOpen?: boolean;
 }
 
-export default function QuestionTypesAccordion({
+const QuestionTypesAccordion = ({
   questionTypes,
   onToggleQuestionType,
   title
-}: QuestionTypesAccordionProps) {
+}: QuestionTypesAccordionProps) => {
   return (
     <Accordion title={title} defaultOpen>
       <ul className={styles.list}>
@@ -54,4 +56,6 @@ export default function QuestionTypesAccordion({
       </ul>
     </Accordion>
   );
-}
+};
+
+export default QuestionTypesAccordion;

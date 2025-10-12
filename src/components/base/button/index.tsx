@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+
 import styles from './button.module.scss';
 
 interface ButtonProps {
@@ -9,12 +10,7 @@ interface ButtonProps {
   className?: string;
 }
 
-export default function Button({
-  label,
-  variant,
-  onClick,
-  className
-}: ButtonProps) {
+const Button = ({ label, variant, onClick, className }: ButtonProps) => {
   return (
     <button
       className={clsx(styles.button, styles[`button--${variant}`], className)}
@@ -31,4 +27,6 @@ export default function Button({
       </span>
     </button>
   );
-}
+};
+
+export default Button;

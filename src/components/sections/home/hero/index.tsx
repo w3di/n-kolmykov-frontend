@@ -1,7 +1,10 @@
-import styles from './hero.module.scss';
 import clsx from 'clsx';
+
+import { CollectionBlock, Icon } from '@/components/base';
+
+import styles from './hero.module.scss';
 import { AnimatedGrid } from './ui/animated-grid';
-import { CollectionBlock, Icon } from '@/src/components/base';
+
 const technologies = [
   {
     id: 'frontend',
@@ -22,7 +25,7 @@ const technologies = [
     className: styles.frameworksBlock__item__frameworksIcon__backend
   }
 ];
-export default function Hero() {
+const Hero = () => {
   return (
     <section className={styles.hero}>
       <AnimatedGrid>
@@ -61,4 +64,6 @@ export default function Hero() {
       </AnimatedGrid>
     </section>
   );
-}
+};
+
+export default Hero;

@@ -1,15 +1,14 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+
 import styles from './quiz-section-wrapper.module.scss';
 
 interface QuizSectionWrapperProps {
   children: React.ReactNode;
 }
 
-export default function QuizSectionWrapper({
-  children
-}: QuizSectionWrapperProps) {
+const QuizSectionWrapper = ({ children }: QuizSectionWrapperProps) => {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -39,4 +38,6 @@ export default function QuizSectionWrapper({
       {children}
     </section>
   );
-}
+};
+
+export default QuizSectionWrapper;

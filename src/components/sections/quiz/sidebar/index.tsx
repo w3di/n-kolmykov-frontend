@@ -1,18 +1,19 @@
 'use client';
 
-import styles from './sidebar.module.scss';
 import Image from 'next/image';
+import Link from 'next/link';
 
-import { QuestionHistoryAccordion, QuestionTypesAccordion } from './ui';
+import { Icon } from '@/components/base';
 import {
   useQuizData,
   useQuizNavigation,
   useQuestionTypesContext
-} from '../../../context/quiz/quiz-context';
-import Link from 'next/link';
-import { Icon } from '@/src/components/base';
+} from '@/components/context/quiz/quiz-context';
 
-export default function Sidebar() {
+import styles from './sidebar.module.scss';
+import { QuestionHistoryAccordion, QuestionTypesAccordion } from './ui';
+
+const Sidebar = () => {
   const { quizData } = useQuizData();
   const { currentStepIndex, setCurrentStepIndex } = useQuizNavigation();
   const { questionTypes, toggleQuestionType } = useQuestionTypesContext();
@@ -46,4 +47,6 @@ export default function Sidebar() {
       </div>
     </aside>
   );
-}
+};
+
+export default Sidebar;

@@ -1,4 +1,5 @@
-import { Icon } from '@/src/components/base';
+import { Icon } from '@/components/base';
+
 import styles from './my-stack.module.scss';
 
 const stack = [
@@ -13,7 +14,7 @@ const stack = [
   { name: 'cicd', label: 'CI/CD', sizeClass: styles.cicd }
 ] as const;
 
-export default function MyStack() {
+const MyStack = () => {
   return (
     <ul className={styles.myStack}>
       <p className={styles.title}>Технологический стек</p>
@@ -27,4 +28,6 @@ export default function MyStack() {
       ))}
     </ul>
   );
-}
+};
+
+export default MyStack;

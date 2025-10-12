@@ -7,6 +7,7 @@ import React, {
   useMemo,
   useCallback
 } from 'react';
+
 import styles from './anumated-grid.module.scss';
 
 interface AnimatedGridProps {
@@ -204,13 +205,6 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
     canvas.style.width = `${canvasWidth}px`;
     canvas.style.height = `${canvasHeight}px`;
 
-    setContainerStyle({
-      width: `${canvasWidth}px`,
-      height: `${canvasHeight}px`,
-      minWidth: `${canvasWidth}px`,
-      minHeight: `${canvasHeight}px`
-    });
-
     const points: Point[][] = [];
     for (let y = 0; y <= gridHeight; y++) {
       points[y] = [];
@@ -271,13 +265,6 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
       canvas.height = newCanvasHeight;
       canvas.style.width = `${newCanvasWidth}px`;
       canvas.style.height = `${newCanvasHeight}px`;
-
-      setContainerStyle({
-        width: `${newCanvasWidth}px`,
-        height: `${newCanvasHeight}px`,
-        minWidth: `${newCanvasWidth}px`,
-        minHeight: `${newCanvasHeight}px`
-      });
 
       for (let y = 0; y <= newGridHeight; y++) {
         if (!points[y]) points[y] = [];
@@ -484,6 +471,33 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
       }
     };
   }, [cells, notAllowCells]);
+
+  // Отдельный useEffect для обновления containerStyle
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const updateContainerStyle = () => {
+      const { width, height } = canvas;
+      setContainerStyle({
+        width: `${width}px`,
+        height: `${height}px`,
+        minWidth: `${width}px`,
+        minHeight: `${height}px`
+      });
+    };
+
+    // Обновляем стили после инициализации canvas
+    updateContainerStyle();
+
+    // Слушаем изменения размера canvas
+    const resizeObserver = new ResizeObserver(updateContainerStyle);
+    resizeObserver.observe(canvas);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, []);
 
   return (
     <div className={styles.animatedGrid} style={containerStyle}>

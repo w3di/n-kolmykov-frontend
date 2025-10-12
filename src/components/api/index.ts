@@ -1,4 +1,4 @@
-import { QuestionType } from '../types/qustionsType';
+import { QuestionType } from '@/components/types/qustionsType';
 
 export type QuestionTypeFilter = {
   id: string;

@@ -1,9 +1,11 @@
 import Image from 'next/image';
-import styles from './footer.module.scss';
 import Link from 'next/link';
-import { SocialList } from '../../base';
 
-export default function Footer() {
+import { SocialList } from '@/components/base';
+
+import styles from './footer.module.scss';
+
+const Footer = () => {
   return (
     <footer className={styles.footer}>
       <SocialList />
@@ -28,4 +30,6 @@ export default function Footer() {
       />
     </footer>
   );
-}
+};
+
+export default Footer;

@@ -1,10 +1,15 @@
 'use client';
 
-import styles from './finished.module.scss';
-import { useQuizData, useQuizStats } from '../../../context/quiz/quiz-context';
 import { useRouter } from 'next/navigation';
 
-export default function Finished() {
+import {
+  useQuizData,
+  useQuizStats
+} from '@/components/context/quiz/quiz-context';
+
+import styles from './finished.module.scss';
+
+const Finished = () => {
   const { quizData } = useQuizData();
   const { quizStats } = useQuizStats();
   const router = useRouter();
@@ -42,4 +47,6 @@ export default function Finished() {
       </div>
     </section>
   );
-}
+};
+
+export default Finished;

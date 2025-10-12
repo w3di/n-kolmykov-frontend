@@ -1,7 +1,10 @@
 import React from 'react';
+
 import clsx from 'clsx';
+
+import Icon from '@/components/base/icon';
+
 import styles from './accordion.module.scss';
-import Icon from '../icon';
 
 interface AccordionProps {
   title: React.ReactNode;
@@ -10,12 +13,12 @@ interface AccordionProps {
   children?: React.ReactNode;
 }
 
-export default function Accordion({
+const Accordion = ({
   title,
   defaultOpen,
   className,
   children
-}: AccordionProps) {
+}: AccordionProps) => {
   return (
     <details className={clsx(styles.accordion, className)} open={defaultOpen}>
       <summary className={styles.summary} role='button'>
@@ -25,4 +28,6 @@ export default function Accordion({
       {children}
     </details>
   );
-}
+};
+
+export default Accordion;

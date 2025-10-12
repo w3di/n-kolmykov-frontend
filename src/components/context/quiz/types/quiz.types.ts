@@ -1,5 +1,5 @@
-import { QuestionType } from '../../../types/qustionsType';
-import { QuestionTypeFilter } from '../../../api';
+import { QuestionTypeFilter } from '@/components/api';
+import { QuestionType } from '@/components/types/qustionsType';
 
 export interface QuizContextType {
   // Данные квиза

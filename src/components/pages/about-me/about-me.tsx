@@ -1,13 +1,14 @@
-import styles from './about-me.module.scss';
-import AboutMe from '../../sections/about/about-me';
-import ContactMe from '../../sections/about/contact-me';
-import HiItsMe from '../../sections/about/hi-its-me';
-import MySkills from '../../sections/about/my-skills';
-import MyStack from '../../sections/about/my-stack';
-import { Separator } from '../../base';
-import { Defaults } from '../../layout';
+import { Separator } from '@/components/base';
+import { Defaults } from '@/components/layout';
+import AboutMe from '@/components/sections/about/about-me';
+import ContactMe from '@/components/sections/about/contact-me';
+import HiItsMe from '@/components/sections/about/hi-its-me';
+import MySkills from '@/components/sections/about/my-skills';
+import MyStack from '@/components/sections/about/my-stack';
 
-export function AboutMePage() {
+import styles from './about-me.module.scss';
+
+export const AboutMePage = () => {
   return (
     <Defaults className={styles.aboutMe}>
       <HiItsMe />
@@ -21,4 +22,4 @@ export function AboutMePage() {
       <ContactMe />
     </Defaults>
   );
-}
+};

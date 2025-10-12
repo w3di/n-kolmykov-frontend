@@ -1,7 +1,9 @@
-import styles from './my-skills.module.scss';
 import clsx from 'clsx';
+
+import { Icon } from '@/components/base';
+
+import styles from './my-skills.module.scss';
 import { Squares } from './ui';
-import { Icon } from '@/src/components/base';
 
 const skillsData = [
   {
@@ -38,7 +40,7 @@ const skillsData = [
   }
 ] as const;
 
-export default function MySkills() {
+const MySkills = () => {
   return (
     <section className={styles.mySkills}>
       <p className={styles.title}>
@@ -81,4 +83,6 @@ export default function MySkills() {
       </ul>
     </section>
   );
-}
+};
+
+export default MySkills;

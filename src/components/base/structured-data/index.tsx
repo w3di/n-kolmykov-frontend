@@ -1,4 +1,5 @@
 import Script from 'next/script';
+
 import type { StructuredDataConfig } from './structured-data.types';
 
 export const structuredData: StructuredDataConfig = {
@@ -40,14 +41,14 @@ export const structuredData: StructuredDataConfig = {
   'educationalLevel': 'intermediate'
 };
 
-export function StructuredData() {
+export const StructuredData = () => {
   return (
     <Script
-      id='structured-data'
-      type='application/ld+json'
       dangerouslySetInnerHTML={{
         __html: JSON.stringify(structuredData)
       }}
+      id='structured-data'
+      type='application/ld+json'
     />
   );
-}
+};

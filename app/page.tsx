@@ -1,5 +1,6 @@
-import { HomePage } from '@/src/components/pages/home/home';
 import type { Metadata } from 'next';
+
+import { HomePage } from '@/src/components/pages/home/home';
 
 export const metadata: Metadata = {
   title: 'Главная',
@@ -29,6 +30,8 @@ export const metadata: Metadata = {
   }
 };
 
-export default function Home() {
+const Home = () => {
   return <HomePage />;
-}
+};
+
+export default Home;

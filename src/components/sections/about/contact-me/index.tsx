@@ -1,4 +1,5 @@
-import { CollectionBlock } from '@/src/components/base';
+import { CollectionBlock } from '@/components/base';
+
 import styles from './contact-me.module.scss';
 import LottieLink from './ui/lottie-link';
 
@@ -32,7 +33,7 @@ const contacts = [
   }
 ];
 
-export default function ContactMe() {
+const ContactMe = () => {
   return (
     <section className={styles.contactMe}>
       <CollectionBlock icon='headphones' label='На связи' />
@@ -50,4 +51,6 @@ export default function ContactMe() {
       </ul>
     </section>
   );
-}
+};
+
+export default ContactMe;

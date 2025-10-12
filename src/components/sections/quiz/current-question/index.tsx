@@ -1,21 +1,20 @@
 'use client';
 
-import styles from './current-question.module.scss';
-import { AnswerAccordion } from './ui';
+import { Icon, Button } from '@/components/base';
 import {
   useQuizData,
   useQuizStats,
   useQuizNavigation
-} from '../../../context/quiz/quiz-context';
-import { Icon, Button } from '@/src/components/base';
+} from '@/components/context/quiz/quiz-context';
+
+import styles from './current-question.module.scss';
+import { AnswerAccordion } from './ui';
 
 type CurrentQuestionProps = {
   setIsFinished: (isFinished: boolean) => void;
 };
 
-export default function CurrentQuestion({
-  setIsFinished
-}: CurrentQuestionProps) {
+const CurrentQuestion = ({ setIsFinished }: CurrentQuestionProps) => {
   const { quizData, setQuestionAnswer } = useQuizData();
   const { quizStats } = useQuizStats();
   const { currentStepIndex } = useQuizNavigation();
@@ -96,4 +95,6 @@ export default function CurrentQuestion({
       </div>
     </section>
   );
-}
+};
+
+export default CurrentQuestion;

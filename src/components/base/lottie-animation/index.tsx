@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+
 import Lottie, { LottieRefCurrentProps } from 'lottie-react';
 
 interface LottieAnimationProps {
@@ -11,13 +12,13 @@ interface LottieAnimationProps {
   autoplay?: boolean;
 }
 
-export default function LottieAnimation({
+const LottieAnimation = ({
   animationUrl,
   className,
   loop = true,
   style,
   autoplay = true
-}: LottieAnimationProps) {
+}: LottieAnimationProps) => {
   const [animationData, setAnimationData] = useState<object | null>(null);
   const lottieRef = useRef<LottieRefCurrentProps>(null);
 
@@ -64,4 +65,6 @@ export default function LottieAnimation({
       />
     </div>
   );
-}
+};
+
+export default LottieAnimation;

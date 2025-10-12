@@ -1,7 +1,8 @@
-import { CollectionBlock, Icon } from '@/src/components/base';
+import { CollectionBlock, Icon } from '@/components/base';
+
 import styles from './about-me.module.scss';
 
-export default function AboutMe() {
+const AboutMe = () => {
   const qualities = [
     {
       icon: 'boundingBox' as const,
@@ -56,4 +57,6 @@ export default function AboutMe() {
       </ul>
     </section>
   );
-}
+};
+
+export default AboutMe;

@@ -1,4 +1,5 @@
-import { Icon } from '@/src/components/base';
+import { Icon } from '@/components/base';
+
 import styles from './stats.module.scss';
 
 const stats = [
@@ -19,7 +20,7 @@ const stats = [
   }
 ];
 
-export default function Stats() {
+const Stats = () => {
   return (
     <ul className={styles.stats}>
       {stats.map((item) => (
@@ -33,4 +34,6 @@ export default function Stats() {
       ))}
     </ul>
   );
-}
+};
+
+export default Stats;

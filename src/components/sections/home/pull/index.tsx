@@ -1,9 +1,11 @@
-import Image from 'next/image';
-import styles from './pull.module.scss';
 import clsx from 'clsx';
-import { Icon } from '@/src/components/base';
+import Image from 'next/image';
 
-export default function Pull() {
+import { Icon } from '@/components/base';
+
+import styles from './pull.module.scss';
+
+const Pull = () => {
   return (
     <ul className={styles.pull}>
       <li className={styles.pull__item}>
@@ -84,4 +86,6 @@ export default function Pull() {
       </li>
     </ul>
   );
-}
+};
+
+export default Pull;
