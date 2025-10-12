@@ -7,11 +7,10 @@ const HiItsMe = () => {
     <section className={styles.hiItsMe}>
       <div className={styles.meImage}>
         <Image
-          src={'/images/my-photo.webp'}
-          alt='myLogo'
+          src='/images/my-photo.webp'
+          alt='My photo'
           priority
           fetchPriority='high'
-          quality={80}
           fill
           sizes='(max-width: 768px) 64px, (max-width: 1024px) 120px, (max-width: 1440px) 160px, 200px'
         />
