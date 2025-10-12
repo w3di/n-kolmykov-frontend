@@ -54,7 +54,7 @@ export const useQuestionTypes = () => {
 
   const setLocalStorage = useCallback(() => {
     localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(questionTypes));
-  }, [questionTypes]);
+  }, []);
 
   // После монтирования читаем localStorage и приводим к эталону
   useEffect(() => {
