@@ -17,34 +17,32 @@
   "dependencies": {
     "clsx": "^2.1.1",
     "lottie-react": "^2.4.1",
-    "next": "^16.0.0-beta.0",
+    "next": "^16.0.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-toastify": "^11.0.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@types/node": "^24.7.0",
+    "@types/node": "^24.9.1",
     "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.1",
-    "@typescript-eslint/eslint-plugin": "^8.46.0",
+    "@types/react-dom": "19.2.2",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
     "babel-plugin-react-compiler": "^1.0.0",
     "eslint": "^9",
-    "eslint-config-next": "16.0.0-beta.0",
+    "eslint-config-next": "16.0.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-unused-imports": "^4.2.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-unused-imports": "^4.3.0",
     "husky": "^9.1.7",
-    "lint-staged": "^16.1.2",
+    "lint-staged": "^16.2.6",
     "prettier": "3.6.2",
-    "sass": "^1.89.2",
-    "stylelint": "^16.21.0",
+    "sass": "^1.93.2",
+    "stylelint": "^16.25.0",
     "stylelint-order": "^7.0.0",
     "stylelint-scss": "^6.12.1",
     "typescript": "^5"
-  },
-  "overrides": {
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.1"
   }
 }

@@ -1,0 +1,544 @@
+{
+  "items": [
+    {
+      "question": "Что такое HTML и для чего он используется?",
+      "id": "q-1-0b961fa2",
+      "answer": "▪ HTML (HyperText Markup Language) — язык разметки, используемый для создания структуры веб-страниц<br />"
+    },
+    {
+      "question": "Что такое DOCTYPE и зачем он нужен?",
+      "id": "q-2-2c78cbad",
+      "answer": "▪ DOCTYPE — объявление типа документа. Указывает браузеру, какую версию HTML использовать для интерпретации страницы. В HTML5 записывается как &lt;!DOCTYPE html&gt;<br />"
+    },
+    {
+      "question": "Какая структура у HTML документа?",
+      "id": "q-3-4247d76c",
+      "answer": "▪ HTML документ состоит из:<br />1. DOCTYPE объявления<br />2. Корневого элемента &lt;html&gt;<br />3. Секции &lt;head&gt; с метаданными<br />4. Секции &lt;body&gt; с содержимым страницы<br /><br />&lt;pre&gt;<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!DOCTYPE html&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;html lang=\"ru\"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;head&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset=\"UTF-8\"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Заголовок страницы&lt;/title&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/head&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;body&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Содержимое страницы --&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/body&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/html&gt;</code>&lt;/pre&gt;<br />"
+    },
+    {
+      "question": "Что такое теги и атрибуты в HTML?",
+      "id": "q-4-1e12869a",
+      "answer": "▪ Теги — элементы разметки, которые определяют структуру и семантику содержимого<br />▪ Атрибуты — дополнительные свойства тегов, которые предоставляют дополнительную информацию<br />"
+    },
+    {
+      "question": "Разница между блочными и строчными элементами в HTML?",
+      "id": "q-5-3d0e710f",
+      "answer": "▪ Блочные элементы (&lt;div&gt;, &lt;p&gt;, &lt;h1&gt;, &lt;section&gt;):<br />▪ Занимают всю ширину родительского элемента<br />▪ Начинаются с новой строки<br />▪ Могут содержать другие блочные и строчные элементы<br />▪ Имеют отступы (margin) сверху и снизу<br />▪ Строчные элементы (&lt;span&gt;, &lt;a&gt;, &lt;strong&gt;, &lt;em&gt;):<br />▪ Занимают только необходимую ширину<br />▪ Не начинаются с новой строки<br />▪ Могут содержать только текст и другие строчные элементы<br />▪ Не имеют отступов сверху и снизу<br />"
+    },
+    {
+      "question": "Что такое валидный HTML?",
+      "id": "q-6-eeaaabc1",
+      "answer": "▪ Валидный HTML — код, который соответствует стандартам W3C и правилам синтаксиса HTML<br />▪ Правильная структура тегов<br />▪ Корректное использование атрибутов<br />▪ Соответствие DOCTYPE<br />▪ Правильное закрытие всех тегов<br />▪ Уникальные ID элементов<br />"
+    },
+    {
+      "question": "Как проверить валидность HTML документа?",
+      "id": "q-7-df87f327",
+      "answer": "▪ Онлайн валидаторы: W3C Markup Validator (validator.w3.org), HTML Validator (html5.validator.nu)<br />▪ Браузерные инструменты: DevTools в Chrome/Firefox, консоль браузера показывает ошибки<br />▪ IDE и редакторы: встроенные валидаторы в VS Code, WebStorm, плагины для автоматической проверки<br />▪ Командная строка: HTML Tidy, W3C validator API<br />▪ Инструменты для React: eslint-plugin-jsx-a11y, @lhci/cli, axe-core<br /><br /><br />"
+    },
+    {
+      "question": "Что такое семантика и для чего она нужна?",
+      "id": "q-8-e62ab07e",
+      "answer": "▪ Семантика — использование HTML тегов по их назначению для придания смысла содержимому<br />▪ Цели семантики:<br />▪ Улучшение доступности для скрин-ридеров<br />▪ Лучшее SEO и индексация поисковиками<br />▪ Более понятная структура кода<br />▪ Автоматическое применение стилей браузером<br />▪ Улучшение пользовательского опыта<br />"
+    },
+    {
+      "question": "Какие семантические теги существуют в HTML5?",
+      "id": "q-9-a88dd106",
+      "answer": "▪ Структурные теги: &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;section&gt;, &lt;article&gt;, &lt;aside&gt;, &lt;footer&gt;<br />▪ Контентные теги: &lt;figure&gt;, &lt;figcaption&gt;, &lt;time&gt;, &lt;mark&gt;, &lt;progress&gt;, &lt;meter&gt;, &lt;details&gt;, &lt;summary&gt;<br />▪ Интерактивные теги: &lt;dialog&gt;, &lt;menu&gt;, &lt;menuitem&gt;<br />"
+    },
+    {
+      "question": "Как работают &lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;section&gt;, &lt;article&gt;?",
+      "id": "q-10-123fe167",
+      "answer": "▪ &lt;header&gt; — шапка страницы или секции, содержит заголовки и навигацию<br />▪ &lt;nav&gt; — навигационные ссылки (меню, breadcrumbs)<br />▪ &lt;main&gt; — основное содержимое страницы (только один на странице)<br />▪ &lt;section&gt; — тематическая секция с заголовком<br />▪ &lt;article&gt; — самостоятельная статья или пост, который можно переиспользовать<br />"
+    },
+    {
+      "question": "Как работают &lt;aside&gt;, &lt;footer&gt;, &lt;figure&gt;, &lt;figcaption&gt;?",
+      "id": "q-11-9173d250",
+      "answer": "▪ &lt;aside&gt; — боковая панель, дополнительная информация, реклама<br />▪ &lt;footer&gt; — подвал страницы или секции с контактной информацией<br />▪ &lt;figure&gt; — контейнер для изображений, диаграмм, кода с подписью<br />▪ &lt;figcaption&gt; — подпись к содержимому &lt;figure&gt;<br />"
+    },
+    {
+      "question": "Как работают &lt;time&gt;, &lt;mark&gt;, &lt;progress&gt;, &lt;meter&gt;?",
+      "id": "q-12-3b6fff8c",
+      "answer": "▪ &lt;time&gt; — дата и время с атрибутом &lt;b&gt;datetime&lt;/b&gt;<br />▪ &lt;mark&gt; — выделенный текст (поисковые результаты, важная информация)<br />▪ &lt;progress&gt; — прогресс выполнения задачи (0-100%)<br />▪ &lt;meter&gt; — измерение в заданном диапазоне (диск, температура)<br /><br />"
+    },
+    {
+      "question": "Как работают &lt;details&gt;, &lt;summary&gt;, &lt;dialog&gt;?",
+      "id": "q-13-43f9132f",
+      "answer": "▪ &lt;details&gt; — раскрывающийся блок с дополнительной информацией<br />▪ &lt;summary&gt; — заголовок для &lt;details&gt;, по клику раскрывает/скрывает содержимое<br />▪ &lt;dialog&gt; — модальное окно или диалог<br /><br />"
+    },
+    {
+      "question": "Когда использовать &lt;div&gt; vs семантические теги?",
+      "id": "q-14-6567b2d2",
+      "answer": "▪ Используйте &lt;div&gt; когда: нет подходящего семантического тега, нужен контейнер для стилизации, создаете layout без семантического значения<br />▪ Используйте семантические теги когда: содержимое имеет четкое назначение, важна доступность и SEO, нужна автоматическая стилизация браузером<br />▪ Правило: семантика &gt; &lt;div&gt;, но не переусложняйте<br />"
+    },
+    {
+      "question": "В чем разница между &lt;div&gt; и &lt;section&gt;?",
+      "id": "q-15-f7221275",
+      "answer": "▪ &lt;div&gt;: универсальный контейнер без семантического значения, используется для группировки элементов для стилизации, не влияет на структуру документа, не создает outline (план) страницы<br />▪ &lt;section&gt;: семантический тег для тематических разделов, должен иметь заголовок (h1-h6), создает структуру документа, влияет на outline и доступность<br />▪ Когда использовать &lt;section&gt;: группировка связанного контента, разделы статьи или страницы, контент, который можно выделить в отдельную секцию<br />▪ Когда использовать &lt;div&gt;: контейнер для CSS стилизации, группировка без семантического значения, layout элементы (обертки, сетки)<br />"
+    },
+    {
+      "question": "Как работают заголовки &lt;h1&gt; - &lt;h6&gt;?",
+      "id": "q-16-bd48ec1a",
+      "answer": "▪ Иерархия заголовков от самого важного (&lt;b&gt;h1&lt;/b&gt;) до наименее важного (&lt;b&gt;h6&lt;/b&gt;)<br />▪ &lt;h1&gt; — главный заголовок страницы (только один на странице)<br />▪ &lt;h2&gt; - &lt;h6&gt; — подзаголовки разной важности<br />▪ Особенности: влияют на SEO и структуру страницы, создают outline (план) документа, используются скрин-ридерами для навигации, имеют встроенные стили по умолчанию<br />"
+    },
+    {
+      "question": "Как работает иерархия заголовков?",
+      "id": "q-17-f695415d",
+      "answer": "▪ Правила иерархии: не пропускайте уровни (h1 → h2 → h3, но не h1 → h3), один &lt;h1&gt; на страницу, логическая последовательность уровней<br />▪ Структура outline: браузеры создают план документа на основе заголовков, скрин-ридеры используют для навигации, влияет на SEO и понимание структуры<br />▪ Пример правильной иерархии:<br />&lt;pre&gt;<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Главная страница&lt;/h1&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;Раздел 1&lt;/h2&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;Подраздел 1.1&lt;/h3&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;Подраздел 1.2&lt;/h3&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;Раздел 2&lt;/h2&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h3&gt;Подраздел 2.1&lt;/h3&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h4&gt;Детали 2.1.1&lt;/h4&gt;</code>&lt;/pre&gt;<br /><br />"
+    },
+    {
+      "question": "Что такое метатеги и какие важные метатеги нужно использовать?",
+      "id": "q-18-650c7ae7",
+      "answer": "▪ Метатеги — элементы &lt;meta&gt; в &lt;head&gt;, предоставляющие метаданные о странице<br />▪ Обязательные метатеги: &lt;meta charset=\"UTF-8\"&gt; (кодировка), &lt;meta name=\"viewport\"&gt; (адаптивность), &lt;title&gt; (заголовок страницы)<br />▪ SEO метатеги: &lt;meta name=\"description\"&gt; (описание страницы), &lt;meta name=\"keywords\"&gt; (ключевые слова), &lt;meta name=\"robots\"&gt; (инструкции для поисковиков)<br />▪ Социальные метатеги: Open Graph (Facebook), Twitter Cards, Schema.org<br />"
+    },
+    {
+      "question": "Как работает &lt;title&gt; и зачем он нужен?",
+      "id": "q-19-df546eb6",
+      "answer": "▪ &lt;title&gt; — заголовок страницы, отображается во вкладке браузера<br />▪ Важность: основной фактор SEO, отображается в результатах поиска, помогает пользователям ориентироваться<br />▪ Правила написания: 50-60 символов, уникальный для каждой страницы, описательный и привлекательный, включает ключевые слова<br />"
+    },
+    {
+      "question": "Как работают &lt;meta charset&gt;, &lt;meta name=\"description\"&gt;?",
+      "id": "q-20-3a90049f",
+      "answer": "▪ &lt;meta charset=\"UTF-8\"&gt;: указывает кодировку символов, должен быть первым в &lt;head&gt;, UTF-8 поддерживает все языки<br />▪ &lt;meta name=\"description\"&gt;: описание страницы для поисковиков, отображается в сниппетах поиска, 150-160 символов, должно быть уникальным и релевантным<br />"
+    },
+    {
+      "question": "Как работают &lt;meta name=\"viewport\"&gt;, &lt;meta name=\"robots\"&gt;?",
+      "id": "q-21-68c5b0a5",
+      "answer": "▪ &lt;meta name=\"viewport\"&gt;: настройки отображения на мобильных устройствах, контролирует масштабирование и ширину, обязателен для адаптивного дизайна<br />▪ &lt;meta name=\"robots\"&gt;: инструкции для поисковых роботов, контролирует индексацию и переходы по ссылкам<br />"
+    },
+    {
+      "question": "Как работают Open Graph метатеги?",
+      "id": "q-22-4a908005",
+      "answer": "▪ Open Graph — протокол для красивого отображения ссылок в социальных сетях<br />▪ Основные теги: &lt;b&gt;og:title&lt;/b&gt; (заголовок), &lt;b&gt;og:description&lt;/b&gt; (описание), &lt;b&gt;og:image&lt;/b&gt; (изображение), &lt;b&gt;og:url&lt;/b&gt; (URL страницы), &lt;b&gt;og:type&lt;/b&gt; (тип контента)<br />"
+    },
+    {
+      "question": "Как работают Twitter Card метатеги?",
+      "id": "q-23-78ee6346",
+      "answer": "▪ Twitter Cards — специальные метатеги для Twitter<br />▪ Типы карточек: &lt;b&gt;summary&lt;/b&gt; (базовая карточка), &lt;b&gt;summarylargeimage&lt;/b&gt; (с большим изображением), &lt;b&gt;app&lt;/b&gt; (для мобильных приложений)<br />▪ Основные теги: &lt;b&gt;twitter:card&lt;/b&gt; (тип карточки), &lt;b&gt;twitter:title&lt;/b&gt; (заголовок), &lt;b&gt;twitter:description&lt;/b&gt; (описание), &lt;b&gt;twitter:image&lt;/b&gt; (изображение)<br /><br />"
+    },
+    {
+      "question": "Как работает &lt;link rel=\"canonical\"&gt;?",
+      "id": "q-24-822776aa",
+      "answer": "▪ Canonical URL — указывает поисковикам основную версию страницы<br />▪ Используется для: предотвращения дублированного контента, объединения ссылочного веса, указания предпочтительной версии страницы<br />"
+    },
+    {
+      "question": "Как работает &lt;link rel=\"preconnect\"&gt;, &lt;link rel=\"dns-prefetch\"&gt;?",
+      "id": "q-25-90a785de",
+      "answer": "▪ &lt;link rel=\"preconnect\"&gt;: устанавливает соединение с доменом заранее, включает DNS lookup, TCP handshake, TLS negotiation, ускоряет загрузку ресурсов с внешних доменов<br />▪ &lt;link rel=\"dns-prefetch\"&gt;: только DNS lookup для домена, менее ресурсозатратный чем preconnect, подходит для доменов, которые могут не понадобиться<br />"
+    },
+    {
+      "question": "Как работают &lt;link rel=\"stylesheet\"&gt;, &lt;link rel=\"icon\"&gt;?",
+      "id": "q-26-e013c4c7",
+      "answer": "▪ &lt;link rel=\"stylesheet\"&gt;: подключает внешние CSS файлы, может иметь атрибуты &lt;b&gt;media&lt;/b&gt; и &lt;b&gt;title&lt;/b&gt;, блокирует рендеринг до загрузки<br />▪ &lt;link rel=\"icon\"&gt;: устанавливает иконку сайта (favicon), поддерживает различные форматы (ICO, PNG, SVG), может указывать размеры для разных устройств<br />"
+    },
+    {
+      "question": "Как работает &lt;base&gt; тег?",
+      "id": "q-27-d9297b95",
+      "answer": "▪ &lt;base&gt; — устанавливает базовый URL для всех относительных ссылок на странице<br />▪ Атрибуты: &lt;b&gt;href&lt;/b&gt; (базовый URL), &lt;b&gt;target&lt;/b&gt; (целевое окно по умолчанию)<br />▪ Особенности: должен быть в &lt;head&gt; перед другими ссылками, влияет на все относительные URL на странице, может быть только один на странице<br /><br /><br />"
+    },
+    {
+      "question": "Как работают HTML формы?",
+      "id": "q-28-0ca13946",
+      "answer": "▪ HTML формы — элементы для сбора и отправки данных пользователя<br />▪ Основные компоненты: &lt;form&gt; (контейнер для формы), &lt;input&gt; (поля ввода), &lt;button&gt; (кнопки отправки), &lt;label&gt; (подписи к полям)<br />▪ Атрибуты формы: &lt;b&gt;action&lt;/b&gt; (URL для отправки данных), &lt;b&gt;method&lt;/b&gt; (HTTP метод GET/POST), &lt;b&gt;enctype&lt;/b&gt; (тип кодировки данных), &lt;b&gt;target&lt;/b&gt; (окно для отправки)<br />"
+    },
+    {
+      "question": "Какие типы input существуют в HTML5?",
+      "id": "q-29-a7641d8f",
+      "answer": "▪ Текстовые поля: &lt;b&gt;text&lt;/b&gt;, &lt;b&gt;email&lt;/b&gt;, &lt;b&gt;password&lt;/b&gt;, &lt;b&gt;search&lt;/b&gt;, &lt;b&gt;tel&lt;/b&gt;, &lt;b&gt;url&lt;/b&gt;<br />▪ Числовые поля: &lt;b&gt;number&lt;/b&gt;, &lt;b&gt;range&lt;/b&gt;<br />▪ Дата и время: &lt;b&gt;date&lt;/b&gt;, &lt;b&gt;time&lt;/b&gt;, &lt;b&gt;datetime-local&lt;/b&gt;, &lt;b&gt;month&lt;/b&gt;, &lt;b&gt;week&lt;/b&gt;<br />▪ Выбор: &lt;b&gt;checkbox&lt;/b&gt;, &lt;b&gt;radio&lt;/b&gt;<br />▪ Файлы и скрытые: &lt;b&gt;file&lt;/b&gt;, &lt;b&gt;hidden&lt;/b&gt;<br />▪ Специальные: &lt;b&gt;color&lt;/b&gt;, &lt;b&gt;submit&lt;/b&gt;, &lt;b&gt;reset&lt;/b&gt;, &lt;b&gt;button&lt;/b&gt;<br />"
+    },
+    {
+      "question": "Как работают &lt;input type=\"text\"&gt;, &lt;input type=\"email\"&gt;, &lt;input type=\"password\"&gt;?",
+      "id": "q-30-8fffb327",
+      "answer": "▪ &lt;input type=\"text\"&gt;: однострочное текстовое поле, базовый тип для ввода текста, поддерживает &lt;b&gt;maxlength&lt;/b&gt;, &lt;b&gt;pattern&lt;/b&gt;, &lt;b&gt;placeholder&lt;/b&gt;<br />▪ &lt;input type=\"email\"&gt;: поле для ввода email адреса, автоматическая валидация формата email, мобильные устройства показывают email клавиатуру<br />▪ &lt;input type=\"password\"&gt;: поле для ввода пароля, символы скрыты (заменены на точки/звездочки), не сохраняется в истории браузера<br />"
+    },
+    {
+      "question": "Как работают &lt;input type=\"number\"&gt;, &lt;input type=\"tel\"&gt;, &lt;input type=\"url\"&gt;?",
+      "id": "q-31-29127468",
+      "answer": "▪ &lt;input type=\"number\"&gt;: поле для ввода чисел, поддерживает &lt;b&gt;min&lt;/b&gt;, &lt;b&gt;max&lt;/b&gt;, &lt;b&gt;step&lt;/b&gt;, мобильные устройства показывают цифровую клавиатуру<br />▪ &lt;input type=\"tel\"&gt;: поле для ввода телефонного номера, мобильные устройства показывают телефонную клавиатуру, не валидирует формат автоматически<br />▪ &lt;input type=\"url\"&gt;: поле для ввода URL, автоматическая валидация формата URL, должен начинаться с протокола (http://, https://)<br />"
+    },
+    {
+      "question": "Как работают &lt;input type=\"date\"&gt;, &lt;input type=\"time\"&gt;, &lt;input type=\"datetime-local\"&gt;?",
+      "id": "q-32-0579d20f",
+      "answer": "▪ &lt;input type=\"date\"&gt;: поле для выбора даты, показывает календарь в поддерживающих браузерах, поддерживает &lt;b&gt;min&lt;/b&gt;, &lt;b&gt;max&lt;/b&gt; для ограничения диапазона<br />▪ &lt;input type=\"time\"&gt;: поле для выбора времени, показывает часы и минуты, поддерживает &lt;b&gt;step&lt;/b&gt; для точности (секунды)<br />▪ &lt;input type=\"datetime-local\"&gt;: поле для выбора даты и времени, объединяет функциональность date и time, локальное время без часового пояса<br />"
+    },
+    {
+      "question": "Как работают &lt;input type=\"checkbox\"&gt;, &lt;input type=\"radio\"&gt;?",
+      "id": "q-33-5a3b230f",
+      "answer": "▪ &lt;input type=\"checkbox\"&gt;: чекбокс для множественного выбора, можно выбрать несколько вариантов, значение отправляется только если отмечен<br />▪ &lt;input type=\"radio\"&gt;: радиокнопка для единственного выбора, группируется по атрибуту &lt;b&gt;name&lt;/b&gt;, только один вариант в группе может быть выбран<br />▪ Особенности: оба типа используют атрибут &lt;b&gt;value&lt;/b&gt;, &lt;b&gt;checked&lt;/b&gt; (предварительно выбранный), &lt;b&gt;disabled&lt;/b&gt; (неактивный элемент)<br />"
+    },
+    {
+      "question": "Как работают &lt;input type=\"range\"&gt;, &lt;input type=\"color\"&gt;?",
+      "id": "q-34-57032c05",
+      "answer": "▪ &lt;input type=\"range\"&gt;: слайдер для выбора значения в диапазоне, поддерживает &lt;b&gt;min&lt;/b&gt;, &lt;b&gt;max&lt;/b&gt;, &lt;b&gt;step&lt;/b&gt;, значение можно отображать через JavaScript<br />▪ &lt;input type=\"color\"&gt;: поле для выбора цвета, показывает цветовой пикер, возвращает значение в формате HEX<br />"
+    },
+    {
+      "question": "Как работают &lt;input type=\"file\"&gt;, &lt;input type=\"hidden\"&gt;?",
+      "id": "q-35-77e4ddad",
+      "answer": "▪ &lt;input type=\"file\"&gt;: поле для загрузки файлов, поддерживает &lt;b&gt;accept&lt;/b&gt; для фильтрации типов файлов, &lt;b&gt;multiple&lt;/b&gt; (выбор нескольких файлов)<br />▪ &lt;input type=\"hidden\"&gt;: скрытое поле, не отображается пользователю, используется для передачи служебных данных, значение устанавливается через JavaScript или сервер<br /><br />"
+    },
+    {
+      "question": "Как работает &lt;select&gt; и &lt;option&gt;?",
+      "id": "q-36-143f4b54",
+      "answer": "▪ &lt;select&gt; — выпадающий список для выбора одного или нескольких значений<br />▪ &lt;option&gt; — отдельный вариант в списке<br />▪ Атрибуты: &lt;b&gt;multiple&lt;/b&gt; (множественный выбор), &lt;b&gt;size&lt;/b&gt; (количество видимых вариантов), &lt;b&gt;disabled&lt;/b&gt; (неактивный список)<br />▪ Группировка: &lt;optgroup&gt; (группировка вариантов), &lt;b&gt;label&lt;/b&gt; (заголовок группы)<br />"
+    },
+    {
+      "question": "Как работает &lt;textarea&gt;?",
+      "id": "q-37-028977c1",
+      "answer": "▪ &lt;textarea&gt; — многострочное текстовое поле<br />▪ Атрибуты: &lt;b&gt;rows&lt;/b&gt; (количество строк), &lt;b&gt;cols&lt;/b&gt; (количество столбцов), &lt;b&gt;maxlength&lt;/b&gt; (максимальная длина), &lt;b&gt;placeholder&lt;/b&gt; (подсказка)<br />▪ Особенности: содержимое между тегами — начальное значение, можно изменять размер пользователем, поддерживает &lt;b&gt;resize&lt;/b&gt; в CSS<br />"
+    },
+    {
+      "question": "Как работают &lt;fieldset&gt; и &lt;legend&gt;?",
+      "id": "q-38-e11b688c",
+      "answer": "▪ &lt;fieldset&gt; — группирует связанные поля формы<br />▪ &lt;legend&gt; — заголовок для группы полей<br />▪ Использование: улучшает доступность, визуально группирует поля, помогает скрин-ридерам<br />"
+    },
+    {
+      "question": "Как работают &lt;label&gt; и связь с input?",
+      "id": "q-39-0ea99ab3",
+      "answer": "▪ &lt;label&gt; — подпись к полю формы<br />▪ Способы связи: &lt;b&gt;for&lt;/b&gt; атрибут указывает на &lt;b&gt;id&lt;/b&gt; поля, обертывание поля в &lt;label&gt;<br />▪ Преимущества: клик по подписи активирует поле, улучшает доступность, помогает скрин-ридерам<br />"
+    },
+    {
+      "question": "Как работают &lt;button&gt; и &lt;input type=\"submit\"&gt;?",
+      "id": "q-40-995fea5f",
+      "answer": "▪ &lt;button&gt;: более гибкий элемент кнопки, может содержать HTML контент, типы: &lt;b&gt;submit&lt;/b&gt;, &lt;b&gt;reset&lt;/b&gt;, &lt;b&gt;button&lt;/b&gt;<br />▪ &lt;input type=\"submit\"&gt;: специализированная кнопка отправки, только текстовое содержимое, &lt;b&gt;value&lt;/b&gt; (текст кнопки)<br />▪ Различия: &lt;button&gt; более семантичен, &lt;button&gt; поддерживает вложенные элементы, &lt;input&gt; проще для базовых случаев<br /><br />"
+    },
+    {
+      "question": "Как работают атрибуты &lt;b&gt;required&lt;/b&gt;, &lt;b&gt;disabled&lt;/b&gt;, &lt;b&gt;readonly&lt;/b&gt;?",
+      "id": "q-41-1e2512f4",
+      "answer": "▪ &lt;b&gt;required&lt;/b&gt;: поле обязательно для заполнения, браузер показывает ошибку при отправке, валидация происходит автоматически<br />▪ &lt;b&gt;disabled&lt;/b&gt;: поле неактивно и не отправляется, нельзя изменить значение, не участвует в валидации<br />▪ &lt;b&gt;readonly&lt;/b&gt;: поле только для чтения, значение отправляется с формой, можно выделить и скопировать текст<br />"
+    },
+    {
+      "question": "Как работают &lt;b&gt;placeholder&lt;/b&gt;, &lt;b&gt;maxlength&lt;/b&gt;, &lt;b&gt;min&lt;/b&gt;, &lt;b&gt;max&lt;/b&gt;?",
+      "id": "q-42-40889063",
+      "answer": "▪ &lt;b&gt;placeholder&lt;/b&gt;: подсказка в поле ввода, исчезает при вводе текста, не заменяет &lt;label&gt;<br />▪ &lt;b&gt;maxlength&lt;/b&gt;: максимальная длина текста, браузер не позволяет ввести больше, показывает счетчик символов<br />▪ &lt;b&gt;min&lt;/b&gt;/&lt;b&gt;max&lt;/b&gt;: минимальное/максимальное значение, работает с &lt;b&gt;number&lt;/b&gt;, &lt;b&gt;date&lt;/b&gt;, &lt;b&gt;range&lt;/b&gt;, валидация происходит автоматически<br />"
+    },
+    {
+      "question": "Как работает валидация форм в HTML5?",
+      "id": "q-43-2d187294",
+      "answer": "▪ Автоматическая валидация: браузер проверяет поля при отправке, показывает сообщения об ошибках, блокирует отправку невалидной формы<br />▪ Типы валидации: &lt;b&gt;required&lt;/b&gt; (обязательные поля), &lt;b&gt;pattern&lt;/b&gt; (регулярные выражения), &lt;b&gt;min&lt;/b&gt;/&lt;b&gt;max&lt;/b&gt; (числовые ограничения), &lt;b&gt;minlength&lt;/b&gt;/&lt;b&gt;maxlength&lt;/b&gt; (длина текста), &lt;b&gt;type&lt;/b&gt; (формат данных email, url)<br />▪ Кастомизация: CSS псевдоклассы &lt;b&gt;:valid&lt;/b&gt;, &lt;b&gt;:invalid&lt;/b&gt;, JavaScript API для проверки, собственные сообщения об ошибках<br /><br /><br />"
+    },
+    {
+      "question": "Как работает &lt;img&gt; тег и его атрибуты?",
+      "id": "q-44-df93e75d",
+      "answer": "▪ &lt;img&gt; — тег для отображения изображений<br />▪ Обязательные атрибуты: &lt;b&gt;src&lt;/b&gt; (путь к изображению), &lt;b&gt;alt&lt;/b&gt; (альтернативный текст)<br />▪ Основные атрибуты: &lt;b&gt;width&lt;/b&gt;, &lt;b&gt;height&lt;/b&gt; (размеры изображения), &lt;b&gt;title&lt;/b&gt; (всплывающая подсказка), &lt;b&gt;loading&lt;/b&gt; (ленивая загрузка), &lt;b&gt;decoding&lt;/b&gt; (способ декодирования)<br />▪ Современные атрибуты: &lt;b&gt;srcset&lt;/b&gt; (набор изображений для разных разрешений), &lt;b&gt;sizes&lt;/b&gt; (размеры для разных экранов), &lt;b&gt;fetchpriority&lt;/b&gt; (приоритет загрузки)<br />"
+    },
+    {
+      "question": "Как работают атрибуты тэга img такие как &lt;b&gt;src&lt;/b&gt;, &lt;b&gt;alt&lt;/b&gt;, &lt;b&gt;title&lt;/b&gt;, &lt;b&gt;width&lt;/b&gt;, &lt;b&gt;height&lt;/b&gt;?",
+      "id": "q-45-305ea0df",
+      "answer": "▪ &lt;b&gt;src&lt;/b&gt;: путь к файлу изображения, поддерживает относительные и абсолютные URL, обязательный атрибут<br />▪ &lt;b&gt;alt&lt;/b&gt;: альтернативный текст для доступности, отображается при ошибке загрузки, используется скрин-ридерами, обязательный атрибут<br />▪ &lt;b&gt;title&lt;/b&gt;: всплывающая подсказка при наведении, необязательный атрибут, не заменяет &lt;b&gt;alt&lt;/b&gt;<br />▪ &lt;b&gt;width&lt;/b&gt; и &lt;b&gt;height&lt;/b&gt;: задают размеры изображения, предотвращают layout shift, рекомендуется указывать для производительности<br />"
+    },
+    {
+      "question": "Как работает &lt;picture&gt; и &lt;source&gt;?",
+      "id": "q-46-3efb0b4a",
+      "answer": "▪ &lt;picture&gt; — контейнер для адаптивных изображений<br />▪ &lt;source&gt; — определяет разные версии изображения<br />▪ Атрибуты &lt;source&gt;: &lt;b&gt;srcset&lt;/b&gt; (набор изображений), &lt;b&gt;media&lt;/b&gt; (медиа-запросы), &lt;b&gt;type&lt;/b&gt; (MIME-тип изображения), &lt;b&gt;sizes&lt;/b&gt; (размеры для разных экранов)<br />▪ Использование: адаптивные изображения, поддержка современных форматов (WebP, AVIF), разные изображения для разных устройств<br />"
+    },
+    {
+      "question": "Как работает &lt;video&gt; и его атрибуты?",
+      "id": "q-47-50185ec1",
+      "answer": "▪ &lt;video&gt; — элемент для воспроизведения видео<br />▪ Основные атрибуты: &lt;b&gt;src&lt;/b&gt; (путь к видеофайлу), &lt;b&gt;controls&lt;/b&gt; (показывать элементы управления), &lt;b&gt;autoplay&lt;/b&gt; (автоматическое воспроизведение), &lt;b&gt;muted&lt;/b&gt; (воспроизведение без звука), &lt;b&gt;loop&lt;/b&gt; (зацикливание), &lt;b&gt;poster&lt;/b&gt; (изображение-превью)<br />▪ Размеры и производительность: &lt;b&gt;width&lt;/b&gt;, &lt;b&gt;height&lt;/b&gt; (размеры плеера), &lt;b&gt;preload&lt;/b&gt; (стратегия предзагрузки), &lt;b&gt;loading&lt;/b&gt; (ленивая загрузка)<br />▪ Доступность: &lt;track&gt; (субтитры и титры), &lt;b&gt;kind=\"captions\"&lt;/b&gt; (субтитры), &lt;b&gt;kind=\"descriptions\"&lt;/b&gt; (описания)<br />"
+    },
+    {
+      "question": "Как работает &lt;audio&gt; и его атрибуты?",
+      "id": "q-48-24682f88",
+      "answer": "▪ &lt;audio&gt; — элемент для воспроизведения аудио<br />▪ Основные атрибуты: &lt;b&gt;src&lt;/b&gt; (путь к аудиофайлу), &lt;b&gt;controls&lt;/b&gt; (показывать элементы управления), &lt;b&gt;autoplay&lt;/b&gt; (автоматическое воспроизведение), &lt;b&gt;muted&lt;/b&gt; (воспроизведение без звука), &lt;b&gt;loop&lt;/b&gt; (зацикливание)<br />▪ Производительность: &lt;b&gt;preload&lt;/b&gt; (стратегия предзагрузки), &lt;b&gt;loading&lt;/b&gt; (ленивая загрузка)<br />▪ Форматы: MP3 (универсальная поддержка), OGG (открытый формат), WAV (несжатый формат)<br />"
+    },
+    {
+      "question": "Как работают &lt;iframe&gt; и их безопасность?",
+      "id": "q-49-3a3c13dd",
+      "answer": "▪ &lt;iframe&gt; — встраивает внешний контент на страницу<br />▪ Основные атрибуты: &lt;b&gt;src&lt;/b&gt; (URL встраиваемого контента), &lt;b&gt;width&lt;/b&gt;, &lt;b&gt;height&lt;/b&gt; (размеры фрейма), &lt;b&gt;title&lt;/b&gt; (описание для доступности), &lt;b&gt;name&lt;/b&gt; (имя фрейма)<br />▪ Безопасность: &lt;b&gt;sandbox&lt;/b&gt; (ограничения безопасности), &lt;b&gt;allow&lt;/b&gt; (разрешенные функции), &lt;b&gt;referrerpolicy&lt;/b&gt; (политика referrer), &lt;b&gt;loading&lt;/b&gt; (ленивая загрузка)<br />▪ Атрибуты безопасности: &lt;b&gt;sandbox=\"allow-scripts allow-same-origin\"&lt;/b&gt;, &lt;b&gt;allow=\"camera; microphone\"&lt;/b&gt;, &lt;b&gt;referrerpolicy=\"no-referrer\"&lt;/b&gt;<br />"
+    },
+    {
+      "question": "Как работает &lt;embed&gt; и &lt;object&gt;?",
+      "id": "q-50-9fe626ca",
+      "answer": "▪ &lt;embed&gt;: встраивает внешний контент (плагины, Flash), устаревший элемент, не рекомендуется, используется для Flash, PDF, Java-апплетов<br />▪ &lt;object&gt;: более гибкий элемент для встраивания, поддерживает fallback контент, может содержать &lt;param&gt; для параметров<br />▪ Современные альтернативы: &lt;iframe&gt; для веб-контента, &lt;video&gt; и &lt;audio&gt; для медиа, &lt;canvas&gt; для графики<br />"
+    },
+    {
+      "question": "Как работает &lt;svg&gt; в HTML?",
+      "id": "q-51-08afeb52",
+      "answer": "▪ &lt;svg&gt; — масштабируемая векторная графика<br />▪ Преимущества: масштабируется без потери качества, маленький размер файла, поддержка анимации и интерактивности, доступность через ARIA<br />▪ Основные элементы: &lt;rect&gt; (прямоугольник), &lt;circle&gt; (круг), &lt;path&gt; (сложные формы), &lt;text&gt; (текст), &lt;g&gt; (группа элементов)<br />▪ Атрибуты: &lt;b&gt;viewBox&lt;/b&gt; (система координат), &lt;b&gt;width&lt;/b&gt;, &lt;b&gt;height&lt;/b&gt; (размеры), &lt;b&gt;fill&lt;/b&gt;, &lt;b&gt;stroke&lt;/b&gt; (заливка и обводка)<br />"
+    },
+    {
+      "question": "Как работает &lt;canvas&gt; элемент?",
+      "id": "q-52-7569113e",
+      "answer": "▪ &lt;canvas&gt; — HTML элемент для программного рисования графики<br />▪ Основные атрибуты: &lt;b&gt;width&lt;/b&gt;, &lt;b&gt;height&lt;/b&gt; (размеры холста в пикселях), &lt;b&gt;id&lt;/b&gt; (идентификатор для JavaScript)<br />▪ Особенности: размеры задаются атрибутами, не CSS, по умолчанию прозрачный, требует JavaScript для рисования, поддерживает 2D и 3D (WebGL) контексты<br /><br />"
+    },
+    {
+      "question": "Как работает &lt;a&gt; тег и его атрибуты?",
+      "id": "q-53-ed058cb2",
+      "answer": "▪ &lt;a&gt; — тег для создания гиперссылок<br />▪ Основные атрибуты: &lt;b&gt;href&lt;/b&gt; (URL или якорь для перехода), &lt;b&gt;target&lt;/b&gt; (окно для открытия ссылки), &lt;b&gt;rel&lt;/b&gt; (отношения между документами), &lt;b&gt;title&lt;/b&gt; (всплывающая подсказка), &lt;b&gt;download&lt;/b&gt; (принудительная загрузка файла)<br />▪ Особенности: может содержать текст, изображения, другие элементы, поддерживает различные протоколы (http, https, mailto, tel), влияет на SEO и доступность<br />"
+    },
+    {
+      "question": "Как работают &lt;b&gt;href&lt;/b&gt;, &lt;b&gt;target&lt;/b&gt;, &lt;b&gt;rel&lt;/b&gt; атрибуты?",
+      "id": "q-54-52209b2e",
+      "answer": "▪ &lt;b&gt;href&lt;/b&gt;: URL страницы или ресурса, якорные ссылки (#section), относительные и абсолютные пути, протоколы: http, https, mailto, tel, ftp<br />▪ &lt;b&gt;target&lt;/b&gt;: &lt;b&gt;self&lt;/b&gt; (текущее окно по умолчанию), &lt;b&gt;blank&lt;/b&gt; (новое окно/вкладка), &lt;b&gt;parent&lt;/b&gt; (родительское окно), &lt;b&gt;top&lt;/b&gt; (верхнее окно), имя окна (конкретное окно)<br />▪ &lt;b&gt;rel&lt;/b&gt;: &lt;b&gt;nofollow&lt;/b&gt; (не переходить по ссылке), &lt;b&gt;noopener&lt;/b&gt; (безопасность для blank), &lt;b&gt;noreferrer&lt;/b&gt; (не передавать referrer), &lt;b&gt;external&lt;/b&gt; (внешняя ссылка), &lt;b&gt;canonical&lt;/b&gt; (каноническая ссылка)<br />"
+    },
+    {
+      "question": "Как работают якорные ссылки?",
+      "id": "q-55-6279cb2a",
+      "answer": "▪ Якорные ссылки — переходы к определенным местам на странице<br />▪ Создание якоря: &lt;a id=\"section1\"&gt;Заголовок&lt;/a&gt;, &lt;h2 id=\"section1\"&gt;Заголовок&lt;/h2&gt;<br />▪ Ссылка на якорь: &lt;a href=\"#section1\"&gt;Перейти к разделу&lt;/a&gt;, &lt;a href=\"page.html#section1\"&gt;Раздел на другой странице&lt;/a&gt;<br />▪ Особенности: плавная прокрутка с CSS &lt;b&gt;scroll-behavior: smooth&lt;/b&gt;, URL обновляется с якорем, работает с JavaScript для динамических переходов<br />"
+    },
+    {
+      "question": "Как работают &lt;b&gt;mailto:&lt;/b&gt; и &lt;b&gt;tel:&lt;/b&gt; ссылки?",
+      "id": "q-56-0d4cec27",
+      "answer": "▪ &lt;b&gt;mailto:&lt;/b&gt; ссылки: &lt;a href=\"mailto:user@example.com\"&gt;Написать письмо&lt;/a&gt;, параметры: &lt;b&gt;subject&lt;/b&gt;, &lt;b&gt;body&lt;/b&gt;, &lt;b&gt;cc&lt;/b&gt;, &lt;b&gt;bcc&lt;/b&gt;, &lt;a href=\"mailto:user@example.com?subject=Тема&body=Текст\"&gt;Письмо с темой&lt;/a&gt;<br />▪ &lt;b&gt;tel:&lt;/b&gt; ссылки: &lt;a href=\"tel:+1234567890\"&gt;Позвонить&lt;/a&gt;, работает на мобильных устройствах, формат: &lt;b&gt;tel:+кодстраныномер&lt;/b&gt;<br />▪ Преимущества: улучшают пользовательский опыт, работают на всех устройствах, интегрируются с системными приложениями<br />"
+    },
+    {
+      "question": "Как работает &lt;nav&gt; для навигации?",
+      "id": "q-57-6b558a3d",
+      "answer": "▪ &lt;nav&gt; — семантический тег для навигационных ссылок<br />▪ Использование: главное меню сайта, breadcrumbs (хлебные крошки), пагинация, оглавление страницы<br />▪ Структура:<br />&lt;pre&gt;<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;nav&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href=\"/\"&gt;Главная&lt;/a&gt;&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href=\"/about\"&gt;О нас&lt;/a&gt;&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href=\"/contact\"&gt;Контакты&lt;/a&gt;&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/nav&gt;</code>&lt;/pre&gt;<br />▪ Преимущества: улучшает доступность, помогает скрин-ридерам, семантически правильная структура<br />"
+    },
+    {
+      "question": "Как работают breadcrumbs в HTML?",
+      "id": "q-58-724d3b81",
+      "answer": "▪ Breadcrumbs — навигационная цепочка, показывающая путь к текущей странице<br />▪ Структура:<br />&lt;pre&gt;<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;nav aria-label=\"Breadcrumb\"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ol&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href=\"/\"&gt;Главная&lt;/a&gt;&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href=\"/category\"&gt;Категория&lt;/a&gt;&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li aria-current=\"page\"&gt;Текущая страница&lt;/li&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ol&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/nav&gt;</code>&lt;/pre&gt;<br />▪ Атрибуты доступности: &lt;b&gt;aria-label=\"Breadcrumb\"&lt;/b&gt; (описание навигации), &lt;b&gt;aria-current=\"page\"&lt;/b&gt; (текущая страница)<br />▪ Стилизация: обычно с разделителями (/, &gt;, →), CSS для оформления списка, адаптивный дизайн для мобильных<br /><br />"
+    },
+    {
+      "question": "Как работают HTML таблицы?",
+      "id": "q-59-c77f9985",
+      "answer": "▪ HTML таблицы — структурированный способ отображения данных в строках и столбцах<br />▪ Основные элементы: &lt;table&gt; (контейнер таблицы), &lt;tr&gt; (строка таблицы), &lt;td&gt; (ячейка с данными), &lt;th&gt; (заголовочная ячейка)<br />▪ Структурные элементы: &lt;thead&gt; (заголовок таблицы), &lt;tbody&gt; (тело таблицы), &lt;tfoot&gt; (подвал таблицы)<br />▪ Особенности: автоматическое выравнивание ячеек, поддержка объединения ячеек, семантическая структура для доступности<br />"
+    },
+    {
+      "question": "Как работают &lt;table&gt;, &lt;tr&gt;, &lt;td&gt;, &lt;th&gt;?",
+      "id": "q-60-79598cbf",
+      "answer": "▪ &lt;table&gt;: корневой элемент таблицы, может содержать атрибуты &lt;b&gt;border&lt;/b&gt;, &lt;b&gt;cellpadding&lt;/b&gt;, &lt;b&gt;cellspacing&lt;/b&gt;, поддерживает CSS стили для оформления<br />▪ &lt;tr&gt;: определяет строку таблицы, содержит ячейки &lt;td&gt; или &lt;th&gt;, поддерживает атрибуты выравнивания<br />▪ &lt;td&gt;: ячейка с обычными данными, атрибуты: &lt;b&gt;colspan&lt;/b&gt;, &lt;b&gt;rowspan&lt;/b&gt;, &lt;b&gt;headers&lt;/b&gt;, может содержать любой HTML контент<br />▪ &lt;th&gt;: заголовочная ячейка, по умолчанию жирный шрифт и центрирование, атрибут &lt;b&gt;scope&lt;/b&gt; для связи с данными<br />"
+    },
+    {
+      "question": "Как работают &lt;thead&gt;, &lt;tbody&gt;, &lt;tfoot&gt;?",
+      "id": "q-61-3b662bd8",
+      "answer": "▪ &lt;thead&gt;: заголовочная секция таблицы, содержит заголовочные строки, повторяется на каждой странице при печати<br />▪ &lt;tbody&gt;: основное тело таблицы, содержит строки с данными, может быть несколько &lt;tbody&gt; в одной таблице<br />▪ &lt;tfoot&gt;: подвал таблицы, содержит итоговые строки, отображается внизу таблицы<br />▪ Порядок элементов:<br />&lt;pre&gt;<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;table&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;thead&gt;...&lt;/thead&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tfoot&gt;...&lt;/tfoot&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tbody&gt;...&lt;/tbody&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;</code>&lt;/pre&gt;<br />"
+    },
+    {
+      "question": "Как работают &lt;b&gt;colspan&lt;/b&gt; и &lt;b&gt;rowspan&lt;/b&gt;?",
+      "id": "q-62-22b800ed",
+      "answer": "▪ &lt;b&gt;colspan&lt;/b&gt;: объединяет ячейки по горизонтали, значение — количество объединяемых столбцов, &lt;td colspan=\"2\"&gt;Объединенная ячейка&lt;/td&gt;<br />▪ &lt;b&gt;rowspan&lt;/b&gt;: объединяет ячейки по вертикали, значение — количество объединяемых строк, &lt;td rowspan=\"2\"&gt;Объединенная ячейка&lt;/td&gt;<br />"
+    },
+    {
+      "question": "Как работает &lt;caption&gt; для таблиц?",
+      "id": "q-63-aa26dde7",
+      "answer": "▪ &lt;caption&gt; — заголовок таблицы<br />▪ Расположение: должен быть первым элементом в &lt;table&gt;, отображается над таблицей по умолчанию<br />▪ Использование:<br />&lt;pre&gt;<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;table&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;caption&gt;Продажи за месяц&lt;/caption&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;thead&gt;...&lt;/thead&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tbody&gt;...&lt;/tbody&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;</code>&lt;/pre&gt;<br />▪ Преимущества: улучшает доступность, помогает скрин-ридерам, семантически описывает содержимое таблицы<br />"
+    },
+    {
+      "question": "Как работают &lt;col&gt; и &lt;colgroup&gt;?",
+      "id": "q-64-70838b6b",
+      "answer": "▪ &lt;colgroup&gt;: группирует столбцы для стилизации, содержит элементы &lt;col&gt;, позволяет применять стили к целым столбцам<br />▪ &lt;col&gt;: определяет свойства столбца, атрибуты: &lt;b&gt;span&lt;/b&gt;, &lt;b&gt;width&lt;/b&gt;, &lt;b&gt;align&lt;/b&gt;, не содержит контент, только стили<br />▪ Пример использования:<br />&lt;pre&gt;<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;table&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;colgroup&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col style=\"background-color: lightblue;\"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;col span=\"2\" style=\"background-color: lightgreen;\"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/colgroup&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;thead&gt;...&lt;/thead&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;tbody&gt;...&lt;/tbody&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/table&gt;</code>&lt;/pre&gt;<br /><br />"
+    },
+    {
+      "question": "Как работают &lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;?",
+      "id": "q-65-7e1da1ff",
+      "answer": "▪ &lt;ul&gt; (Unordered List): неупорядоченный список, элементы отмечены маркерами, используется для перечислений без порядка<br />▪ &lt;ol&gt; (Ordered List): упорядоченный список, элементы пронумерованы, используется для последовательностей<br />▪ &lt;li&gt; (List Item): элемент списка, может содержать любой HTML контент, поддерживает вложенные списки<br />"
+    },
+    {
+      "question": "Как работают &lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;?",
+      "id": "q-66-16651578",
+      "answer": "▪ &lt;dl&gt; (Description List): список описаний, содержит пары терминов и их определений, используется для глоссариев, FAQ, метаданных<br />▪ &lt;dt&gt; (Description Term): термин для описания, обычно краткий заголовок<br />▪ &lt;dd&gt; (Description Data): описание термина, может быть длинным текстом, может быть несколько &lt;dd&gt; для одного &lt;dt&gt;<br />▪ Пример:<br />&lt;pre&gt;<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;dl&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;dt&gt;HTML&lt;/dt&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;dd&gt;Язык разметки гипертекста&lt;/dd&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;dt&gt;CSS&lt;/dt&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;dd&gt;Каскадные таблицы стилей&lt;/dd&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;dd&gt;Используется для оформления веб-страниц&lt;/dd&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/dl&gt;</code>&lt;/pre&gt;<br />"
+    },
+    {
+      "question": "Как работают вложенные списки?",
+      "id": "q-67-72ea2ef6",
+      "answer": "▪ Вложенность списков: списки могут содержать другие списки, создает иерархическую структуру, каждый уровень имеет свои маркеры/номера<br />▪ Особенности: браузеры автоматически меняют маркеры, CSS позволяет кастомизировать внешний вид, важно для семантической структуры<br />"
+    },
+    {
+      "question": "Как работают атрибуты &lt;b&gt;type&lt;/b&gt; и &lt;b&gt;start&lt;/b&gt; для списков?",
+      "id": "q-68-0c91c4bf",
+      "answer": "▪ Атрибут &lt;b&gt;type&lt;/b&gt; для &lt;ul&gt;: &lt;b&gt;disc&lt;/b&gt; (закрашенный круг по умолчанию), &lt;b&gt;circle&lt;/b&gt; (пустой круг), &lt;b&gt;square&lt;/b&gt; (квадрат), &lt;b&gt;none&lt;/b&gt; (без маркера)<br />▪ Атрибут &lt;b&gt;type&lt;/b&gt; для &lt;ol&gt;: &lt;b&gt;1&lt;/b&gt; (арабские цифры по умолчанию), &lt;b&gt;a&lt;/b&gt; (строчные буквы), &lt;b&gt;A&lt;/b&gt; (заглавные буквы), &lt;b&gt;i&lt;/b&gt; (строчные римские цифры), &lt;b&gt;I&lt;/b&gt; (заглавные римские цифры)<br />▪ Атрибут &lt;b&gt;start&lt;/b&gt; для &lt;ol&gt;: задает начальное значение нумерации, &lt;ol start=\"5\"&gt; (начнет с 5)<br /><br />"
+    },
+    {
+      "question": "Как сделать доступную (a11y) верстку?",
+      "id": "q-69-04748778",
+      "answer": "▪ Использование семантических HTML тегов (&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;section&gt;, &lt;article&gt;)<br />▪ Правильная структура заголовков (h1-h6) без пропуска уровней<br />▪ Альтернативный текст для изображений (&lt;b&gt;alt&lt;/b&gt; атрибут)<br />▪ Достаточный цветовой контраст (минимум 4.5:1 для обычного текста)<br />▪ Навигация с клавиатуры (&lt;b&gt;tabindex&lt;/b&gt;, &lt;b&gt;taborder&lt;/b&gt;)<br />▪ ARIA атрибуты для сложных интерактивных элементов<br />▪ Тестирование со скрин-ридерами<br />"
+    },
+    {
+      "question": "Как работают ARIA атрибуты?",
+      "id": "q-70-769c807c",
+      "answer": "▪ ARIA (Accessible Rich Internet Applications) — набор атрибутов для улучшения доступности<br />▪ Расширяет семантику HTML для скрин-ридеров и других вспомогательных технологий<br />▪ Основные категории: роли (&lt;b&gt;role&lt;/b&gt;), свойства (&lt;b&gt;aria-&lt;/b&gt;), состояния (&lt;b&gt;aria-&lt;/b&gt;)<br />▪ Не заменяет семантические HTML теги, а дополняет их<br />▪ Используется для сложных UI компонентов (модальные окна, выпадающие меню, табы)<br />"
+    },
+    {
+      "question": "Как работают &lt;b&gt;role&lt;/b&gt;, &lt;b&gt;aria-label&lt;/b&gt;, &lt;b&gt;aria-describedby&lt;/b&gt;?",
+      "id": "q-71-c18da2e4",
+      "answer": "▪ &lt;b&gt;role&lt;/b&gt;: определяет роль элемента для скрин-ридеров (&lt;b&gt;button&lt;/b&gt;, &lt;b&gt;dialog&lt;/b&gt;, &lt;b&gt;menu&lt;/b&gt;, &lt;b&gt;tablist&lt;/b&gt;)<br />▪ &lt;b&gt;aria-label&lt;/b&gt;: предоставляет доступное имя для элемента, когда видимый текст недостаточен<br />▪ &lt;b&gt;aria-describedby&lt;/b&gt;: связывает элемент с дополнительным описанием через ID другого элемента<br />▪ Пример: &lt;button aria-label=\"Закрыть модальное окно\" aria-describedby=\"close-help\"&gt;×&lt;/button&gt;<br />"
+    },
+    {
+      "question": "Как работают &lt;b&gt;aria-hidden&lt;/b&gt;, &lt;b&gt;aria-expanded&lt;/b&gt;, &lt;b&gt;aria-selected&lt;/b&gt;?",
+      "id": "q-72-f63d87ae",
+      "answer": "▪ &lt;b&gt;aria-hidden=\"true\"&lt;/b&gt;: скрывает элемент от скрин-ридеров (декоративные элементы)<br />▪ &lt;b&gt;aria-expanded&lt;/b&gt;: указывает, развернут ли элемент (выпадающие меню, аккордеоны)<br />▪ &lt;b&gt;aria-selected&lt;/b&gt;: указывает, выбран ли элемент в списке или группе<br />▪ Пример: &lt;button aria-expanded=\"false\" aria-controls=\"menu\"&gt;Меню&lt;/button&gt;<br />"
+    },
+    {
+      "question": "Как работают &lt;b&gt;tabindex&lt;/b&gt; и навигация с клавиатуры?",
+      "id": "q-73-833e49e7",
+      "answer": "▪ &lt;b&gt;tabindex=\"0\"&lt;/b&gt;: элемент участвует в навигации с клавиатуры в естественном порядке<br />▪ &lt;b&gt;tabindex=\"-1\"&lt;/b&gt;: элемент может получить фокус программно, но не участвует в tab-навигации<br />▪ &lt;b&gt;tabindex=\"1+\"&lt;/b&gt;: элемент получает приоритет в навигации (не рекомендуется)<br />▪ Навигация: Tab (следующий), Shift+Tab (предыдущий), Enter/Space (активация)<br />"
+    },
+    {
+      "question": "Как работают &lt;b&gt;alt&lt;/b&gt; атрибуты для изображений?",
+      "id": "q-74-fed47561",
+      "answer": "▪ &lt;b&gt;alt=\"\"&lt;/b&gt;: декоративные изображения, которые не несут смысловой нагрузки<br />▪ &lt;b&gt;alt=\"описание\"&lt;/b&gt;: информативные изображения с описанием содержимого<br />▪ &lt;b&gt;alt&lt;/b&gt; отсутствует: изображение считается декоративным (не рекомендуется)<br />▪ Длинные описания: использовать &lt;b&gt;aria-describedby&lt;/b&gt; для связи с подробным описанием<br />"
+    },
+    {
+      "question": "Как работают &lt;b&gt;title&lt;/b&gt; атрибуты?",
+      "id": "q-75-fdf7ad0d",
+      "answer": "▪ &lt;b&gt;title&lt;/b&gt;: всплывающая подсказка при наведении мыши<br />▪ Не заменяет &lt;b&gt;alt&lt;/b&gt; для изображений<br />▪ Недоступен для пользователей клавиатуры и сенсорных устройств<br />▪ Используется для дополнительной информации, но не критичной для понимания<br />"
+    },
+    {
+      "question": "Как работают &lt;b&gt;lang&lt;/b&gt; атрибуты?",
+      "id": "q-76-0bf8d4a0",
+      "answer": "▪ &lt;b&gt;lang=\"ru\"&lt;/b&gt;: указывает язык содержимого страницы или элемента<br />▪ Помогает скрин-ридерам правильно произносить текст<br />▪ Влияет на направление текста (RTL для арабского, иврита)<br />▪ Пример: &lt;html lang=\"ru\"&gt;, &lt;span lang=\"en\"&gt;Hello&lt;/span&gt;<br />"
+    },
+    {
+      "question": "Как работают skip links?",
+      "id": "q-77-810afe72",
+      "answer": "▪ Skip links — ссылки для быстрого перехода к основному контенту<br />▪ Помогают пользователям клавиатуры пропустить навигацию<br />▪ Обычно скрыты, появляются при получении фокуса<br />▪ Пример: &lt;a href=\"#main\" class=\"skip-link\"&gt;Перейти к основному контенту&lt;/a&gt;<br />"
+    },
+    {
+      "question": "Как работают landmarks в ARIA?",
+      "id": "q-78-bed48aeb",
+      "answer": "▪ Landmarks — семантические области страницы для навигации<br />▪ Основные роли: &lt;b&gt;banner&lt;/b&gt; (шапка), &lt;b&gt;navigation&lt;/b&gt; (навигация), &lt;b&gt;main&lt;/b&gt; (основной контент), &lt;b&gt;complementary&lt;/b&gt; (боковая панель), &lt;b&gt;contentinfo&lt;/b&gt; (подвал)<br />▪ Автоматически создаются семантическими тегами:<br />▪ &lt;header&gt; → &lt;b&gt;banner&lt;/b&gt; (если не внутри &lt;article&gt; или &lt;section&gt;)<br />▪ &lt;nav&gt; → &lt;b&gt;navigation&lt;/b&gt;<br />▪ &lt;main&gt; → &lt;b&gt;main&lt;/b&gt;<br />▪ &lt;aside&gt; → &lt;b&gt;complementary&lt;/b&gt;<br />▪ &lt;footer&gt; → &lt;b&gt;contentinfo&lt;/b&gt; (если не внутри &lt;article&gt; или &lt;section&gt;)<br />▪ Можно добавлять вручную: &lt;div role=\"banner\"&gt; или &lt;div role=\"main\"&gt;<br />"
+    },
+    {
+      "question": "Как работают &lt;b&gt;aria-live&lt;/b&gt; и &lt;b&gt;aria-atomic&lt;/b&gt;?",
+      "id": "q-79-79fb315a",
+      "answer": "▪ &lt;b&gt;aria-live&lt;/b&gt; — уведомляет скрин-ридеры об изменениях в динамическом контенте<br />▪ Значения:<br />▪ &lt;b&gt;aria-live=\"off\"&lt;/b&gt; — не уведомлять (по умолчанию)<br />▪ &lt;b&gt;aria-live=\"polite\"&lt;/b&gt; — уведомить после завершения текущего действия<br />▪ &lt;b&gt;aria-live=\"assertive\"&lt;/b&gt; — уведомить немедленно (прерывает текущее чтение)<br />▪ &lt;b&gt;aria-atomic&lt;/b&gt; — контролирует, что читать при изменении:<br />▪ &lt;b&gt;aria-atomic=\"false\"&lt;/b&gt; — читать только изменившуюся часть<br />▪ &lt;b&gt;aria-atomic=\"true\"&lt;/b&gt; — читать весь контейнер целиком<br />▪ Примеры использования:<br />▪ Счетчик товаров: &lt;span aria-live=\"polite\"&gt;В корзине 3 товара&lt;/span&gt;<br />▪ Уведомления: &lt;div aria-live=\"assertive\" aria-atomic=\"true\"&gt;Ошибка: неверный пароль&lt;/div&gt;<br />▪ Статус загрузки: &lt;div aria-live=\"polite\" aria-atomic=\"false\"&gt;Загружено 50%&lt;/div&gt;<br /><br />"
+    },
+    {
+      "question": "Что такое микроразметка и зачем она нужна?",
+      "id": "q-80-0b60a89b",
+      "answer": "▪ Микроразметка — структурированные данные, которые помогают поисковикам понимать содержимое страницы<br />▪ Улучшает отображение в результатах поиска (rich snippets, карточки, звездочки)<br />▪ Повышает CTR и рейтинг в поисковой выдаче<br />▪ Помогает поисковикам создавать knowledge graph<br />▪ Основные форматы: JSON-LD, Microdata, RDFa<br />"
+    },
+    {
+      "question": "Как работает JSON-LD микроразметка?",
+      "id": "q-81-e7f5874c",
+      "answer": "▪ JSON-LD (JSON for Linked Data) — современный формат структурированных данных<br />▪ Размещается в &lt;script type=\"application/ld+json\"&gt; в &lt;head&gt; или &lt;body&gt;<br />▪ Не влияет на отображение страницы, только на SEO<br />▪ Легко читается и редактируется<br />▪ Пример: &lt;script type=\"application/ld+json\"&gt;{\"@context\": \"https://schema.org\", \"@type\": \"Article\"}&lt;/script&gt;<br />"
+    },
+    {
+      "question": "Как работает Schema.org разметка?",
+      "id": "q-82-271ffe72",
+      "answer": "▪ Schema.org — стандартизированная схема для структурированных данных<br />▪ Создана совместно Google, Microsoft, Yahoo, Yandex<br />▪ Содержит типы: Article, Product, Event, Organization, Person, Review<br />▪ Каждый тип имеет обязательные и рекомендуемые свойства<br />▪ Поддерживается всеми крупными поисковиками<br />▪ Пример полной микроразметки для статьи:<br />&lt;pre&gt;<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;script type=\"application/ld+json\"&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"@context\": \"https://schema.org\",<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"@type\": \"Article\",<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"headline\": \"Как создать доступный сайт\",<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"description\": \"Подробное руководство по созданию доступных веб-сайтов\",<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"image\": \"https://example.com/accessibility-guide.jpg\",<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"author\": {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"@type\": \"Person\",<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"name\": \"Иван Петров\",<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"url\": \"https://example.com/author/ivan\"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"publisher\": {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"@type\": \"Organization\",<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"name\": \"WebDev Blog\",<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"logo\": {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"@type\": \"ImageObject\",<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"url\": \"https://example.com/logo.png\"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"datePublished\": \"2024-01-15\",<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"dateModified\": \"2024-01-20\",<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"mainEntityOfPage\": {<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"@type\": \"WebPage\",<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"@id\": \"https://example.com/accessibility-guide\"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/script&gt;</code>&lt;/pre&gt;<br />"
+    },
+    {
+      "question": "Как работает микроразметка для статей?",
+      "id": "q-83-baf14f43",
+      "answer": "▪ Тип: &lt;b&gt;Article&lt;/b&gt; или &lt;b&gt;NewsArticle&lt;/b&gt;<br />▪ Обязательные свойства: &lt;b&gt;headline&lt;/b&gt;, &lt;b&gt;author&lt;/b&gt;, &lt;b&gt;datePublished&lt;/b&gt;, &lt;b&gt;dateModified&lt;/b&gt;<br />▪ Рекомендуемые: &lt;b&gt;image&lt;/b&gt;, &lt;b&gt;description&lt;/b&gt;, &lt;b&gt;publisher&lt;/b&gt;, &lt;b&gt;mainEntityOfPage&lt;/b&gt;<br />▪ Помогает отображаться в Google News и rich snippets<br />▪ Пример: статья с автором, датой публикации, изображением<br />"
+    },
+    {
+      "question": "Как работает микроразметка для товаров?",
+      "id": "q-84-a0aabdea",
+      "answer": "▪ Тип: &lt;b&gt;Product&lt;/b&gt;<br />▪ Обязательные свойства: &lt;b&gt;name&lt;/b&gt;, &lt;b&gt;description&lt;/b&gt;, &lt;b&gt;image&lt;/b&gt;<br />▪ Рекомендуемые: &lt;b&gt;brand&lt;/b&gt;, &lt;b&gt;sku&lt;/b&gt;, &lt;b&gt;offers&lt;/b&gt; (цена, валюта, доступность), &lt;b&gt;aggregateRating&lt;/b&gt; (рейтинг)<br />▪ Отображается в Google Shopping и rich snippets с ценой<br />▪ Поддерживает отзывы и рейтинги<br />"
+    },
+    {
+      "question": "Как работает микроразметка для событий?",
+      "id": "q-85-b2b0af9d",
+      "answer": "▪ Тип: &lt;b&gt;Event&lt;/b&gt;<br />▪ Обязательные свойства: &lt;b&gt;name&lt;/b&gt;, &lt;b&gt;startDate&lt;/b&gt;, &lt;b&gt;location&lt;/b&gt;<br />▪ Рекомендуемые: &lt;b&gt;description&lt;/b&gt;, &lt;b&gt;endDate&lt;/b&gt;, &lt;b&gt;organizer&lt;/b&gt;, &lt;b&gt;offers&lt;/b&gt; (билеты)<br />▪ Отображается в Google Events и календарных приложениях<br />▪ Помогает пользователям найти события рядом<br />"
+    },
+    {
+      "question": "Как работает микроразметка для организаций?",
+      "id": "q-86-ae166aad",
+      "answer": "▪ Тип: &lt;b&gt;Organization&lt;/b&gt; или &lt;b&gt;LocalBusiness&lt;/b&gt;<br />▪ Обязательные свойства: &lt;b&gt;name&lt;/b&gt;, &lt;b&gt;url&lt;/b&gt;<br />▪ Рекомендуемые: &lt;b&gt;logo&lt;/b&gt;, &lt;b&gt;description&lt;/b&gt;, &lt;b&gt;address&lt;/b&gt;, &lt;b&gt;telephone&lt;/b&gt;, &lt;b&gt;openingHours&lt;/b&gt;, &lt;b&gt;sameAs&lt;/b&gt; (соцсети)<br />▪ Отображается в knowledge panel в Google<br />▪ Помогает с локальным SEO<br /><br />"
+    },
+    {
+      "question": "Как оптимизировать HTML для производительности?",
+      "id": "q-87-49264f55",
+      "answer": "▪ Минификация HTML (удаление пробелов, комментариев, переносов строк)<br />▪ Сжатие с помощью gzip/brotli:<br />▪ gzip: сжимает HTML на 60-80%, поддерживается всеми браузерами<br />▪ brotli: сжимает на 15-25% лучше gzip, поддерживается современными браузерами<br />▪ Настраивается на сервере (nginx, apache) или CDN<br />▪ Оптимизация порядка загрузки ресурсов (critical CSS в &lt;head&gt;)<br />▪ Использование &lt;b&gt;loading=\"lazy\"&lt;/b&gt; для изображений<br />▪ Preloading критических ресурсов (&lt;link rel=\"preload\"&gt;)<br />▪ DNS prefetch для внешних доменов:<br />▪ &lt;link rel=\"dns-prefetch\" href=\"//fonts.googleapis.com\"&gt;<br />▪ &lt;link rel=\"dns-prefetch\" href=\"//cdn.example.com\"&gt;<br />▪ Ускоряет загрузку ресурсов с внешних доменов на 200-500ms<br />▪ Используйте для Google Fonts, CDN, аналитики, виджетов<br />▪ Уменьшение размера DOM (меньше вложенности)<br />"
+    },
+    {
+      "question": "Как работает lazy loading для изображений?",
+      "id": "q-88-18902bf1",
+      "answer": "▪ &lt;b&gt;loading=\"lazy\"&lt;/b&gt;: изображения загружаются только при приближении к viewport<br />▪ Экономит трафик и ускоряет первоначальную загрузку страницы<br />▪ Поддерживается современными браузерами<br />▪ Fallback для старых браузеров через Intersection Observer API<br />▪ Не рекомендуется для изображений выше сгиба (above the fold):<br />▪ Above the fold — контент, видимый без прокрутки при загрузке страницы<br />▪ Логотип, главное изображение, навигация должны загружаться сразу<br />▪ Используйте &lt;b&gt;loading=\"eager\"&lt;/b&gt; или без атрибута для критических изображений<br />▪ Пример: &lt;img src=\"image.jpg\" loading=\"lazy\" alt=\"Описание\"&gt;<br />"
+    },
+    {
+      "question": "Как работает preloading ресурсов?",
+      "id": "q-89-c1d29b56",
+      "answer": "▪ &lt;link rel=\"preload\"&gt;: загружает критически важные ресурсы заранее<br />▪ Используется для шрифтов, CSS, JavaScript, изображений<br />▪ Атрибуты: &lt;b&gt;href&lt;/b&gt; (путь), &lt;b&gt;as&lt;/b&gt; (тип ресурса), &lt;b&gt;type&lt;/b&gt; (MIME-тип)<br />▪ Примеры: &lt;link rel=\"preload\" href=\"font.woff2\" as=\"font\" type=\"font/woff2\" crossorigin&gt;<br />▪ Отличается от &lt;link rel=\"prefetch\"&gt; (загружает для следующей страницы)<br />"
+    },
+    {
+      "question": "Как работает critical CSS в HTML?",
+      "id": "q-90-fa7fabf3",
+      "answer": "▪ Critical CSS — стили, необходимые для отображения above-the-fold контента<br />▪ Встраивается в &lt;head&gt; для избежания блокировки рендеринга<br />▪ Остальные стили загружаются асинхронно<br />▪ Уменьшает FCP (First Contentful Paint) и LCP (Largest Contentful Paint)<br />▪ Автоматически генерируется инструментами (Critical, Penthouse)<br />"
+    },
+    {
+      "question": "Как работает resource hints?",
+      "id": "q-91-7e773145",
+      "answer": "▪ &lt;link rel=\"dns-prefetch\"&gt;: предварительный DNS lookup для домена<br />▪ &lt;link rel=\"preconnect\"&gt;: устанавливает соединение с доменом (DNS + TCP + TLS)<br />▪ &lt;link rel=\"prefetch\"&gt;: загружает ресурс для следующей страницы<br />▪ &lt;link rel=\"prerender\"&gt;: предварительно рендерит страницу<br />▪ Ускоряют загрузку внешних ресурсов и навигацию<br /><br />"
+    },
+    {
+      "question": "Как обеспечить безопасность HTML?",
+      "id": "q-92-26cb5c24",
+      "answer": "▪ Валидация и санитизация пользовательского ввода<br />▪ Использование HTTPS для всех ресурсов<br />▪ Content Security Policy (CSP) для предотвращения XSS<br />▪ Безопасные атрибуты для ссылок (&lt;b&gt;rel=\"noopener\"&lt;/b&gt;, &lt;b&gt;rel=\"noreferrer\"&lt;/b&gt;)<br />▪ Sandbox для iframe с ограниченными правами<br />▪ Защита от clickjacking через X-Frame-Options<br />▪ Регулярное обновление зависимостей<br />"
+    },
+    {
+      "question": "Как работает Content Security Policy?",
+      "id": "q-93-cc954322",
+      "answer": "▪ CSP — механизм безопасности для предотвращения XSS атак<br />▪ Указывает, какие ресурсы может загружать страница<br />▪ Директивы: &lt;b&gt;default-src&lt;/b&gt;, &lt;b&gt;script-src&lt;/b&gt;, &lt;b&gt;style-src&lt;/b&gt;, &lt;b&gt;img-src&lt;/b&gt;, &lt;b&gt;connect-src&lt;/b&gt;<br />▪ Устанавливается через HTTP заголовок или &lt;meta&gt; тег<br />▪ Пример: &lt;b&gt;Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'&lt;/b&gt;<br />"
+    },
+    {
+      "question": "Как защититься от XSS атак?",
+      "id": "q-94-56df86d6",
+      "answer": "▪ Экранирование HTML символов (&lt;&lt;b&gt;, &lt;/b&gt;&gt;, &lt;b&gt;&&lt;/b&gt;, &lt;b&gt;\"&lt;/b&gt;, &lt;b&gt;'&lt;/b&gt;)<br />▪ Использование &lt;b&gt;textContent&lt;/b&gt; вместо &lt;b&gt;innerHTML&lt;/b&gt; в JavaScript<br />▪ Валидация и санитизация пользовательского ввода<br />▪ Content Security Policy для ограничения выполнения скриптов<br />▪ Использование безопасных методов рендеринга (React, Vue автоматически экранируют)<br />▪ HttpOnly флаги для cookies<br />"
+    },
+    {
+      "question": "Как работают &lt;b&gt;rel=\"noopener\"&lt;/b&gt; и &lt;b&gt;rel=\"nofollow\"&lt;/b&gt;?",
+      "id": "q-95-59ff5c2a",
+      "answer": "▪ &lt;b&gt;rel=\"noopener\"&lt;/b&gt;: предотвращает доступ нового окна к &lt;b&gt;window.opener&lt;/b&gt; (защита от tabnabbing)<br />▪ &lt;b&gt;rel=\"noreferrer\"&lt;/b&gt;: не передает referrer информацию (дополнительная защита)<br />▪ &lt;b&gt;rel=\"nofollow\"&lt;/b&gt;: указывает поисковикам не переходить по ссылке (SEO)<br />▪ Обязательно для ссылок с &lt;b&gt;target=\"blank\"&lt;/b&gt;<br />▪ Пример: &lt;a href=\"https://example.com\" target=\"blank\" rel=\"noopener noreferrer\"&gt;Ссылка&lt;/a&gt;<br />"
+    },
+    {
+      "question": "Как работает &lt;b&gt;sandbox&lt;/b&gt; атрибут для iframe?",
+      "id": "q-96-17076880",
+      "answer": "▪ &lt;b&gt;sandbox&lt;/b&gt;: ограничивает возможности iframe для безопасности<br />▪ Значения: &lt;b&gt;allow-scripts&lt;/b&gt;, &lt;b&gt;allow-same-origin&lt;/b&gt;, &lt;b&gt;allow-forms&lt;/b&gt;, &lt;b&gt;allow-popups&lt;/b&gt;<br />▪ По умолчанию блокирует все: скрипты, формы, навигацию, popup'ы<br />▪ Защищает от malicious iframe контента<br />▪ Пример: &lt;iframe src=\"untrusted.html\" sandbox=\"allow-scripts allow-same-origin\"&gt;&lt;/iframe&gt;<br /><br />"
+    },
+    {
+      "question": "Как оптимизировать HTML для SEO?",
+      "id": "q-97-7d5e158e",
+      "answer": "▪ Семантическая разметка с правильными HTML тегами<br />▪ Иерархическая структура заголовков (h1-h6)<br />▪ Уникальные и описательные title и meta description<br />▪ Альтернативный текст для изображений<br />▪ Структурированные данные (Schema.org)<br />▪ Быстрая загрузка страницы (Core Web Vitals)<br />▪ Мобильная адаптивность<br />▪ Внутренняя перелинковка<br />"
+    },
+    {
+      "question": "Как работают заголовки для SEO?",
+      "id": "q-98-a0e364fd",
+      "answer": "▪ H1: главный заголовок страницы (только один), содержит основное ключевое слово<br />▪ H2-H6: подзаголовки, создают иерархию контента<br />▪ Не пропускать уровни (h1 → h2 → h3, но не h1 → h3)<br />▪ Заголовки должны описывать содержимое секции<br />▪ Влияют на понимание структуры страницы поисковиками<br />▪ Используются для создания table of contents в результатах поиска<br />"
+    },
+    {
+      "question": "Как работают мета-описания?",
+      "id": "q-99-f93de5cf",
+      "answer": "▪ &lt;meta name=\"description\"&gt;: описание страницы для поисковиков<br />▪ Отображается в сниппетах поисковой выдачи<br />▪ Длина: 150-160 символов (оптимально)<br />▪ Должно быть уникальным для каждой страницы<br />▪ Включать призыв к действию (CTA)<br />▪ Не дублировать title, а дополнять его<br />▪ Влиять на CTR в поисковой выдаче<br />"
+    },
+    {
+      "question": "Как работают структурированные данные?",
+      "id": "q-100-39d5df55",
+      "answer": "▪ Schema.org разметка помогает поисковикам понимать контент<br />▪ Улучшает отображение в rich snippets (звездочки, цены, даты)<br />▪ Форматы: JSON-LD (рекомендуется), Microdata, RDFa<br />▪ Типы: Article, Product, Event, Organization, Review<br />▪ Тестирование через Google Rich Results Test<br />▪ Не гарантирует отображение в rich snippets<br />"
+    },
+    {
+      "question": "Как работает robots.txt?",
+      "id": "q-101-c7b062e6",
+      "answer": "▪ Файл в корне сайта, указывает поисковикам, какие страницы индексировать<br />▪ Синтаксис: &lt;b&gt;User-agent: &lt;/b&gt; (для всех ботов), &lt;b&gt;Disallow: /admin/&lt;/b&gt; (запретить)<br />▪ &lt;b&gt;Allow: /public/&lt;/b&gt; (разрешить), &lt;b&gt;Sitemap: https://site.com/sitemap.xml&lt;/b&gt;<br />▪ Не блокирует доступ к страницам, только индексацию<br />▪ Должен быть доступен по адресу &lt;b&gt;https://site.com/robots.txt&lt;/b&gt;<br />"
+    },
+    {
+      "question": "Как работает sitemap.xml?",
+      "id": "q-102-ff401d57",
+      "answer": "▪ XML файл со списком всех страниц сайта для поисковиков<br />▪ Содержит URL, дату последнего изменения, приоритет, частоту обновления<br />▪ Помогает поисковикам находить и индексировать страницы<br />▪ Размещается в корне сайта или указывается в robots.txt<br />▪ Автоматически генерируется CMS или создается вручную<br />▪ Отправляется в Google Search Console для ускорения индексации<br /><br />"
+    },
+    {
+      "question": "Что такое Web Components?",
+      "id": "q-103-933c558f",
+      "answer": "▪ Набор веб-стандартов для создания переиспользуемых HTML элементов<br />▪ Состоит из: Custom Elements, Shadow DOM, HTML Templates<br />▪ Позволяет создавать инкапсулированные компоненты без фреймворков<br />▪ Работает во всех современных браузерах<br />▪ Альтернатива React/Vue компонентам для простых случаев<br />▪ Пример: создание собственного &lt;my-button&gt; элемента<br />"
+    },
+    {
+      "question": "Как работают Custom Elements?",
+      "id": "q-104-d8c719b0",
+      "answer": "▪ Позволяют создавать собственные HTML элементы<br />▪ Два типа: Autonomous (полностью новые) и Customized (расширение существующих)<br />▪ Lifecycle callbacks: &lt;b&gt;connectedCallback&lt;/b&gt;, &lt;b&gt;disconnectedCallback&lt;/b&gt;, &lt;b&gt;attributeChangedCallback&lt;/b&gt;<br />▪ Регистрация через &lt;b&gt;customElements.define('my-element', MyElement)&lt;/b&gt;<br />▪ Пример: &lt;my-button&gt;Кнопка&lt;/my-button&gt; с собственной логикой<br />"
+    },
+    {
+      "question": "Как работает Shadow DOM?",
+      "id": "q-105-010fa653",
+      "answer": "▪ Инкапсулированный DOM внутри элемента, изолированный от основного документа<br />▪ Стили и скрипты внутри Shadow DOM не влияют на внешний документ<br />▪ Создается через &lt;b&gt;element.attachShadow({mode: 'open'})&lt;/b&gt;<br />▪ Решает проблему изоляции стилей в компонентах<br />▪ Используется в Web Components для инкапсуляции<br />"
+    },
+    {
+      "question": "Как работают HTML Templates?",
+      "id": "q-106-84b61a65",
+      "answer": "▪ &lt;template&gt;: контейнер для HTML, который не рендерится до использования<br />▪ Содержимое остается инертным до клонирования через JavaScript<br />▪ Используется для создания переиспользуемых фрагментов HTML<br />▪ Эффективнее создания элементов через &lt;b&gt;createElement&lt;/b&gt;<br />▪ Пример: &lt;template id=\"user-card\"&gt;&lt;div class=\"card\"&gt;...&lt;/div&gt;&lt;/template&gt;<br />"
+    },
+    {
+      "question": "Как работает &lt;template&gt; элемент?",
+      "id": "q-107-aae783b2",
+      "answer": "▪ Хранит HTML разметку, которая не отображается на странице<br />▪ Содержимое доступно через &lt;b&gt;document.getElementById('template-id').content&lt;/b&gt;<br />▪ Клонируется через &lt;b&gt;template.content.cloneNode(true)&lt;/b&gt;<br />▪ Используется для динамического создания контента<br />▪ Поддерживается всеми современными браузерами<br />"
+    },
+    {
+      "question": "Как работает &lt;slot&gt; элемент?",
+      "id": "q-108-67094c95",
+      "answer": "▪ Используется в Shadow DOM для создания \"отверстий\" для внешнего контента<br />▪ Позволяет передавать контент в Web Component<br />▪ Именованные слоты: &lt;slot name=\"header\"&gt;<br />▪ Fallback контент: &lt;slot&gt;Контент по умолчанию&lt;/slot&gt;<br />▪ Пример: &lt;my-card&gt;&lt;h2 slot=\"header\"&gt;Заголовок&lt;/h2&gt;&lt;/my-card&gt;<br />"
+    }
+  ]
+}

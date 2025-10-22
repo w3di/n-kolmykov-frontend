@@ -11,6 +11,7 @@ const THEME_TO_JSON: Record<string, string> = {
   'JavaScript': '/JavaScript.json',
   'React': '/React_new.json',
   'TypeScript': '/Typescript.json',
+  'HTML': '/HTML.json',
   'Utility Types': '/UtilityTypes.json',
   'Next.js': '/NextJs.json',
   'Sass': '/Sass.json'

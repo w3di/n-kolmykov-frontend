@@ -1,28 +1,35 @@
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-
-import { FlatCompat } from '@eslint/eslintrc';
 import tsEslintPlugin from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
 import importPlugin from 'eslint-plugin-import';
+import reactPlugin from 'eslint-plugin-react';
 import unusedImports from 'eslint-plugin-unused-imports';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname
-});
-
 const eslintConfig = [
-  ...compat.extends('next/core-web-vitals', 'next/typescript'),
   {
     ignores: ['generate-icons.js', '.next/**/*', 'node_modules/**/*']
   },
   {
+    files: ['**/*.{js,jsx,ts,tsx}'],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true
+        }
+      }
+    },
     plugins: {
       '@typescript-eslint': tsEslintPlugin,
       'import': importPlugin,
+      'react': reactPlugin,
       'unused-imports': unusedImports
+    },
+    settings: {
+      react: {
+        version: 'detect'
+      }
     },
     rules: {
       'sort-imports': 'off',
@@ -81,11 +88,7 @@ const eslintConfig = [
           selector: 'TSTypeReference[typeName.name="FunctionComponent"]',
           message:
             'Use explicit function return type instead of React.FunctionComponent'
-        }
-      ],
-      // Запрет React.useState и подобных
-      'no-restricted-syntax': [
-        'error',
+        },
         {
           selector:
             'MemberExpression[object.name="React"][property.name=/^use[A-Z]/]',
