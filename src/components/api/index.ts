@@ -9,7 +9,7 @@ export type QuestionTypeFilter = {
 // Сопоставление тем -> файлы в public
 const THEME_TO_JSON: Record<string, string> = {
   'JavaScript': '/JavaScript.json',
-  'React': '/React_new.json',
+  'React': '/new-react.json',
   'TypeScript': '/Typescript.json',
   'HTML': '/HTML.json',
   'Utility Types': '/UtilityTypes.json',
