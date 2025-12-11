@@ -1,8 +1,8 @@
 'use client';
 
-import { useQuizNavigation } from '@/components/context/quiz/quiz-context';
-
 import styles from './information.module.scss';
+
+import { useQuizNavigation } from '@/components/context/quiz/quiz-context';
 
 const Information = () => {
   const { currentStep } = useQuizNavigation();
