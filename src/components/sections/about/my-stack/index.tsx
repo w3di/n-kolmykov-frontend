@@ -1,6 +1,6 @@
-import { Icon } from '@/components/base';
-
 import styles from './my-stack.module.scss';
+
+import { Icon } from '@/components/base';
 
 const stack = [
   { name: 'reactjs', label: 'React', sizeClass: styles.react },
@@ -16,17 +16,24 @@ const stack = [
 
 const MyStack = () => {
   return (
-    <ul className={styles.myStack}>
-      <p className={styles.title}>Технологический стек</p>
-      {stack.map((item) => (
-        <li key={item.name} className={styles.item}>
-          <Icon
-            name={item.name}
-            className={`${styles.item__icon} ${item.sizeClass}`}
-          />
-        </li>
-      ))}
-    </ul>
+    <>
+      <h2 className={styles.title}>Технологический стек</h2>
+      <ul className={styles.myStack}>
+        {stack.map((item) => (
+          <li
+            key={item.name}
+            className={styles.item}
+            tabIndex={0}
+            aria-label={item.label}
+          >
+            <Icon
+              name={item.name}
+              className={`${styles.item__icon} ${item.sizeClass}`}
+            />
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 

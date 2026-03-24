@@ -12,7 +12,9 @@ const Defaults = ({ children, className }: LayoutProps) => {
   return (
     <>
       <Header />
-      <main className={className ?? ''}>{children}</main>
+      <main id='main-content' className={className ?? ''}>
+        {children}
+      </main>
       <Footer />
     </>
   );

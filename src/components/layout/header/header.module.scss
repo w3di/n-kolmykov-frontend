@@ -6,10 +6,12 @@
   margin: 16px 16px 0;
   padding: 16px;
 
-  background-color: a.$white-1;
+  background-color: rgba(255, 255, 255, 0.85);
 
   border: 1px solid a.$black-9;
   border-radius: 8px;
+
+  backdrop-filter: blur(12px);
 
   @include a.tablet {
     width: 704px;
@@ -102,7 +104,14 @@
   display: flex;
   align-items: center;
 
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
   &__itemLink {
+    position: relative;
+
     padding: 8px 12px !important;
 
     font-weight: a.$fw-medium;
@@ -119,8 +128,30 @@
       line-height: 20px;
     }
 
+    &::after {
+      position: absolute;
+      bottom: 4px;
+      left: 12px;
+
+      width: calc(100% - 24px);
+      height: 1.5px;
+
+      background-color: a.$orange-1;
+
+      content: '';
+
+      transform: scaleX(0);
+      transform-origin: center;
+
+      transition: transform 0.25s ease;
+    }
+
     &:hover {
-      color: a.$black-2;
+      color: a.$black-1;
+
+      &::after {
+        transform: scaleX(1);
+      }
     }
 
     &:active {

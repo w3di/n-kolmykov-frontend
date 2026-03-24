@@ -1,15 +1,15 @@
 import clsx from 'clsx';
 
-import { CollectionBlock, Icon } from '@/components/base';
-
 import styles from './hero.module.scss';
 import { AnimatedGrid } from './ui/animated-grid';
 
+import { CollectionBlock, Icon } from '@/components/base';
+
 const technologies = [
   {
-    id: 'frontend',
+    id: 'fullstack',
     icon: 'react' as const,
-    label: 'Frontend',
+    label: 'Fullstack',
     className: ''
   },
   {

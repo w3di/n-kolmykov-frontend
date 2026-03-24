@@ -1,12 +1,6 @@
 'use client';
 
-import React, {
-  useRef,
-  useEffect,
-  useState,
-  useMemo,
-  useCallback
-} from 'react';
+import React, { useRef, useEffect, useState, useMemo } from 'react';
 
 import styles from './anumated-grid.module.scss';
 
@@ -36,100 +30,157 @@ const ICONS_NAMES = [
   'bezier-curve'
 ] as const;
 
-const DEFAULT_NOT_ALLOW_CELLS = [
-  { x: 1, y: 1 },
-  { x: 2, y: 1 },
-  { x: 3, y: 1 },
-  { x: 4, y: 1 },
-  { x: 5, y: 1 },
-  { x: 6, y: 1 },
-  { x: 7, y: 1 },
-  { x: 8, y: 1 },
-  { x: 9, y: 1 },
-  { x: 10, y: 1 },
-  { x: 1, y: 2 },
-  { x: 2, y: 2 },
-  { x: 3, y: 2 },
-  { x: 4, y: 2 },
-  { x: 5, y: 2 },
-  { x: 6, y: 2 },
-  { x: 7, y: 2 },
-  { x: 8, y: 2 },
-  { x: 9, y: 2 },
-  { x: 10, y: 2 },
-  { x: 1, y: 3 },
-  { x: 2, y: 3 },
-  { x: 3, y: 3 },
-  { x: 4, y: 3 },
-  { x: 5, y: 3 },
-  { x: 6, y: 3 },
-  { x: 7, y: 3 },
-  { x: 8, y: 3 },
-  { x: 9, y: 3 },
-  { x: 10, y: 3 },
-  { x: 1, y: 4 },
-  { x: 2, y: 4 },
-  { x: 3, y: 4 },
-  { x: 4, y: 4 },
-  { x: 5, y: 4 },
-  { x: 6, y: 4 },
-  { x: 7, y: 4 },
-  { x: 8, y: 4 },
-  { x: 9, y: 4 },
-  { x: 10, y: 4 }
-];
+// Set для O(1) проверки вместо O(n) перебора массива
+const NOT_ALLOW_CELLS_SET = new Set([
+  '1,1',
+  '2,1',
+  '3,1',
+  '4,1',
+  '5,1',
+  '6,1',
+  '7,1',
+  '8,1',
+  '9,1',
+  '10,1',
+  '1,2',
+  '2,2',
+  '3,2',
+  '4,2',
+  '5,2',
+  '6,2',
+  '7,2',
+  '8,2',
+  '9,2',
+  '10,2',
+  '1,3',
+  '2,3',
+  '3,3',
+  '4,3',
+  '5,3',
+  '6,3',
+  '7,3',
+  '8,3',
+  '9,3',
+  '10,3',
+  '1,4',
+  '2,4',
+  '3,4',
+  '4,4',
+  '5,4',
+  '6,4',
+  '7,4',
+  '8,4',
+  '9,4',
+  '10,4'
+]);
+
+// Предвычисленные границы буферной зоны (вместо Math.max на каждый кадр)
+const BUFFER_MAX_X = 11; // 10 + 1
+const BUFFER_MAX_Y = 5; // 4 + 1
+
+const SPRING_STRENGTH = 0.05;
+const DAMPING = 0.85;
+const MOUSE_INFLUENCE = 0.8;
+const MOUSE_RADIUS = 150;
+const MOUSE_RADIUS_SQ = MOUSE_RADIUS * MOUSE_RADIUS;
+const VELOCITY_THRESHOLD = 0.01;
+
+const getGridConfig = (width: number) => {
+  if (width < 768) return { gridWidth: 12, gridHeight: 7, squareSize: 60.68 };
+  if (width < 1024) return { gridWidth: 12, gridHeight: 8, squareSize: 58.6 };
+  if (width < 1920) return { gridWidth: 12, gridHeight: 8, squareSize: 78.55 };
+  return { gridWidth: 12, gridHeight: 8, squareSize: 89.83 };
+};
+
+const getIconSizeMultiplier = (width: number) => {
+  if (width < 1024) return 0.27;
+  if (width < 1920) return 0.25;
+  return 0.27;
+};
+
+// Предвычисление видимости линий — результат не зависит от позиций точек
+const buildLineVisibility = (gw: number, gh: number) => {
+  const shouldDraw = (x1: number, y1: number, x2: number, y2: number) => {
+    if (
+      x1 === 0 ||
+      x2 === 0 ||
+      x1 === gw ||
+      x2 === gw ||
+      y1 === 0 ||
+      y2 === 0 ||
+      y1 === gh ||
+      y2 === gh
+    )
+      return true;
+
+    // Граница буферной зоны
+    if (x1 === x2) {
+      if ((x1 === 1 || x1 === BUFFER_MAX_X) && y1 >= 1 && y1 <= BUFFER_MAX_Y)
+        return true;
+    }
+    if (y1 === y2) {
+      if ((y1 === 1 || y1 === BUFFER_MAX_Y) && x1 >= 1 && x1 <= BUFFER_MAX_X)
+        return true;
+    }
+
+    // Линии внутри запрещённой зоны скрыты
+    if (x1 === x2 && NOT_ALLOW_CELLS_SET.has(`${x1},${y1}`)) return false;
+    if (y1 === y2 && NOT_ALLOW_CELLS_SET.has(`${x1},${y1}`)) return false;
+    return true;
+  };
+
+  const vertical: boolean[][] = [];
+  for (let x = 0; x <= gw; x++) {
+    vertical[x] = [];
+    for (let y = 0; y < gh; y++) {
+      vertical[x][y] = shouldDraw(x, y, x, y + 1);
+    }
+  }
+
+  const horizontal: boolean[][] = [];
+  for (let y = 0; y <= gh; y++) {
+    horizontal[y] = [];
+    for (let x = 0; x < gw; x++) {
+      horizontal[y][x] = shouldDraw(x, y, x + 1, y);
+    }
+  }
+
+  return { vertical, horizontal };
+};
 
 export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mousePosRef = useRef<Point>({
-    x: -1000,
-    y: -1000,
-    originalX: -1000,
-    originalY: -1000,
-    velocityX: 0,
-    velocityY: 0
-  });
+  const mouseX = useRef(-1000);
+  const mouseY = useRef(-1000);
   const animationRef = useRef<number>(null);
+  const isVisibleRef = useRef(true);
+  const isSettledRef = useRef(false);
   const [containerStyle, setContainerStyle] = useState<React.CSSProperties>({});
   const iconsCache = useRef<Map<string, HTMLImageElement>>(new Map());
   const [isCanvasVisible, setIsCanvasVisible] = useState(false);
   const hasRenderedOnceRef = useRef(false);
-
-  const generateRandomCells = useCallback(() => {
-    const allCells = [];
-    const gridWidth = 12;
-    const gridHeight = 8;
-
-    for (let x = 0; x < gridWidth; x++) {
-      for (let y = 0; y < gridHeight; y++) {
-        allCells.push({ x, y });
-      }
-    }
-
-    const availableCells = allCells.filter(
-      (cell) =>
-        !DEFAULT_NOT_ALLOW_CELLS.some(
-          (notAllow) => notAllow.x === cell.x && notAllow.y === cell.y
-        )
-    );
-
-    const shuffledCells = availableCells.sort(() => Math.random() - 0.5);
-
-    const cellsForIcons = shuffledCells.slice(0, ICONS_NAMES.length);
-
-    return cellsForIcons.map((cell, index) => ({
-      x: cell.x,
-      y: cell.y,
-      iconName: ICONS_NAMES[index]
-    }));
-  }, []);
+  const vLinesRef = useRef<boolean[][]>([]);
+  const hLinesRef = useRef<boolean[][]>([]);
 
   const cells = useMemo(() => {
-    return generateRandomCells();
-  }, [generateRandomCells]);
-
-  const notAllowCells = useMemo(() => {
-    return DEFAULT_NOT_ALLOW_CELLS;
+    const allCells: { x: number; y: number }[] = [];
+    for (let x = 0; x < 12; x++) {
+      for (let y = 0; y < 8; y++) {
+        if (!NOT_ALLOW_CELLS_SET.has(`${x},${y}`)) {
+          allCells.push({ x, y });
+        }
+      }
+    }
+    const count = Math.min(ICONS_NAMES.length, allCells.length);
+    for (let i = 0; i < count; i++) {
+      const j = i + Math.floor(Math.random() * (allCells.length - i));
+      [allCells[i], allCells[j]] = [allCells[j], allCells[i]];
+    }
+    return allCells.slice(0, count).map((cell, i) => ({
+      x: cell.x,
+      y: cell.y,
+      iconName: ICONS_NAMES[i]
+    }));
   }, []);
 
   useEffect(() => {
@@ -139,370 +190,287 @@ export const AnimatedGrid = ({ children }: AnimatedGridProps) => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const getGridConfig = () => {
-      const width = window.innerWidth;
-
-      if (width < 768) {
-        return { gridWidth: 12, gridHeight: 7, squareSize: 60.68 };
-      } else if (width < 1024) {
-        return { gridWidth: 12, gridHeight: 8, squareSize: 58.6 };
-      } else if (width < 1920) {
-        return { gridWidth: 12, gridHeight: 8, squareSize: 78.55 };
-      } else {
-        return { gridWidth: 12, gridHeight: 8, squareSize: 89.83 };
-      }
-    };
-
-    const { gridWidth, gridHeight, squareSize } = getGridConfig();
-
-    const loadIcon = async (iconName: string): Promise<HTMLImageElement> => {
-      if (iconsCache.current.has(iconName)) {
-        return iconsCache.current.get(iconName)!;
-      }
-
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.onload = () => {
-          iconsCache.current.set(iconName, img);
-          resolve(img);
-        };
-        img.onerror = reject;
-
-        img.src = `/svg/icons/${iconName}.svg`;
-      });
-    };
-
-    const getIconSize = (cellWidth: number, cellHeight: number) => {
-      const width = window.innerWidth;
-
-      if (width < 1024) {
-        return Math.min(cellWidth, cellHeight) * 0.27; // ~16px для ячейки 59px
-      } else if (width < 1920) {
-        // Ноутбуки - 20px
-        return Math.min(cellWidth, cellHeight) * 0.25; // ~20px для ячейки 79px
-      } else {
-        // Большие экраны - 24px
-        return Math.min(cellWidth, cellHeight) * 0.27; // ~24px для ячейки 89px
-      }
-    };
-
-    // Загружаем все иконки
-    const loadAllIcons = async () => {
-      const iconNames = cells
-        .filter((cell) => cell.iconName)
-        .map((cell) => cell.iconName!)
-        .filter((name, index, arr) => arr.indexOf(name) === index);
-
-      await Promise.all(iconNames.map(loadIcon));
-    };
-
+    const dpr = window.devicePixelRatio || 1;
     const padding = 1;
-    const canvasWidth = gridWidth * squareSize + padding * 2;
-    const canvasHeight = gridHeight * squareSize + padding * 2;
+    let config = getGridConfig(window.innerWidth);
+    let { gridWidth, gridHeight, squareSize } = config;
+    let iconSizeMul = getIconSizeMultiplier(window.innerWidth);
 
-    canvas.width = canvasWidth;
-    canvas.height = canvasHeight;
-    canvas.style.width = `${canvasWidth}px`;
-    canvas.style.height = `${canvasHeight}px`;
+    const setupCanvas = () => {
+      const cssW = gridWidth * squareSize + padding * 2;
+      const cssH = gridHeight * squareSize + padding * 2;
+      canvas.width = cssW * dpr;
+      canvas.height = cssH * dpr;
+      canvas.style.width = `${cssW}px`;
+      canvas.style.height = `${cssH}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const { vertical, horizontal } = buildLineVisibility(
+        gridWidth,
+        gridHeight
+      );
+      vLinesRef.current = vertical;
+      hLinesRef.current = horizontal;
+    };
 
     const points: Point[][] = [];
-    for (let y = 0; y <= gridHeight; y++) {
-      points[y] = [];
-      for (let x = 0; x <= gridWidth; x++) {
-        points[y][x] = {
-          x: x * squareSize + padding,
-          y: y * squareSize + padding,
-          originalX: x * squareSize + padding,
-          originalY: y * squareSize + padding,
-          velocityX: 0,
-          velocityY: 0
-        };
+    const initPoints = () => {
+      for (let y = 0; y <= gridHeight; y++) {
+        if (!points[y]) points[y] = [];
+        for (let x = 0; x <= gridWidth; x++) {
+          const px = x * squareSize + padding;
+          const py = y * squareSize + padding;
+          if (!points[y][x]) {
+            points[y][x] = {
+              x: px,
+              y: py,
+              originalX: px,
+              originalY: py,
+              velocityX: 0,
+              velocityY: 0
+            };
+          } else {
+            const p = points[y][x];
+            p.originalX = px;
+            p.originalY = py;
+            p.x = px;
+            p.y = py;
+            p.velocityX = 0;
+            p.velocityY = 0;
+          }
+        }
       }
-    }
+    };
 
-    const springStrength = 0.05;
-    const damping = 0.85;
-    const mouseInfluence = 0.8;
-    const mouseRadius = 150;
+    setupCanvas();
+    initPoints();
 
     const handleMouseMove = (e: MouseEvent) => {
       const rect = canvas.getBoundingClientRect();
-      const mouseX = e.clientX - rect.left;
-      const mouseY = e.clientY - rect.top;
-      mousePosRef.current = {
-        x: mouseX,
-        y: mouseY,
-        originalX: mouseX,
-        originalY: mouseY,
-        velocityX: 0,
-        velocityY: 0
-      };
+      mouseX.current = e.clientX - rect.left;
+      mouseY.current = e.clientY - rect.top;
+      if (isSettledRef.current) {
+        isSettledRef.current = false;
+        animationRef.current = requestAnimationFrame(animate);
+      }
     };
 
     const handleMouseLeave = () => {
-      mousePosRef.current = {
-        x: -1000,
-        y: -1000,
-        originalX: -1000,
-        originalY: -1000,
-        velocityX: 0,
-        velocityY: 0
-      };
+      mouseX.current = -1000;
+      mouseY.current = -1000;
     };
 
     canvas.addEventListener('mousemove', handleMouseMove);
     canvas.addEventListener('mouseleave', handleMouseLeave);
 
+    let resizeTimer: ReturnType<typeof setTimeout>;
     const handleResize = () => {
-      const newConfig = getGridConfig();
-      const newGridWidth = newConfig.gridWidth;
-      const newGridHeight = newConfig.gridHeight;
-      const newSquareSize = newConfig.squareSize;
-
-      const newCanvasWidth = newGridWidth * newSquareSize + padding * 2;
-      const newCanvasHeight = newGridHeight * newSquareSize + padding * 2;
-      canvas.width = newCanvasWidth;
-      canvas.height = newCanvasHeight;
-      canvas.style.width = `${newCanvasWidth}px`;
-      canvas.style.height = `${newCanvasHeight}px`;
-
-      for (let y = 0; y <= newGridHeight; y++) {
-        if (!points[y]) points[y] = [];
-        for (let x = 0; x <= newGridWidth; x++) {
-          if (!points[y][x]) {
-            points[y][x] = {
-              x: x * newSquareSize + padding,
-              y: y * newSquareSize + padding,
-              originalX: x * newSquareSize + padding,
-              originalY: y * newSquareSize + padding,
-              velocityX: 0,
-              velocityY: 0
-            };
-          } else {
-            points[y][x].originalX = x * newSquareSize + padding;
-            points[y][x].originalY = y * newSquareSize + padding;
-            points[y][x].x = x * newSquareSize + padding;
-            points[y][x].y = y * newSquareSize + padding;
-          }
-        }
-      }
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        config = getGridConfig(window.innerWidth);
+        gridWidth = config.gridWidth;
+        gridHeight = config.gridHeight;
+        squareSize = config.squareSize;
+        iconSizeMul = getIconSizeMultiplier(window.innerWidth);
+        setupCanvas();
+        initPoints();
+        isSettledRef.current = false;
+      }, 100);
     };
-
     window.addEventListener('resize', handleResize);
 
-    loadAllIcons().then(() => {
-      animate();
-    });
+    // Пауза анимации когда секция вне viewport
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+        if (entry.isIntersecting && !isSettledRef.current) {
+          animationRef.current = requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(canvas);
 
-    const shouldDrawLine = (x1: number, y1: number, x2: number, y2: number) => {
-      if (
-        x1 === 0 ||
-        x2 === 0 ||
-        x1 === gridWidth ||
-        x2 === gridWidth ||
-        y1 === 0 ||
-        y2 === 0 ||
-        y1 === gridHeight ||
-        y2 === gridHeight
-      ) {
-        return true;
-      }
-
-      if (shouldDrawBufferZoneBoundary(x1, y1, x2, y2)) {
-        return true;
-      }
-
-      for (const cell of notAllowCells) {
-        if (x1 === x2) {
-          if (x1 === cell.x && y1 >= cell.y && y1 < cell.y + 1) {
-            return false;
-          }
-        }
-        if (y1 === y2) {
-          if (y1 === cell.y && x1 >= cell.x && x1 < cell.x + 1) {
-            return false;
-          }
-        }
-      }
-      return true;
-    };
-
-    const shouldDrawBufferZoneBoundary = (
-      x1: number,
-      y1: number,
-      x2: number,
-      y2: number
-    ) => {
-      const maxX = Math.max(...notAllowCells.map((cell) => cell.x));
-      const maxY = Math.max(...notAllowCells.map((cell) => cell.y));
-
-      if (x1 === x2) {
-        if (x1 === 1 && y1 >= 1 && y1 <= maxY + 1) {
-          return true;
-        }
-        if (x1 === maxX + 1 && y1 >= 1 && y1 <= maxY + 1) {
-          return true;
-        }
-      }
-      if (y1 === y2) {
-        if (y1 === 1 && x1 >= 1 && x1 <= maxX + 1) {
-          return true;
-        }
-        if (y1 === maxY + 1 && x1 >= 1 && x1 <= maxX + 1) {
-          return true;
-        }
-      }
-      return false;
+    const loadAllIcons = async () => {
+      const unique = [...new Set(cells.map((c) => c.iconName))];
+      await Promise.all(
+        unique.map(
+          (name) =>
+            new Promise<void>((resolve, reject) => {
+              if (iconsCache.current.has(name)) {
+                resolve();
+                return;
+              }
+              const img = new Image();
+              img.onload = () => {
+                iconsCache.current.set(name, img);
+                resolve();
+              };
+              img.onerror = reject;
+              img.src = `/svg/icons/${name}.svg`;
+            })
+        )
+      );
     };
 
     const animate = () => {
-      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+      if (!isVisibleRef.current) return;
 
-      for (let y = 0; y <= gridHeight; y++) {
+      const cssW = gridWidth * squareSize + padding * 2;
+      const cssH = gridHeight * squareSize + padding * 2;
+      ctx.clearRect(0, 0, cssW, cssH);
+
+      const mx = mouseX.current;
+      const my = mouseY.current;
+      let totalMotion = 0;
+
+      // Физика
+      for (let y = 0; y < gridHeight; y++) {
+        const row = points[y];
         for (let x = 0; x <= gridWidth; x++) {
-          const point = points[y][x];
+          const p = row[x];
+          const dx = mx - p.x;
+          const dy = my - p.y;
+          const distSq = dx * dx + dy * dy;
 
-          if (y === gridHeight) {
-            continue;
-          }
-
-          const dx = mousePosRef.current.x - point.x;
-          const dy = mousePosRef.current.y - point.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < mouseRadius && distance > 0) {
+          if (distSq < MOUSE_RADIUS_SQ && distSq > 0) {
+            const dist = Math.sqrt(distSq);
             const force =
-              ((mouseRadius - distance) / mouseRadius) * mouseInfluence;
-            point.velocityX += (dx / distance) * force;
-            point.velocityY += (dy / distance) * force;
+              ((MOUSE_RADIUS - dist) / MOUSE_RADIUS) * MOUSE_INFLUENCE;
+            p.velocityX += (dx / dist) * force;
+            p.velocityY += (dy / dist) * force;
           }
 
-          const springX = (point.originalX - point.x) * springStrength;
-          const springY = (point.originalY - point.y) * springStrength;
-
-          point.velocityX += springX;
-          point.velocityY += springY;
-
-          point.velocityX *= damping;
-          point.velocityY *= damping;
-
-          point.x += point.velocityX;
-          point.y += point.velocityY;
+          p.velocityX =
+            (p.velocityX + (p.originalX - p.x) * SPRING_STRENGTH) * DAMPING;
+          p.velocityY =
+            (p.velocityY + (p.originalY - p.y) * SPRING_STRENGTH) * DAMPING;
+          p.x += p.velocityX;
+          p.y += p.velocityY;
+          totalMotion += Math.abs(p.velocityX) + Math.abs(p.velocityY);
         }
       }
 
+      // Линии сетки — один beginPath/stroke вместо сотен
       ctx.strokeStyle = 'rgb(226, 226, 226)';
       ctx.lineWidth = 1;
+      ctx.beginPath();
 
+      const vLines = vLinesRef.current;
       for (let x = 0; x <= gridWidth; x++) {
+        const col = vLines[x];
         for (let y = 0; y < gridHeight; y++) {
-          if (shouldDrawLine(x, y, x, y + 1)) {
-            ctx.beginPath();
+          if (col[y]) {
             ctx.moveTo(points[y][x].x, points[y][x].y);
             ctx.lineTo(points[y + 1][x].x, points[y + 1][x].y);
-            ctx.stroke();
           }
         }
       }
 
+      const hLines = hLinesRef.current;
       for (let y = 0; y <= gridHeight; y++) {
+        const row = hLines[y];
         for (let x = 0; x < gridWidth; x++) {
-          if (shouldDrawLine(x, y, x + 1, y)) {
-            ctx.beginPath();
+          if (row[x]) {
             ctx.moveTo(points[y][x].x, points[y][x].y);
             ctx.lineTo(points[y][x + 1].x, points[y][x + 1].y);
-            ctx.stroke();
           }
         }
       }
 
-      cells.forEach((cell) => {
-        const topLeft = points[cell.y]?.[cell.x];
-        const topRight = points[cell.y]?.[cell.x + 1];
-        const bottomLeft = points[cell.y + 1]?.[cell.x];
-        const bottomRight = points[cell.y + 1]?.[cell.x + 1];
+      ctx.stroke();
 
-        if (topLeft && topRight && bottomLeft && bottomRight) {
+      // Ячейки с иконками
+      for (let i = 0; i < cells.length; i++) {
+        const cell = cells[i];
+        const tl = points[cell.y]?.[cell.x];
+        const tr = points[cell.y]?.[cell.x + 1];
+        const bl = points[cell.y + 1]?.[cell.x];
+        const br = points[cell.y + 1]?.[cell.x + 1];
+
+        if (tl && tr && bl && br) {
           ctx.fillStyle = 'white';
-
           ctx.beginPath();
-          ctx.moveTo(topLeft.x, topLeft.y);
-          ctx.lineTo(topRight.x, topRight.y);
-          ctx.lineTo(bottomRight.x, bottomRight.y);
-          ctx.lineTo(bottomLeft.x, bottomLeft.y);
+          ctx.moveTo(tl.x, tl.y);
+          ctx.lineTo(tr.x, tr.y);
+          ctx.lineTo(br.x, br.y);
+          ctx.lineTo(bl.x, bl.y);
           ctx.closePath();
-
           ctx.fill();
           ctx.stroke();
 
-          if (cell.iconName) {
-            const centerX = (topLeft.x + topRight.x) / 2;
-            const centerY = (topLeft.y + bottomLeft.y) / 2;
-
-            if (iconsCache.current.has(cell.iconName)) {
-              const icon = iconsCache.current.get(cell.iconName)!;
-              const cellWidth = topRight.x - topLeft.x;
-              const cellHeight = bottomLeft.y - topLeft.y;
-              const iconSize = getIconSize(cellWidth, cellHeight);
-
-              const iconX = centerX - iconSize / 2;
-              const iconY = centerY - iconSize / 2;
-
-              ctx.drawImage(icon, iconX, iconY, iconSize, iconSize);
-            }
+          if (cell.iconName && iconsCache.current.has(cell.iconName)) {
+            const icon = iconsCache.current.get(cell.iconName)!;
+            const cw = tr.x - tl.x;
+            const ch = bl.y - tl.y;
+            const iconSize = Math.min(cw, ch) * iconSizeMul;
+            const cx = (tl.x + tr.x) / 2;
+            const cy = (tl.y + bl.y) / 2;
+            ctx.drawImage(
+              icon,
+              cx - iconSize / 2,
+              cy - iconSize / 2,
+              iconSize,
+              iconSize
+            );
           }
         }
-      });
+      }
 
       if (!hasRenderedOnceRef.current) {
         hasRenderedOnceRef.current = true;
         setIsCanvasVisible(true);
       }
 
+      // Остановка цикла когда движения нет и мышь далеко
+      if (totalMotion < VELOCITY_THRESHOLD && mx < -500) {
+        isSettledRef.current = true;
+        return;
+      }
+
       animationRef.current = requestAnimationFrame(animate);
     };
+
+    loadAllIcons().then(() => {
+      animationRef.current = requestAnimationFrame(animate);
+    });
 
     return () => {
       canvas.removeEventListener('mousemove', handleMouseMove);
       canvas.removeEventListener('mouseleave', handleMouseLeave);
       window.removeEventListener('resize', handleResize);
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
+      clearTimeout(resizeTimer);
+      observer.disconnect();
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, [cells, notAllowCells]);
+  }, [cells]);
 
-  // Отдельный useEffect для обновления containerStyle
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const updateContainerStyle = () => {
-      const { width, height } = canvas;
+      const dpr = window.devicePixelRatio || 1;
+      const w = canvas.width / dpr;
+      const h = canvas.height / dpr;
       setContainerStyle({
-        width: `${width}px`,
-        height: `${height}px`,
-        minWidth: `${width}px`,
-        minHeight: `${height}px`
+        width: `${w}px`,
+        height: `${h}px`,
+        minWidth: `${w}px`,
+        minHeight: `${h}px`
       });
     };
 
-    // Обновляем стили после инициализации canvas
     updateContainerStyle();
-
-    // Слушаем изменения размера canvas
     const resizeObserver = new ResizeObserver(updateContainerStyle);
     resizeObserver.observe(canvas);
-
-    return () => {
-      resizeObserver.disconnect();
-    };
+    return () => resizeObserver.disconnect();
   }, []);
 
   return (
     <div className={styles.animatedGrid} style={containerStyle}>
       <canvas
         ref={canvasRef}
+        aria-hidden='true'
         className={`${styles.canvas} ${isCanvasVisible ? styles.visible : ''}`}
       />
       <>{children}</>

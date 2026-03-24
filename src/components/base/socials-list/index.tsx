@@ -1,6 +1,6 @@
-import Icon from '@/components/base/icon';
-
 import styles from './socials-list.module.scss';
+
+import Icon from '@/components/base/icon';
 
 const socials = [
   {

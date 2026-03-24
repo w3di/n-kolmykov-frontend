@@ -1,4 +1,5 @@
-import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/next';
+import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import '@/public/styles/main.scss';
 import { ToastContainer } from 'react-toastify';
@@ -51,88 +52,109 @@ const involve = localFont({
   variable: '--font-involve'
 });
 
+export const viewport: Viewport = {
+  themeColor: '#f05023',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
   ),
   applicationName: 'nKolmykov',
   title: {
-    default: 'nKolmykov — проект для подготовки к техническим собеседованиям',
+    default: 'nKolmykov — подготовка к техническим собеседованиям Fullstack',
     template: '%s — nKolmykov'
   },
   description:
-    'Open‑source проект для подготовки к техническим собеседованиям: коллекция актуальных вопросов и развернутых ответов по популярным технологиям.',
+    'Бесплатный open‑source проект для подготовки к техническим собеседованиям Fullstack‑разработчиков. 1000+ вопросов и развёрнутых ответов по React, TypeScript, Next.js, JavaScript, HTML и Sass.',
   authors: [{ name: 'Nikolay Kolmykov', url: 'https://github.com/w3di' }],
   creator: 'Nikolay Kolmykov',
   publisher: 'Nikolay Kolmykov',
   referrer: 'origin-when-cross-origin',
+  generator: 'Next.js',
+  category: 'education',
+  classification: 'Education/Technology',
   formatDetection: { email: false, address: false, telephone: false },
   keywords: [
-    // Основные ключевые слова
     'подготовка к собеседованию',
     'техническое собеседование',
-    'frontend разработчик',
-    'react собеседование',
-    'typescript вопросы',
-    'nextjs интервью',
-    'javascript собеседование',
-
-    // Технологии
+    'fullstack собеседование',
+    'fullstack разработчик',
+    'вопросы для собеседования fullstack',
+    'react собеседование вопросы и ответы',
+    'typescript вопросы собеседование',
+    'javascript вопросы для интервью',
+    'nextjs интервью вопросы',
+    'html вопросы собеседование',
+    'sass scss вопросы',
     'react',
     'nextjs',
     'next.js',
     'typescript',
     'javascript',
-    'frontend',
+    'html',
+    'css',
+    'sass',
+    'scss',
+    'fullstack',
     'веб разработка',
     'программирование',
-
-    // Форматы контента
     'вопросы и ответы',
-    'квиз',
-    'тест',
-    'интерактивный',
-    'обучение',
-    'практика',
-
-    // Дополнительные
+    'квиз по программированию',
+    'тест для разработчика',
+    'интерактивный квиз',
+    'обучение fullstack',
+    'практика собеседование',
     'nKolmykov',
-    'колмыков',
-    'николай',
-    'портфолио',
-    'open source',
     'бесплатно',
-    'онлайн',
-    'самообразование'
+    'open source',
+    'самообразование',
+    'junior developer подготовка',
+    'middle developer собеседование',
+    'senior fullstack вопросы'
   ],
   alternates: {
-    canonical: '/'
+    canonical: '/',
+    languages: {
+      'ru-RU': '/'
+    }
   },
   openGraph: {
     type: 'website',
     url: '/',
     locale: 'ru_RU',
     siteName: 'nKolmykov',
-    title: 'nKolmykov — проект для подготовки к техническим собеседованиям',
+    title:
+      'nKolmykov — 1000+ вопросов для подготовки к Fullstack собеседованиям',
     description:
-      'Open‑source проект для подготовки к техническим собеседованиям: коллекция актуальных вопросов и развернутых ответов по популярным технологиям.',
+      'Бесплатный open‑source проект: интерактивный квиз с 1000+ вопросами и развёрнутыми ответами по React, TypeScript, Next.js, JavaScript, HTML, Sass.',
     images: [
       {
         url: '/opengraph-image.png',
         width: 1200,
         height: 600,
-        alt: 'nKolmykov — проект для подготовки к техническим собеседованиям'
+        alt: 'nKolmykov — подготовка к техническим собеседованиям Fullstack-разработчиков',
+        type: 'image/png'
       }
     ]
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'nKolmykov — проект для подготовки к техническим собеседованиям',
+    title:
+      'nKolmykov — 1000+ вопросов для подготовки к Fullstack собеседованиям',
     site: '@nKolmykov',
     creator: '@nKolmykov',
     description:
-      'Open‑source проект для подготовки к техническим собеседованиям: коллекция актуальных вопросов и развернутых ответов по популярным технологиям.',
-    images: ['/twitter-image.png']
+      'Бесплатный open‑source квиз: 1000+ вопросов по React, TypeScript, Next.js, JavaScript с развёрнутыми ответами. Готовьтесь к собеседованиям эффективно.',
+    images: [
+      {
+        url: '/twitter-image.png',
+        alt: 'nKolmykov — подготовка к Fullstack собеседованиям'
+      }
+    ]
   },
   robots: {
     index: true,
@@ -149,12 +171,12 @@ export const metadata: Metadata = {
   },
   other: {
     'msapplication-TileColor': '#f05023',
-    'theme-color': '#f05023',
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'default',
     'apple-mobile-web-app-title': 'nKolmykov',
     'mobile-web-app-capable': 'yes',
-    'format-detection': 'telephone=no'
+    'format-detection': 'telephone=no',
+    'google': 'notranslate'
   },
   icons: {
     icon: [
@@ -185,9 +207,18 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang='ru' className={involve.variable}>
+      <head>
+        <link rel='preconnect' href='https://n-kolmykov.ru' />
+        <meta name='yandex-verification' content='' />
+        <meta name='google-site-verification' content='' />
+      </head>
       <body>
         <StructuredData />
+        <a href='#main-content' className='skip-link'>
+          Перейти к основному содержимому
+        </a>
         {children}
+        <Analytics />
         <ToastContainer
           position='top-right'
           autoClose={3000}

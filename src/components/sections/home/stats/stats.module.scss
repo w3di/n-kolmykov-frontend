@@ -18,6 +18,8 @@
 
     padding: 12px;
 
+    transition: background-color 0.3s ease;
+
     @include a.tablet {
       flex-direction: column;
       justify-content: center;
@@ -28,6 +30,18 @@
 
     @include a.laptop {
       padding: 24px;
+    }
+
+    &:hover {
+      background-color: a.$gray-light;
+
+      .countText {
+        color: a.$orange-1;
+      }
+
+      .icon {
+        transform: scale(1.15);
+      }
     }
 
     &:not(:first-child) {
@@ -62,10 +76,12 @@
 }
 
 .countText {
-  font-weight: a.$fw-medium;
+  font-weight: a.$fw-semibold;
   font-size: 28px;
   line-height: 37px;
   color: a.$black-1;
+
+  transition: color 0.3s ease;
 
   @include a.laptop {
     font-size: 32px;
@@ -81,6 +97,8 @@
 .icon {
   width: 14px;
   height: 14px;
+
+  transition: transform 0.3s ease;
 
   @include a.tablet {
     width: 18px;

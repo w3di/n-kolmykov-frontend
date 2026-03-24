@@ -1,9 +1,9 @@
 'use client';
 import { useState } from 'react';
 
-import { LottieAnimation } from '@/components/base';
-
 import styles from './lottie-link.module.scss';
+
+import { LottieAnimation } from '@/components/base';
 
 type Contact = {
   href: string;
@@ -23,6 +23,7 @@ const LottieLink = ({ contact }: { contact: Contact }) => {
       href={contact.href}
       target='_blank'
       rel='noopener noreferrer'
+      aria-label={`${contact.name} — ${contact.description}`}
       onMouseEnter={() => setHoveredContact(contact.icon)}
       onMouseLeave={() => setHoveredContact(null)}
       onFocus={() => setHoveredContact(contact.icon)}

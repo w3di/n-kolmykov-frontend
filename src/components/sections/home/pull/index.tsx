@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 
-import { Icon } from '@/components/base';
-
 import styles from './pull.module.scss';
+
+import { Icon } from '@/components/base';
 
 const Pull = () => {
   return (
@@ -16,19 +16,22 @@ const Pull = () => {
         <p className={styles.description}>
           <span>Постоянные добавления</span> актуальных тем и вопросов
         </p>
-        <div className={styles.pullRequestImageBlock}>
+        <figure className={styles.pullRequestImageBlock}>
           <Image
             src='/images/pull_50.webp'
             alt='Pull request с 50 коммитами'
             width={300}
             height={59}
+            loading='lazy'
             className={styles.pullRequestImageBlock__pull50}
           />
           <Image
             src='/images/line_to_pull.webp'
             alt=''
+            aria-hidden='true'
             width={116}
             height={152}
+            loading='lazy'
             className={styles.pullRequestImageBlock__lineToPull}
           />
           <Image
@@ -36,9 +39,10 @@ const Pull = () => {
             alt='Pull request с 90 коммитами'
             width={300}
             height={59}
+            loading='lazy'
             className={styles.pullRequestImageBlock__pull90}
           />
-        </div>
+        </figure>
       </li>
       <li className={styles.pull__item}>
         <div className={styles.titleBlock}>
@@ -56,6 +60,7 @@ const Pull = () => {
           width={305}
           height={286}
           quality={90}
+          loading='lazy'
           className={clsx(
             styles.showCodeImageBlock,
             styles.showCodeImageBlock__360
@@ -67,6 +72,7 @@ const Pull = () => {
           width={418}
           height={342}
           quality={90}
+          loading='lazy'
           className={clsx(
             styles.showCodeImageBlock,
             styles.showCodeImageBlock__1024
@@ -78,6 +84,7 @@ const Pull = () => {
           width={494}
           height={339}
           quality={90}
+          loading='lazy'
           className={clsx(
             styles.showCodeImageBlock,
             styles.showCodeImageBlock__1920

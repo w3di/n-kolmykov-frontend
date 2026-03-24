@@ -65,10 +65,10 @@ export default function manifest(): MetadataRoute.Manifest {
         ]
       },
       {
-        name: 'Квиз',
-        short_name: 'Квиз',
-        description: 'Пройти квиз по технологиям',
-        url: '/quiz',
+        name: 'Проверка знаний',
+        short_name: 'Знания',
+        description: 'Проверить знания по технологиям',
+        url: '/knowledge',
         icons: [
           {
             src: '/android-chrome-192x192.png',

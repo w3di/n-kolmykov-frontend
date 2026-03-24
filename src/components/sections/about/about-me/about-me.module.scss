@@ -63,8 +63,14 @@
 
     padding: 16px;
 
+    transition: background-color 0.3s ease;
+
     &:not(:first-child) {
       border-top: 1px dashed a.$gray-1;
+    }
+
+    &:hover {
+      background-color: a.$gray-light;
     }
 
     @include a.desktop-xl {

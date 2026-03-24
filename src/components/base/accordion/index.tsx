@@ -2,9 +2,9 @@ import React from 'react';
 
 import clsx from 'clsx';
 
-import Icon from '@/components/base/icon';
-
 import styles from './accordion.module.scss';
+
+import Icon from '@/components/base/icon';
 
 interface AccordionProps {
   title: React.ReactNode;
@@ -21,7 +21,7 @@ const Accordion = ({
 }: AccordionProps) => {
   return (
     <details className={clsx(styles.accordion, className)} open={defaultOpen}>
-      <summary className={styles.summary} role='button'>
+      <summary className={styles.summary}>
         <span className={styles.summary__title}>{title}</span>
         <Icon name='arrowBack' className={styles.summary__icon} />
       </summary>

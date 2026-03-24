@@ -1,6 +1,6 @@
-import { Icon } from '@/components/base';
-
 import styles from './stats.module.scss';
+
+import { Icon } from '@/components/base';
 
 const stats = [
   {

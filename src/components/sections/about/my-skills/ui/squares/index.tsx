@@ -38,6 +38,7 @@ const Squares = ({
   const numSquaresY = useRef<number>(0);
   const gridOffset = useRef({ x: 0, y: 0 });
   const hoveredSquare = useRef<HoveredSquare | null>(null);
+  const isVisibleRef = useRef(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -54,7 +55,13 @@ const Squares = ({
       numSquaresY.current = Math.ceil(canvas.height / squareSize) + 1;
     };
 
-    window.addEventListener('resize', resizeCanvas);
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(resizeCanvas, 100);
+    };
+
+    window.addEventListener('resize', handleResize);
     resizeCanvas();
 
     const drawGrid = () => {
@@ -131,6 +138,8 @@ const Squares = ({
     };
 
     const updateAnimation = () => {
+      if (!isVisibleRef.current) return;
+
       const effectiveSpeed = Math.max(speed, 0.1);
       switch (direction) {
         case 'right':
@@ -195,17 +204,27 @@ const Squares = ({
     canvas.addEventListener('mousemove', handleMouseMove);
     canvas.addEventListener('mouseleave', handleMouseLeave);
 
-    requestRef.current = requestAnimationFrame(updateAnimation);
+    // Пауза анимации когда компонент вне viewport
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting;
+        if (entry.isIntersecting && requestRef.current === null) {
+          requestRef.current = requestAnimationFrame(updateAnimation);
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(canvas);
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(resizeTimer);
+      observer.disconnect();
       if (requestRef.current !== null) {
         cancelAnimationFrame(requestRef.current);
       }
-      if (canvas) {
-        canvas.removeEventListener('mousemove', handleMouseMove);
-        canvas.removeEventListener('mouseleave', handleMouseLeave);
-      }
+      canvas.removeEventListener('mousemove', handleMouseMove);
+      canvas.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, [
     direction,
@@ -218,7 +237,11 @@ const Squares = ({
   ]);
 
   return (
-    <canvas className={clsx(styles.squaresCanvas, className)} ref={canvasRef} />
+    <canvas
+      className={clsx(styles.squaresCanvas, className)}
+      ref={canvasRef}
+      aria-hidden='true'
+    />
   );
 };
 

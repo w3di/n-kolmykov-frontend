@@ -31,6 +31,32 @@ body {
   color: #333;
 }
 
+/* Skip to content link */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 50%;
+  z-index: 9999;
+
+  padding: 12px 24px;
+
+  background-color: a.$black-1;
+
+  border-radius: 0 0 8px 8px;
+
+  font-weight: a.$fw-semibold;
+  font-size: 14px;
+  color: a.$white-1;
+
+  transform: translateX(-50%);
+
+  transition: top 0.2s ease;
+
+  &:focus {
+    top: 0;
+  }
+}
+
 /* Focus styles for keyboard navigation */
 :focus {
   outline: none;

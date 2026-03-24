@@ -38,12 +38,16 @@
       background: a.$gray-light;
 
       border-color: a.$black-6;
+
+      transform: translateY(-1px);
     }
 
     &:active {
       background: a.$black-8;
 
       border-color: a.$orange-2;
+
+      transform: translateY(0);
     }
   }
 

@@ -2,10 +2,10 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Icon } from '@/components/base';
-
 import styles from './quiz.module.scss';
 import QuizSectionWrapper from './ui/quiz-section-wrapper/quiz-section-wrapper';
+
+import { Icon } from '@/components/base';
 
 const Quiz = () => {
   return (
@@ -13,8 +13,8 @@ const Quiz = () => {
       <div className={styles.backgroundLayer}>
         <Image
           src='/images/codeshow.webp'
-          alt='code_show'
-          loading='eager'
+          alt='Пример кода для подготовки к собеседованию'
+          loading='lazy'
           width={1016}
           height={635}
           className={styles.codeShowImage}
@@ -32,13 +32,16 @@ const Quiz = () => {
           </div>
         </div>
         <p className={styles.contentLayer__text}>
-          Проверьте свои знания, пройдя
+          Проверьте свои знания
           <br />
-          интерактивный квиз
+          по актуальным технологиям
         </p>
 
-        <Link href='/quiz' className={clsx(styles.button, styles.button_text)}>
-          Пройти квиз
+        <Link
+          href='/knowledge'
+          className={clsx(styles.button, styles.button_text)}
+        >
+          Проверить знания
           <Icon name='arrowRight' className={styles.button_icon} />
         </Link>
       </div>

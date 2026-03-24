@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 
-import { Icon } from '@/components/base';
-
 import styles from './my-skills.module.scss';
 import { Squares } from './ui';
+
+import { Icon } from '@/components/base';
 
 const skillsData = [
   {
@@ -43,12 +43,12 @@ const skillsData = [
 const MySkills = () => {
   return (
     <section className={styles.mySkills}>
-      <p className={styles.title}>
+      <h2 className={styles.title}>
         <strong>FullStack Evolution:</strong> от интерфейсов до инфраструктуры
-      </p>
+      </h2>
       <ul className={styles.squaresList}>
         {skillsData.map((skill) => (
-          <li key={skill.id}>
+          <li key={skill.id} tabIndex={0} aria-label={skill.text}>
             <div className={styles.squaresList__item}>
               <div
                 className={clsx(

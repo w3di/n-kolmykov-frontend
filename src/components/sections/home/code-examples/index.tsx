@@ -1,6 +1,6 @@
-import { Icon } from '@/components/base';
-
 import styles from './code-examples.module.scss';
+
+import { Icon } from '@/components/base';
 
 const CodeExamples = () => {
   return (

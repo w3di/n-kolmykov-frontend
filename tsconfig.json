@@ -21,7 +21,10 @@
     "paths": {
       "@/*": ["./*"],
       "@/src/*": ["./src/*"],
-      "@/components/*": ["./src/components/*"]
+      "@/components/*": ["./src/components/*"],
+      "@/entities/*": ["./src/entities/*"],
+      "@/features/*": ["./src/features/*"],
+      "@/data/*": ["./src/data/*"]
     }
   },
   "include": [

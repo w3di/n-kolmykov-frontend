@@ -1,6 +1,6 @@
-import { CollectionBlock, Icon } from '@/components/base';
-
 import styles from './about-me.module.scss';
+
+import { CollectionBlock, Icon } from '@/components/base';
 
 const AboutMe = () => {
   const qualities = [
@@ -26,11 +26,11 @@ const AboutMe = () => {
       <div className={styles.BlockInfo}>
         <CollectionBlock icon='smiley' label='Обо мне' />
         <p className={styles.BlockInfo__description}>
-          Frontend разработчик с опытом работы 3 года, в течение которых я
+          Fullstack разработчик с опытом работы 3 года, в течение которых я
           создавал сайты и мобильные приложения. Люблю оптимизировать
           существующие приложения и привносить автоматизацию в проекты. В
-          свободное время занимаюсь изучением DevOps, backend и развиваюсь в
-          качестве Fullstack JS разработчика.
+          свободное время занимаюсь изучением DevOps и развиваюсь в качестве
+          Fullstack JS разработчика.
           <br />
           <br />
           Имею успешный опыт преподавания разработки. Этот проект создан с целью

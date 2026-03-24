@@ -1,7 +1,7 @@
-import { CollectionBlock } from '@/components/base';
-
 import styles from './contact-me.module.scss';
 import LottieLink from './ui/lottie-link';
+
+import { CollectionBlock } from '@/components/base';
 
 const contacts = [
   {

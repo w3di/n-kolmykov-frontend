@@ -1,7 +1,7 @@
+import styles from './tag.module.scss';
+
 import { Icon } from '@/components/base';
 import { IconName } from '@/components/base/icon';
-
-import styles from './tag.module.scss';
 
 interface TagProps {
   count?: string;
@@ -15,9 +15,9 @@ const Tag = ({ count, label, icon, afterLabel }: TagProps) => {
     <div className={styles.tag}>
       <Icon name={icon} className={styles.tag__bookIcon} />
       <hr className={styles.tag__divider} />
-      <p className={styles.tag__text}>
+      <span className={styles.tag__text}>
         {label} {count && <span>{count}</span>} {afterLabel}
-      </p>
+      </span>
     </div>
   );
 };

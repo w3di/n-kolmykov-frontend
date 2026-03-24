@@ -1,9 +1,10 @@
 import clsx from 'clsx';
 import Link from 'next/link';
 
-import { Icon, SocialList } from '@/components/base';
-
 import styles from './header.module.scss';
+import HeaderNav from './ui/header-nav';
+
+import { Icon, SocialList } from '@/components/base';
 
 const Header = ({ variant = 'default' }: { variant?: 'default' | 'short' }) => {
   return (
@@ -19,18 +20,7 @@ const Header = ({ variant = 'default' }: { variant?: 'default' | 'short' }) => {
         />
       </Link>
 
-      <div className={styles.navigationList}>
-        <Link
-          href='/about-me'
-          className={clsx(styles.navigationList__itemLink)}
-        >
-          Об авторе
-        </Link>
-        <div className={clsx(styles.navigationList__separator)} />
-        <Link href='/quiz' className={clsx(styles.navigationList__itemLink)}>
-          Квиз
-        </Link>
-      </div>
+      <HeaderNav />
 
       <SocialList />
     </header>
