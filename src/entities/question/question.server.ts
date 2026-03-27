@@ -16,7 +16,8 @@ const sectionFiles: Record<string, string> = {
   'html': 'html.json',
   'css': 'css.json',
   'nextjs': 'nextjs.json',
-  'react-native': 'react-native.json'
+  'react-native': 'react-native.json',
+  'design-patterns': 'design-patterns.json'
 };
 
 async function loadSection(slug: string): Promise<Section | null> {
