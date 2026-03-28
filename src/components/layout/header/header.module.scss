@@ -112,11 +112,12 @@
   &__itemLink {
     position: relative;
 
-    padding: 8px 12px !important;
+    padding: 6px 8px !important;
 
     font-weight: a.$fw-medium;
-    font-size: 14px;
-    line-height: 18px;
+    font-size: 12px;
+    line-height: 16px;
+    white-space: nowrap;
     color: a.$black-3;
 
     transition: color 0.2s ease;
